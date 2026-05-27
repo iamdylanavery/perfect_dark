@@ -29,7 +29,8 @@ f32 playerGetTeleportFovY(void);
 void playerUpdateZoom(void);
 void playerStopAudioForPause(void);
 void playerTickPauseMenu(void);
-void playerPause(s32 root);
+void playerStartPause(s32 root);
+void playerPause(void);
 void playerUnpause(void);
 Gfx *player0f0baf84(Gfx *gdl);
 Gfx *playerDrawFade(Gfx *gdl, u32 r, u32 g, u32 b, f32 frac);
@@ -107,5 +108,6 @@ void playerSetCamPropertiesWithRoom(struct coord *pos, struct coord *up, struct 
 void playerSetCamPropertiesWithoutRoom(struct coord *pos, struct coord *up, struct coord *look, s32 room);
 void playerSetCamProperties(struct coord *pos, struct coord *up, struct coord *look, s32 room);
 void playerClearMemCamRoom(void);
+void playerStartUnpause(void);
 
 #endif
