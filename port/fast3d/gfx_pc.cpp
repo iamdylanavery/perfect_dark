@@ -31,6 +31,8 @@
 #include "gfx_rendering_api.h"
 #include "gfx_screen_config.h"
 
+extern "C" void ext_flares_render(void);
+
 uintptr_t gfxFramebuffer;
 
 #define ALIGN(x, a) (((x) + (a - 1)) & ~(a - 1))
@@ -2705,6 +2707,8 @@ extern "C" void gfx_run(Gfx* commands) {
         }
     }
 
+	ext_flares_render();
+	
     gfx_rapi->end_frame();
     gfx_wapi->swap_buffers_begin();
 }
