@@ -195,7 +195,7 @@ void inputSetDefaultKeyBinds(s32 cidx, s32 n64mode)
 		{ CK_RTRIG,         VK_MOUSE_RIGHT,      SDL_SCANCODE_Z      },
 		{ CK_LTRIG,         SDL_SCANCODE_F,      SDL_SCANCODE_X      },
 		{ CK_ZTRIG,         VK_MOUSE_LEFT,       SDL_SCANCODE_SPACE  },
-		{ CK_START,         SDL_SCANCODE_TAB,    0                   },
+		{ CK_START,         SDL_SCANCODE_RETURN, SDL_SCANCODE_TAB    },
 		{ CK_DPAD_D,        SDL_SCANCODE_Q,      VK_MOUSE_MIDDLE     },
 		{ CK_DPAD_U,        0,                   0                   },
 		{ CK_Y,             VK_MOUSE_WHEEL_DN,   0                   },
@@ -209,9 +209,7 @@ void inputSetDefaultKeyBinds(s32 cidx, s32 n64mode)
 		{ CK_STICK_YNEG,    SDL_SCANCODE_DOWN,   0                   },
 		{ CK_STICK_YPOS,    SDL_SCANCODE_UP,     0                   },
 		{ CK_4000,          SDL_SCANCODE_LSHIFT, 0                   },
-		{ CK_2000,          SDL_SCANCODE_LCTRL,  0                   },
-		{ CK_ACCEPT,        SDL_SCANCODE_RETURN, SDL_SCANCODE_E      },
-		{ CK_CANCEL,        VK_MOUSE_RIGHT,      0                   },
+		{ CK_2000,          SDL_SCANCODE_LCTRL,  0                   }
 	};
 
 	static const u32 pcjoybinds[][2] = {
@@ -712,12 +710,7 @@ s32 inputInit(void)
 	}
 	if (useRawInput) {
 		SDL_SetHint(SDL_HINT_JOYSTICK_RAWINPUT, "1");
-#ifdef SDL_HINT_JOYSTICK_RAWINPUT_CORRELATE_XINPUT
 		SDL_SetHint(SDL_HINT_JOYSTICK_RAWINPUT_CORRELATE_XINPUT, "1");
-#elif defined(SDL_HINT_JOYSTICK_HIDAPI_CORRELATE_XINPUT)
-		// old name for SDL_HINT_JOYSTICK_RAWINPUT_CORRELATE_XINPUT before SDL2.0.16
-		SDL_SetHint(SDL_HINT_JOYSTICK_HIDAPI_CORRELATE_XINPUT, "1");
-#endif
 	}
 
 	if (!SDL_WasInit(SDL_INIT_GAMECONTROLLER | SDL_INIT_HAPTIC)) {
@@ -1461,6 +1454,10 @@ s32 inputTextHandler(char *out, const u32 outSize, s32 *curCol, s32 oskCharsOnly
 			out[--*curCol] = '\0';
 		} else {
 			out[0] = '\0';
+		}
+	} else if (key == VK_RETURN) {
+		if (out[0] && *curCol) {
+			return 1;
 		}
 	} else if (key == VK_ESCAPE) {
 		return -1;
