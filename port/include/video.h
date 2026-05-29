@@ -82,4 +82,6 @@ void videoFreeCachedTextures(const void *start, const void *end);
 
 void videoShutdown(void);
 
+#include "ext_flares.h" // <-- The one-line modular magic!
+
 #endif

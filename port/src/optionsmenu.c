@@ -1036,6 +1036,185 @@ static MenuItemHandlerResult menuhandlerOverexposureScale(s32 operation, struct 
 	return 0;
 }
 
+static MenuItemHandlerResult menuhandlerFlaresEnabled(s32 operation, struct menuitem *item, union handlerdata *data)
+{
+	switch (operation) {
+	case MENUOP_GET:
+		return g_FlaresEnabled;
+	case MENUOP_SET:
+		g_FlaresEnabled = data->checkbox.value;
+		break;
+	}
+
+	return 0;
+}
+
+static MenuItemHandlerResult menuhandlerFlareCoreEnabled(s32 operation, struct menuitem *item, union handlerdata *data)
+{
+	switch (operation) {
+	case MENUOP_GET:
+		return g_FlareCoreEnabled;
+	case MENUOP_SET:
+		g_FlareCoreEnabled = data->checkbox.value;
+		break;
+	}
+
+	return 0;
+}
+
+static MenuItemHandlerResult menuhandlerFlareStreakEnabled(s32 operation, struct menuitem *item, union handlerdata *data)
+{
+	switch (operation) {
+	case MENUOP_GET:
+		return g_FlareStreakEnabled;
+	case MENUOP_SET:
+		g_FlareStreakEnabled = data->checkbox.value;
+		break;
+	}
+
+	return 0;
+}
+
+static MenuItemHandlerResult menuhandlerFlareGhostsEnabled(s32 operation, struct menuitem *item, union handlerdata *data)
+{
+	switch (operation) {
+	case MENUOP_GET:
+		return g_FlareGhostsEnabled;
+	case MENUOP_SET:
+		g_FlareGhostsEnabled = data->checkbox.value;
+		break;
+	}
+
+	return 0;
+}
+
+static MenuItemHandlerResult menuhandlerFlareCoreBrightness(s32 operation, struct menuitem *item, union handlerdata *data)
+{
+	switch (operation) {
+	case MENUOP_GETSLIDER:
+		data->slider.value = g_FlareCoreBrightness * 10.f + 0.5f;
+		break;
+	case MENUOP_SET:
+		g_FlareCoreBrightness = (f32)data->slider.value / 10.f;
+		break;
+	}
+
+	return 0;
+}
+
+static MenuItemHandlerResult menuhandlerFlareStreakBrightness(s32 operation, struct menuitem *item, union handlerdata *data)
+{
+	switch (operation) {
+	case MENUOP_GETSLIDER:
+		data->slider.value = g_FlareStreakBrightness * 10.f + 0.5f;
+		break;
+	case MENUOP_SET:
+		g_FlareStreakBrightness = (f32)data->slider.value / 10.f;
+		break;
+	}
+
+	return 0;
+}
+
+static MenuItemHandlerResult menuhandlerFlareGhostBrightness(s32 operation, struct menuitem *item, union handlerdata *data)
+{
+	switch (operation) {
+	case MENUOP_GETSLIDER:
+		data->slider.value = g_FlareGhostBrightness * 10.f + 0.5f;
+		break;
+	case MENUOP_SET:
+		g_FlareGhostBrightness = (f32)data->slider.value / 10.f;
+		break;
+	}
+
+	return 0;
+}
+
+static MenuItemHandlerResult menuhandlerFlareStreakWidth(s32 operation, struct menuitem *item, union handlerdata *data)
+{
+	switch (operation) {
+	case MENUOP_GETSLIDER:
+		data->slider.value = g_FlareStreakWidth * 2.f + 0.5f;
+		break;
+	case MENUOP_SET:
+		g_FlareStreakWidth = (f32)data->slider.value / 2.f;
+		break;
+	}
+
+	return 0;
+}
+
+static MenuItemHandlerResult menuhandlerFlareStreakDrift(s32 operation, struct menuitem *item, union handlerdata *data)
+{
+	switch (operation) {
+	case MENUOP_GETSLIDER:
+		data->slider.value = g_FlareStreakDrift * 20.f + 0.5f;
+		break;
+	case MENUOP_SET:
+		g_FlareStreakDrift = (f32)data->slider.value / 20.f;
+		break;
+	}
+
+	return 0;
+}
+
+static MenuItemHandlerResult menuhandlerFlareStreakDriftBoost(s32 operation, struct menuitem *item, union handlerdata *data)
+{
+	switch (operation) {
+	case MENUOP_GETSLIDER:
+		data->slider.value = (g_FlareStreakDriftBoost + 1.0f) * 10.f + 0.5f;
+		break;
+	case MENUOP_SET:
+		g_FlareStreakDriftBoost = ((f32)data->slider.value / 10.f) - 1.0f;
+		break;
+	}
+
+	return 0;
+}
+
+static MenuItemHandlerResult menuhandlerFlareStreakHeight(s32 operation, struct menuitem *item, union handlerdata *data)
+{
+	switch (operation) {
+	case MENUOP_GETSLIDER:
+		data->slider.value = g_FlareStreakHeight * 10.f + 0.5f;
+		break;
+	case MENUOP_SET:
+		g_FlareStreakHeight = (f32)data->slider.value / 10.f;
+		break;
+	}
+
+	return 0;
+}
+
+static MenuItemHandlerResult menuhandlerFlareStreakScatter(s32 operation, struct menuitem *item, union handlerdata *data)
+{
+	switch (operation) {
+	case MENUOP_GETSLIDER:
+		// Map 0.0 - 0.1 range to 0 - 20 slider steps (tight scale for dispersion offsets)
+		data->slider.value = g_FlareStreakScatter * 200.f + 0.5f;
+		break;
+	case MENUOP_SET:
+		g_FlareStreakScatter = (f32)data->slider.value / 200.f;
+		break;
+	}
+
+	return 0;
+}
+
+static MenuItemHandlerResult menuhandlerFlareGhostCount(s32 operation, struct menuitem *item, union handlerdata *data)
+{
+	switch (operation) {
+	case MENUOP_GETSLIDER:
+		data->slider.value = g_FlareGhostCount;
+		break;
+	case MENUOP_SET:
+		g_FlareGhostCount = data->slider.value;
+		break;
+	}
+
+	return 0;
+}
+
 struct menuitem g_ExtendedVideoMenuItems[] = {
 	{
 		MENUITEMTYPE_CHECKBOX,
@@ -1212,6 +1391,118 @@ struct menuitem g_ExtendedVideoMenuItems[] = {
 		(uintptr_t)"Overexposure Scale",
 		10,
 		menuhandlerOverexposureScale,
+	},
+	{
+		MENUITEMTYPE_SEPARATOR,
+		0,
+		0,
+		0,
+		0,
+		NULL,
+	},
+	{
+		MENUITEMTYPE_CHECKBOX,
+		0,
+		MENUITEMFLAG_LITERAL_TEXT,
+		(uintptr_t)"Modern Lens Flares",
+		0,
+		menuhandlerFlaresEnabled,
+	},
+	{
+		MENUITEMTYPE_CHECKBOX,
+		0,
+		MENUITEMFLAG_LITERAL_TEXT,
+		(uintptr_t)"  Render Core Starburst",
+		0,
+		menuhandlerFlareCoreEnabled,
+	},
+	{
+		MENUITEMTYPE_CHECKBOX,
+		0,
+		MENUITEMFLAG_LITERAL_TEXT,
+		(uintptr_t)"  Render Anamorphic Streak",
+		0,
+		menuhandlerFlareStreakEnabled,
+	},
+	{
+		MENUITEMTYPE_CHECKBOX,
+		0,
+		MENUITEMFLAG_LITERAL_TEXT,
+		(uintptr_t)"  Render Lens Ghosts",
+		0,
+		menuhandlerFlareGhostsEnabled,
+	},
+	{
+		MENUITEMTYPE_SLIDER,
+		0,
+		MENUITEMFLAG_LITERAL_TEXT | MENUITEMFLAG_SLIDER_WIDE,
+		(uintptr_t)"  Core Brightness",
+		20,
+		menuhandlerFlareCoreBrightness,
+	},
+	{
+		MENUITEMTYPE_SLIDER,
+		0,
+		MENUITEMFLAG_LITERAL_TEXT | MENUITEMFLAG_SLIDER_WIDE,
+		(uintptr_t)"  Streak Brightness",
+		20,
+		menuhandlerFlareStreakBrightness,
+	},
+	{
+		MENUITEMTYPE_SLIDER,
+		0,
+		MENUITEMFLAG_LITERAL_TEXT | MENUITEMFLAG_SLIDER_WIDE,
+		(uintptr_t)"  Ghost Brightness",
+		20,
+		menuhandlerFlareGhostBrightness,
+	},
+	{
+		MENUITEMTYPE_SLIDER,
+		0,
+		MENUITEMFLAG_LITERAL_TEXT | MENUITEMFLAG_SLIDER_WIDE,
+		(uintptr_t)"  Streak Length",
+		20,
+		menuhandlerFlareStreakWidth,
+	},
+	{
+		MENUITEMTYPE_SLIDER,
+		0,
+		MENUITEMFLAG_LITERAL_TEXT | MENUITEMFLAG_SLIDER_WIDE,
+		(uintptr_t)"  Streak Drift Offset",
+		20,
+		menuhandlerFlareStreakDrift,
+	},
+	{
+		MENUITEMTYPE_SLIDER,
+		0,
+		MENUITEMFLAG_LITERAL_TEXT | MENUITEMFLAG_SLIDER_WIDE,
+		(uintptr_t)"  Streak Drift Boost",
+		20,
+		menuhandlerFlareStreakDriftBoost,
+	},
+	{
+		MENUITEMTYPE_SLIDER,
+		0,
+		MENUITEMFLAG_LITERAL_TEXT | MENUITEMFLAG_SLIDER_WIDE,
+		(uintptr_t)"  Streak Thickness",
+		20,
+		menuhandlerFlareStreakHeight,
+	},
+	{
+		MENUITEMTYPE_SLIDER,
+		0,
+		MENUITEMFLAG_LITERAL_TEXT | MENUITEMFLAG_SLIDER_WIDE,
+		(uintptr_t)"  Streak Dispersion",
+		20,
+		menuhandlerFlareStreakScatter,
+	},
+	{
+		MENUITEMTYPE_SLIDER,
+		0,
+		MENUITEMFLAG_LITERAL_TEXT | MENUITEMFLAG_SLIDER_WIDE,
+		(uintptr_t)"  Ghost Count",
+		10,
+		menuhandlerFlareGhostCount,
 	},
 	{
 		MENUITEMTYPE_SEPARATOR,

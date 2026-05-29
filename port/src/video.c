@@ -109,6 +109,8 @@ s32 videoInit(void)
 	videoSetAnisotropicFilter(texAnisotropicFilter);
 	optionsMenuInit();
 
+	ext_flares_init();
+
 	initDone = true;
 	return 0;
 }
@@ -129,6 +131,7 @@ void videoSubmitCommands(Gfx *cmds)
 {
 	if (initDone) {
 		gfx_run(cmds);
+		// ext_flares_render();
 		++dlcount;
 	}
 }
@@ -138,6 +141,8 @@ void videoEndFrame(void)
 	if (!initDone) {
 		return;
 	}
+
+	// ext_flares_render();
 
 	gfx_end_frame();
 
@@ -585,4 +590,6 @@ PD_CONSTRUCTOR static void videoConfigInit(void)
 	configRegisterInt("Video.AnisotropicFilter", &texAnisotropicFilter, 0, 16);
 	configRegisterFloat("Video.GlareBrightness", &vidGlareBrightness, 0.f, 1.f);
 	configRegisterFloat("Video.OverexposureScale", &vidOverexposureScale, 0.f, 1.f);
+
+	ext_flares_register_config(); 
 }

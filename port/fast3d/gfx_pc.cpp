@@ -31,6 +31,8 @@
 #include "gfx_rendering_api.h"
 #include "gfx_screen_config.h"
 
+extern "C" void ext_flares_render(void);
+
 uintptr_t gfxFramebuffer;
 
 #define ALIGN(x, a) (((x) + (a - 1)) & ~(a - 1))
@@ -2685,6 +2687,9 @@ extern "C" void gfx_run(Gfx* commands) {
     gfx_run_dl(commands);
     gfx_flush();
     gfxFramebuffer = 0;
+
+	// Call our decoupled flare renderer right before the frame ends!
+    ext_flares_render(); 
 
     if (game_renders_to_framebuffer) {
         gfx_rapi->start_draw_to_framebuffer(0, 1);
