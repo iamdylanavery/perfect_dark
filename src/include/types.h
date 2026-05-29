@@ -2821,6 +2821,7 @@ struct player {
 #ifndef PLATFORM_N64
 	/*0x1c74*/ f32 swivelpos[2];
 #endif
+	/*0x1c78*/ bool alldoorsunlocked; // for the "All Doors Unlocked" cheat
 };
 
 struct ailist {
@@ -3777,9 +3778,8 @@ struct menudata_mpsetup {
 	u32 slotindex;
 	u32 slotcount;
 	u32 unke24;
-};
-
-struct menudata_mpsetup_ext {
+	u32 unke28;
+	u32 unke2c;
 	u8 showpresets;
 };
 
@@ -3996,7 +3996,6 @@ struct menu {
 		struct menudata_mpsetup mpsetup;
 	};
 
-	struct menudata_mpsetup_ext mpsetupext;
 };
 
 struct gamefile {
@@ -4107,11 +4106,6 @@ struct mpsetup {
 	/*0x800acba0*/ u8 weapons[NUM_MPWEAPONSLOTS];
 	/*0x800acba6*/ u8 paused;
 	/*0x800acba8*/ struct fileguid fileguid;
-#ifndef PLATFORM_N64
-	// Used to restore the non-player bits of chrslots upon entering Combat
-	// Simulator, after playing Co-Op/Counter-Op with a human sim.
-	u16 storedbotbits;
-#endif
 };
 
 struct bossfile {
@@ -6037,11 +6031,11 @@ struct awardmetrics {
 };
 
 struct tex {
-	/*0x00*/ u16 texturenum : 12;
+	/*0x00*/ u16 texturenum;
 	/*0x04*/ u8 *data;
 	/*0x08*/ u8 width;
 	/*0x09*/ u8 height;
-	/*0x0a*/ u8 unk0a;
+	/*0x0a*/ u8 numcolors;
 	/*0x0b*/ u8 numlods : 3;
 	/*0x0b*/ u8 gbiformat : 3;
 	/*0x0b*/ u8 depth : 2;
@@ -6052,6 +6046,7 @@ struct tex {
 	/*0x0c*/ u32 next : 24;
 #else
 	/*0x0c*/ uintptr_t next;
+	         u16 tlutoffset;
 #endif
 };
 

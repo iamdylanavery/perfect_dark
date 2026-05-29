@@ -36,6 +36,7 @@ extern struct XYWidthHeight gfx_current_native_viewport; // The internal/native 
 extern float gfx_current_native_aspect; // The aspect ratio of the above mode
 extern bool gfx_framebuffers_enabled;
 extern bool gfx_detail_textures_enabled;
+extern bool gfx_external_textures_enabled;
 
 void gfx_init(const struct GfxInitSettings *settings);
 void gfx_destroy(void);
@@ -45,10 +46,8 @@ void gfx_run(Gfx* commands);
 void gfx_end_frame(void);
 void gfx_set_target_fps(int);
 void gfx_set_texture_filter(enum FilteringMode mode);
-void gfx_set_mipmap_filter(enum MipmapFilteringMode mode);
 void gfx_texture_cache_clear(void);
 void gfx_texture_cache_delete(const uint8_t *orig_addr);
-void gfx_texture_cache_delete_range(const uint8_t *start, const uint8_t *end);
 int gfx_create_framebuffer(uint32_t width, uint32_t height, int upscale, int autoresize);
 void gfx_resize_framebuffer(int fb, uint32_t width, uint32_t height, int upscale, int autoresize);
 void gfx_set_framebuffer(int fb, float noise_scale) ;

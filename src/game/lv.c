@@ -100,6 +100,18 @@
 #include "video.h"
 #endif
 
+#ifndef PLATFORM_N64
+extern u16 debug_tex_id_list[];
+extern u16 debug_tex_list[];
+extern int debug_tex_count;
+extern bool g_DebugLaserFocus;
+extern bool g_DebugShowHud;
+extern bool g_DebugLaserFocus;
+#endif
+
+extern bool g_DebugIsMenuOpen;
+extern bool g_DebugLaserFocus;
+
 struct sndstate *g_MiscSfxAudioHandles[3];
 u32 var800aa5bc;
 s32 g_MiscSfxActiveTypes[3];
@@ -392,6 +404,9 @@ void lvReset(s32 stagenum)
 	case STAGE_DEFECTION:
 	case STAGE_ATTACKSHIP:
 	case STAGE_TEST_OLD:
+#ifndef PLATFORM_N64
+	case STAGE_TEST_ARCH: // Suburb
+#endif
 		starsReset();
 		break;
 	}
@@ -977,21 +992,55 @@ Gfx *lvRenderFPS(Gfx *gdl)
 		color = 0x00ffff00 | a;
 	}
 
-	if (g_CharsNumeric && g_FontNumeric) {
-		snprintf(buffer, sizeof buffer, "%.2f", fps);
+	
+if (g_CharsNumeric && g_FontNumeric) {
+    // 1. Draw the Original FPS Counter first (restoring it)
+    snprintf(buffer, sizeof buffer, "%.2f", fps);
+    gSPSetExtraGeometryModeEXT(gdl++, g_HudAlignModeL);
+    gdl = text0f153628(gdl); // Rare's text setup (Fixes shadows!)
+    gdl = textRender(gdl, &x, &y, buffer, g_CharsNumeric, g_FontNumeric, color, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);
+    gdl = text0f153780(gdl); // Rare's text cleanup
 
-		gSPSetExtraGeometryModeEXT(gdl++, g_HudAlignModeL);
+    // 2. Draw the Custom Texture HUD
+    if (g_DebugShowHud && g_CharsHandelGothicXs && g_FontHandelGothicXs) {
+        int start_i = 0;
+        int display_x = 10;
+        int display_y = 35; // Position below the FPS counter
+        u32 texColor = 0xffffffff;
 
-		gdl = text0f153628(gdl);
-		gdl = textRender(gdl, &x, &y, buffer, g_CharsNumeric, g_FontNumeric, color, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);
-		gdl = text0f153780(gdl);
+        // F4 Laser Focus Logic
+        if (g_DebugLaserFocus && debug_tex_count > 5) {
+            start_i = debug_tex_count - 5;
+        }
 
-		gSPClearExtraGeometryModeEXT(gdl++, g_HudAlignModeL);
-	}
+        // Prepare the renderer for HandelGothic text
+        gdl = text0f153628(gdl); 
+
+        for (int i = start_i; i < debug_tex_count; i++) {
+            char texBuf[32];
+            snprintf(texBuf, sizeof texBuf, "F:%02X T:%04X", debug_tex_id_list[i], debug_tex_list[i]);
+
+            gdl = textRender(gdl, &display_x, &display_y, texBuf, g_CharsHandelGothicXs, g_FontHandelGothicXs, texColor, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);
+            
+            display_y += 9;
+            display_x = 10;
+
+            if (display_y > viGetHeight() - 10) break;
+        }
+        
+        gdl = text0f153780(gdl); // Cleanup
+    }
+
+    gSPClearExtraGeometryModeEXT(gdl++, g_HudAlignModeL);
+}
+
+// Reset the count for the next frame
+debug_tex_count = 0;
 
 	return gdl;
 }
 #endif
+
 
 /**
  * Renders a complete frame for all players, and also does some other game logic
@@ -1072,6 +1121,12 @@ Gfx *lvRender(Gfx *gdl)
 		gSPDisplayList(gdl++, &var80061380);
 
 		setCurrentPlayerNum(0);
+
+#ifdef DEBUG
+    // Force the Rare Debug Menu to draw on top of everything
+    extern Gfx *dmenuRender(Gfx *gdl);
+    gdl = dmenuRender(gdl);
+#endif
 
 #if VERSION >= VERSION_PAL_BETA
 		viSetMode(VIMODE_LO);

@@ -73,9 +73,20 @@
 #include "data.h"
 #include "types.h"
 #include "system.h"
+#include "video.h"
+#include "input.h"
 
+extern bool g_DebugIsMenuOpen;
+extern bool g_DebugLaserFocus;
 extern u8 *g_MempHeap;
 extern u32 g_MempHeapSize;
+extern bool gfx_external_textures_enabled;
+
+extern bool g_DebugShowHud;
+extern bool g_DebugFreezeList;
+extern bool g_DebugLaserFocus;
+extern bool g_DebugFlatMode;
+extern int g_DebugMatrixMode; // Change this from bool to int
 
 void rngSetSeed(u32 seed);
 
@@ -162,6 +173,38 @@ struct stageallocation g_StageAllocations8Mb[] = {
 	{ STAGE_TEST_ARCH,     "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            },
 	{ STAGE_TEST_LEN,      "-ml0 -me0 -mgfx120 -mvtx98 -ma300"             },
 	{ STAGE_TITLE,         "-ml0 -me0 -mgfx80 -mvtx20 -ma001"              },
+#ifndef PLATFORM_N64
+	// GoldenEye X Mod
+	{ STAGE_EXTRA1,        "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Frigate
+	{ STAGE_EXTRA2,        "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Complex
+	{ STAGE_EXTRA3,        "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Train
+	{ STAGE_EXTRA4,        "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Archives
+	{ STAGE_EXTRA5,        "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Aztec
+	{ STAGE_EXTRA6,        "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Tample
+	{ STAGE_EXTRA7,        "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Icicle Pyramid
+	{ STAGE_EXTRA8,        "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Caves
+	{ STAGE_EXTRA9,        "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Library
+	{ STAGE_EXTRA10,       "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Facility
+	{ STAGE_EXTRA11,       "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Bunker
+	{ STAGE_EXTRA12,       "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Caverns
+	{ STAGE_EXTRA13,       "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Basement
+	{ STAGE_EXTRA14,       "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Egyptian
+	{ STAGE_EXTRA15,       "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Stack
+	{ STAGE_EXTRA16,       "-ml0 -me0 -mgfx110 -mgfxtra80 -mvtx100 -ma700" }, // Runway
+	{ STAGE_EXTRA17,       "-ml0 -me0 -mgfx110 -mgfxtra80 -mvtx100 -ma700" }, // Control
+	// Kakariko Village Mod
+	{ STAGE_EXTRA18,       "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Tawfret Ruins
+	{ STAGE_EXTRA19,       "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Targitzan's Temple
+	// Goldfinger 64 Mod
+	{ STAGE_EXTRA20,       "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Junkyard
+	{ STAGE_EXTRA21,       "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Steel Mill
+	{ STAGE_EXTRA22,       "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Mall
+	{ STAGE_EXTRA23,       "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Tunnels
+	// Additional
+	{ STAGE_EXTRA24,       "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // Rogue
+	{ STAGE_EXTRA25,       "-ml0 -me0 -mgfx120 -mvtx200 -ma400"            }, // Paradox
+	{ STAGE_EXTRA26,       "-ml0 -me0 -mgfx200 -mvtx200 -ma400"            }, // War Colors
+#endif
 	{ 0,                   "-ml0 -me0 -mgfx120 -mvtx98 -ma300"             },
 };
 
@@ -462,9 +505,6 @@ void mainLoop(void)
 		}
 
 		if (g_Vars.coopplayernum >= 0 || g_Vars.antiplayernum >= 0) {
-			if (g_MpSetup.chrslots & 0xfff0) {
-				g_MpSetup.storedbotbits = g_MpSetup.chrslots & 0xfff0;
-			}
 			g_MpSetup.chrslots = 0x03;
 			mpReset();
 		} else if (g_Vars.perfectbuddynum) {
@@ -530,6 +570,31 @@ void mainTick(void)
 	s32 i;
 
 	if (g_MainChangeToStageNum < 0) {
+		if (inputKeyJustPressed(VK_F2) && inputGetKeyModState() & KM_SHIFT) {
+			bool enabled = videoGetExternalTextures();
+			videoSetExternalTextures(!enabled);
+		}
+
+		if (inputKeyJustPressed(VK_F3)) {
+    g_DebugShowHud = !g_DebugShowHud;
+}
+
+		// Inside the input handling function:
+if (inputKeyJustPressed(VK_F4)) {
+    g_DebugLaserFocus = !g_DebugLaserFocus;
+}
+
+if (inputKeyJustPressed(VK_F5)) g_DebugFreezeList = !g_DebugFreezeList;
+
+if (inputKeyJustPressed(VK_F6)) {
+    g_DebugMatrixMode = (g_DebugMatrixMode + 1) % 3;
+    printf("Matrix Mode set to: %d\n", g_DebugMatrixMode); // Prints to your terminal so you know what state you're in
+}
+
+if (inputKeyJustPressed(VK_F7)) {
+    g_DebugFlatMode = !g_DebugFlatMode;
+}
+
 		frametimeCalculate();
 		profileReset();
 		profileSetMarker(PROFILE_MAINTICK_START);

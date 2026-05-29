@@ -2,6 +2,8 @@
 
 #include <PR/ultratypes.h>
 
+#define DEBUG 1
+
 #define CONFIG_FNAME "pd.ini"
 #define CONFIG_PATH "$S/" CONFIG_FNAME
 

@@ -817,7 +817,7 @@ struct prop *shotCalculateHits(s32 handnum, bool isshooting, struct coord *gunpo
 
 			texnum = lightsHandleHit(&shotdata.gunpos3d, &hitpos, room);
 
-			if (sp694.texturenum < 0 || sp694.texturenum >= NUM_TEXTURES) {
+			if (sp694.texturenum < 0 || sp694.texturenum >= MAX_TEXTURES) {
 				surfacetype = g_SurfaceTypes[SURFACETYPE_DEFAULT];
 			} else {
 				index = g_Textures[sp694.texturenum].surfacetype;
@@ -1064,22 +1064,20 @@ bool shotTestLos(struct coord *gunpos2d, struct coord *gundir2d, struct coord *g
 		prop = *propptr;
 		if (prop) {
 			if (prop->type == PROPTYPE_CHR
-					|| (prop->type == PROPTYPE_PLAYER && prop->chr && (g_Vars.in_cutscene || playermgrGetPlayerNumByProp(prop) != g_Vars.currentplayernum
-						|| g_Vars.currentplayer->eyespy && g_Vars.currentplayer->eyespy->mode == EYESPYMODE_CAMSPY))) {
+					|| (prop->type == PROPTYPE_PLAYER && prop->chr && (g_Vars.in_cutscene || playermgrGetPlayerNumByProp(prop) != g_Vars.currentplayernum))) {
 				chrTestHit(prop, &shotdata, false, true);
 			} else if (prop->type == PROPTYPE_WEAPON || (prop->type == PROPTYPE_DOOR && ((struct doorobj *)prop->obj)->doortype != DOORTYPE_LASER)
 					|| (prop->type == PROPTYPE_OBJ && prop->obj->type != OBJTYPE_GLASS && prop->obj->type != OBJTYPE_TINTEDGLASS)) {
 				objTestHit(prop, &shotdata);
 			}
 			if (shotdata.hits[0].prop) {
-				texturenum = (prop->type == PROPTYPE_CHR || prop->type == PROPTYPE_PLAYER) ? -1 : shotdata.hits[0].hitthing.texturenum;
+				texturenum = shotdata.hits[0].hitthing.texturenum;
 				surfacetype = (texturenum >= 0 && texturenum < NUM_TEXTURES) ? g_Textures[texturenum].surfacetype : SURFACETYPE_DEFAULT;
 				// ignore some glass parts and shields
 				if (shotdata.hits[0].slowsbullet && texturenum != 10000 &&
 				    surfacetype != SURFACETYPE_GLASS && surfacetype != SURFACETYPE_GLASSXLU) {
 					return false;
 				}
-				shotdata.hits[0].prop = NULL;
 			}
 		}
 		propptr--;

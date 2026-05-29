@@ -2083,7 +2083,17 @@ struct prop *objInit(struct defaultobj *obj, struct modeldef *modeldef, struct p
 		obj->model->obj = obj;
 		obj->model->unk01 = 0;
 
+#ifdef PLATFORM_N64
 		modelSetScale(obj->model, g_ModelStates[obj->modelnum].scale * (1.0f / 4096.0f));
+#else // GoldenEye X Mod
+		if (g_ModNum == MOD_GEX) {
+			modelSetScale(obj->model, g_GexModelStates[obj->modelnum].scale * (1.0f / 4096.0f));
+		} else if (g_ModNum == MOD_GOLDFINGER_64) {
+			modelSetScale(obj->model, g_Goldfinger64ModelStates[obj->modelnum].scale * (1.0f / 4096.0f));
+		} else {
+			modelSetScale(obj->model, g_ModelStates[obj->modelnum].scale * (1.0f / 4096.0f));
+		}
+#endif
 
 		prop->type = PROPTYPE_OBJ;
 		prop->obj = obj;
@@ -13660,7 +13670,11 @@ Gfx *objRender(struct prop *prop, Gfx *gdl, bool xlupass)
 	}
 
 	if (obj->type != OBJTYPE_TINTEDGLASS) {
+#ifdef PLATFORM_N64
 		frac = objCalculateFadeDistOpacityFrac(prop, modelGetEffectiveScale(obj->model));
+#else // All in One Mod
+		frac = 1.0f;
+#endif
 
 		if (prop->timetoregen > 0 && prop->timetoregen < TICKS(60)) {
 			frac *= (TICKS(60.0f) - prop->timetoregen) * (PAL ? 0.019999999552965f : 0.016666667535901f);
@@ -14780,7 +14794,18 @@ void objCheckDestroyed(struct defaultobj *obj, struct coord *pos, s32 playernum)
 	if (obj->damage > obj->maxdamage || objGetDestroyedLevel(obj)) {
 		struct prop *prop = obj->prop;
 		struct prop *rootprop = prop;
+
+#ifdef PLATFORM_N64
 		s16 exptype = g_PropExplosionTypes[8 + obj->modelnum];
+#else // GoldenEye X Mod
+		s16 exptype;
+		if (g_ModNum == MOD_GEX || g_ModNum == MOD_GOLDFINGER_64) {
+			exptype = g_GexPropExplosionTypes[8 + obj->modelnum];
+		} else {
+			exptype = g_PropExplosionTypes[8 + obj->modelnum];
+		}
+#endif
+
 		RoomNum rooms[8];
 
 		// If in Deep Sea outro
@@ -15857,7 +15882,7 @@ void objHit(struct shotdata *shotdata, struct hit *hit)
 			s8 spcb = false;
 			bool spc4;
 
-			if (hit->hitthing.texturenum < 0 || hit->hitthing.texturenum >= NUM_TEXTURES) {
+			if (hit->hitthing.texturenum < 0 || hit->hitthing.texturenum >= MAX_TEXTURES) {
 				surfacetype = g_SurfaceTypes[0];
 			} else if (g_Textures[hit->hitthing.texturenum].surfacetype < 15) {
 				surfacetype = g_SurfaceTypes[g_Textures[hit->hitthing.texturenum].surfacetype];
@@ -17201,12 +17226,6 @@ void currentPlayerQueuePickupWeaponHudmsg(u32 weaponnum, bool dual)
 {
 	char buffer[100] = "";
 
-	// Suppress pickup HUD during cutscenes
-	if (g_Vars.in_cutscene)
-	{
-		return;
-	}
-
 	weaponGetPickupText(buffer, weaponnum, dual);
 	hudmsgCreateWithFlags(buffer, HUDMSGTYPE_DEFAULT, HUDMSGFLAG_ONLYIFALIVE | HUDMSGFLAG_ALLOWDUPES);
 }
@@ -17221,13 +17240,6 @@ s32 propPickupByPlayer(struct prop *prop, bool showhudmsg)
 
 	if (g_Vars.currentplayer->isdead || g_Vars.lvupdate240 == 0) {
 		return TICKOP_NONE;
-	}
-
-	// Suppress HUD pickup messages during cutscenes (e.g. items given at
-	// mission start via aiGiveObjectToChr)
-	if (g_Vars.in_cutscene)
-	{
-		showhudmsg = false;
 	}
 
 	switch (obj->type) {
@@ -18930,32 +18942,36 @@ s32 hatGetType(struct prop *prop)
 
 bool doorIsUnlocked(struct prop *playerprop, struct prop *doorprop)
 {
-	struct doorobj *door = doorprop->door;
-	bool canopen = false;
-
-	if (door->keyflags == 0) {
-		canopen = true;
-	} else if (invHasKeyFlags(door->keyflags)) {
-		canopen = true;
+	if (cheatIsActive(CHEAT_ALLDOORSUNLOCKED)) {
+		return true;
 	} else {
-		if (posIsInFrontOfDoor(&playerprop->pos, door)) {
-			if ((door->base.flags2 & OBJFLAG2_LOCKEDBACK)
-					&& (door->base.flags2 & OBJFLAG2_LOCKEDFRONT) == 0) {
-				canopen = true;
-			}
+		struct doorobj *door = doorprop->door;
+		bool canopen = false;
+
+		if (door->keyflags == 0) {
+			canopen = true;
+		} else if (invHasKeyFlags(door->keyflags)) {
+			canopen = true;
 		} else {
-			if ((door->base.flags2 & OBJFLAG2_LOCKEDBACK) == 0
-					&& (door->base.flags2 & OBJFLAG2_LOCKEDFRONT)) {
-				canopen = true;
+			if (posIsInFrontOfDoor(&playerprop->pos, door)) {
+				if ((door->base.flags2 & OBJFLAG2_LOCKEDBACK)
+						&& (door->base.flags2 & OBJFLAG2_LOCKEDFRONT) == 0) {
+					canopen = true;
+				}
+			} else {
+				if ((door->base.flags2 & OBJFLAG2_LOCKEDBACK) == 0
+						&& (door->base.flags2 & OBJFLAG2_LOCKEDFRONT)) {
+					canopen = true;
+				}
 			}
 		}
-	}
 
-	if (!doorIsPadlockFree(door)) {
-		canopen = false;
-	}
+		if (!doorIsPadlockFree(door)) {
+			canopen = false;
+		}
 
-	return canopen;
+		return canopen;
+	}
 }
 
 bool doorIsPosInRange(struct doorobj *door, struct coord *pos, f32 distance, bool isbike)
@@ -20017,7 +20033,11 @@ bool func0f08e8ac(struct prop *prop, struct coord *pos, f32 arg2, bool arg3)
 
 	while (roomnum != -1) {
 		if (g_Rooms[roomnum].flags & ROOMFLAG_ONSCREEN) {
+#ifdef PLATFORM_N64
 			if (envIsPosInFogMaxDistance(pos, arg2) && (!arg3 || posIsInObjFadeDistance(pos, arg2))) {
+#else // All in One Mod
+			{
+#endif
 				result = camIsPosInFovAndVisibleRoom(prop->rooms, pos, arg2);
 
 				if (result) {
