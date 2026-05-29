@@ -13,7 +13,6 @@ struct GfxClipParameters {
 };
 
 enum FilteringMode { FILTER_NONE, FILTER_LINEAR, FILTER_THREE_POINT };
-enum MipmapFilteringMode { MIPMAP_DISABLED, MIPMAP_NEAREST, MIPMAP_LINEAR };
 
 struct GfxRenderingAPI {
     const char* (*get_name)(void);
@@ -27,8 +26,8 @@ struct GfxRenderingAPI {
     void (*clear_shaders)(void);
     uint32_t (*new_texture)(void);
     void (*select_texture)(int tile, uint32_t texture_id, bool linear_filter);
-    void (*upload_texture)(const uint8_t* rgba32_buf, uint32_t width, uint32_t height, bool gen_mipmaps);
-    void (*set_sampler_parameters)(int sampler, bool linear_filter, uint32_t cms, uint32_t cmt, bool mipmaps);
+    void (*upload_texture)(const uint8_t* rgba32_buf, uint32_t width, uint32_t height);
+    void (*set_sampler_parameters)(int sampler, bool linear_filter, uint32_t cms, uint32_t cmt);
     void (*set_depth_mode)(bool depth_test, bool depth_update, bool depth_compare, bool depth_source_prim, uint16_t zmode);
     void (*set_depth_range)(float znear, float zfar);
     void (*set_viewport)(int x, int y, int width, int height);
@@ -53,9 +52,6 @@ struct GfxRenderingAPI {
     void (*delete_texture)(uint32_t texID);
     void (*set_texture_filter)(enum FilteringMode mode);
     enum FilteringMode (*get_texture_filter)(void);
-    void (*set_mipmap_filter)(enum MipmapFilteringMode mode);
-	void (*set_anisotropy_level)(int);
-	int (*get_max_anisotropy_level)(void);
 };
 
 #endif
