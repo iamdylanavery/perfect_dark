@@ -22,6 +22,7 @@
 #include "game/player.h"
 #include "game/prop.h"
 #include "video.h"
+#include "ext_flares.h" // Add our new header
 #endif
 
 /**
@@ -719,10 +720,6 @@ Gfx *artifactsRenderGlaresForRoom(Gfx *gdl, s32 roomnum)
 						alpha *= (s3[1] / 255.0f);
 						alpha *= (s3[0] / 8.0f);
 
-#ifndef PLATFORM_N64
-						alpha *= brightscale;
-#endif
-
 						if (USINGDEVICE(DEVICE_NIGHTVISION)) {
 							alpha *= lightop_cur_frac * 7.0f;
 						}
@@ -733,12 +730,25 @@ Gfx *artifactsRenderGlaresForRoom(Gfx *gdl, s32 roomnum)
 
 						colour[3] = alpha;
 
+#ifndef PLATFORM_N64
+						if (g_FlaresEnabled) {
+							// 1. Calculate depth for the GPU (Maps N64 depth to OpenGL -1.0 to 1.0)
+							float ndc_z = ((float)artifacts[i].expecteddepth / 16384.0f) * 2.0f - 1.0f;
+							
+							// 2. Call with NINE arguments (ndc_z is the 3rd one)
+							ext_flares_push(spdc[0], spdc[1], ndc_z, colour[0], colour[1], colour[2], colour[3], f24, f26);
+						} else {
+							gDPSetEnvColor(gdl++, colour[0], colour[1], colour[2], colour[3]);
+							spd4[0] = f24;
+							spd4[1] = f26;
+							func0f0b2740(&gdl, spdc, spd4, 64, 64, false, false, false, 1);
+						}
+#else
 						gDPSetEnvColor(gdl++, colour[0], colour[1], colour[2], colour[3]);
-
 						spd4[0] = f24;
 						spd4[1] = f26;
-
 						func0f0b2740(&gdl, spdc, spd4, 64, 64, false, false, false, 1);
+#endif
 
 						if (extra) {
 							colour[0] = 0xff;
@@ -747,12 +757,25 @@ Gfx *artifactsRenderGlaresForRoom(Gfx *gdl, s32 roomnum)
 							colour[3] = stageGetCurrent()->light_alpha;
 							colour[3] = s3[0] * colour[3] / 8;
 
-							gDPSetEnvColor(gdl++, colour[0], colour[1], colour[2], colour[3]);
+#ifndef PLATFORM_N64
+							if (g_FlaresEnabled) {
+								// Must calculate ndc_z here too!
+								float ndc_z = ((float)artifacts[i].expecteddepth / 16384.0f) * 2.0f - 1.0f;
 
+								// Call with NINE arguments
+								ext_flares_push(spdc[0], spdc[1], ndc_z, colour[0], colour[1], colour[2], colour[3], f24 * 0.4f, f26 * 0.4f);
+							} else {
+								gDPSetEnvColor(gdl++, colour[0], colour[1], colour[2], colour[3]);
+								spd4[0] = f24 * 0.4f;
+								spd4[1] = f26 * 0.4f;
+								func0f0b2740(&gdl, spdc, spd4, 64, 64, false, false, false, 1);
+							}
+#else
+							gDPSetEnvColor(gdl++, colour[0], colour[1], colour[2], colour[3]);
 							spd4[0] = f24 * 0.4f;
 							spd4[1] = f26 * 0.4f;
-
 							func0f0b2740(&gdl, spdc, spd4, 64, 64, false, false, false, 1);
+#endif
 						}
 					}
 				}
