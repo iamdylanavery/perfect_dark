@@ -5,6 +5,7 @@
 
 #include "mixer.h"
 #include "platform.h"
+#include "ext_audio.h"
 
 #define MINIMP3_IMPLEMENTATION
 #include "external/minimp3.h"
@@ -126,7 +127,12 @@ void aClearBufferImpl(uint16_t addr, int nbytes) {
 }
 
 void aLoadBufferImpl(const void *source_addr, uint16_t dest_addr, uint16_t nbytes) {
-    memcpy(BUF_U8(dest_addr), source_addr, ROUND_UP_8(nbytes));
+#ifndef PLATFORM_N64
+    // If extAudioMixerPaint returns 1, it means source_addr is a TOKEN.
+    // We return immediately to avoid crashing on the native memcpy below!
+	if (extAudioMixerPaint(dest_addr, (uintptr_t)source_addr, ROUND_UP_8(nbytes))) return;
+#endif
+	memcpy(BUF_U8(dest_addr), source_addr, ROUND_UP_8(nbytes));
 }
 
 void aSaveBufferImpl(uint16_t source_addr, int16_t *dest_addr, uint16_t nbytes) {
@@ -188,6 +194,11 @@ void aSetLoopImpl(ADPCM_STATE *adpcm_loop_state) {
 }
 
 void aADPCMdecImpl(uint8_t flags, ADPCM_STATE state, int nbytes, uint16_t inofs, uint16_t outofs) {
+
+#ifndef PLATFORM_N64
+	if (extAudioMixerDecode(ROUND_UP_32(nbytes), inofs, BUF_S16(outofs))) return;
+#endif
+
 #if HAS_SSE41
     const __m128i tblrev = _mm_setr_epi8(12, 13, 10, 11, 8, 9, 6, 7, 4, 5, 2, 3, 0, 1, -1, -1);
     const __m128i pos0 = _mm_set_epi8(3, -1, 3, -1, 2, -1, 2, -1, 1, -1, 1, -1, 0, -1, 0, -1);
