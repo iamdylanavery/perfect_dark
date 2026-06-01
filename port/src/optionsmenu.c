@@ -15,6 +15,9 @@
 #include "input.h"
 #include "config.h"
 
+#include "ext_audio.h"
+extern void musicPlayTrackIsolated(s32 tracknum);
+
 static s32 g_ExtMenuPlayer = 0;
 static struct menudialogdef *g_ExtNextDialog = NULL;
 
@@ -1241,55 +1244,7 @@ struct menudialogdef g_ExtendedVideoMenuDialog = {
 	NULL,
 };
 
-static MenuItemHandlerResult menuhandlerDisableMpDeathMusic(s32 operation, struct menuitem *item, union handlerdata *data)
-{
-	switch (operation) {
-	case MENUOP_GET:
-		return g_MusicDisableMpDeath;
-	case MENUOP_SET:
-		g_MusicDisableMpDeath = data->checkbox.value;
-		break;
-	}
-
-	return 0;
-}
-
-struct menuitem g_ExtendedAudioMenuItems[] = {
-	{
-		MENUITEMTYPE_CHECKBOX,
-		0,
-		MENUITEMFLAG_LITERAL_TEXT,
-		(uintptr_t)"Disable MP Death Music",
-		0,
-		menuhandlerDisableMpDeathMusic,
-	},
-	{
-		MENUITEMTYPE_SEPARATOR,
-		0,
-		0,
-		0,
-		0,
-		NULL,
-	},
-	{
-		MENUITEMTYPE_SELECTABLE,
-		0,
-		MENUITEMFLAG_SELECTABLE_CLOSESDIALOG,
-		L_OPTIONS_213, // "Back"
-		0,
-		NULL,
-	},
-	{ MENUITEMTYPE_END },
-};
-
-struct menudialogdef g_ExtendedAudioMenuDialog = {
-	MENUDIALOGTYPE_DEFAULT,
-	(uintptr_t)"Extended Audio Options",
-	g_ExtendedAudioMenuItems,
-	NULL,
-	MENUDIALOGFLAG_LITERAL_TEXT,
-	NULL,
-};
+// Extended Audio Menu moved to ext_audio.c
 
 static MenuItemHandlerResult menuhandlerUseKeyReloads(s32 operation, struct menuitem *item, union handlerdata *data)
 {
