@@ -4,6 +4,7 @@
 #include "lib/audiodma.h"
 #include "data.h"
 #include "types.h"
+#include "ext_audio.h"
 
 #define ADMA_MAX_ITEMS 80
 #define ADMA_ITEM_SIZE 0x400
@@ -50,16 +51,23 @@ void admaInit(void)
  * that this buffer was last used in this frame. This is important for the
  * admaBeginFrame routine.
  */
+
 #ifdef PLATFORM_N64
 s32 admaExec(s32 offset, s32 len, void *state)
 #else
 uintptr_t admaExec(uintptr_t offset, s32 len, void *state)
 #endif
 {
+#ifndef PLATFORM_N64
+	uintptr_t custom_ptr;
+	if (extAudioDmaIntercept(offset, &custom_ptr)) return custom_ptr;
+#endif
+
 	void *foundbuffer;
 	s32 delta;
 	struct admaitem *item = g_AdmaState.firstused;
 	struct admaitem *lastitem = NULL;
+
 #ifdef PLATFORM_N64
 	s32 end = offset + len;
 	s32 buffend;
