@@ -10,6 +10,7 @@
 #include "system.h"
 #include "preprocess.h"
 #include "platform.h"
+#include "ext_audio.h"
 
 /**
  * asset files and ROM segments can be replaced by optional external files,
@@ -477,25 +478,42 @@ u8 *romdataFileLoad(s32 fileNum, u32 *outSize)
 	}
 
 	u8 *out = NULL;
+	u32 size = 0; // Safely declared at the top so our hook can access it!
 
 	// try to load external file
 	if (fileSlots[fileNum].source == SRC_UNLOADED) {
 		char tmp[FS_MAXPATH] = { 0 };
-		snprintf(tmp, sizeof(tmp), ROMDATA_FILEDIR "/%s", fileSlots[fileNum].name);
-		if (fsFileSize(tmp) > 0) {
-			u32 size = 0;
-			out = fsFileLoad(tmp, &size);
-			if (out && size) {
-				sysLogPrintf(LOG_NOTE, "file %d (%s) loaded externally", fileNum, fileSlots[fileNum].name);
-				fileSlots[fileNum].data = out;
-				fileSlots[fileNum].size = size;
-				fileSlots[fileNum].source = SRC_EXTERNAL;
-				// external file; do not apply patches to this
-				fileSlots[fileNum].numpatches = 0;
+
+#ifndef PLATFORM_N64
+		// Check our high-quality external VOX folder first!
+		if (extAudioCheckVox(fileSlots[fileNum].name, &out, &size)) {
+			fileSlots[fileNum].data = out;
+			fileSlots[fileNum].size = size;
+			fileSlots[fileNum].source = SRC_EXTERNAL;
+			fileSlots[fileNum].numpatches = 0;
+		}
+#endif
+
+		if (!out) {
+			snprintf(tmp, sizeof(tmp), ROMDATA_FILEDIR "/%s", fileSlots[fileNum].name);
+			if (fsFileSize(tmp) > 0) {
+				out = fsFileLoad(tmp, &size);
+				if (out && size) {
+					sysLogPrintf(LOG_NOTE, "file %d (%s) loaded externally", fileNum, fileSlots[fileNum].name);
+					fileSlots[fileNum].data = out;
+					fileSlots[fileNum].size = size;
+					fileSlots[fileNum].source = SRC_EXTERNAL;
+					// external file; do not apply patches to this
+					fileSlots[fileNum].numpatches = 0;
+				}
 			}
 		}
-		// tried and failed, fall back to ROM
-		fileSlots[fileNum].source = SRC_ROM;
+
+		// Tried and failed, fall back to ROM
+		// (We only fall back if out is still NULL, preserving our HQ injection!)
+		if (!out) {
+			fileSlots[fileNum].source = SRC_ROM;
+		}
 	}
 
 	if (!out) {
@@ -539,6 +557,10 @@ void romdataFileFree(s32 fileNum)
 		sysLogPrintf(LOG_ERROR, "fsFileFree: invalid file num %d", fileNum);
 		return;
 	}
+
+	#ifndef PLATFORM_N64
+		if (extAudioVoxKeepAlive(fileSlots[fileNum].name, fileSlots[fileNum].source)) return;
+	#endif
 
 	if (fileSlots[fileNum].source == SRC_EXTERNAL) {
 		sysMemFree(fileSlots[fileNum].data);
