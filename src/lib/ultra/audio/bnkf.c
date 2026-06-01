@@ -2,6 +2,7 @@
 #include <os_internal.h>
 #include <ultraerror.h>
 #include "types.h"
+#include "ext_audio.h"
 
 void _bnkfPatchBank(ALBank *bank, uintptr_t offset, uintptr_t table);
 void _bnkfPatchInst(ALInstrument* inst, uintptr_t offset, uintptr_t table);
@@ -23,6 +24,7 @@ void alSeqFileNew(ALSeqFile *file, u8 *base)
 
 void alBnkfNew(ALBankFile *file, u8 *table)
 {
+
 	uintptr_t offset = (uintptr_t) file;
 	uintptr_t woffset = (uintptr_t) table;
 
@@ -121,4 +123,9 @@ void _bnkfPatchWaveTable(ALWaveTable *w, uintptr_t offset, uintptr_t table)
 			w->waveInfo.rawWave.loop = (ALRawLoop *)((u8 *)w->waveInfo.rawWave.loop + offset);
 		}
 	}
+
+#ifndef PLATFORM_N64
+    // Pass the actual variable 'w' and the 'table' pointer
+    extAudioLoadWavetable(w, table);
+#endif
 }
