@@ -6,6 +6,8 @@
 #include "audio.h"
 #include "system.h"
 
+#include "ext_audio.h"
+
 static SDL_AudioDeviceID dev;
 static const s16 *nextBuf;
 static u32 nextSize = 0;
@@ -61,7 +63,15 @@ void audioEndFrame(void)
 {
 	if (nextBuf && nextSize) {
 		if (audioGetSamplesBuffered() < queueLimit) {
+            
+#ifndef PLATFORM_N64
+			// Intercept the buffer and mix in our Modern SDL2 sounds!
+			s16 *finalBuf = extAudioProcessSDL(nextBuf, nextSize);
+			SDL_QueueAudio(dev, finalBuf, nextSize);
+#else
 			SDL_QueueAudio(dev, nextBuf, nextSize);
+#endif
+
 		}
 		nextBuf = NULL;
 		nextSize = 0;
