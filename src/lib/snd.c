@@ -28,6 +28,8 @@
 #include "mod.h"
 #endif
 
+#include "ext_audio.h"
+
 #define MAX_SEQ_SIZE_4MB 1024 * 14
 #define MAX_SEQ_SIZE_8MB 1024 * 18
 
@@ -949,6 +951,11 @@ void sndResetCurMp3(void)
 
 void sndLoadSfxCtl(void)
 {
+
+	#ifndef PLATFORM_N64
+		extAudioResetCache();
+	#endif
+
 	s32 i;
 	u8 unalignedbuffer[256 + 16];
 	u8 *buffer;
@@ -1269,8 +1276,12 @@ ALWaveTable *sndLoadWavetable(uintptr_t offset, u16 cacheindex)
 	tmp = &g_SndCache.wavetables[cacheindex];
 
 	*tmp = *s1;
-
+	
 	tmp->base += (romptr_t) REF_SEG _sfxtblSegmentRomStart;
+
+	#ifndef PLATFORM_N64
+		extAudioLoadWavetable(tmp, (uintptr_t)REF_SEG _sfxtblSegmentRomStart);
+	#endif
 
 	if (tmp->type == AL_ADPCM_WAVE) {
 		tmp->waveInfo.adpcmWave.book = sndLoadAdpcmBook((uintptr_t)tmp->waveInfo.adpcmWave.book, cacheindex);
@@ -1443,6 +1454,11 @@ void sndRemoveRef(ALSound *sound)
 
 void sndInit(void)
 {
+
+#ifndef PLATFORM_N64
+	extAudioInit();
+#endif
+
 	ALSndpConfig sndpconfig;
 	ALSynConfig synconfig;
 #if VERSION >= VERSION_PAL_BETA
@@ -1526,6 +1542,11 @@ void sndInit(void)
 		len = g_SeqTable->count * sizeof(struct seqtableentry) + 4;
 		g_SeqTable = alHeapDBAlloc(0, 0, &g_SndHeap, 1, len);
 		dmaExec(g_SeqTable, (romptr_t) REF_SEG _sequencesSegmentRomStart, (len + 0xf) & ~0xf);
+
+#ifndef PLATFORM_N64
+		// Ext-Audio: Dynamically parse the XBLA offset 16 structs to intercept Sequence Instruments 
+		extAudioScanSequenceBank(bankfile);
+#endif
 
 		// Promote segment-relative offsets to ROM addresses
 		g_SeqRomAddrs = mempAlloc(g_SeqTable->count * sizeof(uintptr_t), MEMPOOL_PERMANENT);
@@ -2063,6 +2084,14 @@ void sndAdjust(struct sndstate **handle, bool ismp3, s32 vol, s32 pan, s32 sound
 	}
 
 	if (*handle != NULL) {
+		
+#ifndef PLATFORM_N64
+		int intercepted = extAudioModernAdjust(*handle, vol, pan, pitch);
+		if (intercepted) {
+			if (vol != -1) vol = 0; 
+		}
+#endif
+
 		if (vol != -1) {
 			audioPostEvent(*handle, AL_SNDP_VOL_EVT, vol);
 		}
@@ -2184,12 +2213,36 @@ struct sndstate *sndStart(s32 arg0, s16 sound, struct sndstate **handle, s32 vol
 
 #if VERSION >= VERSION_NTSC_1_0
 	if (sp40.id < (u32)g_NumSounds) {
-		return func00033820(arg0, sp40.id, volume, pan & 0x7f, pitch, fxmix, IS4MB() ? 0 : fxbus, handle);
-	}
+		
+		struct sndstate *state = func00033820(arg0, sp40.id, volume, pan & 0x7f, pitch, fxmix, IS4MB() ? 0 : fxbus, handle);
 
+#ifndef PLATFORM_N64
+		if (state) {
+			int intercepted = extAudioModernStart(state, sp40.id, volume, pan, pitch);
+			
+			if (intercepted) {
+				audioPostEvent(state, AL_SNDP_VOL_EVT, 0); 
+			}
+		}
+#endif
+		return state;
+	}
 	return NULL;
 #else
-	return func00033820(arg0, sp40.id, volume, pan & 0x7f, pitch, fxmix, IS4MB() ? 0 : fxbus, handle);
+	{
+		struct sndstate *state = func00033820(arg0, sp40.id, volume, pan & 0x7f, pitch, fxmix, IS4MB() ? 0 : fxbus, handle);
+
+#ifndef PLATFORM_N64
+		if (state) {
+			int intercepted = extAudioModernStart(state, sp40.id, volume, pan, pitch);
+			
+			if (intercepted) {
+				audioPostEvent(state, AL_SNDP_VOL_EVT, 0); 
+			}
+		}
+#endif
+		return state;
+	}
 #endif
 }
 
