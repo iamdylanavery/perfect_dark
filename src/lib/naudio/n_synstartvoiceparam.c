@@ -7,6 +7,14 @@ void n_alSynStartVoiceParams(N_ALVoice *v, ALWaveTable *w, f32 pitch, s16 vol,
 {
 	ALStartParamAlt *update;
 
+	#ifndef PLATFORM_N64
+	// Intercept note startup and route it to our high-fidelity SDL2 voice mixer
+	extern int extAudioSeqVoiceStart(void *n64_voice, ALWaveTable *w, float pitch, int vol, int pan);
+	if (extAudioSeqVoiceStart(v, w, pitch, vol, pan)) {
+		vol = 0; // Forces N64 native volume envelope to 0 (silence on RSP)!
+	}
+	#endif
+
 	if (v->pvoice) {
 		/*
 		 * get new update struct from the free list
@@ -22,7 +30,7 @@ void n_alSynStartVoiceParams(N_ALVoice *v, ALWaveTable *w, f32 pitch, s16 vol,
 		update->type    = AL_FILTER_START_VOICE_ALT;
 		update->unity   = v->unityPitch;
 		update->pan     = pan;
-		update->volume  = vol;
+		update->volume  = vol; // Will be 0 if hijacked
 		update->fxMix   = fxmix;
 		update->pitch   = pitch;
 		update->unk14   = arg8;

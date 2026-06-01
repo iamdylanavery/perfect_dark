@@ -7,6 +7,14 @@ void n_alSynSetVol(N_ALVoice *v, s16 volume, ALMicroTime t)
 	ALParam  *update;
 	ALFilter *f;
 
+	#ifndef PLATFORM_N64
+	// Route envelope/fade updates to our modern music voice
+	extern int extAudioSeqVoiceSetVol(void *n64_voice, int vol);
+	if (extAudioSeqVoiceSetVol(v, volume)) {
+		volume = 0; // Clamps the N64 RSP update to 0!
+	}
+	#endif
+
 	if (v->pvoice) {
 		/*
 		 * get new update struct from the free list
@@ -19,11 +27,10 @@ void n_alSynSetVol(N_ALVoice *v, s16 volume, ALMicroTime t)
 		 */
 		update->delta  = n_syn->paramSamples + v->pvoice->offset;
 		update->type = AL_FILTER_SET_VOLUME;
-		update->data.i = volume;
+		update->data.i = volume; // Will be 0 if hijacked
 		update->moredata.i = _n_timeToSamples(t);
 		update->next = 0;
 
 		n_alEnvmixerParam(v->pvoice, AL_FILTER_ADD_UPDATE, update);
 	}
 }
-

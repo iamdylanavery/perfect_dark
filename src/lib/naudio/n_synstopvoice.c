@@ -7,6 +7,12 @@ void n_alSynStopVoice(N_ALVoice *v)
 	ALParam *update;
 	ALFilter *f;
 
+	#ifndef PLATFORM_N64
+	// Free our active modern music voice
+	extern int extAudioSeqVoiceStop(void *n64_voice);
+	extAudioSeqVoiceStop(v);
+	#endif
+
 	if (v->pvoice) {
 		update = __n_allocParam();
 		ALFailIf(update == 0, ERR_ALSYN_NO_UPDATE);

@@ -6,6 +6,12 @@ void n_alSynSetPitch(N_ALVoice *v, f32 pitch)
 {
 	ALParam *update;
 
+	#ifndef PLATFORM_N64
+	// Route pitch-bends and slides to our modern music voice
+	extern int extAudioSeqVoiceSetPitch(void *n64_voice, float pitch);
+	extAudioSeqVoiceSetPitch(v, pitch);
+	#endif
+
 	if (v->pvoice) {
 		/*
 		 * get new update struct from the free list
