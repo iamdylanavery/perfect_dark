@@ -59,6 +59,8 @@
 #include "platform.h"
 #endif
 
+#include "ext_camo.h"
+
 #define GUNLOADSTATE_FLUX     0
 #define GUNLOADSTATE_MODEL    1
 #define GUNLOADSTATE_TEXTURES 2
@@ -11073,10 +11075,37 @@ void bgunRender(Gfx **gdlptr)
 				}
 			}
 
-			// Apply transparency based on player's cloak
-			alpha = chrGetCloakAlpha(player->prop->chr);
+// --- TRUE DECOUPLED CLOAK LOGIC ---
+            struct chrdata *chr = player->prop->chr;
+            alpha = chrGetCloakAlpha(chr); // Keep N64 alpha for normal lighting/fog fallback
+            
+            // Our own modern, framerate-independent timer (0.0 to 1.0)
+            static float my_camo_progress = 0.0f;
+            int is_cloaked = 0;
 
-			if (alpha < 255) {
+            // Are we ordered to be cloaked by the game?
+            if (chr->hidden & CHRHFLAG_CLOAKED) {
+                is_cloaked = 1;
+                
+                // Wait for the "bzzzzt" cooldown to finish before sweeping!
+                if (chr->cloakpause <= 0) {
+                    // LVUPDATE60FREAL() is the PC port's float delta time (1.0 at 60FPS).
+                    // Dividing by 60.0f means this will take exactly 1.0 seconds to sweep!
+                    my_camo_progress += LVUPDATE60FREAL() / 60.0f;
+                    if (my_camo_progress > 1.0f) my_camo_progress = 1.0f;
+                }
+            } else {
+                // If we uncloak, sweep it cleanly back out over 1 second!
+                if (my_camo_progress > 0.0f) {
+                    is_cloaked = 1;
+                    my_camo_progress -= LVUPDATE60FREAL() / 60.0f;
+                    if (my_camo_progress < 0.0f) my_camo_progress = 0.0f;
+                } else {
+                    is_cloaked = 0;
+                }
+            }
+
+			if (is_cloaked) {
 				colour = (s32) (alpha * 0.74509805f) + 0x41;
 				renderdata.unk30 = 5;
 				renderdata.fogcolour = renderdata.envcolour;
@@ -11084,11 +11113,11 @@ void bgunRender(Gfx **gdlptr)
 			}
 
 			renderdata.zbufferenabled = true;
-
 			mtx00016760();
 
 			// Render rocket launcher's rocket if it's in Jo's hand or in the launcher
 			if (hand->rocket) {
+
 				struct model *rocketmodel = hand->rocket->base.model; // 98
 				bool sp94 = false;
 
@@ -11131,13 +11160,11 @@ void bgunRender(Gfx **gdlptr)
 			if (PLAYERCOUNT() == 1) {
 				node = modelGetPart(hand->gunmodel.definition, MODELPART_GUN_LASERLIQUID);
 
-				// a5c
 				if (node) {
 					struct modelrodata_gundl *rodata;
 					rodata = &node->rodata->gundl;
 
 					for (j = 0; j < rodata->numvertices; j++) {
-						// a7c
 						s32 stack[2];
 						s32 k;
 
@@ -11152,12 +11179,18 @@ void bgunRender(Gfx **gdlptr)
 				}
 			}
 
+	    // --- 1. TURN PREDATOR SHADER ON ---
+            if (is_cloaked) {
+                // Pass our beautifully smooth, independent progress float!
+                renderdata.gdl = ext_camo_append_command(renderdata.gdl, 1, alpha, my_camo_progress, 0);
+            }
+
 			// Render the gun
 			modelRender(&renderdata, &hand->gunmodel);
 
 			// Render the hand
 			if (player->gunctrl.handmodeldef && renderhand) {
-				s32 prevcolour = renderdata.envcolour; // 7c
+				s32 prevcolour = renderdata.envcolour; 
 
 				hand->handmodel.matrices = hand->gunmodel.matrices;
 
@@ -11168,9 +11201,15 @@ void bgunRender(Gfx **gdlptr)
 				renderdata.envcolour = prevcolour;
 			}
 
+            // --- 2. TURN PREDATOR SHADER OFF ---
+            if (is_cloaked) {
+                renderdata.gdl = ext_camo_append_command(renderdata.gdl, 0, 255, 0.0f, 0);
+            }
+
 			// Clean up
 			gdl = renderdata.gdl;
 
+            // --- DELETED N64 MATRIX CLEANUP RESTORED ---
 			if (weaponHasFlag(weaponnum, WEAPONFLAG_DUALFLIP)) {
 				gSPClearGeometryMode(gdl++, G_CULL_BOTH);
 			}
