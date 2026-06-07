@@ -3448,9 +3448,13 @@ Gfx *chrRender(struct prop *prop, Gfx *gdl, bool xlupass)
 		u32 stack;
         
         // [NEW] 1. C89-Safe Variable Declarations
-        s32 raw_cloak_alpha;
-        int is_cloaked;
-        float camo_progress;
+        s32 raw_cloak_alpha = chrGetCloakAlpha(chr);
+        int is_cloaked = 0;
+        float camo_progress = 0.0f;
+	
+	if (xlupass && chr->cloakfadefrac > 0 && !chr->cloakfadefinished) {
+        	gdl = chrRenderCloak(gdl, chr->prop, chr->prop);
+        }
 
 		if (func0f08e5a8(prop->rooms, &screenbox) > 0 && (chr->chrflags & CHRCFLAG_UNPLAYABLE) == 0) {
 			gdl = bgScissorWithinViewport(gdl, screenbox.xmin, screenbox.ymin, screenbox.xmax, screenbox.ymax);
@@ -3571,27 +3575,21 @@ Gfx *chrRender(struct prop *prop, Gfx *gdl, bool xlupass)
 		}
 
 // --- [NEW] 2. CALCULATE CLOAK PROGRESS AND TURN ON ---
-        raw_cloak_alpha = chrGetCloakAlpha(chr);
-        is_cloaked = (raw_cloak_alpha < 255);
-        camo_progress = 0.0f;
+
+    if (g_ExtCamoEnabled) {
+        extCamo_UpdateNPC(
+            raw_cloak_alpha,
+            (chr->hidden & CHRHFLAG_CLOAKED),
+            chr->cloakfadefinished,
+            chr->cloakfadefrac,
+            &is_cloaked,
+            &camo_progress
+        );
 
         if (is_cloaked) {
-            if (chr->hidden & CHRHFLAG_CLOAKED) {
-                if (chr->cloakfadefinished) {
-                    camo_progress = 1.0f;
-                } else {
-                    camo_progress = chr->cloakfadefrac / 128.0f;
-                }
-            } else {
-                if (chr->cloakfadefrac > 0) {
-                    camo_progress = chr->cloakfadefrac / 128.0f;
-                }
-            }
-            if (camo_progress > 1.0f) camo_progress = 1.0f;
-            if (camo_progress < 0.0f) camo_progress = 0.0f;
-
             renderdata.gdl = ext_camo_append_command(renderdata.gdl, 1, raw_cloak_alpha, camo_progress, 1);
         }
+    }
 
 		// Render the chr's model
 		modelRender(&renderdata, model);
@@ -3604,10 +3602,10 @@ Gfx *chrRender(struct prop *prop, Gfx *gdl, bool xlupass)
 			child = child->next;
 		}
 
-// --- [NEW] 3. TURN OFF SAFELY ---
-        if (is_cloaked) {
-            renderdata.gdl = ext_camo_append_command(renderdata.gdl, 0, 255, 0.0f, 1);
-        }
+// --- 3. TURN OFF SAFELY ---
+    if (g_ExtCamoEnabled && is_cloaked) {
+        renderdata.gdl = ext_camo_append_command(renderdata.gdl, 0, 255, 0.0f, 1);
+    }
 
 		gdl = renderdata.gdl;
 
@@ -6358,8 +6356,9 @@ Gfx *shieldhitRender(Gfx *gdl, struct prop *prop1, struct prop *prop2, s32 alpha
  */
 Gfx *chrRenderCloak(Gfx *gdl, struct prop *chrprop, struct prop *thisprop)
 {
-
-	return gdl; // <--- [NEW] We completely skip the N64 blocky transitions!
+    if (g_ExtCamoEnabled) {
+        return gdl; // Skip N64 blocky transitions if Modern Cloak is ON
+	}
 
 	struct model *model;
 	struct modelnode *bbox = NULL;
@@ -6540,7 +6539,8 @@ Gfx *chrRenderShield(Gfx *gdl, struct chrdata *chr, u32 alpha)
 
 // Now the shield mesh ONLY draws for actual shield impacts, never for cloaking!
 	if ((chr->hidden2 & CHRH2FLAG_SHIELDHIT)
-			|| (chrGetShield(chr) > 0 && chr->cmcount < 10)) {
+        || (chrGetShield(chr) > 0 && chr->cmcount < 10)
+        || (!g_ExtCamoEnabled && chr->cloakfadefrac > 0 && !chr->cloakfadefinished)) {
         
 		if (chrGetShield(chr) > 0 && g_Vars.lvupdate240 > 0) {
 			s32 numiterations = (rngRandom() % 4) + 1;
