@@ -15,6 +15,9 @@
 #include "input.h"
 #include "config.h"
 
+// Modern Cloak sub-menu hook
+#include "ext_camo.h"
+
 static s32 g_ExtMenuPlayer = 0;
 static struct menudialogdef *g_ExtNextDialog = NULL;
 
@@ -1221,6 +1224,24 @@ struct menuitem g_ExtendedVideoMenuItems[] = {
 		0,
 		NULL,
 	},
+	// --- [NEW] MODERN CLOAK MENU ---
+	{
+		MENUITEMTYPE_SELECTABLE,
+		0,
+		MENUITEMFLAG_SELECTABLE_OPENSDIALOG | MENUITEMFLAG_LITERAL_TEXT,
+		(uintptr_t)"Modern Cloaking Options...\n",
+		0,
+		(void *)&g_ExtCamoMenuDialog,
+	},
+	{
+		MENUITEMTYPE_SEPARATOR,
+		0,
+		0,
+		0,
+		0,
+		NULL,
+	},
+	// -------------------------------
 	{
 		MENUITEMTYPE_SELECTABLE,
 		0,
