@@ -16,6 +16,8 @@
 
 #include "glad/glad.h"
 
+#include "ext_camo.h"
+
 #include "gfx_cc.h"
 #include "gfx_rendering_api.h"
 #include "gfx_pc.h"
@@ -440,6 +442,14 @@ static struct ShaderProgram* gfx_opengl_create_and_load_new_shader(uint64_t shad
         append_line(fs_buf, &fs_len, "out vec4 outColor;");
     }
 
+// --- PHASE 3A: PREDATOR UNIFORMS ---
+    append_line(fs_buf, &fs_len, "uniform int u_CamoActive;");
+    append_line(fs_buf, &fs_len, "uniform float u_CamoAlpha;");
+    append_line(fs_buf, &fs_len, "uniform sampler2D u_CamoGrabTex;");
+    append_line(fs_buf, &fs_len, "uniform vec2 u_ViewportSize;");
+    append_line(fs_buf, &fs_len, "uniform float u_CamoProgress;"); // [NEW]
+    append_line(fs_buf, &fs_len, "uniform int u_CamoIsNPC;");
+    
     append_line(fs_buf, &fs_len, "void main() {");
 
     for (int i = 0; i < 2; i++) {
@@ -526,6 +536,61 @@ static struct ShaderProgram* gfx_opengl_create_and_load_new_shader(uint64_t shad
         append_line(fs_buf, &fs_len, "    texel.rgb = mix(texel.rgb, new_texel, vGrayscaleColor.a);");
     }
 
+// --- PHASE 3B: THE AAA PREDATOR SHADER + SWEEP ---
+    append_line(fs_buf, &fs_len, "    if (u_CamoActive == 1) {");
+    append_line(fs_buf, &fs_len, "        vec2 screenUV = gl_FragCoord.xy / u_ViewportSize;");
+    append_line(fs_buf, &fs_len, "        float sweepY = 1.0 - u_CamoProgress;");
+    
+    append_line(fs_buf, &fs_len, "        if (screenUV.y >= sweepY) {");
+    
+    // [TWEAK 1]: 30% distortion for the player gun, 1% distortion for NPCs!
+    append_line(fs_buf, &fs_len, "            float distMult = (u_CamoIsNPC == 1) ? 0.01 : 0.10;");
+    append_line(fs_buf, &fs_len, "            vec2 distortion = (texel.rg - vec2(0.5)) * distMult;");
+    
+    // Chromatic Aberration levels
+    append_line(fs_buf, &fs_len, "        float r = SAMPLE_TEX(u_CamoGrabTex, screenUV + distortion * 1.4).r;");
+    append_line(fs_buf, &fs_len, "        float g = SAMPLE_TEX(u_CamoGrabTex, screenUV + distortion * 1.0).g;");
+    append_line(fs_buf, &fs_len, "        float b = SAMPLE_TEX(u_CamoGrabTex, screenUV + distortion * 0.6).b;");
+
+    append_line(fs_buf, &fs_len, "            float glare = max(texel.r, max(texel.g, texel.b)) * 0.15;");
+    
+    // Assemble the pure glass pixel
+    append_line(fs_buf, &fs_len, "            vec3 glassPixel = vec3(r, g, b) + glare;");
+    
+    // [TWEAK 2]: For NPCs, mix back 1% of their original texture so they are faintly visible!
+    append_line(fs_buf, &fs_len, "            if (u_CamoIsNPC == 1) {");
+    append_line(fs_buf, &fs_len, "                glassPixel = mix(glassPixel, texel.rgb, 0.01);");
+    append_line(fs_buf, &fs_len, "            }");
+    
+    if (cc_features.opt_alpha) {
+        append_line(fs_buf, &fs_len, "            texel = vec4(glassPixel, 1.0);");
+    } else {
+        append_line(fs_buf, &fs_len, "            texel = glassPixel;");
+    }
+    append_line(fs_buf, &fs_len, "        }");
+    
+    // The Laser Transition Line
+    append_line(fs_buf, &fs_len, "        float distToLine = abs(screenUV.y - sweepY);");
+    append_line(fs_buf, &fs_len, "        if (distToLine < 0.02 && u_CamoProgress > 0.01 && u_CamoProgress < 0.99) {");
+    append_line(fs_buf, &fs_len, "            vec3 glowColor = vec3(0.0, 0.8, 1.0);");
+    append_line(fs_buf, &fs_len, "            float glowIntensity = 1.0 - (distToLine / 0.02);");
+    append_line(fs_buf, &fs_len, "            texel.rgb = mix(texel.rgb, glowColor, glowIntensity);");
+    if (cc_features.opt_alpha) {
+        append_line(fs_buf, &fs_len, "            texel.a = 1.0;"); 
+    }
+    append_line(fs_buf, &fs_len, "        }");
+
+    // Bypass N64 output
+    if (cc_features.opt_alpha) {
+        append_line(fs_buf, &fs_len, "        OUTPUT_COLOR = texel;");
+    } else {
+        append_line(fs_buf, &fs_len, "        OUTPUT_COLOR = vec4(texel, 1.0);");
+    }
+    append_line(fs_buf, &fs_len, "        return;");
+    append_line(fs_buf, &fs_len, "    }");
+    // ------------------------------------------------
+
+    // (Fast3D's normal output logic resumes here for uncloaked models)
     if (cc_features.opt_alpha) {
         if (cc_features.opt_alpha_threshold) {
             append_line(fs_buf, &fs_len, "    if (texel.a < 8.0 / 256.0) discard;");
@@ -533,7 +598,6 @@ static struct ShaderProgram* gfx_opengl_create_and_load_new_shader(uint64_t shad
         if (cc_features.opt_invisible) {
             append_line(fs_buf, &fs_len, "    texel.a = 0.0;");
         }
-
         append_line(fs_buf, &fs_len, "    OUTPUT_COLOR = texel;");
     } else {
         append_line(fs_buf, &fs_len, "    OUTPUT_COLOR = vec4(texel, 1.0);");
@@ -810,10 +874,113 @@ static void gfx_opengl_set_use_alpha(bool use_alpha, bool modulate) {
     }
 }
 
+static GLuint s_CamoGrabTex = 0;
+static GLuint s_CamoFBO = 0; 
+static bool s_HasGrabbedThisCloak = false; 
+static int s_LastTexWidth = 0;
+static int s_LastTexHeight = 0;
+
 static void gfx_opengl_draw_triangles(float buf_vbo[], size_t buf_vbo_len, size_t buf_vbo_num_tris) {
-    // printf("flushing %d tris\n", buf_vbo_num_tris);
+    GLint viewport[4];
+    glGetIntegerv(GL_VIEWPORT, viewport);
+
+    // 1. SETUP FBO SAFELY
+    if (s_CamoGrabTex == 0 || s_LastTexWidth != viewport[2] || s_LastTexHeight != viewport[3]) {
+        if (s_CamoGrabTex == 0) glGenTextures(1, &s_CamoGrabTex);
+        if (s_CamoFBO == 0) glGenFramebuffers(1, &s_CamoFBO); 
+        
+        s_LastTexWidth = viewport[2];
+        s_LastTexHeight = viewport[3];
+        
+        GLint prevActiveTex = 0;
+        glGetIntegerv(GL_ACTIVE_TEXTURE, &prevActiveTex);
+        glActiveTexture(GL_TEXTURE3);
+        glBindTexture(GL_TEXTURE_2D, s_CamoGrabTex);
+        
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, s_LastTexWidth, s_LastTexHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+        
+        GLint prevDrawFBO = 0;
+        glGetIntegerv(GL_DRAW_FRAMEBUFFER_BINDING, &prevDrawFBO);
+        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, s_CamoFBO);
+        glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, s_CamoGrabTex, 0);
+        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, prevDrawFBO);
+        
+        glActiveTexture(prevActiveTex);
+    }
+
+    // 2. THE GRAB PASS
+    if (g_ExtCamoActiveThisDraw) {
+        if (!s_HasGrabbedThisCloak) {
+            // APPLE FIX: Unbind the texture from the shader unit before writing to it!
+            GLint prevActiveTex = 0;
+            glGetIntegerv(GL_ACTIVE_TEXTURE, &prevActiveTex);
+            glActiveTexture(GL_TEXTURE3);
+            glBindTexture(GL_TEXTURE_2D, 0); // <--- UNBIND!
+
+            GLint prevReadFBO = 0, prevDrawFBO = 0;
+            glGetIntegerv(GL_READ_FRAMEBUFFER_BINDING, &prevReadFBO);
+            glGetIntegerv(GL_DRAW_FRAMEBUFFER_BINDING, &prevDrawFBO);
+
+            glBindFramebuffer(GL_READ_FRAMEBUFFER, prevDrawFBO); 
+            glBindFramebuffer(GL_DRAW_FRAMEBUFFER, s_CamoFBO);
+
+            glBlitFramebuffer(
+                viewport[0], viewport[1], viewport[0] + viewport[2], viewport[1] + viewport[3],
+                0, 0, s_LastTexWidth, s_LastTexHeight,
+                GL_COLOR_BUFFER_BIT, GL_NEAREST
+            );
+
+            glBindFramebuffer(GL_READ_FRAMEBUFFER, prevReadFBO);
+            glBindFramebuffer(GL_DRAW_FRAMEBUFFER, prevDrawFBO);
+            
+            // Rebind the texture so the shader can use it
+            glBindTexture(GL_TEXTURE_2D, s_CamoGrabTex);
+            glActiveTexture(prevActiveTex);
+            
+            s_HasGrabbedThisCloak = true;
+        }
+    } else {
+        s_HasGrabbedThisCloak = false;
+    }
+
+    // 3. UNIFORMS
+    GLint prevActiveTex = 0;
+    glGetIntegerv(GL_ACTIVE_TEXTURE, &prevActiveTex);
+    glActiveTexture(GL_TEXTURE3);
+    glBindTexture(GL_TEXTURE_2D, s_CamoGrabTex);
+
+    GLint current_prog = 0;
+    glGetIntegerv(GL_CURRENT_PROGRAM, &current_prog);
+    if (current_prog != 0) {
+        glUniform1i(glGetUniformLocation(current_prog, "u_CamoActive"), g_ExtCamoActiveThisDraw);
+        glUniform1i(glGetUniformLocation(current_prog, "u_CamoGrabTex"), 3); 
+        glUniform1f(glGetUniformLocation(current_prog, "u_CamoAlpha"), g_ExtCamoAlpha);
+        glUniform2f(glGetUniformLocation(current_prog, "u_ViewportSize"), (float)s_LastTexWidth, (float)s_LastTexHeight);
+	// [NEW] Pass it to the GPU!
+        glUniform1f(glGetUniformLocation(current_prog, "u_CamoProgress"), g_ExtCamoProgress);
+	glUniform1i(glGetUniformLocation(current_prog, "u_CamoIsNPC"), g_ExtCamoIsNPC);
+    }
+    glActiveTexture(prevActiveTex);
+
+    // 4. DEPTH MASK & DRAW
+    GLboolean prevDepthMask;
+    glGetBooleanv(GL_DEPTH_WRITEMASK, &prevDepthMask);
+    if (g_ExtCamoActiveThisDraw) {
+        glDepthMask(GL_TRUE); 
+    }
+
     glBufferData(GL_ARRAY_BUFFER, sizeof(float) * buf_vbo_len, buf_vbo, GL_STREAM_DRAW);
     glDrawArrays(GL_TRIANGLES, 0, 3 * buf_vbo_num_tris);
+
+    if (g_ExtCamoActiveThisDraw) {
+        glDepthMask(prevDepthMask);
+    }
 }
 
 typedef void (APIENTRY *DEBUGPROC)(GLenum source,
@@ -1041,6 +1208,7 @@ static void gfx_opengl_on_resize(void) {
 }
 
 static void gfx_opengl_start_frame(void) {
+    g_ExtCamoActiveThisDraw = 0;
     frame_count++;
 }
 

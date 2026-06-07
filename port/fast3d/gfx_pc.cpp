@@ -31,6 +31,8 @@
 #include "gfx_rendering_api.h"
 #include "gfx_screen_config.h"
 
+#include "ext_camo.h"
+
 uintptr_t gfxFramebuffer;
 
 #define ALIGN(x, a) (((x) + (a - 1)) & ~(a - 1))
@@ -250,7 +252,9 @@ static constexpr float clampf(const float x, const float min, const float max) {
 
 static void gfx_flush(void) {
     if (buf_vbo_len > 0) {
+        // Let the API draw it normally again. We'll intercept it inside the OpenGL backend!
         gfx_rapi->draw_triangles(buf_vbo, buf_vbo_len, buf_vbo_num_tris);
+        
         buf_vbo_len = 0;
         buf_vbo_num_tris = 0;
     }
@@ -2275,6 +2279,7 @@ static inline void *seg_addr(uintptr_t w1) {
 uintptr_t clearMtx;
 
 static void gfx_run_dl(Gfx* cmd) {
+    // g_ExtCamoActiveThisDraw = 0;
     // puts("dl");
     int dummy = 0;
     char dlName[128];
@@ -2290,6 +2295,16 @@ static void gfx_run_dl(Gfx* cmd) {
                 // RSP commands:
             case G_NOOP:
                 break;
+
+	    case G_EXT_CAMO_TOGGLE: {
+            gfx_flush();
+            uint32_t w1 = cmd->words.w1;
+            g_ExtCamoActiveThisDraw = (w1 >> 24) & 0xFF;
+            g_ExtCamoIsNPC = (w1 >> 16) & 0xFF; // [NEW]
+            g_ExtCamoProgress = ((w1 >> 8) & 0xFF) / 255.0f;
+            g_ExtCamoAlpha = (w1 & 0xFF) / 255.0f;
+            break;
+        }
             case G_MTX: {
                 gfx_sp_matrix(C0(16, 8), (const int32_t*)seg_addr(cmd->words.w1));
                 break;
