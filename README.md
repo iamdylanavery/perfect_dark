@@ -4,6 +4,10 @@ Replaces the native N64 cloaking with something a little more ... Predatory
 
 <img width="800" alt="Screenshot 2" src="https://github.com/user-attachments/assets/da16d012-641f-4d44-94bc-1fda5b7b2599" />
 
+Customizable through the Extended Video Options Menu
+
+<img width="800" alt="Screenshot 3" src="https://github.com/user-attachments/assets/7b65333d-77e5-4737-b6e0-3661c116ea29" />
+
 # Perfect Dark port
 
 This repository contains a work-in-progress port of the [Perfect Dark decompilation](https://github.com/n64decomp/perfect_dark) to modern platforms.
