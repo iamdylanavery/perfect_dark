@@ -2279,8 +2279,6 @@ static inline void *seg_addr(uintptr_t w1) {
 uintptr_t clearMtx;
 
 static void gfx_run_dl(Gfx* cmd) {
-    // g_ExtCamoActiveThisDraw = 0;
-    // puts("dl");
     int dummy = 0;
     char dlName[128];
     const char* fileName;
@@ -2295,16 +2293,19 @@ static void gfx_run_dl(Gfx* cmd) {
                 // RSP commands:
             case G_NOOP:
                 break;
-
 	    case G_EXT_CAMO_TOGGLE: {
-            gfx_flush();
-            uint32_t w1 = cmd->words.w1;
-            g_ExtCamoActiveThisDraw = (w1 >> 24) & 0xFF;
-            g_ExtCamoIsNPC = (w1 >> 16) & 0xFF; // [NEW]
-            g_ExtCamoProgress = ((w1 >> 8) & 0xFF) / 255.0f;
-            g_ExtCamoAlpha = (w1 & 0xFF) / 255.0f;
-            break;
-        }
+        	gfx_flush();
+        	if (g_ExtCamoEnabled) {
+               	    uint32_t w1 = cmd->words.w1;
+	            g_ExtCamoActiveThisDraw = (w1 >> 24) & 0xFF;
+	            g_ExtCamoIsNPC = (w1 >> 16) & 0xFF;
+        	    g_ExtCamoProgress = ((w1 >> 8) & 0xFF) / 255.0f;
+	            g_ExtCamoAlpha = (w1 & 0xFF) / 255.0f;
+        	} else {
+	            g_ExtCamoActiveThisDraw = 0; // Failsafe
+        	}
+	        break;
+	    }
             case G_MTX: {
                 gfx_sp_matrix(C0(16, 8), (const int32_t*)seg_addr(cmd->words.w1));
                 break;
