@@ -424,3 +424,9 @@ void mp3Dma(void)
 
 	proc(g_Mp3Vars.romaddr + g_Mp3Vars.var8009c3c4, 0x400, 0);
 }
+
+// NEW: Safe getter so mixer.c doesn't need to struggle with raw struct definitions
+void mp3GetVolPan(int *out_vol, int *out_pan) {
+    if (out_vol) *out_vol = g_Mp3Vars.var8009c39e;
+    if (out_pan) *out_pan = g_Mp3Vars.var8009c39c;
+}
