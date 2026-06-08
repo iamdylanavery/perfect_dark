@@ -693,24 +693,53 @@ void aSetVolumeImpl(uint8_t flags, int16_t v, int16_t t, int16_t r) {
 }
 
 void aPlayMP3Impl(const void *mp3file, u32 mp3size, void *out, int reset) {
+    extern int g_ExtAudioEnabled;
+    
+    if (g_ExtAudioEnabled) {
+        // 1. Write absolute silence to the native N64 buffer.
+        // This keeps the native channel happy, but saves CPU and prevents the minimp3 overflow crash!
+        memset(out, 0, 580 * 2);
+
+        // 2. Query romdata.c to translate the raw pointer back to the filename (e.g. "001m")
+        extern const char* romdataGetFileNameByPointer(const void* ptr);
+        const char* name = romdataGetFileNameByPointer(mp3file);
+
+        if (name) {
+            // Get current volume and panning from the CPU side
+            extern void mp3GetVolPan(int *out_vol, int *out_pan);
+            int vol = 32767;
+            int pan = 64;
+            mp3GetVolPan(&vol, &pan);
+
+            // Trigger the High-Quality WAV playback!
+            extern int extAudioVoxStart(void *n64_handle, const char* name, int vol, int pan, float pitch);
+            extern int extAudioVoxAdjust(void *n64_handle, int vol, int pan, float pitch);
+            extern struct mp3vars g_Mp3Vars;
+
+            // FIX: Only call Start when reset is signaled. Only call Adjust during updates!
+            if (reset) {
+                extAudioVoxStart(&g_Mp3Vars, name, vol, pan, 1.0f);
+            } else {
+                extAudioVoxAdjust(&g_Mp3Vars, vol, pan, 1.0f);
+            }
+        }
+        return;
+    }
+
+    // --- CLASSIC N64 FALLBACK (Plays native MP3s if External Audio is toggled OFF) ---
     static mp3dec_t mp3d;
-    static const u8 *curdata = NULL; // pointer to the mp3 we're currently processing
-    static s32 dataptr = 0; // byte index into curdata
+    static const u8 *curdata = NULL; 
+    static s32 dataptr = 0; 
 
     if (mp3file != curdata || reset) {
-        // new mp3, reinit decoder
         mp3dec_init(&mp3d);
         curdata = mp3file;
         dataptr = 0;
     }
 
-    // this command is supposed to write one full frame to out
-    // but which frame? we'll just decode sequentially, it'll probably work
     if (dataptr < mp3size) {
-        // FIXME: decoding straight to out might bite us in the ass because it's only 1160 bytes
         mp3dec_frame_info_t info;
         const s32 samples = mp3dec_decode_frame(&mp3d, curdata + dataptr, mp3size - dataptr, out, &info);
-        // fill in the rest of the buffer if frame is smaller
         const s32 diff = 580 - samples;
         if (diff > 0) {
             memset((s16 *)out + samples, 0, diff * 2);
@@ -719,7 +748,6 @@ void aPlayMP3Impl(const void *mp3file, u32 mp3size, void *out, int reset) {
         }
         dataptr += info.frame_bytes;
     } else {
-        // empty frame
         memset(out, 0, 580 * 2);
     }
 }

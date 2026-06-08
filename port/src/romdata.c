@@ -484,16 +484,6 @@ u8 *romdataFileLoad(s32 fileNum, u32 *outSize)
 	if (fileSlots[fileNum].source == SRC_UNLOADED) {
 		char tmp[FS_MAXPATH] = { 0 };
 
-#ifndef PLATFORM_N64
-		// Check our high-quality external VOX folder first!
-		if (extAudioCheckVox(fileSlots[fileNum].name, &out, &size)) {
-			fileSlots[fileNum].data = out;
-			fileSlots[fileNum].size = size;
-			fileSlots[fileNum].source = SRC_EXTERNAL;
-			fileSlots[fileNum].numpatches = 0;
-		}
-#endif
-
 		if (!out) {
 			snprintf(tmp, sizeof(tmp), ROMDATA_FILEDIR "/%s", fileSlots[fileNum].name);
 			if (fsFileSize(tmp) > 0) {
@@ -558,10 +548,6 @@ void romdataFileFree(s32 fileNum)
 		return;
 	}
 
-	#ifndef PLATFORM_N64
-		if (extAudioVoxKeepAlive(fileSlots[fileNum].name, fileSlots[fileNum].source)) return;
-	#endif
-
 	if (fileSlots[fileNum].source == SRC_EXTERNAL) {
 		sysMemFree(fileSlots[fileNum].data);
 		fileSlots[fileNum].data = NULL;
@@ -625,4 +611,16 @@ u32 romdataFileGetEstimatedSize(const u32 size, const u32 loadtype)
 	}
 #endif
 	return size;
+}
+
+// NEW: Translate a raw memory pointer back to the game's file slot name!
+const char* romdataGetFileNameByPointer(const void* ptr) {
+    if (!ptr) return NULL;
+    for (s32 i = 0; i < ROMDATA_MAX_FILES; i++) {
+        // Since we are no longer mutating romdata, ptr will match the original native ROM buffer
+        if (fileSlots[i].data == ptr) {
+            return fileSlots[i].name;
+        }
+    }
+    return NULL;
 }
