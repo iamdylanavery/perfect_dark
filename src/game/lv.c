@@ -100,6 +100,8 @@
 #include "video.h"
 #endif
 
+#include "ext_audio.h"
+
 struct sndstate *g_MiscSfxAudioHandles[3];
 u32 var800aa5bc;
 s32 g_MiscSfxActiveTypes[3];
@@ -957,37 +959,76 @@ void lvFindThreats(void)
 #ifndef PLATFORM_N64
 Gfx *lvRenderFPS(Gfx *gdl)
 {
-	const f32 fps = videoGetAverageFPS();
 	const u8 a = 160;
-	s32 x = 27, y = 13;
 	u32 color;
-	char buffer[16];
+
+	// -------------------------------------------------------------
+	// PASS 1: RENDER ORIGINAL FPS (Top-Left, Numeric Font)
+	// -------------------------------------------------------------
+	const f32 fps = videoGetAverageFPS();
+	s32 fps_x = 27, fps_y = 13;
+	char fps_buffer[16];
 
 	if (fps <= 30.f) {
-		// red -> yellow
 		color = 0xff000000 | a | ((u32)((fps / 30.f) * 255.f) << 16);
 	} else if (fps <= 60.f) {
-		// yellow -> green
 		color = 0x00ff0000 | a | ((u32)((1.f - (fps - 30.f) / 30.f) * 255.f) << 24);
 	} else if (fps <= 90.f) {
-		// green -> cyan
 		color = 0x00ff0000 | a | ((u32)(((fps - 60.f) / 30.f) * 255.f) << 8);
 	} else {
-		// cyan
 		color = 0x00ffff00 | a;
 	}
 
 	if (g_CharsNumeric && g_FontNumeric) {
-		snprintf(buffer, sizeof buffer, "%.2f", fps);
+		snprintf(fps_buffer, sizeof fps_buffer, "%.2f", fps);
 
 		gSPSetExtraGeometryModeEXT(gdl++, g_HudAlignModeL);
 
 		gdl = text0f153628(gdl);
-		gdl = textRender(gdl, &x, &y, buffer, g_CharsNumeric, g_FontNumeric, color, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);
+		gdl = textRender(gdl, &fps_x, &fps_y, fps_buffer, g_CharsNumeric, g_FontNumeric, color, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);
 		gdl = text0f153780(gdl);
 
 		gSPClearExtraGeometryModeEXT(gdl++, g_HudAlignModeL);
 	}
+
+	/*
+	// -------------------------------------------------------------
+	// PASS 2: RENDER STACKED MIXER HUD (Bottom-Left, Gothic Xs Font)
+	// -------------------------------------------------------------
+	s32 mix_x = 27; 
+	s32 mix_y = viGetHeight() - 75; // Starts higher up so we can stack downward
+	u32 mix_color = 0x00ff0000 | a | (255 << 8); // Crisp HUD Green (0x00FF00)
+	struct HudMixerData mix_data;
+
+	if (g_CharsHandelGothicXs && g_FontHandelGothicXs) {
+		// Hook: Retrieve stacked 4-line data
+		extern void extAudioGetHudMixerData(struct HudMixerData *data);
+		extAudioGetHudMixerData(&mix_data);
+
+		gSPSetExtraGeometryModeEXT(gdl++, g_HudAlignModeL);
+		gdl = text0f153628(gdl);
+
+		// Line 1: Header/Global Stats
+		gdl = textRender(gdl, &mix_x, &mix_y, mix_data.line1, g_CharsHandelGothicXs, g_FontHandelGothicXs, mix_color, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);
+		
+		// Line 2: Instruments (Draw 15 pixels lower)
+		mix_x = 27; mix_y += 15;
+		gdl = textRender(gdl, &mix_x, &mix_y, mix_data.line2, g_CharsHandelGothicXs, g_FontHandelGothicXs, mix_color, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);
+		
+		// Line 3: Volumes/Panning (Draw 15 pixels lower)
+		mix_x = 27; mix_y += 15;
+		gdl = textRender(gdl, &mix_x, &mix_y, mix_data.line3, g_CharsHandelGothicXs, g_FontHandelGothicXs, mix_color, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);
+
+		// Line 4: Loops/FX Mix (Draw 15 pixels lower)
+		mix_x = 27; mix_y += 15;
+		if (mix_data.line4[0] != '\0') {
+			gdl = textRender(gdl, &mix_x, &mix_y, mix_data.line4, g_CharsHandelGothicXs, g_FontHandelGothicXs, mix_color, 0x000000a0, viGetWidth(), viGetHeight(), 0, 0);
+		}
+
+		gdl = text0f153780(gdl);
+		gSPClearExtraGeometryModeEXT(gdl++, g_HudAlignModeL);
+	}
+	*/
 
 	return gdl;
 }
