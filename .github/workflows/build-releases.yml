@@ -50,8 +50,17 @@ jobs:
         with:
           version: 2-any
 
+      - name: Install Windows ZLIB
+        if: matrix.os == 'windows-latest'
+        run: vcpkg install zlib:x64-windows
+
       # --- COMPILATION STEP ---
-      - name: Configure CMake
+      - name: Configure CMake (Windows)
+        if: matrix.os == 'windows-latest'
+        run: cmake -B build -DCMAKE_BUILD_TIME=Release "-DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake"
+
+      - name: Configure CMake (Mac and Linux)
+        if: matrix.os != 'windows-latest'
         run: cmake -B build -DCMAKE_BUILD_TIME=Release
 
       - name: Build Binary
