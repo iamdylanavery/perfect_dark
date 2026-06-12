@@ -55,10 +55,9 @@ jobs:
           install: >-
             git
             zip
+            make
             mingw-w64-x86_64-gcc
             mingw-w64-x86_64-cmake
-            mingw-w64-x86_64-ninja
-            mingw-w64-x86_64-python
             mingw-w64-x86_64-SDL2
             mingw-w64-x86_64-zlib
             mingw-w64-x86_64-pkgconf
@@ -67,7 +66,7 @@ jobs:
       - name: Configure CMake (Windows)
         if: matrix.os == 'windows-latest'
         shell: msys2 {0}
-        run: cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Release
+        run: cmake -G "MSYS Makefiles" -B build -DCMAKE_BUILD_TYPE=Release
 
       - name: Configure CMake (Mac and Linux)
         if: matrix.os != 'windows-latest'
@@ -76,7 +75,7 @@ jobs:
       - name: Build Binary (Windows)
         if: matrix.os == 'windows-latest'
         shell: msys2 {0}
-        run: cmake --build build
+        run: cmake --build build -j4
 
       - name: Build Binary (Mac and Linux)
         if: matrix.os != 'windows-latest'
