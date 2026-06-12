@@ -54,19 +54,20 @@ jobs:
           update: true
           install: >-
             git
-            make
-            cmake
-            python
             zip
             mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-ninja
+            mingw-w64-x86_64-python
             mingw-w64-x86_64-SDL2
             mingw-w64-x86_64-zlib
+            mingw-w64-x86_64-pkgconf
 
       # --- COMPILATION STEP ---
       - name: Configure CMake (Windows)
         if: matrix.os == 'windows-latest'
         shell: msys2 {0}
-        run: cmake -G"Unix Makefiles" -B build -DCMAKE_BUILD_TYPE=Release
+        run: cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Release
 
       - name: Configure CMake (Mac and Linux)
         if: matrix.os != 'windows-latest'
@@ -75,30 +76,11 @@ jobs:
       - name: Build Binary (Windows)
         if: matrix.os == 'windows-latest'
         shell: msys2 {0}
-        run: cmake --build build -j4
+        run: cmake --build build
 
       - name: Build Binary (Mac and Linux)
         if: matrix.os != 'windows-latest'
         run: cmake --build build --config Release
-
-      # --- PACKAGING ---
-      - name: Package Windows Binary
-        if: matrix.os == 'windows-latest'
-        shell: msys2 {0}
-        run: |
-          cp /mingw64/bin/SDL2.dll build/ || cp /mingw64/bin/libSDL2*.dll build/
-          cp /mingw64/bin/zlib1.dll build/
-          zip -j ${{ matrix.asset_name }} build/pd.*.exe build/*.dll
-
-      - name: Package Linux Binary
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          tar -czvf ${{ matrix.asset_name }} -C build/ .
-
-      - name: Package macOS Binary
-        if: matrix.os == 'macos-latest'
-        run: |
-          zip -r ${{ matrix.asset_name }} build/
 
       # --- UPLOAD ARTIFACTS ---
       - name: Upload Build Artifacts
