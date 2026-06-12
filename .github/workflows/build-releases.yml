@@ -3,14 +3,15 @@ name: Build and Release
 on:
   push:
     branches:
-      - port-ext-hd-sound # Triggers automatically on every push to this branch!
-  workflow_dispatch: # Allows you to trigger the build manually from the GitHub Actions tab at any time
+      - port-ext-hd-sound 
+  workflow_dispatch: 
 
 jobs:
   build:
-    name: Build on ${{ matrix.os }}
+    name: Build on ${{ matrix.os }
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false 
       matrix:
         include:
           - os: ubuntu-latest
@@ -27,7 +28,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive # Ensures any N64/port submodules are checked out
+          submodules: recursive 
 
       # --- LINUX DEPENDENCIES ---
       - name: Install Linux dependencies
