@@ -71,6 +71,38 @@ static void getSfxFilename(int sfx_id, char *out_str, size_t max_len) {
     }
 }
 
+// --- Lightweight Base64 Decoder for Easter Egg ---
+static u8* extAudioDecodeBase64(const char* input, u32 in_len, u32* out_len) {
+    if (in_len % 4 != 0) return NULL; 
+
+    u32 pad = 0;
+    if (in_len > 0 && input[in_len - 1] == '=') pad++;
+    if (in_len > 1 && input[in_len - 2] == '=') pad++;
+
+    *out_len = (in_len / 4) * 3 - pad;
+    u8* out = malloc(*out_len);
+    if (!out) return NULL;
+
+    u32 i = 0, j = 0;
+    while (i < in_len) {
+        u32 b[4];
+        for (int k = 0; k < 4; k++) {
+            char c = input[i++];
+            if (c >= 'A' && c <= 'Z') b[k] = c - 'A';
+            else if (c >= 'a' && c <= 'z') b[k] = c - 'a' + 26;
+            else if (c >= '0' && c <= '9') b[k] = c - '0' + 52;
+            else if (c == '+') b[k] = 62;
+            else if (c == '/') b[k] = 63;
+            else b[k] = 0; 
+        }
+        
+        out[j++] = (b[0] << 2) | (b[1] >> 4);
+        if (j < *out_len) out[j++] = (b[1] << 4) | (b[2] >> 2);
+        if (j < *out_len) out[j++] = (b[2] << 6) | b[3];
+    }
+    return out;
+}
+
 static void loadSfxFromDisk(int sfx_id) {
     char filepath[256];
     int bank_index = sfx_id - 1;
@@ -127,38 +159,66 @@ static void loadSfxFromDisk(int sfx_id) {
 }
 
 static int loadSurpriseScream(void) {
-    const char *filepath = "ext_sfx/surprise.wav";
     u32 fileSize = 0;
-    u8 *fileData = fsFileLoad(filepath, &fileSize);
+    u8 *fileData = fsFileLoad("ext_sfx/surprise.json", &fileSize);
     
-    if (!fileData || fileSize < 44) {
+    if (!fileData || fileSize == 0) {
         g_SfxCache[SURPRISE_SFX_SLOT].state = -1;
         if (fileData) free(fileData);
         return 0;
     }
 
+    // Parse JSON for payload
+    char* jsonStr = malloc(fileSize + 1);
+    memcpy(jsonStr, fileData, fileSize);
+    jsonStr[fileSize] = '\0';
+    free(fileData); // Free original buffer
+
+    char* payload_start = strstr(jsonStr, "\"payload\": \"");
+    if (!payload_start) {
+        free(jsonStr);
+        g_SfxCache[SURPRISE_SFX_SLOT].state = -1;
+        return 0;
+    }
+
+    payload_start += 12;
+    char* payload_end = strchr(payload_start, '"');
+    if (payload_end) *payload_end = '\0';
+
+    // Decode base64 to binary WAV
+    u32 decodedSize = 0;
+    u8* decodedWav = extAudioDecodeBase64(payload_start, strlen(payload_start), &decodedSize);
+    free(jsonStr); // Free the json string
+
+    if (!decodedWav || decodedSize < 44) {
+        if (decodedWav) free(decodedWav);
+        g_SfxCache[SURPRISE_SFX_SLOT].state = -1;
+        return 0;
+    }
+
+    // Parse the decoded WAV sitting in memory!
     u32 sample_rate = 22050;
     u32 channels = 1;
     u32 data_offset = 0;
     u32 data_size = 0;
 
-    // Standard parser cleans up modern DAW metadata!
-    if (extAudioParseWavHeader(fileData, fileSize, &sample_rate, &channels, &data_offset, &data_size)) {
+    if (extAudioParseWavHeader(decodedWav, decodedSize, &sample_rate, &channels, &data_offset, &data_size)) {
         s16 *pcmData = malloc(data_size);
         if (pcmData) {
-            memcpy(pcmData, fileData + data_offset, data_size);
+            memcpy(pcmData, decodedWav + data_offset, data_size);
             g_SfxCache[SURPRISE_SFX_SLOT].sample_rate = sample_rate;
             g_SfxCache[SURPRISE_SFX_SLOT].channels = channels;
             g_SfxCache[SURPRISE_SFX_SLOT].sample_count = data_size / 2;
             g_SfxCache[SURPRISE_SFX_SLOT].samples = pcmData;
             g_SfxCache[SURPRISE_SFX_SLOT].state = 1;
-            free(fileData);
+            
+            free(decodedWav); // Clean up the raw WAV buffer
             return 1;
         }
     }
     
     g_SfxCache[SURPRISE_SFX_SLOT].state = -1;
-    free(fileData);
+    free(decodedWav);
     return 0;
 }
 
@@ -195,7 +255,7 @@ int extAudioModernStart(void *n64_handle, int sfx_id, int vol, int pan, float pi
             if (g_SfxCache[SURPRISE_SFX_SLOT].state == 1) {
                 sfx_id = SURPRISE_SFX_SLOT; 
                 internal_name = "SFX_WILHELM_SCREAM";
-                strcpy(filename, "surprise.wav"); // Update filename for the surprise!
+                strcpy(filename, "surprise.json"); // Update filename for the surprise!
                 if (g_ExtLogSfxEnabled) {
                     sysLogPrintf(LOG_NOTE, "EXT-AUDIO  | [SURPRISE] | *** WILHELM SCREAM TRIGGERED! ***");
                 }

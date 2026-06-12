@@ -18,8 +18,9 @@ extern u16 g_SfxVolume;
 // GLOBAL SETTINGS & TOGGLE STATE
 // -------------------------------------------------------------
 int g_ExtAudioEnabled = 1;
-int g_ExtLogSfxEnabled = 1;
-int g_ExtLogMusicEnabled = 1;
+int g_ExtLogSfxEnabled = 0;
+int g_ExtLogMusicEnabled = 0;
+int g_ExtLogVoxEnabled = 0;
 
 s16 g_MixBuffer[8192 * 2]; // Shared master SDL Mix Buffer
 
@@ -240,6 +241,12 @@ static MenuItemHandlerResult menuhandlerLogMusic(s32 op, struct menuitem *item, 
     return 0;
 }
 
+static MenuItemHandlerResult menuhandlerLogVox(s32 op, struct menuitem *item, union handlerdata *d) {
+    if (op == MENUOP_GET) return g_ExtLogVoxEnabled;
+    if (op == MENUOP_SET) g_ExtLogVoxEnabled = d->checkbox.value;
+    return 0;
+}
+
 static MenuItemHandlerResult menuhandlerVoxVolume(s32 op, struct menuitem *item, union handlerdata *d) {
     if (op == MENUOP_GETOPTIONCOUNT) {
         d->dropdown.value = ARRAYCOUNT(g_VoxVolNames);
@@ -329,6 +336,7 @@ struct menuitem g_ExtendedAudioMenuItems[] = {
     { MENUITEMTYPE_CHECKBOX, 0, MENUITEMFLAG_LITERAL_TEXT, (uintptr_t)"Enable External Audio", 0, menuhandlerExtAudioEnabled },
     { MENUITEMTYPE_CHECKBOX, 0, MENUITEMFLAG_LITERAL_TEXT, (uintptr_t)"Log SFX to Terminal", 0, menuhandlerLogSfx },
     { MENUITEMTYPE_CHECKBOX, 0, MENUITEMFLAG_LITERAL_TEXT, (uintptr_t)"Log Music to Terminal", 0, menuhandlerLogMusic },	
+    { MENUITEMTYPE_CHECKBOX, 0, MENUITEMFLAG_LITERAL_TEXT, (uintptr_t)"Log VOX to Terminal", 0, menuhandlerLogVox },	
     { MENUITEMTYPE_CHECKBOX, 0, MENUITEMFLAG_LITERAL_TEXT, (uintptr_t)"Disable MP Death Music", 0, menuhandlerDisableMpDeathMusic },
     { MENUITEMTYPE_SEPARATOR, 0, 0, 0, 0, NULL },
 // NEW: Inject Dialogue Volume & Easter Egg Chance controls!

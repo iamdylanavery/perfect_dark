@@ -8,8 +8,9 @@
 #include "ext_audio.h"
 
 extern int g_ExtAudioEnabled;
+extern int g_ExtLogVoxEnabled;
 extern u16 g_SfxVolume;
-float g_ExtVoxVolumeScale = 0.70f;
+float g_ExtVoxVolumeScale = 1.00f;
 
 // Legacy Stubs
 int extAudioCheckVox(const char* name, u8 **out_data, u32 *out_size) {
@@ -137,7 +138,9 @@ int extAudioVoxStart(void *n64_handle, const char* name, int vol, int pan, float
 
             g_VoxWatchdog = 15; // Initial feed
             extAudioVoxAdjust(n64_handle, vol, pan, pitch);
+	if (g_ExtLogVoxEnabled) {
             sysLogPrintf(LOG_NOTE, "EXT-AUDIO-VOX: Playing EXTERNAL Dialogue -> [%s]", filepath);
+	}
             return 1;
         }
     }

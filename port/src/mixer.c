@@ -695,12 +695,11 @@ void aSetVolumeImpl(uint8_t flags, int16_t v, int16_t t, int16_t r) {
 void aPlayMP3Impl(const void *mp3file, u32 mp3size, void *out, int reset) {
     extern int g_ExtAudioEnabled;
     
+    // Track if the current active dialogue stream is using an external file
+    static int s_IsCurrentStreamExternal = 0;
+    
     if (g_ExtAudioEnabled) {
-        // 1. Write absolute silence to the native N64 buffer.
-        // This keeps the native channel happy, but saves CPU and prevents the minimp3 overflow crash!
-        memset(out, 0, 580 * 2);
-
-        // 2. Query romdata.c to translate the raw pointer back to the filename (e.g. "001m")
+        // Query romdata.c to translate the raw pointer back to the filename (e.g. "001m")
         extern const char* romdataGetFileNameByPointer(const void* ptr);
         const char* name = romdataGetFileNameByPointer(mp3file);
 
@@ -716,17 +715,28 @@ void aPlayMP3Impl(const void *mp3file, u32 mp3size, void *out, int reset) {
             extern int extAudioVoxAdjust(void *n64_handle, int vol, int pan, float pitch);
             extern struct mp3vars g_Mp3Vars;
 
-            // FIX: Only call Start when reset is signaled. Only call Adjust during updates!
             if (reset) {
-                extAudioVoxStart(&g_Mp3Vars, name, vol, pan, 1.0f);
-            } else {
+                // Attempt to start modern playback. Record whether it succeeded!
+                s_IsCurrentStreamExternal = extAudioVoxStart(&g_Mp3Vars, name, vol, pan, 1.0f);
+            } else if (s_IsCurrentStreamExternal) {
+                // If we successfully started external playback earlier, keep adjusting it
                 extAudioVoxAdjust(&g_Mp3Vars, vol, pan, 1.0f);
             }
+        } else {
+            if (reset) s_IsCurrentStreamExternal = 0;
         }
-        return;
+
+        // If the external file is actively playing, mute the native N64 buffer and return.
+        if (s_IsCurrentStreamExternal) {
+            memset(out, 0, 580 * 2);
+            return;
+        }
+    } else {
+        // If the external engine is toggled off, force native fallback instantly
+        s_IsCurrentStreamExternal = 0;
     }
 
-    // --- CLASSIC N64 FALLBACK (Plays native MP3s if External Audio is toggled OFF) ---
+    // --- CLASSIC N64 FALLBACK (Plays native MP3s if External Audio is toggled OFF OR if the WAV file was missing) ---
     static mp3dec_t mp3d;
     static const u8 *curdata = NULL; 
     static s32 dataptr = 0; 
