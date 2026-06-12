@@ -4,14 +4,13 @@ on:
   push:
     branches:
       - port-ext-hd-sound 
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   build:
     name: Build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false 
       matrix:
         include:
           - os: ubuntu-latest
@@ -28,7 +27,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive 
+          submodules: recursive # Ensures any N64/port submodules are checked out
 
       # --- LINUX DEPENDENCIES ---
       - name: Install Linux dependencies
