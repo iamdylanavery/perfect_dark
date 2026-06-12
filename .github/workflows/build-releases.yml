@@ -4,8 +4,8 @@ on:
   push:
     tags:
       - 'v*'
-    # branches:
-    #  - port-ext-hd-sound # Uncomment to auto-build on push for testing
+    branches:
+      - port-ext-hd-sound # Uncomment to auto-build on push for testing
   workflow_dispatch:
 
 jobs:
