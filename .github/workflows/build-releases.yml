@@ -5,8 +5,11 @@ on:
     tags:
       - 'v*'
     branches:
-      - port-ext-hd-sound # Uncomment to auto-build on push for testing
+      - port-ext-hd-sound 
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
