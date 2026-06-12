@@ -2,8 +2,10 @@ name: Build and Release
 
 on:
   push:
-    branches:
-      - port-ext-hd-sound 
+    tags:
+      - 'v*'
+    # branches:
+    #  - port-ext-hd-sound # Uncomment to auto-build on push for testing
   workflow_dispatch:
 
 jobs:
@@ -11,7 +13,7 @@ jobs:
     name: Build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false 
+      fail-fast: false
       matrix:
         include:
           - os: ubuntu-latest
@@ -28,7 +30,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive # Ensures any N64/port submodules are checked out
+          submodules: recursive
 
       # --- LINUX DEPENDENCIES ---
       - name: Install Linux dependencies
@@ -43,47 +45,59 @@ jobs:
         run: |
           brew install sdl2 cmake
 
-      # --- WINDOWS DEPENDENCIES ---
-      - name: Install Windows SDL2
+      # --- WINDOWS DEPENDENCIES (MSYS2) ---
+      - name: Install Windows MSYS2
         if: matrix.os == 'windows-latest'
-        uses: libsdl-org/setup-sdl@main
+        uses: msys2/setup-msys2@v2
         with:
-          version: 2-any
-
-      - name: Install Windows ZLIB
-        if: matrix.os == 'windows-latest'
-        run: vcpkg install zlib:x64-windows
+          msystem: MINGW64
+          update: true
+          install: >-
+            git
+            make
+            cmake
+            python
+            zip
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-SDL2
+            mingw-w64-x86_64-zlib
 
       # --- COMPILATION STEP ---
       - name: Configure CMake (Windows)
         if: matrix.os == 'windows-latest'
-        run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release "-DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake"
+        shell: msys2 {0}
+        run: cmake -G"Unix Makefiles" -B build -DCMAKE_BUILD_TYPE=Release
 
       - name: Configure CMake (Mac and Linux)
         if: matrix.os != 'windows-latest'
         run: cmake -B build -DCMAKE_BUILD_TYPE=Release
 
-      - name: Build Binary
+      - name: Build Binary (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: msys2 {0}
+        run: cmake --build build -j4
+
+      - name: Build Binary (Mac and Linux)
+        if: matrix.os != 'windows-latest'
         run: cmake --build build --config Release
 
       # --- PACKAGING ---
       - name: Package Windows Binary
         if: matrix.os == 'windows-latest'
-        shell: pwsh
+        shell: msys2 {0}
         run: |
-          # Grabs your compiled executable (adjust path/name to match your exact build output)
-          Compress-Archive -Path build/Release/* -DestinationPath ${{ matrix.asset_name }}
+          cp /mingw64/bin/SDL2.dll build/ || cp /mingw64/bin/libSDL2*.dll build/
+          cp /mingw64/bin/zlib1.dll build/
+          zip -j ${{ matrix.asset_name }} build/pd.*.exe build/*.dll
 
       - name: Package Linux Binary
         if: matrix.os == 'ubuntu-latest'
         run: |
-          # Grabs your compiled Linux executable and assets
           tar -czvf ${{ matrix.asset_name }} -C build/ .
 
       - name: Package macOS Binary
         if: matrix.os == 'macos-latest'
         run: |
-          # Grabs your compiled macOS executable/App bundle
           zip -r ${{ matrix.asset_name }} build/
 
       # --- UPLOAD ARTIFACTS ---
@@ -96,14 +110,11 @@ jobs:
   release:
     name: Create GitHub Release
     needs: build
-    if: startsWith(github.ref, 'refs/tags/v') # Only runs if a tag was pushed
+    if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     steps:
       - name: Download all artifacts
         uses: actions/download-artifact@v4
-
-      - name: Display structure of downloaded files
-        run: ls -R
 
       - name: Create Release and Upload Assets
         uses: softprops/action-gh-release@v2
