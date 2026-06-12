@@ -57,11 +57,11 @@ jobs:
       # --- COMPILATION STEP ---
       - name: Configure CMake (Windows)
         if: matrix.os == 'windows-latest'
-        run: cmake -B build -DCMAKE_BUILD_TIME=Release "-DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake"
+        run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release "-DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake"
 
       - name: Configure CMake (Mac and Linux)
         if: matrix.os != 'windows-latest'
-        run: cmake -B build -DCMAKE_BUILD_TIME=Release
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
 
       - name: Build Binary
         run: cmake --build build --config Release
