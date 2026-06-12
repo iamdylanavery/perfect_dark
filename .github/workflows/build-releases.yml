@@ -83,13 +83,32 @@ jobs:
         if: matrix.os != 'windows-latest'
         run: cmake --build build --config Release
 
+        # --- PACKAGING ---
+      - name: Package Windows Binary
+        if: matrix.os == 'windows-latest'
+        shell: msys2 {0}
+        run: |
+          cp /mingw64/bin/SDL2.dll build/ || cp /mingw64/bin/libSDL2*.dll build/
+          cp /mingw64/bin/zlib1.dll build/
+          zip -j ./${{ matrix.asset_name }} build/pd*.exe build/*.dll
+
+      - name: Package Linux Binary
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          tar -czvf ./${{ matrix.asset_name }} -C build/ .
+
+      - name: Package macOS Binary
+        if: matrix.os == 'macos-latest'
+        run: |
+          zip -r ./${{ matrix.asset_name }} build/
+
       # --- UPLOAD ARTIFACTS ---
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.artifact_name }}
-          path: ${{ matrix.asset_name }}
-
+          path: ./${{ matrix.asset_name }}
+          
   release:
     name: Create GitHub Release
     needs: build
