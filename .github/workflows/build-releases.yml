@@ -11,6 +11,7 @@ jobs:
     name: Build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false 
       matrix:
         include:
           - os: ubuntu-latest
@@ -43,8 +44,11 @@ jobs:
           brew install sdl2 cmake
 
       # --- WINDOWS DEPENDENCIES ---
-      # (Assuming your CMake uses FetchContent/vcpkg or has SDL2 included. 
-      # If SDL2 needs to be downloaded manually, this step can be configured).
+      - name: Install Windows SDL2
+        if: matrix.os == 'windows-latest'
+        uses: libsdl-org/setup-sdl@main
+        with:
+          version: 2-any
 
       # --- COMPILATION STEP ---
       - name: Configure CMake
