@@ -48,9 +48,9 @@ void n_alSynStartVoiceParams(N_ALVoice *v, ALWaveTable *w, f32 pitch, s16 vol,
 	ALStartParamAlt *update;
 
 	#ifndef PLATFORM_N64
-	extern int extAudioSeqVoiceStart(void *n64_voice, ALWaveTable *w, float pitch, int vol, int pan, int fxmix, u8 arg6, float arg7, u8 arg8, ALMicroTime t);
-	if (extAudioSeqVoiceStart(v, w, pitch, vol, pan, fxmix, arg6, arg7, arg8, t)) {
-		w = &g_SilentWaveTable;
+	extern int extAudioSeqVoiceStart(void *n64_voice, ALWaveTable *w, float pitch, float unity, int vol, int pan, int fxmix, u8 arg6, float arg7, u8 arg8, ALMicroTime t);
+	if (extAudioSeqVoiceStart(v, w, pitch, v->unityPitch, vol, pan, fxmix, arg6, arg7, arg8, t)) {
+		w = &g_SilentWaveTable; // Stealth Mute
 	}
 	#endif
 
