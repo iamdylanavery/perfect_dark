@@ -13,15 +13,39 @@ extern u16 g_SfxVolume;
 extern s16 g_MixBuffer[8192 * 2];
 
 // Volume scaling configuration for modern SFX samples
-#define EXT_AUDIO_VOLUME_SCALE 0.4f 
+#define EXT_AUDIO_VOLUME_SCALE 0.5f 
 
 // -------------------------------------------------------------
-// EASTER EGG CONFIGURATION (The Wilhelm Scream)
+// EASTER EGG CONFIGURATION 
 // -------------------------------------------------------------
 #define SURPRISE_SCREAM_CHANCE 100 // 1 in 100 chance
 #define SURPRISE_SFX_SLOT      1999 // Dedicated cache slot 
-#define GUARD_DEATH_SFX_MIN    133
-#define GUARD_DEATH_SFX_MAX    157
+
+struct EasterEggSfxRange {
+    int min;
+    int max;
+};
+
+// Define all target ranges or individual IDs here:
+static const struct EasterEggSfxRange g_EasterEggTargets[] = {
+    { 671, 674 },
+    { 844, 846 },
+    { 849, 849 },
+    { 1041, 1041 },
+    { 1044, 1045 },
+    { -1, -1 }    // Sentinel terminator
+};
+
+static int isEasterEggTrigger(int sfx_id) {
+    for (int i = 0; g_EasterEggTargets[i].min != -1; i++) {
+        if (sfx_id >= g_EasterEggTargets[i].min && sfx_id <= g_EasterEggTargets[i].max) {
+		sysLogPrintf(LOG_NOTE, "EASTER EGG MATCH FOUND FOR ID: %d!", sfx_id);
+            return 1;
+        }
+    }
+    return 0;
+}
+
 
 // -------------------------------------------------------------
 // SFX CACHE MODULE
@@ -63,9 +87,8 @@ void extAudioSFXReset(void) {
 }
 
 static void getSfxFilename(int sfx_id, char *out_str, size_t max_len) {
-    int bank_index = sfx_id - 1;
-    if (bank_index >= 0) {
-        snprintf(out_str, max_len, "sfx_%04d.wav", bank_index);
+    if (sfx_id >= 0) {
+        snprintf(out_str, max_len, "sfx_%04d.wav", sfx_id); // Direct 1:1 mapping!
     } else {
         snprintf(out_str, max_len, "N/A");
     }
@@ -105,21 +128,20 @@ static u8* extAudioDecodeBase64(const char* input, u32 in_len, u32* out_len) {
 
 static void loadSfxFromDisk(int sfx_id) {
     char filepath[256];
-    int bank_index = sfx_id - 1;
     
-    // NEW: Get the human-readable name!
-    const char* internal_name = (sfx_id == SURPRISE_SFX_SLOT) ? "SFX_WILHELM_SCREAM" : sfx_names[bank_index];
+    // Direct 1:1 string lookup!
+    const char* internal_name = (sfx_id == SURPRISE_SFX_SLOT) ? "SFX_WILHELM_SCREAM" : sfx_names[sfx_id];
 
     char filename[32];
     getSfxFilename(sfx_id, filename, sizeof(filename));
     const char* prefix = g_ExtAudioEnabled ? "EXT-AUDIO" : "N64-AUDIO";
 
-    if (bank_index < 0) {
+    if (sfx_id < 0 || sfx_id >= 2000) {
         g_SfxCache[sfx_id].state = -1;
         return;
     }
 
-    snprintf(filepath, sizeof(filepath), "ext_sfx/sfx_%04d.wav", bank_index);
+    snprintf(filepath, sizeof(filepath), "ext_sfx/sfx_%04d.wav", sfx_id); // Direct 1:1 file path!
     
     // Updated log to include the Internal Name
         if (g_ExtLogSfxEnabled) {
@@ -136,21 +158,21 @@ static void loadSfxFromDisk(int sfx_id) {
     }
 
     u32 sample_rate = 22050;
-    u32 channels = 1;      // 1. DECLARE THIS LOCAL VARIABLE!
-    u32 data_offset = 0;
+    u32 channels = 1;
     u32 data_size = 0;
 
-    // 2. PASS &channels AS THE 4th ARGUMENT (expected 6 arguments total)
-    if (extAudioParseWavHeader(fileData, fileSize, &sample_rate, &channels, &data_offset, &data_size)) {
-        s16 *pcmData = malloc(data_size);
-        if (pcmData) {
-            memcpy(pcmData, fileData + data_offset, data_size);
-            g_SfxCache[sfx_id].sample_rate = sample_rate;
-            g_SfxCache[sfx_id].channels = channels; // 3. This error will now vanish!
-            g_SfxCache[sfx_id].sample_count = data_size / 2;
-            g_SfxCache[sfx_id].samples = pcmData;
-            g_SfxCache[sfx_id].state = 1;
+    s16 *pcmData = extAudioLoadWavPcm16(fileData, fileSize, &sample_rate, &channels, &data_size);
+    if (pcmData) {
+
+	if (g_ExtNormalizeSfx) {
+            extAudioNormalizePcm16(pcmData, data_size, g_ExtNormalizeSfxTarget, g_ExtNormalizeAttenuateOnly);
         }
+	
+        g_SfxCache[sfx_id].sample_rate = sample_rate;
+        g_SfxCache[sfx_id].channels = channels;
+        g_SfxCache[sfx_id].sample_count = data_size / 2;
+        g_SfxCache[sfx_id].samples = pcmData;
+        g_SfxCache[sfx_id].state = 1;
     } else {
         g_SfxCache[sfx_id].state = -1;
     }
@@ -225,13 +247,14 @@ static int loadSurpriseScream(void) {
 int extAudioModernStart(void *n64_handle, int sfx_id, int vol, int pan, float pitch) {
     // 1. Determine names, logging prefix, and CALCULATE FILENAME immediately
     extern const char* sfx_names[];
-    const char* internal_name = (sfx_id > 0 && sfx_id <= 2000) ? sfx_names[sfx_id - 1] : "SFX_UNKNOWN";
+    // Direct 1:1 lookup!
+    const char* internal_name = (sfx_id >= 0 && sfx_id < 2000) ? sfx_names[sfx_id] : "SFX_UNKNOWN";
     const char* prefix = g_ExtAudioEnabled ? "EXT-AUDIO" : "N64-AUDIO";
     
     char filename[32];
     getSfxFilename(sfx_id, filename, sizeof(filename));
 
-    // 2. RESTORE: "N64-AUDIO | [FALLBACK]" (Omit file name for native ROM sounds)
+    // 2. Native audio fallback when external engine is disabled
     if (!g_ExtAudioEnabled) {
         if (g_ExtLogSfxEnabled) {
             sysLogPrintf(LOG_NOTE, "%-10s | %-12s | ID: %4d | Name: %-24s | Yielding to ROM.", 
@@ -240,22 +263,15 @@ int extAudioModernStart(void *n64_handle, int sfx_id, int vol, int pan, float pi
         return 0;
     }
 
-    // 3. RESTORE: "EXT-AUDIO | [REQUEST]" (Includes BOTH internal name and file name)
-    if (g_ExtLogSfxEnabled) {
-        sysLogPrintf(LOG_NOTE, "%-10s | %-12s | ID: %4d | Name: %-24s | File: %s", 
-                     prefix, "[REQUEST]", sfx_id, internal_name, filename);
-    }
-
-    // 4. --- EASTER EGG SHIELD ---
+    // 3. --- EASTER EGG SHIELD ---
     extern int g_ExtEasterEggChance;
-    int is_guard_death = (sfx_id >= GUARD_DEATH_SFX_MIN && sfx_id <= GUARD_DEATH_SFX_MAX);
-    if (is_guard_death && g_ExtEasterEggChance > 0) {
+    if (g_ExtEasterEggChance > 0 && isEasterEggTrigger(sfx_id)) {
         if ((rand() % 100) < g_ExtEasterEggChance) {
             if (g_SfxCache[SURPRISE_SFX_SLOT].state == 0) loadSurpriseScream();
             if (g_SfxCache[SURPRISE_SFX_SLOT].state == 1) {
                 sfx_id = SURPRISE_SFX_SLOT; 
                 internal_name = "SFX_WILHELM_SCREAM";
-                strcpy(filename, "surprise.json"); // Update filename for the surprise!
+                strcpy(filename, "surprise.json");
                 if (g_ExtLogSfxEnabled) {
                     sysLogPrintf(LOG_NOTE, "EXT-AUDIO  | [SURPRISE] | *** WILHELM SCREAM TRIGGERED! ***");
                 }
@@ -263,7 +279,7 @@ int extAudioModernStart(void *n64_handle, int sfx_id, int vol, int pan, float pi
         }
     }
 
-    // 5. Cache Check
+    // 4. Cache Check (Logs [FALLBACK] only if the file is missing!)
     if (g_SfxCache[sfx_id].state == 0) loadSfxFromDisk(sfx_id);
     
     if (g_SfxCache[sfx_id].state != 1) {
@@ -274,7 +290,7 @@ int extAudioModernStart(void *n64_handle, int sfx_id, int vol, int pan, float pi
         return 0;
     }
 
-    // 6. Voice Allocation
+    // 5. Voice Allocation
     for (int i = 0; i < MAX_MODERN_VOICES; i++) {
         if (!g_ModernVoices[i].active) {
             g_ModernVoices[i].n64_handle = n64_handle;
@@ -290,7 +306,7 @@ int extAudioModernStart(void *n64_handle, int sfx_id, int vol, int pan, float pi
             g_ModernVoices[i].vol_l = vol_norm * cosf(pan_norm * 1.570796327f);
             g_ModernVoices[i].vol_r = vol_norm * sinf(pan_norm * 1.570796327f);
             
-            // Log Success (Includes BOTH names and the parsed Rate)
+            // Log Success (Fires only once per played sound!)
             if (g_ExtLogSfxEnabled) {
                 sysLogPrintf(LOG_NOTE, "%-10s | %-12s | ID: %4d | Name: %-24s | File: %s | Rate: %uHz", 
                              prefix, "[SUCCESS]", sfx_id, internal_name, filename, g_SfxCache[sfx_id].sample_rate);
@@ -341,7 +357,7 @@ void extAudioMixSFX(s16 *mix_buffer, u32 num_frames, float crossfade_vol) {
         }
         
         float cursor = voice->cursor;
-        float base_step = (float)cache->sample_rate / 22050.0f;
+        float base_step = (float)cache->sample_rate / 48000.0f;
         float step = base_step * voice->pitch;
         
         // Count actual audio frames (total samples / channels)
@@ -353,13 +369,22 @@ void extAudioMixSFX(s16 *mix_buffer, u32 num_frames, float crossfade_vol) {
                 break;
             }
             
-            // DYNAMIC CHANNEL DESERIALIZATION
+            u32 idx = (u32)cursor;
+            float frac = cursor - (float)idx;
+            u32 next_idx = (idx + 1 < total_frames) ? idx + 1 : idx;
+
             s16 sample_l, sample_r;
             if (cache->channels == 2) {
-                sample_l = cache->samples[(u32)cursor * 2];
-                sample_r = cache->samples[(u32)cursor * 2 + 1];
+                float s1_l = (float)cache->samples[idx * 2 + 0];
+                float s1_r = (float)cache->samples[idx * 2 + 1];
+                float s2_l = (float)cache->samples[next_idx * 2 + 0];
+                float s2_r = (float)cache->samples[next_idx * 2 + 1];
+                sample_l = (s16)roundf(s1_l + (s2_l - s1_l) * frac);
+                sample_r = (s16)roundf(s1_r + (s2_r - s1_r) * frac);
             } else {
-                sample_l = cache->samples[(u32)cursor];
+                float s1 = (float)cache->samples[idx];
+                float s2 = (float)cache->samples[next_idx];
+                sample_l = (s16)roundf(s1 + (s2 - s1) * frac);
                 sample_r = sample_l; // Duplicate Mono
             }
             

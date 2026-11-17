@@ -24,10 +24,11 @@ s32 audioInit(void)
 
 	SDL_AudioSpec want, have;
 	SDL_zero(want);
-	want.freq = 22020; // TODO: this might cause trouble for some platforms
+	want.freq = 48000; // Upgraded from N64 22020Hz
 	want.format = AUDIO_S16SYS;
 	want.channels = 2;
-	want.samples = bufferSize;
+	// Scale the 22020Hz config bufferSize (default 512) up to 1024 for 48000Hz (~21.3ms)
+	want.samples = (bufferSize <= 512) ? 1024 : bufferSize;
 	want.callback = NULL;
 
 	nextBuf = NULL;
@@ -45,7 +46,11 @@ s32 audioInit(void)
 
 s32 audioGetBytesBuffered(void)
 {
-	return SDL_GetQueuedAudioSize(dev);
+	// Convert 48000Hz SDL queue bytes back to N64 22020Hz equivalent bytes
+	// so osAiGetLength(), audiomgr, and queueLimit see the exact timing they expect!
+	u32 sdlBytes = SDL_GetQueuedAudioSize(dev);
+	u32 n64Bytes = (u32)(((u64)sdlBytes * 22020ULL) / 48000ULL);
+	return (s32)(n64Bytes & ~3U);
 }
 
 s32 audioGetSamplesBuffered(void)
@@ -63,15 +68,15 @@ void audioEndFrame(void)
 {
 	if (nextBuf && nextSize) {
 		if (audioGetSamplesBuffered() < queueLimit) {
-            
 #ifndef PLATFORM_N64
-			// Intercept the buffer and mix in our Modern SDL2 sounds!
-			s16 *finalBuf = extAudioProcessSDL(nextBuf, nextSize);
-			SDL_QueueAudio(dev, finalBuf, nextSize);
+			u32 outBytes = 0;
+			s16 *finalBuf = extAudioProcessSDL(nextBuf, nextSize, &outBytes);
+			if (outBytes > 0) {
+				SDL_QueueAudio(dev, finalBuf, outBytes);
+			}
 #else
 			SDL_QueueAudio(dev, nextBuf, nextSize);
 #endif
-
 		}
 		nextBuf = NULL;
 		nextSize = 0;

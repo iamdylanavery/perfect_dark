@@ -14,73 +14,21 @@ extern u16 g_SfxVolume;
 
 // Circular Reverb / Echo settings
 #define MODERN_MIX_RATE 48000
-// 5000 N64 samples @ 22050Hz = ~226.7ms. We calculate that time dynamically for the modern rate!
 #define FX_DELAY_LENGTH ((u32)(MODERN_MIX_RATE * 0.226757f))
-#define FX_FEEDBACK_COEFF 0.45f  // Increased to ring out longer
-#define FX_WET_MIX 0.50f    
+#define FX_FEEDBACK_COEFF 0.3f // Prevents runaway gain stacking
+#define FX_WET_MIX 0.4f        // 40% wet is typical for N64 room simulation
 
-// NEW: Dark Reverb EQ (Lowpass Filter) States
 static float g_FxLpfL = 0.0f;
 static float g_FxLpfR = 0.0f;  
 
 // -------------------------------------------------------------
-// NEW: DEBUG MIXER & VOLUME CONTROLS
+// DEBUG MIXER & VOLUME CONTROLS
 // -------------------------------------------------------------
-#define MUSIC_MASTER_BOOST 1.0f 
+#define MUSIC_MASTER_BOOST 0.6f
 
-// The Category Map based exactly on your spreadsheet
-InstrumentCategory extAudioGetInstCategory(int inst_idx) {
-    switch (inst_idx) {
-        case 107: case 108: case 124: case 125:
-            return CAT_AMBIENCE;
-            
-        case 2: case 4: case 26: case 27: case 29: case 30: case 33:
-        case 34: case 35: case 38: case 42: case 45: case 47: case 49: case 51:
-        case 59: case 62: case 71: case 72: case 78: case 79:
-//        case 84: case 85: 
-        case 101: case 104: case 105: case 106: case 110: case 114: case 119:
-        case 120: case 121: case 123:
-            return CAT_SFX;
-            
-        case 6: case 20: case 74: case 118:
-            return CAT_VOX;
-            
-        case 0: case 1: case 3: case 5: case 8: case 15: case 18: case 19:
-        case 21: case 24: case 31: case 37: case 41: case 43: case 46: case 57:
-        case 60: case 68: case 73: case 75: case 83: case 113: case 116:
-            return CAT_PERCUSSION;
-            
-        case 9: case 10: case 12: case 13: case 14: case 16: case 50: case 52:
-        case 55: case 80: case 81:
-            return CAT_SYNTHS;
-            
-        case 11: case 44: case 63: case 64: case 70:
-            return CAT_PIANO;
-            
-        case 17: case 32:
-            return CAT_STRINGS;
-            
-        case 22: case 23:
-            return CAT_HORNS;
-            
-        case 28:
-            return CAT_GUITAR;
-            
-	case 84: case 85: 
-	case 86: case 87: case 88: case 89: case 90: case 91:
-        case 92: case 93: case 94: case 95: case 96: case 97: case 98: case 99:
-	    return CAT_BASS;
-	
-        case 25: case 36: case 39: case 40: case 48: case 53: case 54: case 56:
-        case 58: case 61: case 65: case 66: case 67: case 69: case 76: case 77:
-        case 82: case 100: case 102: case 103: case 109: case 111: case 112:
-        case 115: case 117: case 122: case 7: 
-            return CAT_BEEP;
-            
-        default:
-            return CAT_UNKNOWN;
-    }
-}   
+#define DECLICK_ATTACK_FRAMES   256.0f   // Attack ramp on note start & instant volume changes
+#define DECLICK_RELEASE_FRAMES  256.0f   // Fade-out ramp on note stop
+#define DECLICK_STEAL_FRAMES    256.0f   // Fade-out ramp when an existing voice is stolen
 
 // -------------------------------------------------------------
 // MUSIC INSTRUMENTS MODULE
@@ -90,20 +38,20 @@ struct HqMusic {
     uintptr_t n64_base_addr; 
     u8* pcm_data;
     u32 pcm_size;
-    u32 sample_rate;            // NEW: Parsed WAV sample rate (e.g. 44100)
+    u32 sample_rate;            
     u32 original_sample_rate;
-    u32 channels;               // NEW: Track Mono/Stereo
+    u32 channels;            
     int is_raw16; 
     u32 loop_start;
     u32 loop_end;
     int has_loop;
+    int is_microsample;
     int inst_idx;
     int sound_idx;
     int is_perc;
 };
 static struct HqMusic g_HqMusic[MAX_HQ_MUSIC];
 static u32 g_NumHqMusic = 0;
-// Note: g_HqTokenAllocator and g_HqFakeOffsets have been deleted!
 
 #define MAX_MUSIC_VOICES 96 
 struct MusicVoice {
@@ -116,29 +64,25 @@ struct MusicVoice {
     float target_vol;
     float vol_step;
 
-
     // Pitch & Diagnostics
-    float render_pitch;  // Snapshotted by SDL Thread
-    
-    // Smooth Pitch Ramping
+    float render_pitch;  
     float current_pitch;
-//    float target_pitch;
-//    float pitch_step;
+    float unity_pitch;   
     
     float fx_mix;      
     int raw_pan;
-
-    // Remove vol_render, pitch_render, fx_render, pan_render (we won't need snapshotting anymore)
     
     u32 loop_start;    
     u32 loop_end;
     int has_loop;
+    int is_native_fallback; 
+    int is_stopping;
     int active;
 };
 static struct MusicVoice g_MusicVoices[MAX_MUSIC_VOICES];
 
 // Reverb/Echo Circular Buffers and local accumulators
-static float g_FxDelayBufferL[32768] = {0}; // Increased size to safely hold modern sample rates
+static float g_FxDelayBufferL[32768] = {0}; 
 static float g_FxDelayBufferR[32768] = {0};
 static u32 g_FxWritePtr = 0;
 static float g_FxSendL[8192] = {0};
@@ -178,7 +122,192 @@ static u32 getOverrideOriginalRate(int is_perc, s16 inst_idx, s16 sound_idx) {
             return g_RateOverrides[i].original_rate;
         }
     }
-    return 0; // Not found
+    return 0; 
+}
+
+// -------------------------------------------------------------
+// 48kHz+ MICROSAMPLE REMASTERER
+// -------------------------------------------------------------
+static inline float extAudioCosineBell(float x) {
+    float ax = fabsf(x);
+    if (ax >= 1.5f) return 0.0f;
+    // Pure raised-cosine bell: strictly positive (0% clipping overshoot) and smooths ADPCM steps
+    return 0.5f * (1.0f + cosf(3.14159265359f * (x / 1.5f)));
+}
+
+static void extAudioRemasterMicroSample(struct HqMusic *hq, u32 raw_loop_end) {
+    if (!hq || !hq->pcm_data || hq->channels == 0) return;
+
+    u32 wav_frames = (hq->pcm_size / 2) / hq->channels;
+    if (wav_frames < 8) return;
+
+    s16 *src_raw = (s16*)hq->pcm_data;
+
+    // 1. Copy mono waveform into float space with 20% headroom so -32768 peaks never clip
+    float *wave = (float*)malloc(wav_frames * sizeof(float));
+    if (!wave) return;
+
+    for (u32 i = 0; i < wav_frames; i++) {
+        wave[i] = (float)src_raw[i * hq->channels] * 0.80f;
+    }
+
+    u32 oversample = 4; // 4x integer oversampling (e.g. 22050 Hz -> 88200 Hz)
+    const int kernel_radius = 2;
+
+    // Case A: Non-looping one-shot microsample (e.g. hi-hats / clicks)
+    if (!hq->has_loop) {
+        u32 out_frames = wav_frames * oversample;
+        u32 out_bytes = out_frames * sizeof(s16);
+        s16 *out_pcm = (s16*)malloc(out_bytes);
+        if (!out_pcm) {
+            free(wave);
+            return;
+        }
+
+        for (u32 i = 0; i < out_frames; i++) {
+            float src_pos = (float)i / (float)oversample;
+            s32 center = (s32)floorf(src_pos);
+            float sum = 0.0f;
+            float w_sum = 0.0f;
+
+            for (int k = -kernel_radius; k <= kernel_radius + 1; k++) {
+                s32 idx = center + k;
+                if (idx >= 0 && idx < (s32)wav_frames) {
+                    float w = extAudioCosineBell(src_pos - (float)idx);
+                    sum += wave[idx] * w;
+                    w_sum += w;
+                }
+            }
+
+            s32 s = (w_sum > 0.0001f) ? (s32)roundf(sum / w_sum) : 0;
+            if (s > 32767) s = 32767;
+            if (s < -32768) s = -32768;
+            out_pcm[i] = (s16)s;
+        }
+
+        free(wave);
+        free(hq->pcm_data);
+        hq->pcm_data = (u8*)out_pcm;
+        hq->pcm_size = out_bytes;
+        hq->channels = 1;
+        hq->sample_rate = hq->sample_rate * oversample;
+        return;
+    }
+
+    // Case B: Looping instrument (Bass pulses 84-99, synths, horns, strings)
+    u32 start_f = hq->loop_start;
+    u32 end_f = (raw_loop_end <= wav_frames && raw_loop_end > start_f) ? raw_loop_end : wav_frames;
+    if (start_f >= end_f) start_f = 0;
+
+    u32 loop_len = end_f - start_f;
+    if (loop_len < 4) {
+        free(wave);
+        return;
+    }
+
+    // 2. Short 6-sample cosine ease at the very end of the loop so [end_f - 1] meets [start_f]
+    //    without altering the pulse width or waveform body!
+    u32 blend_len = 6;
+    if (blend_len > loop_len / 4) blend_len = loop_len / 4;
+    if (blend_len >= 1) {
+        float target_val = wave[start_f];
+        float end_val = wave[end_f - 1];
+        float diff = target_val - end_val;
+        for (u32 b = 0; b < blend_len; b++) {
+            float alpha = 0.5f - 0.5f * cosf(3.14159265359f * (float)(b + 1) / (float)blend_len);
+            u32 tail_idx = end_f - blend_len + b;
+            wave[tail_idx] += diff * alpha;
+        }
+    }
+
+    u32 num_repeats = (loop_len < 256) ? 32 : 8;
+    u32 hi_attack_frames = start_f * oversample;
+    u32 hi_loop_len = loop_len * oversample;
+    u32 out_total_frames = hi_attack_frames + (hi_loop_len * num_repeats);
+    u32 out_bytes = out_total_frames * sizeof(s16);
+
+    s16 *out_pcm = (s16*)malloc(out_bytes);
+    if (!out_pcm) {
+        free(wave);
+        return;
+    }
+
+    // 3. Reconstruct the Attack [0 .. start_f) with unity-normalized cosine bell
+    for (u32 i = 0; i < hi_attack_frames; i++) {
+        float src_pos = (float)i / (float)oversample;
+        s32 center = (s32)floorf(src_pos);
+        float sum = 0.0f;
+        float w_sum = 0.0f;
+
+        for (int k = -kernel_radius; k <= kernel_radius + 1; k++) {
+            s32 idx = center + k;
+            float sample_val = 0.0f;
+            if (idx < 0) {
+                sample_val = wave[0];
+            } else if (idx < (s32)end_f) {
+                sample_val = wave[idx];
+            } else {
+                u32 wrapped = start_f + ((u32)(idx - (s32)start_f) % loop_len);
+                sample_val = wave[wrapped];
+            }
+            float w = extAudioCosineBell(src_pos - (float)idx);
+            sum += sample_val * w;
+            w_sum += w;
+        }
+
+        s32 s = (w_sum > 0.0001f) ? (s32)roundf(sum / w_sum) : 0;
+        if (s > 32767) s = 32767;
+        if (s < -32768) s = -32768;
+        out_pcm[i] = (s16)s;
+    }
+
+    // 4. Reconstruct 1 master high-res loop cycle [start_f .. end_f)
+    s16 *hi_loop = (s16*)malloc(hi_loop_len * sizeof(s16));
+    if (!hi_loop) {
+        free(out_pcm);
+        free(wave);
+        return;
+    }
+
+    for (u32 i = 0; i < hi_loop_len; i++) {
+        float rel_pos = (float)i / (float)oversample;
+        s32 rel_center = (s32)floorf(rel_pos);
+        float sum = 0.0f;
+        float w_sum = 0.0f;
+
+        for (int k = -kernel_radius; k <= kernel_radius + 1; k++) {
+            s32 rel_idx = rel_center + k;
+            float w = extAudioCosineBell(rel_pos - (float)rel_idx);
+
+            s32 wrapped_rel = rel_idx % (s32)loop_len;
+            if (wrapped_rel < 0) wrapped_rel += (s32)loop_len;
+
+            sum += wave[start_f + (u32)wrapped_rel] * w;
+            w_sum += w;
+        }
+
+        s32 s = (w_sum > 0.0001f) ? (s32)roundf(sum / w_sum) : 0;
+        if (s > 32767) s = 32767;
+        if (s < -32768) s = -32768;
+        hi_loop[i] = (s16)s;
+    }
+
+    // 5. Unroll the reconstructed loop cycle num_repeats times after the attack
+    for (u32 r = 0; r < num_repeats; r++) {
+        memcpy(out_pcm + hi_attack_frames + (r * hi_loop_len), hi_loop, hi_loop_len * sizeof(s16));
+    }
+
+    free(hi_loop);
+    free(wave);
+    free(hq->pcm_data);
+
+    hq->pcm_data = (u8*)out_pcm;
+    hq->pcm_size = out_bytes;
+    hq->channels = 1;
+    hq->sample_rate = hq->sample_rate * oversample;
+    hq->loop_start = hi_attack_frames;
+    hq->loop_end = out_total_frames;
+    hq->has_loop = 1;
 }
 
 // -------------------------------------------------------------
@@ -210,77 +339,98 @@ static void scanInstrument(ALInstrument *inst, int inst_idx, int is_percussion, 
         if (fileData && fileSize > 44) {
             u32 sample_rate = 22050;
             u32 channels = 1;
-            u32 data_offset = 0;
             u32 data_size = 0;
 
-            if (extAudioParseWavHeader(fileData, fileSize, &sample_rate, &channels, &data_offset, &data_size)) {
-                u8 *pcmData = malloc(data_size);
-                if (pcmData) {
-                    memcpy(pcmData, fileData + data_offset, data_size);
+            u8 *pcmData = (u8*)extAudioLoadWavPcm16(fileData, fileSize, &sample_rate, &channels, &data_size);
+            if (pcmData) {
+                u32 hq_id = g_NumHqMusic++;
+                g_HqMusic[hq_id].n64_base_addr = (uintptr_t)w->base;
+                g_HqMusic[hq_id].pcm_data = pcmData;
+                g_HqMusic[hq_id].channels = channels; 
+                g_HqMusic[hq_id].pcm_size = data_size;
+                g_HqMusic[hq_id].sample_rate = sample_rate;
+                g_HqMusic[hq_id].is_microsample = (data_size < 2000) ? 1 : 0;
 
-                    u32 hq_id = g_NumHqMusic++;
-                    g_HqMusic[hq_id].n64_base_addr = (uintptr_t)w->base;
-                    g_HqMusic[hq_id].pcm_data = pcmData;
-                    g_HqMusic[hq_id].channels = channels; 
-                    g_HqMusic[hq_id].pcm_size = data_size;
-                    g_HqMusic[hq_id].sample_rate = sample_rate;
+                // Sample rate deduction math
+                u32 original_samples = 0;
+                if (w->type == AL_ADPCM_WAVE) {
+                    original_samples = (w->len / 9) * 16;
+                } else if (w->type == AL_RAW16_WAVE) {
+                    original_samples = w->len / 2;
+                }
 
-                    // RESTORED: Your original sample rate guesser math (No double declarations!)
-                    u32 original_samples = 0;
-                    if (w->type == AL_ADPCM_WAVE) {
-                        original_samples = (w->len / 9) * 16;
-                    } else if (w->type == AL_RAW16_WAVE) {
-                        original_samples = w->len / 2;
-                    }
+                // 1. Calculate the raw ratio
+                u32 calculated_orig_rate = 22050; // Safe default
+                u32 wav_frames = (data_size / 2) / channels;
+                u32 override_rate = getOverrideOriginalRate(is_percussion, inst_idx, s);
 
-                    // 1. Calculate the raw ratio
-                    u32 calculated_orig_rate = 22050; // Safe default
-                    u32 wav_frames = (data_size / 2) / channels; // MOVED UP HERE!
-                    u32 override_rate = getOverrideOriginalRate(is_percussion, inst_idx, s);
-
-                    if (override_rate > 0) {
-                        // 1. Trust the Python-generated table 100%!
-                        calculated_orig_rate = override_rate;
-                    } else {
-                        // 2. Modder Fallback: If a custom WAV is injected, guess its rate via math
-                        if (wav_frames > 0 && original_samples > 0) {
-                            u32 ratio_rate = ((unsigned long long)original_samples * sample_rate) / wav_frames;
-                            calculated_orig_rate = extAudioRoundToNearestStandardRate(ratio_rate);
-                            
-                            // Hard-clamp to prevent the 48000Hz transient blip bug for custom sounds
-                            if (calculated_orig_rate > 32000) calculated_orig_rate = 22050;
-                        }
-                    }
-
-                    g_HqMusic[hq_id].original_sample_rate = calculated_orig_rate;
-                    g_HqMusic[hq_id].inst_idx = inst_idx;
-                    g_HqMusic[hq_id].sound_idx = s;
-                    g_HqMusic[hq_id].is_perc = is_percussion;
-
-                    // Restored: Original loop calculation using the deduced calculated_orig_rate
-                    g_HqMusic[hq_id].has_loop = 0;
-                    ALADPCMloop *l = NULL;
-                    if (w->type == AL_ADPCM_WAVE && w->waveInfo.adpcmWave.loop) {
-                        l = (ALADPCMloop*)w->waveInfo.adpcmWave.loop;
-                    } else if (w->type == AL_RAW16_WAVE && w->waveInfo.rawWave.loop) {
-                        l = (ALADPCMloop*)w->waveInfo.rawWave.loop; 
-                    }
-
-                    if (l && l->count != 0) { 
-                        g_HqMusic[hq_id].loop_start = ((unsigned long long)l->start * sample_rate) / calculated_orig_rate;
-                        g_HqMusic[hq_id].loop_end = ((unsigned long long)l->end * sample_rate) / calculated_orig_rate;
-                        
-                        // Safety clamps to prevent out-of-bounds blips
-                        if (g_HqMusic[hq_id].loop_end >= wav_frames) g_HqMusic[hq_id].loop_end = wav_frames - 1;
-                        if (g_HqMusic[hq_id].loop_start >= g_HqMusic[hq_id].loop_end) g_HqMusic[hq_id].loop_start = 0;
-                        g_HqMusic[hq_id].has_loop = 1;
-                    }
-
-                    if (g_ExtLogMusicEnabled) {
-                        sysLogPrintf(LOG_NOTE, "EXT-MUS | [SEQ LOAD] | %s: %03d | Sound: %02d | Orig: %uHz | New: %uHz", 
-                                     is_percussion ? "PERC" : "INST", inst_idx, s, calculated_orig_rate, sample_rate);
+                if (override_rate > 0) {
+                    calculated_orig_rate = override_rate;
+                } else {
+                    if (wav_frames > 0 && original_samples > 0) {
+                        u32 ratio_rate = ((unsigned long long)original_samples * sample_rate) / wav_frames;
+                        calculated_orig_rate = extAudioRoundToNearestStandardRate(ratio_rate);
+                        if (calculated_orig_rate > 32000) calculated_orig_rate = 22050;
                     }
                 }
+
+                g_HqMusic[hq_id].original_sample_rate = calculated_orig_rate;
+                g_HqMusic[hq_id].inst_idx = inst_idx;
+                g_HqMusic[hq_id].sound_idx = s;
+                g_HqMusic[hq_id].is_perc = is_percussion;
+
+                // Loop calculation using the deduced calculated_orig_rate
+                g_HqMusic[hq_id].has_loop = 0;
+                ALADPCMloop *l = NULL;
+                if (w->type == AL_ADPCM_WAVE && w->waveInfo.adpcmWave.loop) {
+                    l = (ALADPCMloop*)w->waveInfo.adpcmWave.loop;
+                } else if (w->type == AL_RAW16_WAVE && w->waveInfo.rawWave.loop) {
+                    l = (ALADPCMloop*)w->waveInfo.rawWave.loop; 
+                }
+
+                u32 raw_loop_end = 0;
+                if (l && l->count != 0) { 
+                    g_HqMusic[hq_id].loop_start = ((unsigned long long)l->start * sample_rate) / calculated_orig_rate;
+                    raw_loop_end = ((unsigned long long)l->end * sample_rate) / calculated_orig_rate;
+                    g_HqMusic[hq_id].loop_end = raw_loop_end;
+                    
+                    // Safety clamps to prevent out-of-bounds blips
+                    if (g_HqMusic[hq_id].loop_end >= wav_frames) g_HqMusic[hq_id].loop_end = wav_frames - 1;
+                    if (g_HqMusic[hq_id].loop_start >= g_HqMusic[hq_id].loop_end) g_HqMusic[hq_id].loop_start = 0;
+                    g_HqMusic[hq_id].has_loop = 1;
+                }
+
+                // 2. If this is a looped microsample (< 2000 bytes), procedurally resynthesize it!
+                if (g_ExtRemasterMicroSamples && g_HqMusic[hq_id].is_microsample) {
+                    extAudioRemasterMicroSample(&g_HqMusic[hq_id], raw_loop_end);
+                }
+
+                // 3. Apply load-time peak normalization to the final buffer
+                if (g_ExtNormalizeMusic) {
+                    extAudioNormalizePcm16((s16*)g_HqMusic[hq_id].pcm_data, g_HqMusic[hq_id].pcm_size, g_ExtNormalizeMusicTarget, g_ExtNormalizeAttenuateOnly);
+                }
+
+                if (g_ExtLogMusicEnabled) {
+                    sysLogPrintf(LOG_NOTE, "EXT-MUS | [SEQ LOAD] | %s: %03d | Sound: %02d | Orig: %uHz | New: %uHz", 
+                                 is_percussion ? "PERC" : "INST", inst_idx, s, calculated_orig_rate, g_HqMusic[hq_id].sample_rate);
+                }
+            }
+        } else {
+            // Even if no HQ WAV exists on disk, record the bank instrument mapping
+            // so fallback notes can still be tracked in the log and muted by the Stem Mixer
+            if (g_NumHqMusic < MAX_HQ_MUSIC) {
+                u32 hq_id = g_NumHqMusic++;
+                g_HqMusic[hq_id].n64_base_addr = (uintptr_t)w->base;
+                g_HqMusic[hq_id].pcm_data = NULL; // Native ROM sample
+                g_HqMusic[hq_id].pcm_size = 0;
+                g_HqMusic[hq_id].is_microsample = 0;
+                g_HqMusic[hq_id].inst_idx = inst_idx;
+                g_HqMusic[hq_id].sound_idx = s;
+                g_HqMusic[hq_id].is_perc = is_percussion;
+                g_HqMusic[hq_id].original_sample_rate = 22050;
+                g_HqMusic[hq_id].sample_rate = 22050;
+                g_HqMusic[hq_id].channels = 1;
+                g_HqMusic[hq_id].has_loop = 0;
             }
         }
         if (fileData) free(fileData);
@@ -333,7 +483,7 @@ int extAudioGetActiveMusicVoices(int *vols, int *pans, int *fxs, int *percs, int
 
 static int g_NextVoiceAlloc = 0;
 
-int extAudioSeqVoiceStart(void *n64_voice, ALWaveTable *w, float pitch, int vol, int pan, int fxmix, ALMicroTime t) {
+int extAudioSeqVoiceStart(void *n64_voice, ALWaveTable *w, float pitch, float unity, int vol, int pan, int fxmix, u8 arg6, float arg7, u8 arg8, ALMicroTime t) {
     if (!g_ExtAudioEnabled || !n64_voice || !w) return 0;
     uintptr_t base_addr = (uintptr_t)w->base;
 
@@ -346,18 +496,30 @@ int extAudioSeqVoiceStart(void *n64_voice, ALWaveTable *w, float pitch, int vol,
     }
     if (!snd) return 0;
 
-// --- NEW: MICRO-LOOP NATIVE FALLBACK ---
-    // If the sample is extremely short (e.g., < 2000 bytes, which is ~45ms at 22k mono),
-    // refuse the HLE allocation. Returning 0 bypasses the stealth mute, allowing 
-    // the N64 RSP to natively synthesize these tricky bass blips!
-    if (snd->pcm_size < 2000) {
-        return 0;
+    InstrumentCategory cat = extAudioGetInstCategory(snd->inst_idx);
+
+    // STEM MIXER MUTE
+    if (!g_ExtMusicCategoryEnabled[cat]) {
+        for (int j = 0; j < MAX_MUSIC_VOICES; j++) {
+            if (g_MusicVoices[j].active && g_MusicVoices[j].n64_voice == n64_voice) {
+                g_MusicVoices[j].active = 0;
+                g_MusicVoices[j].is_stopping = 0;
+            }
+        }
+        return 1;
     }
 
-    // CLEAN SLATE: Scrub ALL ghosts!
+    // Native fallback pool (Inst 9 & 10 stay on N64 fallback; microsamples use g_ExtRemasterMicroSamples toggle)
+    int is_fallback = (snd->pcm_data == NULL || 
+                       (!g_ExtRemasterMicroSamples && snd->is_microsample) || 
+                       snd->inst_idx == 10 || 
+                       snd->inst_idx == 9);
+
+    // CLEAN SLATE: Free any old voice sharing this N64 pointer
     for (int j = 0; j < MAX_MUSIC_VOICES; j++) {
         if (g_MusicVoices[j].active && g_MusicVoices[j].n64_voice == n64_voice) {
             g_MusicVoices[j].active = 0;
+            g_MusicVoices[j].is_stopping = 0;
         }
     }
 
@@ -367,20 +529,26 @@ int extAudioSeqVoiceStart(void *n64_voice, ALWaveTable *w, float pitch, int vol,
             g_MusicVoices[i].snd = snd;
             g_MusicVoices[i].cursor = 0.0f;
             
+            // FULL VELOCITY ON ATTACK
             g_MusicVoices[i].current_vol = (float)vol;
-            g_MusicVoices[i].target_vol = (float)vol;
-            g_MusicVoices[i].vol_step = 0.0f;
+            g_MusicVoices[i].target_vol  = (float)vol;
+            g_MusicVoices[i].vol_step    = 0.0f;
             
-            g_MusicVoices[i].current_pitch = pitch;
-            g_MusicVoices[i].render_pitch = pitch; 
+            float final_pitch = pitch * (unity > 0.0f ? unity : 1.0f);
+            g_MusicVoices[i].unity_pitch = (unity > 0.0f ? unity : 1.0f);
+            g_MusicVoices[i].current_pitch = final_pitch;
+            g_MusicVoices[i].render_pitch = final_pitch; 
 
             g_MusicVoices[i].raw_pan = pan;
             g_MusicVoices[i].fx_mix = (float)fxmix / 127.0f;
             g_MusicVoices[i].has_loop = snd->has_loop;
             g_MusicVoices[i].loop_start = snd->loop_start;
             g_MusicVoices[i].loop_end = snd->loop_end;
+            g_MusicVoices[i].is_native_fallback = is_fallback;
+            g_MusicVoices[i].is_stopping = 0;
             g_MusicVoices[i].active = 1;
-            return 1;
+
+            return is_fallback ? 0 : 1;
         }
     }
     return 0;
@@ -393,15 +561,14 @@ int extAudioSeqVoiceSetVol(void *n64_voice, int vol, ALMicroTime t) {
         if (g_MusicVoices[i].active && g_MusicVoices[i].n64_voice == n64_voice) {
             if (vol != -1) {
                 g_MusicVoices[i].target_vol = (float)vol;
-                if (t > 0) {
-                    float frames = ((float)t / 1000000.0f) * 22050.0f; 
-                    g_MusicVoices[i].vol_step = (g_MusicVoices[i].target_vol - g_MusicVoices[i].current_vol) / frames;
-                } else {
-                    g_MusicVoices[i].current_vol = (float)vol;
-                    g_MusicVoices[i].vol_step = 0.0f;
-                }
+
+                // Calculate ramp frames (minimum 64 frames = ~1.3ms de-click protection)
+                float frames = (t > 0) ? (((float)t / 1000000.0f) * 48000.0f) : 64.0f;
+                if (frames < 64.0f) frames = 64.0f;
+
+                g_MusicVoices[i].vol_step = (g_MusicVoices[i].target_vol - g_MusicVoices[i].current_vol) / frames;
             }
-            found = 1; // Mark found, but DO NOT return yet! Keep updating ghosts!
+            found = 1; 
         }
     }
     return found;
@@ -413,9 +580,10 @@ int extAudioSeqVoiceSetPitch(void *n64_voice, float pitch) {
     for (int i = 0; i < MAX_MUSIC_VOICES; i++) {
         if (g_MusicVoices[i].active && g_MusicVoices[i].n64_voice == n64_voice) {
             if (pitch > 0.0f) {
-                g_MusicVoices[i].current_pitch = pitch;
+                float scaled_pitch = pitch * g_MusicVoices[i].unity_pitch;
+                g_MusicVoices[i].current_pitch = scaled_pitch;
             }
-            found = 1; // Mark found, but DO NOT return yet! Keep updating ghosts!
+            found = 1; 
         }
     }
     return found;
@@ -437,15 +605,23 @@ int extAudioSeqVoiceStop(void *n64_voice) {
     int found = 0;
     for (int i = 0; i < MAX_MUSIC_VOICES; i++) {
         if (g_MusicVoices[i].active && g_MusicVoices[i].n64_voice == n64_voice) {
-            g_MusicVoices[i].active = 0; 
-            found = 1; // Mark found, but DO NOT return yet! Keep killing ghosts!
+            if (g_MusicVoices[i].current_vol <= 1.0f || g_MusicVoices[i].is_stopping) {
+                g_MusicVoices[i].active = 0;
+                g_MusicVoices[i].is_stopping = 0;
+            } else {
+                // Micro-ramp down to 0 over 128 frames (~2.6ms) to eliminate note-off pops
+                g_MusicVoices[i].target_vol = 0.0f;
+                g_MusicVoices[i].vol_step = -g_MusicVoices[i].current_vol / 128.0f;
+                g_MusicVoices[i].is_stopping = 1;
+            }
+            found = 1; 
         }
     }
     return found;
 }
 
 // -------------------------------------------------------------
-// TROJAN HORSE LEGACY STUBS & LOGGING
+// LEGACY STUBS & LOGGING
 // -------------------------------------------------------------
 void extAudioLoadWavetable(ALWaveTable *w, uintptr_t tbl_segment_start) { }
 
@@ -461,7 +637,6 @@ int extAudioMixerDecode(int nbytes, uint16_t inofs, void* dest_buf) {
     return 0; 
 }
 
-// NEW: Helper function to get category string
 static const char* extAudioGetCatName(InstrumentCategory cat) {
     switch (cat) {
         case CAT_AMBIENCE:   return "AMB ";
@@ -474,57 +649,74 @@ static const char* extAudioGetCatName(InstrumentCategory cat) {
         case CAT_HORNS:      return "HRN ";
         case CAT_GUITAR:     return "GTR ";
         case CAT_BASS:       return "BASS";
-        case CAT_BEEP:       return "BEEP";
+        case CAT_BEEP:       return "PULS";
         default:             return "UNKN";
     }
 }
 
-// UPGRADED: Terminal Dashboard
+// Terminal Dashboard with Distinct ROM Target vs. External WAV Displays
 void extAudioPrintMusicVoices(const char* prefix) {
     int audible_voices = 0;
     
     for (int i = 0; i < MAX_MUSIC_VOICES; i++) {
         if (g_MusicVoices[i].active && g_MusicVoices[i].current_vol > 0.0f) {
             InstrumentCategory cat = extAudioGetInstCategory(g_MusicVoices[i].snd->inst_idx);
-            // Only count voices that are enabled in your Stem Mixer UI
             if (g_ExtMusicCategoryEnabled[cat]) {
                 audible_voices++;
             }
         }
     }
 
-    if (audible_voices == 0) return; // Don't spam if everything is stopped/muted
+    if (audible_voices == 0) return;
 
-    sysLogPrintf(LOG_NOTE, "================================================================================");
+    sysLogPrintf(LOG_NOTE, "==========================================================================================");
     sysLogPrintf(LOG_NOTE, "[ %s MIXER DASHBOARD ] - Audible Voices: %d", prefix, audible_voices);
-    sysLogPrintf(LOG_NOTE, "--------------------------------------------------------------------------------");
-    sysLogPrintf(LOG_NOTE, "V# | CAT  | INST | SND | N64 VOL | PAN | PITCH | FX_MIX | STATUS");
-    sysLogPrintf(LOG_NOTE, "--------------------------------------------------------------------------------");
+    sysLogPrintf(LOG_NOTE, "------------------------------------------------------------------------------------------");
+    sysLogPrintf(LOG_NOTE, "V# | CAT  | SRC | ASSET / TARGET        | RATE     | N64 VOL | PAN | PITCH | STATUS");
+    sysLogPrintf(LOG_NOTE, "------------------------------------------------------------------------------------------");
 
     for (int i = 0; i < MAX_MUSIC_VOICES; i++) {
         struct MusicVoice *v = &g_MusicVoices[i];
         if (v->active && v->current_vol > 0.0f) {
             InstrumentCategory cat = extAudioGetInstCategory(v->snd->inst_idx);
             
-            // Skip printing muted stems so you can isolate your debug targets!
             if (!g_ExtMusicCategoryEnabled[cat]) continue;
 
             const char* cat_name = extAudioGetCatName(cat);
-            const char* status = v->has_loop ? "(LOOP)" : "(1SHT)";
+            const char* src_name = v->is_native_fallback ? "N64" : (v->snd->is_microsample ? "SYN" : "EXT");
+            const char* status_str = v->has_loop ? "(LOOP)" : "(1SHT)";
             
-            sysLogPrintf(LOG_NOTE, "%02d | %s | %04d | %03d | %7d | %3d | %5.2f | %6.2f | %s",
-                i, cat_name, v->snd->inst_idx, v->snd->sound_idx,
-                (int)v->current_vol, v->raw_pan, v->current_pitch, v->fx_mix, status);
+            char file_str[24];
+            char rate_str[12];
+
+            if (v->is_native_fallback) {
+                if (v->snd->is_perc) {
+                    snprintf(file_str, sizeof(file_str), "ROM: Perc Snd %02d", v->snd->sound_idx);
+                } else {
+                    snprintf(file_str, sizeof(file_str), "ROM: Inst %03d Snd %02d", v->snd->inst_idx, v->snd->sound_idx);
+                }
+                snprintf(rate_str, sizeof(rate_str), "%5uHz", v->snd->original_sample_rate);
+            } else {
+                if (v->snd->is_perc) {
+                    snprintf(file_str, sizeof(file_str), "seq_perc_snd%02d.wav", v->snd->sound_idx);
+                } else {
+                    snprintf(file_str, sizeof(file_str), "seq_inst%03d_snd%02d.wav", v->snd->inst_idx, v->snd->sound_idx);
+                }
+                snprintf(rate_str, sizeof(rate_str), "%5uHz", v->snd->sample_rate);
+            }
+
+            sysLogPrintf(LOG_NOTE, "%02d | %s | %-3s | %-21s | %-8s | %7d | %3d | %5.2f | %s",
+                i, cat_name, src_name, file_str, rate_str,
+                (int)v->current_vol, v->raw_pan, v->current_pitch, status_str);
         }
     }
-    sysLogPrintf(LOG_NOTE, "================================================================================\n");
+    sysLogPrintf(LOG_NOTE, "==========================================================================================\n");
 }
 
 // -------------------------------------------------------------
-// SEQUENCE SYNTHESIZER MIXER (With Category Board & Linear Interpolation)
+// SEQUENCE SYNTHESIZER MIXER
 // -------------------------------------------------------------
 void extAudioMixMusic(s16 *mix_buffer, u32 num_frames, float crossfade_vol) {
-    u32 num_samples = num_frames * 2;
     memset(g_FxSendL, 0, num_frames * sizeof(float));
     memset(g_FxSendR, 0, num_frames * sizeof(float));
 
@@ -539,13 +731,18 @@ void extAudioMixMusic(s16 *mix_buffer, u32 num_frames, float crossfade_vol) {
         if (!g_MusicVoices[m].active) continue;
         
         struct MusicVoice *voice = &g_MusicVoices[m];
+
+        // Do not render PCM audio for native fallback voices (RSP handles them in n64_buf)
+        if (voice->is_native_fallback) {
+            continue;
+        }
+
         s16 *samples = (s16*)voice->snd->pcm_data;
         u32 total_frames = (voice->snd->pcm_size / 2) / voice->snd->channels;
         float cursor = voice->cursor;
         
         float base_step = (float)voice->snd->sample_rate / (float)voice->snd->original_sample_rate;
         
-        // Use raw_pan directly
         float pan_norm = (float)(voice->raw_pan & 0x7F) / 127.0f;
         float pan_l_scalar = cosf(pan_norm * 1.570796327f) * MUSIC_MASTER_BOOST * crossfade_vol;
         float pan_r_scalar = sinf(pan_norm * 1.570796327f) * MUSIC_MASTER_BOOST * crossfade_vol;
@@ -556,17 +753,20 @@ void extAudioMixMusic(s16 *mix_buffer, u32 num_frames, float crossfade_vol) {
             pan_r_scalar = 0.0f;
         }
 
-for (u32 i = 0; i < num_frames; i++) {
-            
-            // --- ENVELOPE RAMPING LOGIC (Volume only!) ---
+        for (u32 i = 0; i < num_frames; i++) {
+            // Volume ramping
             if (fabsf(voice->target_vol - voice->current_vol) > fabsf(voice->vol_step)) {
                 voice->current_vol += voice->vol_step;
             } else {
                 voice->current_vol = voice->target_vol;
+                if (voice->is_stopping && voice->current_vol <= 0.001f) {
+                    voice->active = 0;
+                    voice->is_stopping = 0;
+                    break;
+                }
             }
 
-            // Calculate dynamic step using the snapshotted render_pitch
-            float step = base_step * voice->render_pitch;
+            float step = base_step * voice->render_pitch * (22020.0f / 48000.0f);
             float final_vol_l = (voice->current_vol / 32767.0f) * pan_l_scalar;
             float final_vol_r = (voice->current_vol / 32767.0f) * pan_r_scalar;
 
@@ -612,7 +812,6 @@ for (u32 i = 0; i < num_frames; i++) {
                 }
             }
             
-            // Use fx_mix directly
             if (voice->fx_mix > 0.001f) {
                 g_FxSendL[i] += sample_l * final_vol_l * voice->fx_mix;
                 g_FxSendR[i] += sample_r * final_vol_r * voice->fx_mix;

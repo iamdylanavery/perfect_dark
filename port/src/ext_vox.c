@@ -26,7 +26,7 @@ int extAudioVoxKeepAlive(const char* name, int source) { return 0; }
 #define MAX_VOX_VOICES 4
 struct VoxVoice {
     void *n64_handle;
-    char name[64]; // Track active name to handle consecutive lines
+    char name[64]; 
     u32 sample_rate;
     u32 sample_count;
     s16 *samples;
@@ -39,7 +39,7 @@ struct VoxVoice {
     int active;
 };
 static struct VoxVoice g_VoxVoices[MAX_VOX_VOICES];
-static int g_VoxWatchdog = 0; // The frame watchdog
+static int g_VoxWatchdog = 0; 
 
 void extAudioVoxInit(void) {
     memset(g_VoxVoices, 0, sizeof(g_VoxVoices));
@@ -52,6 +52,7 @@ void extAudioVoxReset(void) {
         g_VoxVoices[i].active = 0;
         g_VoxVoices[i].samples = NULL;
         g_VoxVoices[i].name[0] = '\0';
+        g_VoxVoices[i].n64_handle = NULL;
     }
     g_VoxWatchdog = 0;
 }
@@ -98,54 +99,36 @@ int extAudioVoxStart(void *n64_handle, const char* name, int vol, int pan, float
         return 0; 
     }
 
-    // Parse WAV
-    u32 dataOffset = 0, dataSize = 0;
-    for (u32 k = 12; k < fileSize - 4; k++) {
-        if (memcmp(fileData + k, "data", 4) == 0) {
-            dataSize = fileData[k+4] | (fileData[k+5]<<8) | (fileData[k+6]<<16) | (fileData[k+7]<<24);
-            dataOffset = k + 8;
-            break;
-        }
-    }
+    // Decode 8/16/24/32-bit WAV into 16-bit PCM
+    u32 sample_rate = 22050;
+    u32 channels = 1;
+    u32 dataSize = 0;
 
-    if (dataOffset > 0 && dataSize > 0) {
-        u32 sample_rate = 22050; // Default
-        for (u32 k = 12; k < fileSize - 8; k++) {
-            if (memcmp(fileData + k, "fmt ", 4) == 0) {
-                u32 fmtOffset = k + 8;
-                sample_rate = fileData[fmtOffset + 4] | (fileData[fmtOffset + 5] << 8) | (fileData[fmtOffset + 6] << 16) | (fileData[fmtOffset + 7] << 24);
-                break;
-            }
-        }
-
-        s16 *pcmData = malloc(dataSize);
-        if (pcmData) {
-            memcpy(pcmData, fileData + dataOffset, dataSize);
-            free(fileData);
-
-            if (g_VoxVoices[slot].samples) free(g_VoxVoices[slot].samples);
-            
-            g_VoxVoices[slot].n64_handle = n64_handle;
-            strncpy(g_VoxVoices[slot].name, name, sizeof(g_VoxVoices[slot].name));
-            g_VoxVoices[slot].sample_rate = sample_rate;
-            g_VoxVoices[slot].sample_count = dataSize / 2;
-            g_VoxVoices[slot].samples = pcmData;
-            g_VoxVoices[slot].cursor = 0.0f;
-            g_VoxVoices[slot].pitch = (pitch > 0.0f) ? pitch : 1.0f;
-            g_VoxVoices[slot].raw_vol = (vol != -1) ? vol : 32767;
-            g_VoxVoices[slot].raw_pan = (pan != -1) ? pan : 64;
-            g_VoxVoices[slot].active = 1;
-
-            g_VoxWatchdog = 15; // Initial feed
-            extAudioVoxAdjust(n64_handle, vol, pan, pitch);
-	if (g_ExtLogVoxEnabled) {
-            sysLogPrintf(LOG_NOTE, "EXT-AUDIO-VOX: Playing EXTERNAL Dialogue -> [%s]", filepath);
-	}
-            return 1;
-        }
-    }
-
+    s16 *pcmData = extAudioLoadWavPcm16(fileData, fileSize, &sample_rate, &channels, &dataSize);
     free(fileData);
+
+    if (pcmData && dataSize > 0) {
+        if (g_VoxVoices[slot].samples) free(g_VoxVoices[slot].samples);
+        
+        g_VoxVoices[slot].n64_handle = n64_handle;
+        strncpy(g_VoxVoices[slot].name, name, sizeof(g_VoxVoices[slot].name));
+        g_VoxVoices[slot].sample_rate = sample_rate;
+        g_VoxVoices[slot].sample_count = dataSize / 2;
+        g_VoxVoices[slot].samples = pcmData;
+        g_VoxVoices[slot].cursor = 0.0f;
+        g_VoxVoices[slot].pitch = (pitch > 0.0f) ? pitch : 1.0f;
+        g_VoxVoices[slot].raw_vol = (vol != -1) ? vol : 32767;
+        g_VoxVoices[slot].raw_pan = (pan != -1) ? pan : 64;
+        g_VoxVoices[slot].active = 1;
+
+        g_VoxWatchdog = 15; // Initial feed
+        extAudioVoxAdjust(n64_handle, vol, pan, pitch);
+        if (g_ExtLogVoxEnabled) {
+            sysLogPrintf(LOG_NOTE, "EXT-AUDIO-VOX: Playing EXTERNAL Dialogue -> [%s]", filepath);
+        }
+        return 1;
+    }
+
     return 0;
 }
 
@@ -180,6 +163,7 @@ int extAudioVoxStop(void *n64_handle) {
                 g_VoxVoices[i].samples = NULL;
             }
             g_VoxVoices[i].name[0] = '\0';
+            g_VoxVoices[i].n64_handle = NULL;
             return 1;
         }
     }
@@ -204,7 +188,7 @@ void extAudioMixVox(s16 *mix_buffer, u32 num_frames, float crossfade_vol) {
         
         struct VoxVoice *voice = &g_VoxVoices[v];
         float cursor = voice->cursor;
-        float base_step = (float)voice->sample_rate / 22050.0f; 
+        float base_step = (float)voice->sample_rate / 48000.0f;
         float step = base_step * voice->pitch;
         
         for (u32 i = 0; i < num_frames; i++) {
@@ -213,13 +197,14 @@ void extAudioMixVox(s16 *mix_buffer, u32 num_frames, float crossfade_vol) {
                 free(voice->samples);
                 voice->samples = NULL;
                 voice->name[0] = '\0';
+                voice->n64_handle = NULL;
                 break;
             }
             
             s16 sample = voice->samples[(u32)cursor];
             cursor += step;
             
-	    float scale_factor = g_ExtVoxVolumeScale * master_sfx_vol * crossfade_vol;
+            float scale_factor = g_ExtVoxVolumeScale * master_sfx_vol * crossfade_vol;
 
             s32 mix_l = mix_buffer[i*2] + (s32)(sample * voice->vol_l * scale_factor);
             if (mix_l > 32767) mix_l = 32767;
