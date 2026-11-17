@@ -2,1998 +2,1998 @@
 #define SFX_STRINGS_H
 
 static const char* sfx_names[] = {
-    "SFX_0000",
-    "SFX_LAUNCH_ROCKET",
-    "SFX_EQUIP_HORIZONSCANNER",
-    "SFX_0003",
-    "SFX_0004",
-    "SFX_0005",
-    "SFX_0006",
-    "SFX_0007",
-    "SFX_0008",
-    "SFX_0009",
-    "SFX_000A",
-    "SFX_000B",
-    "SFX_000C",
-    "SFX_ARGH_FEMALE_000D",
-    "SFX_ARGH_FEMALE_000E",
-    "SFX_ARGH_FEMALE_000F",
-    "SFX_BOTTLE_BREAK",
-    "SFX_0011",
-    "SFX_0012",
-    "SFX_0013",
-    "SFX_0014",
-    "SFX_0015",
-    "SFX_0016",
-    "SFX_0017",
-    "SFX_0018",
-    "SFX_0019",
-    "SFX_001A",
-    "SFX_001B",
-    "SFX_001C",
-    "SFX_001D",
-    "SFX_001E",
-    "SFX_001F",
-    "SFX_0020",
-    "SFX_0021",
-    "SFX_0022",
-    "SFX_0023",
-    "SFX_0024",
-    "SFX_0025",
-    "SFX_0026",
-    "SFX_0027",
-    "SFX_0028",
-    "SFX_0029",
-    "SFX_002A",
-    "SFX_MENU_CANCEL",
-    "SFX_002C",
-    "SFX_002D",
-    "SFX_002E",
-    "SFX_002F",
-    "SFX_0030",
-    "SFX_0031",
-    "SFX_0032",
-    "SFX_0033",
-    "SFX_0034",
-    "SFX_0035",
-    "SFX_0036",
-    "SFX_0037",
-    "SFX_0038",
-    "SFX_0039",
-    "SFX_003A",
-    "SFX_003B",
-    "SFX_003C",
-    "SFX_003D",
-    "SFX_HUDMSG",
-    "SFX_003F",
-    "SFX_0040",
-    "SFX_0041",
-    "SFX_0042",
-    "SFX_0043",
-    "SFX_0044",
-    "SFX_0045",
-    "SFX_0046",
-    "SFX_0047",
-    "SFX_0048",
-    "SFX_0049",
-    "SFX_004A",
-    "SFX_004B",
-    "SFX_004C",
-    "SFX_004D",
-    "SFX_004E",
-    "SFX_004F",
-    "SFX_0050",
-    "SFX_0051",
-    "SFX_REGEN",
-    "SFX_0053",
-    "SFX_0054",
-    "SFX_0055",
-    "SFX_0056",
-    "SFX_0057",
-    "SFX_0058",
-    "SFX_0059",
-    "SFX_005A",
-    "SFX_CLOAK_ON",
-    "SFX_CLOAK_OFF",
-    "SFX_005D",
-    "SFX_005E",
-    "SFX_005F",
-    "SFX_0060",
-    "SFX_0061",
-    "SFX_0062",
-    "SFX_0063",
-    "SFX_SHIELD_DAMAGE",
-    "SFX_LASER_STREAM",
-    "SFX_0066",
-    "SFX_0067",
-    "SFX_0068",
-    "SFX_0069",
-    "SFX_006A",
-    "SFX_006B",
-    "SFX_006C",
-    "SFX_006D",
-    "SFX_006E",
-    "SFX_006F",
-    "SFX_0070",
-    "SFX_0071",
-    "SFX_0072",
-    "SFX_0073",
-    "SFX_0074",
-    "SFX_0075",
-    "SFX_0076",
-    "SFX_0077",
-    "SFX_0078",
-    "SFX_0079",
-    "SFX_007A",
-    "SFX_007B",
-    "SFX_007C",
-    "SFX_007D",
-    "SFX_007E",
-    "SFX_007F",
-    "SFX_0080",
-    "SFX_0081",
-    "SFX_0082",
-    "SFX_0083",
-    "SFX_0084",
-    "SFX_0085",
-    "SFX_ARGH_MALE_0086",
-    "SFX_ARGH_MALE_0087",
-    "SFX_ARGH_MALE_0088",
-    "SFX_ARGH_MALE_0089",
-    "SFX_ARGH_MALE_008A",
-    "SFX_ARGH_MALE_008B",
-    "SFX_ARGH_MALE_008C",
-    "SFX_ARGH_MALE_008D",
-    "SFX_ARGH_MALE_008E",
-    "SFX_ARGH_MALE_008F",
-    "SFX_ARGH_MALE_0090",
-    "SFX_ARGH_MALE_0091",
-    "SFX_ARGH_MALE_0092",
-    "SFX_ARGH_MALE_0093",
-    "SFX_ARGH_MALE_0094",
-    "SFX_ARGH_MALE_0095",
-    "SFX_ARGH_MALE_0096",
-    "SFX_ARGH_MALE_0097",
-    "SFX_ARGH_MALE_0098",
-    "SFX_ARGH_MALE_0099",
-    "SFX_ARGH_MALE_009A",
-    "SFX_ARGH_MALE_009B",
-    "SFX_ARGH_MALE_009C",
-    "SFX_ARGH_MALE_009D",
-    "SFX_ARGH_MALE_009E",
-    "SFX_009F",
-    "SFX_00A0",
-    "SFX_ALARM_AIRBASE",
-    "SFX_ALARM_2",
-    "SFX_ALARM_DEFAULT",
-    "SFX_00A4",
-    "SFX_00A5",
-    "SFX_00A6",
-    "SFX_00A7",
-    "SFX_00A8",
-    "SFX_00A9",
-    "SFX_00AA",
-    "SFX_00AB",
-    "SFX_00AC",
-    "SFX_00AD",
-    "SFX_00AE",
-    "SFX_00AF",
-    "SFX_00B0",
-    "SFX_00B1",
-    "SFX_00B2",
-    "SFX_00B3",
-    "SFX_00B4",
-    "SFX_00B5",
-    "SFX_00B6",
-    "SFX_00B7",
-    "SFX_00B8",
-    "SFX_00B9",
-    "SFX_PRESS_SWITCH",
-    "SFX_00BB",
-    "SFX_00BC",
-    "SFX_00BD",
-    "SFX_00BE",
-    "SFX_00BF",
-    "SFX_00C0",
-    "SFX_00C1",
-    "SFX_00C2",
-    "SFX_00C3",
-    "SFX_00C4",
-    "SFX_00C5",
-    "SFX_00C6",
-    "SFX_00C7",
-    "SFX_00C8",
-    "SFX_00C9",
-    "SFX_00CA",
-    "SFX_00CB",
-    "SFX_00CC",
-    "SFX_00CD",
-    "SFX_00CE",
-    "SFX_00CF",
-    "SFX_00D0",
-    "SFX_00D1",
-    "SFX_00D2",
-    "SFX_00D3",
-    "SFX_00D4",
-    "SFX_00D5",
-    "SFX_00D6",
-    "SFX_00D7",
-    "SFX_00D8",
-    "SFX_00D9",
-    "SFX_00DA",
-    "SFX_00DB",
-    "SFX_00DC",
-    "SFX_00DD",
-    "SFX_00DE",
-    "SFX_00DF",
-    "SFX_00E0",
-    "SFX_00E1",
-    "SFX_00E2",
-    "SFX_00E3",
-    "SFX_00E4",
-    "SFX_PICKUP_KEYCARD",
-    "SFX_00E6",
-    "SFX_00E7",
-    "SFX_PICKUP_GUN",
-    "SFX_PICKUP_KNIFE",
-    "SFX_PICKUP_AMMO",
-    "SFX_PICKUP_MINE",
-    "SFX_00EC",
-    "SFX_00ED",
-    "SFX_00EE",
-    "SFX_00EF",
-    "SFX_00F0",
-    "SFX_00F1",
-    "SFX_PICKUP_LASER",
-    "SFX_00F3",
-    "SFX_00F4",
-    "SFX_BIKE_TAKEOFF",
-    "SFX_00F6",
-    "SFX_00F7",
-    "SFX_00F8",
-    "SFX_00F9",
-    "SFX_00FA",
-    "SFX_00FB",
-    "SFX_00FC",
-    "SFX_00FD",
-    "SFX_00FE",
-    "SFX_00FF",
-    "SFX_0100",
-    "SFX_0101",
-    "SFX_0102",
-    "SFX_0103",
-    "SFX_0104",
-    "SFX_0105",
-    "SFX_0106",
-    "SFX_0107",
-    "SFX_0108",
-    "SFX_0109",
-    "SFX_010A",
-    "SFX_010B",
-    "SFX_010C",
-    "SFX_010D",
-    "SFX_010E",
-    "SFX_010F",
-    "SFX_0110",
-    "SFX_0111",
-    "SFX_0112",
-    "SFX_0113",
-    "SFX_0114",
-    "SFX_0115",
-    "SFX_0116",
-    "SFX_0117",
-    "SFX_0118",
-    "SFX_0119",
-    "SFX_011A",
-    "SFX_011B",
-    "SFX_011C",
-    "SFX_011D",
-    "SFX_011E",
-    "SFX_011F",
-    "SFX_0120",
-    "SFX_0121",
-    "SFX_0122",
-    "SFX_0123",
-    "SFX_0124",
-    "SFX_0125",
-    "SFX_0126",
-    "SFX_0127",
-    "SFX_0128",
-    "SFX_0129",
-    "SFX_012A",
-    "SFX_012B",
-    "SFX_012C",
-    "SFX_012D",
-    "SFX_012E",
-    "SFX_012F",
-    "SFX_0130",
-    "SFX_0131",
-    "SFX_0132",
-    "SFX_0133",
-    "SFX_0134",
-    "SFX_0135",
-    "SFX_0136",
-    "SFX_0137",
-    "SFX_0138",
-    "SFX_0139",
-    "SFX_013A",
-    "SFX_013B",
-    "SFX_013C",
-    "SFX_013D",
-    "SFX_013E",
-    "SFX_013F",
-    "SFX_0140",
-    "SFX_0141",
-    "SFX_0142",
-    "SFX_0143",
-    "SFX_0144",
-    "SFX_0145",
-    "SFX_0146",
-    "SFX_0147",
-    "SFX_0148",
-    "SFX_0149",
-    "SFX_014A",
-    "SFX_014B",
-    "SFX_014C",
-    "SFX_014D",
-    "SFX_014E",
-    "SFX_014F",
-    "SFX_0150",
-    "SFX_0151",
-    "SFX_0152",
-    "SFX_0153",
-    "SFX_0154",
-    "SFX_0155",
-    "SFX_0156",
-    "SFX_0157",
-    "SFX_0158",
-    "SFX_0159",
-    "SFX_015A",
-    "SFX_015B",
-    "SFX_015C",
-    "SFX_015D",
-    "SFX_015E",
-    "SFX_015F",
-    "SFX_0160",
-    "SFX_0161",
-    "SFX_0162",
-    "SFX_0163",
-    "SFX_0164",
-    "SFX_0165",
-    "SFX_0166",
-    "SFX_0167",
-    "SFX_0168",
-    "SFX_0169",
-    "SFX_016A",
-    "SFX_016B",
-    "SFX_016C",
-    "SFX_016D",
-    "SFX_016E",
-    "SFX_016F",
-    "SFX_0170",
-    "SFX_0171",
-    "SFX_0172",
-    "SFX_0173",
-    "SFX_0174",
-    "SFX_0175",
-    "SFX_0176",
-    "SFX_0177",
-    "SFX_0178",
-    "SFX_0179",
-    "SFX_017A",
-    "SFX_017B",
-    "SFX_017C",
-    "SFX_017D",
-    "SFX_017E",
-    "SFX_017F",
-    "SFX_0180",
-    "SFX_0181",
-    "SFX_0182",
-    "SFX_0183",
-    "SFX_0184",
-    "SFX_0185",
-    "SFX_0186",
-    "SFX_0187",
-    "SFX_0188",
-    "SFX_0189",
-    "SFX_018A",
-    "SFX_018B",
-    "SFX_018C",
-    "SFX_018D",
-    "SFX_018E",
-    "SFX_018F",
-    "SFX_0190",
-    "SFX_0191",
-    "SFX_0192",
-    "SFX_0193",
-    "SFX_0194",
-    "SFX_0195",
-    "SFX_0196",
-    "SFX_0197",
-    "SFX_0198",
-    "SFX_0199",
-    "SFX_019A",
-    "SFX_019B",
-    "SFX_019C",
-    "SFX_019D",
-    "SFX_019E",
-    "SFX_019F",
-    "SFX_01A0",
-    "SFX_01A1",
-    "SFX_01A2",
-    "SFX_01A3",
-    "SFX_01A4",
-    "SFX_01A5",
-    "SFX_01A6",
-    "SFX_01A7",
-    "SFX_01A8",
-    "SFX_01A9",
-    "SFX_01AA",
-    "SFX_01AB",
-    "SFX_01AC",
-    "SFX_01AD",
-    "SFX_01AE",
-    "SFX_01AF",
-    "SFX_01B0",
-    "SFX_01B1",
-    "SFX_01B2",
-    "SFX_01B3",
-    "SFX_BIKE_ENGINE",
-    "SFX_01B5",
-    "SFX_01B6",
-    "SFX_01B7",
-    "SFX_01B8",
-    "SFX_01B9",
-    "SFX_01BA",
-    "SFX_01BB",
-    "SFX_01BC",
-    "SFX_EYESPY_RUNNING",
-    "SFX_01BE",
-    "SFX_01BF",
-    "SFX_01C0",
-    "SFX_01C1",
-    "SFX_01C2",
-    "SFX_01C3",
-    "SFX_01C4",
-    "SFX_01C5",
-    "SFX_01C6",
-    "SFX_01C7",
-    "SFX_SLAYER_BEEP",
-    "SFX_01C9",
-    "SFX_01CA",
-    "SFX_01CB",
-    "SFX_01CC",
-    "SFX_PICKUP_SHIELD",
-    "SFX_01CE",
-    "SFX_01CF",
-    "SFX_01D0",
-    "SFX_01D1",
-    "SFX_01D2",
-    "SFX_01D3",
-    "SFX_01D4",
-    "SFX_01D5",
-    "SFX_01D6",
-    "SFX_01D7",
-    "SFX_01D8",
-    "SFX_01D9",
-    "SFX_01DA",
-    "SFX_01DB",
-    "SFX_01DC",
-    "SFX_01DD",
-    "SFX_01DE",
-    "SFX_01DF",
-    "SFX_01E0",
-    "SFX_01E1",
-    "SFX_01E2",
-    "SFX_01E3",
-    "SFX_01E4",
-    "SFX_01E5",
-    "SFX_01E6",
-    "SFX_01E7",
-    "SFX_01E8",
-    "SFX_01E9",
-    "SFX_01EA",
-    "SFX_01EB",
-    "SFX_01EC",
-    "SFX_01ED",
-    "SFX_01EE",
-    "SFX_01EF",
-    "SFX_01F0",
-    "SFX_01F1",
-    "SFX_01F2",
-    "SFX_01F3",
-    "SFX_01F4",
-    "SFX_01F5",
-    "SFX_01F6",
-    "SFX_01F7",
-    "SFX_01F8",
-    "SFX_01F9",
-    "SFX_01FA",
-    "SFX_01FB",
-    "SFX_01FC",
-    "SFX_01FD",
-    "SFX_01FE",
-    "SFX_01FF",
-    "SFX_0200",
-    "SFX_0201",
-    "SFX_0202",
-    "SFX_0203",
-    "SFX_0204",
-    "SFX_0205",
-    "SFX_0206",
-    "SFX_0207",
-    "SFX_0208",
-    "SFX_0209",
-    "SFX_020A",
-    "SFX_020B",
-    "SFX_020C",
-    "SFX_020D",
-    "SFX_020E",
-    "SFX_020F",
-    "SFX_0210",
-    "SFX_0211",
-    "SFX_0212",
-    "SFX_0213",
-    "SFX_0214",
-    "SFX_0215",
-    "SFX_0216",
-    "SFX_0217",
-    "SFX_0218",
-    "SFX_0219",
-    "SFX_021A",
-    "SFX_021B",
-    "SFX_021C",
-    "SFX_021D",
-    "SFX_021E",
-    "SFX_021F",
-    "SFX_0220",
-    "SFX_0221",
-    "SFX_0222",
-    "SFX_0223",
-    "SFX_0224",
-    "SFX_0225",
-    "SFX_0226",
-    "SFX_0227",
-    "SFX_0228",
-    "SFX_0229",
-    "SFX_022A",
-    "SFX_022B",
-    "SFX_022C",
-    "SFX_022D",
-    "SFX_022E",
-    "SFX_022F",
-    "SFX_0230",
-    "SFX_0231",
-    "SFX_0232",
-    "SFX_0233",
-    "SFX_0234",
-    "SFX_0235",
-    "SFX_0236",
-    "SFX_0237",
-    "SFX_0238",
-    "SFX_0239",
-    "SFX_023A",
-    "SFX_023B",
-    "SFX_023C",
-    "SFX_DRCAROLL_COME_ON",
-    "SFX_DRCAROLL_TAKING_YOUR_TIME",
-    "SFX_DRCAROLL_WHAT",
-    "SFX_ARGH_DRCAROLL_0240",
-    "SFX_0241",
-    "SFX_0242",
-    "SFX_DRCAROLL_OH_CRIKEY",
-    "SFX_DRCAROLL_GOODNESS_GRACIOUS",
-    "SFX_DRCAROLL_DONT_THEY_KNOW",
-    "SFX_DRCAROLL_STOP_THAT",
-    "SFX_DRCAROLL_GET_OUT_OF_HERE",
-    "SFX_DRCAROLL_KNOW_WHAT_YOURE_DOING",
-    "SFX_DRCAROLL_0249",
-    "SFX_024A",
-    "SFX_DRCAROLL_GOING_TO_THE_HELIPAD",
-    "SFX_ARGH_DRCAROLL_024C",
-    "SFX_DRCAROLL_SYSTEMS_FAILURE",
-    "SFX_DRCAROLL_YOU_GO_ON",
-    "SFX_DRCAROLL_I_CANT_MAKE_IT",
-    "SFX_ARGH_DRCAROLL_0250",
-    "SFX_ARGH_DRCAROLL_0251",
-    "SFX_DRCAROLL_QUITE_ENOUGH",
-    "SFX_0253",
-    "SFX_0254",
-    "SFX_0255",
-    "SFX_DRCAROLL_IM_DYING",
-    "SFX_DRCAROLL_GOODBYE",
-    "SFX_DRCAROLL_YOU_WERE_SUPPOSED",
-    "SFX_ARGH_DRCAROLL_0259",
-    "SFX_ARGH_DRCAROLL_025A",
-    "SFX_M0_WHAT_THE",
-    "SFX_M0_WHO_THE",
-    "SFX_025D",
-    "SFX_M0_MEDIC",
-    "SFX_M0_OW",
-    "SFX_M0_YOU_SHOT_ME",
-    "SFX_M0_IM_HIT",
-    "SFX_M0_IM_TAKING_FIRE",
-    "SFX_M0_TAKING_DAMAGE",
-    "SFX_M0_HEY_YOU",
-    "SFX_M0_INTRUDER_ALERT",
-    "SFX_M0_GOT_A_CONTACT",
-    "SFX_0267",
-    "SFX_0268",
-    "SFX_0269",
-    "SFX_026A",
-    "SFX_M0_HEAR_THAT",
-    "SFX_M0_WHATS_THAT_NOISE",
-    "SFX_M0_HEARD_A_NOISE",
-    "SFX_M0_ARE_YOU_OKAY",
-    "SFX_M0_GOT_A_MAN_DOWN",
-    "SFX_M0_HES_BOUGHT_IT",
-    "SFX_0271",
-    "SFX_M0_INTRUDER_ALERT2",
-    "SFX_M0_WEVE_GOT_TROUBLE",
-    "SFX_M0_WEVE_GOT_PROBLEMS",
-    "SFX_M0_I_SEE_HER",
-    "SFX_0276",
-    "SFX_M0_THERE_SHE_IS",
-    "SFX_M0_THERE_MOVEMENT",
-    "SFX_0279",
-    "SFX_027A",
-    "SFX_M0_CLEAR_SHOT",
-    "SFX_M0_SHES_MINE",
-    "SFX_M0_OPEN_FIRE",
-    "SFX_M0_WIPE_HER_OUT",
-    "SFX_M0_WASTE_HER",
-    "SFX_M0_GIVE_IT_UP",
-    "SFX_M0_SURRENDER_NOW",
-    "SFX_M0_TAKE_THAT",
-    "SFX_0283",
-    "SFX_0284",
-    "SFX_0285",
-    "SFX_0286",
-    "SFX_M0_HOW_DID_I_MISS",
-    "SFX_0288",
-    "SFX_M0_SHES_A_TRICKY_ONE",
-    "SFX_M0_COVER_ME",
-    "SFX_M0_WATCH_MY_BACK",
-    "SFX_M0_TAKE_COVER",
-    "SFX_M0_TAKE_COVER_028D",
-    "SFX_M0_ILL_COVER_YOU",
-    "SFX_M0_GET_DOWN",
-    "SFX_M0_GO_TO_PLAN_B",
-    "SFX_0291",
-    "SFX_M0_RETREAT",
-    "SFX_M0_CATCH",
-    "SFX_M0_EVERYBODY_DOWN",
-    "SFX_0295",
-    "SFX_0296",
-    "SFX_M0_FALL_BACK",
-    "SFX_M0_EVERYONE_BACK_OFF",
-    "SFX_M0_WITHDRAW",
-    "SFX_M0_FLANK_THE_TARGET",
-    "SFX_M0_LETS_SPLIT_UP",
-    "SFX_M0_SURROUND_HER",
-    "SFX_M0_GRENADE",
-    "SFX_029E",
-    "SFX_029F",
-    "SFX_02A0",
-    "SFX_02A1",
-    "SFX_M0_SHE_GOT_ME",
-    "SFX_M0_GRAB_A_BODY_BAG",
-    "SFX_M0_ONE_FOR_THE_MORGUE",
-    "SFX_M0_REST_IN_PEACE",
-    "SFX_02A6",
-    "SFX_M0_DONT_SHOOT_ME",
-    "SFX_M0_I_GIVE_UP",
-    "SFX_M0_YOU_WIN_I_SURRENDER",
-    "SFX_ARGH_JO_02AA",
-    "SFX_ARGH_JO_02AB",
-    "SFX_ARGH_JO_02AC",
-    "SFX_ARGH_JO_02AD",
-    "SFX_ARGH_JO_02AE",
-    "SFX_ARGH_JO_02AF",
-    "SFX_ARGH_JO_02B0",
-    "SFX_ARGH_JO_02B1",
-    "SFX_ARGH_JO_02B2",
-    "SFX_ARGH_JO_02B3",
-    "SFX_02B4",
-    "SFX_02B5",
-    "SFX_02B6",
-    "SFX_02B7",
-    "SFX_02B8",
-    "SFX_02B9",
-    "SFX_02BA",
-    "SFX_02BB",
-    "SFX_02BC",
-    "SFX_02BD",
-    "SFX_02BE",
-    "SFX_02BF",
-    "SFX_02C0",
-    "SFX_02C1",
-    "SFX_02C2",
-    "SFX_02C3",
-    "SFX_02C4",
-    "SFX_02C5",
-    "SFX_02C6",
-    "SFX_02C7",
-    "SFX_02C8",
-    "SFX_02C9",
-    "SFX_02CA",
-    "SFX_02CB",
-    "SFX_02CC",
-    "SFX_02CD",
-    "SFX_02CE",
-    "SFX_02CF",
-    "SFX_02D0",
-    "SFX_02D1",
-    "SFX_02D2",
-    "SFX_02D3",
-    "SFX_02D4",
-    "SFX_02D5",
-    "SFX_02D6",
-    "SFX_02D7",
-    "SFX_02D8",
-    "SFX_02D9",
-    "SFX_02DA",
-    "SFX_02DB",
-    "SFX_02DC",
-    "SFX_02DD",
-    "SFX_02DE",
-    "SFX_02DF",
-    "SFX_02E0",
-    "SFX_02E1",
-    "SFX_02E2",
-    "SFX_02E3",
-    "SFX_02E4",
-    "SFX_02E5",
-    "SFX_02E6",
-    "SFX_02E7",
-    "SFX_02E8",
-    "SFX_02E9",
-    "SFX_02EA",
-    "SFX_02EB",
-    "SFX_02EC",
-    "SFX_02ED",
-    "SFX_02EE",
-    "SFX_02EF",
-    "SFX_02F0",
-    "SFX_02F1",
-    "SFX_02F2",
-    "SFX_02F3",
-    "SFX_02F4",
-    "SFX_02F5",
-    "SFX_02F6",
-    "SFX_02F7",
-    "SFX_02F8",
-    "SFX_02F9",
-    "SFX_02FA",
-    "SFX_02FB",
-    "SFX_02FC",
-    "SFX_02FD",
-    "SFX_02FE",
-    "SFX_M1_WHA",
-    "SFX_0300",
-    "SFX_M1_IM_HIT_IM_HIT",
-    "SFX_M1_IM_BLEEDING",
-    "SFX_0303",
-    "SFX_M1_HELP_ME_OUT",
-    "SFX_M1_IM_IN_TROUBLE",
-    "SFX_M1_COME_HERE",
-    "SFX_M1_THERES_SOMEONE_HERE",
-    "SFX_M1_GET_HER",
-    "SFX_M1_WHOA",
-    "SFX_030A",
-    "SFX_M1_IS_THAT_A_BULLET",
-    "SFX_030C",
-    "SFX_030D",
-    "SFX_M1_THAT_SOUNDED_LIKE",
-    "SFX_M1_GUNFIRE",
-    "SFX_M1_SOMEONES_SHOOTING",
-    "SFX_0311",
-    "SFX_0312",
-    "SFX_0313",
-    "SFX_0314",
-    "SFX_0315",
-    "SFX_M1_HES_GONE",
-    "SFX_0317",
-    "SFX_0318",
-    "SFX_0319",
-    "SFX_031A",
-    "SFX_031B",
-    "SFX_M1_M2_LOOK_OUT_SHES_COMING",
-    "SFX_M1_M2_TAKE_COVER",
-    "SFX_M1_M2_LOOK_OUT_LOOK_OUT",
-    "SFX_M1_OVER_THERE",
-    "SFX_M1_HALT",
-    "SFX_M1_FREEZE",
-    "SFX_M1_LAST_MISTAKE",
-    "SFX_M1_WHAT_ARE_YOU_WAITING_FOR",
-    "SFX_M1_BRING_IT_ON",
-    "SFX_M1_TAKE_HER_DOWN",
-    "SFX_M1_EVERYBODY_GET_HER",
-    "SFX_M1_ATTACK",
-    "SFX_0328",
-    "SFX_M1_YEAH_BABY",
-    "SFX_032A",
-    "SFX_032B",
-    "SFX_032C",
-    "SFX_032D",
-    "SFX_032E",
-    "SFX_M1_MY_GUN_ITS_USELESS",
-    "SFX_0330",
-    "SFX_M1_STOP_DODGING",
-    "SFX_M1_SOMEONE_HIT_HER",
-    "SFX_0333",
-    "SFX_0334",
-    "SFX_M1_COVER_ME_NOW",
-    "SFX_M1_IM_GOING_FOR_COVER",
-    "SFX_M1_GO_FOR_IT",
-    "SFX_M1_GO_GO_GO",
-    "SFX_M1_RUN",
-    "SFX_M1_SHES_TOO_GOOD_RUN",
-    "SFX_M1_GET_SOME_BACKUP",
-    "SFX_M1_EVACUATE_THE_AREA",
-    "SFX_M1_CATCH_THIS",
-    "SFX_033E",
-    "SFX_M1_HERE_KEEP_IT",
-    "SFX_0340",
-    "SFX_0341",
-    "SFX_M1_GRENADE",
-    "SFX_M1_WITHDRAW",
-    "SFX_M1_FALL_BACK",
-    "SFX_M1_EVERYONE_GET_BACK",
-    "SFX_M1_SURROUND_HER",
-    "SFX_M1_SPREAD_OUT",
-    "SFX_M1_SPLIT_UP",
-    "SFX_M1_PLEASE_DONT",
-    "SFX_M1_DONT_SHOOT",
-    "SFX_M1_IM_ONLY_DOING_MY_JOB",
-    "SFX_034C",
-    "SFX_M1_WHY_ME",
-    "SFX_M1_CHOKING",
-    "SFX_034F",
-    "SFX_0350",
-    "SFX_0351",
-    "SFX_0352",
-    "SFX_0353",
-    "SFX_0354",
-    "SFX_M1_OUTSTANDING",
-    "SFX_M1_IM_JUST_TOO_GOOD",
-    "SFX_M1_YEEHAH_GOT_ONE",
-    "SFX_0358",
-    "SFX_0359",
-    "SFX_M1_ANOTHER_ONE_BITES_THE_DUST",
-    "SFX_M0_M1_LOOK_OUT_LOOK_OUT",
-    "SFX_M0_M1_ITS_A_GRENADE",
-    "SFX_M0_M1_CLEAR_THE_AREA",
-    "SFX_035E",
-    "SFX_035F",
-    "SFX_0360",
-    "SFX_0361",
-    "SFX_0362",
-    "SFX_0363",
-    "SFX_0364",
-    "SFX_0365",
-    "SFX_0366",
-    "SFX_0367",
-    "SFX_0368",
-    "SFX_0369",
-    "SFX_036A",
-    "SFX_036B",
-    "SFX_036C",
-    "SFX_036D",
-    "SFX_036E",
-    "SFX_036F",
-    "SFX_0370",
-    "SFX_0371",
-    "SFX_0372",
-    "SFX_0373",
-    "SFX_0374",
-    "SFX_0375",
-    "SFX_0376",
-    "SFX_0377",
-    "SFX_0378",
-    "SFX_0379",
-    "SFX_037A",
-    "SFX_F_HEY",
-    "SFX_F_HUH",
-    "SFX_037D",
-    "SFX_F_IM_WOUNDED",
-    "SFX_F_HELP_ME_OUT",
-    "SFX_F_IM_IN_TROUBLE",
-    "SFX_F_GET_HER",
-    "SFX_F_HEY_YOU_COME_HERE",
-    "SFX_0383",
-    "SFX_F_TARGET_ATTACKING",
-    "SFX_F_UNDER_FIRE",
-    "SFX_0386",
-    "SFX_F_WERE_UNDER_FIRE",
-    "SFX_0388",
-    "SFX_F_0389",
-    "SFX_F_SOMEONES_SHOOTING",
-    "SFX_038B",
-    "SFX_038C",
-    "SFX_F_UNIT_DOWN",
-    "SFX_038E",
-    "SFX_038F",
-    "SFX_0390",
-    "SFX_0391",
-    "SFX_0392",
-    "SFX_0393",
-    "SFX_0394",
-    "SFX_0395",
-    "SFX_F_COME_ON",
-    "SFX_0397",
-    "SFX_F_EVERYONE_GET_HER",
-    "SFX_F_ATTACK",
-    "SFX_F_DID_THAT_HURT",
-    "SFX_F_YOU_WANT_SOME_MORE",
-    "SFX_039C",
-    "SFX_039D",
-    "SFX_039E",
-    "SFX_F_THIS_GUNS_USELESS",
-    "SFX_03A0",
-    "SFX_F_STAND_STILL",
-    "SFX_F_SOMEONE_HIT_HER",
-    "SFX_03A3",
-    "SFX_F_COVER_ME",
-    "SFX_03A5",
-    "SFX_F_TAKE_COVER",
-    "SFX_F_GO_FOR_IT",
-    "SFX_03A8",
-    "SFX_F_RUN",
-    "SFX_F_GET_REINFORCEMENTS",
-    "SFX_F_EVACUATE_THE_AREA",
-    "SFX_F_RETREAT",
-    "SFX_F_CATCH_THIS",
-    "SFX_F_TIME_TO_DIE",
-    "SFX_03AF",
-    "SFX_F_WITHDRAW",
-    "SFX_F_FALL_BACK",
-    "SFX_03B2",
-    "SFX_F_SPREAD_OUT",
-    "SFX_F_SPLIT_UP",
-    "SFX_F_PLEASE_DONT",
-    "SFX_F_DONT_SHOOT",
-    "SFX_F_WHY_ME",
-    "SFX_F_NOO",
-    "SFX_03B9",
-    "SFX_03BA",
-    "SFX_03BB",
-    "SFX_F_GET_A_CLEANER",
-    "SFX_03BD",
-    "SFX_F_IM_JUST_TOO_GOOD",
-    "SFX_03BF",
-    "SFX_F_SUCH_A_WASTE",
-    "SFX_F_LOOK_OUT",
-    "SFX_F_ITS_A_GRENADE",
-    "SFX_03C3",
-    "SFX_M2_HOW_THE",
-    "SFX_M2_HEY",
-    "SFX_M2_STOP",
-    "SFX_03C7",
-    "SFX_M2_WHY_YOU",
-    "SFX_03C9",
-    "SFX_03CA",
-    "SFX_03CB",
-    "SFX_03CC",
-    "SFX_M2_IM_INJURED",
-    "SFX_M2_IM_HIT_IM_HIT",
-    "SFX_03CF",
-    "SFX_M2_TARGET_SIGHTED",
-    "SFX_M2_COME_ON_MAN",
-    "SFX_03D2",
-    "SFX_M2_THAT_WAS_CLOSE",
-    "SFX_03D4",
-    "SFX_M2_AY_CARAMBA",
-    "SFX_M2_LISTEN_GUNSHOTS",
-    "SFX_M2_SOMEONES_NEARBY",
-    "SFX_03D8",
-    "SFX_M2_BODY_COUNTS_TOO_HIGH",
-    "SFX_M2_I_NEVER_LIKED_HIM_ANYWAY",
-    "SFX_M2_THAT_WAS_MY_BEST_FRIEND",
-    "SFX_03DC",
-    "SFX_03DD",
-    "SFX_03DE",
-    "SFX_03DF",
-    "SFX_03E0",
-    "SFX_M2_WATCH_OUT",
-    "SFX_M2_HELP_ME_OUT",
-    "SFX_M2_WEVE_GOT_AN_INTRUDER",
-    "SFX_M2_GET_HER",
-    "SFX_M2_THERE_ATTACK",
-    "SFX_M2_HEY_YOU_STOP",
-    "SFX_M2_COME_ON_MAN2",
-    "SFX_M2_DIE",
-    "SFX_M2_TAKE_THIS",
-    "SFX_M2_MOVE_IN",
-    "SFX_M2_YOURE_OUT_OF_YOUR_LEAGUE",
-    "SFX_M2_LET_HER_HAVE_IT",
-    "SFX_M2_SURRENDER_OR_DIE",
-    "SFX_M2_I_HAVE_YOU_NOW",
-    "SFX_M2_YOU_WANT_BEAT_ME",
-    "SFX_03F0",
-    "SFX_03F1",
-    "SFX_03F2",
-    "SFX_03F3",
-    "SFX_M2_I_DONT_BELIEVE_IT",
-    "SFX_03F5",
-    "SFX_03F6",
-    "SFX_M2_STOP_MOVING",
-    "SFX_M2_NO_ESCAPE_FOR_YOU",
-    "SFX_M2_HELP_ME_OUT_HERE",
-    "SFX_M2_HEY_DISTRACT_HER",
-    "SFX_M2_KEEP_HER_OCCUPIED",
-    "SFX_M2_MOVE_IT_MOVE_IT",
-    "SFX_M2_GET_TO_COVER_NOW",
-    "SFX_M2_RUN_FOR_IT",
-    "SFX_M2_RETREAT",
-    "SFX_0400",
-    "SFX_M2_GET_BACK_GET_BACK",
-    "SFX_0402",
-    "SFX_M2_FIRE_IN_THE_HOLE",
-    "SFX_0404",
-    "SFX_M2_HERES_A_LITTLE_PRESENT_FOR_YA",
-    "SFX_0406",
-    "SFX_M2_TRY_THIS_FOR_SIZE",
-    "SFX_M2_GET_OUT_OF_THE_WAY",
-    "SFX_M2_FALL_BACK",
-    "SFX_M2_MOVE_OUT",
-    "SFX_M2_TEAM_UP_GUYS",
-    "SFX_M2_COME_ON_AROUND_THE_SIDE",
-    "SFX_M2_SCATTER",
-    "SFX_M2_I_DONT_LIKE_THIS_ANY_MORE",
-    "SFX_M2_DONT_HURT_ME",
-    "SFX_M2_YOU_WIN_I_GIVE_UP",
-    "SFX_0411",
-    "SFX_0412",
-    "SFX_0413",
-    "SFX_0414",
-    "SFX_M2_I_DONT_WANT_TO_DIE",
-    "SFX_0416",
-    "SFX_M2_ITS_ALL_OVER_FOR_THIS_ONE",
-    "SFX_0418",
-    "SFX_0419",
-    "SFX_041A",
-    "SFX_M2_IM_THE_MAN",
-    "SFX_M2_BOY_THAT_WAS_CLOSE",
-    "SFX_M2_DID_YOU_SEE_THAT",
-    "SFX_041E",
-    "SFX_041F",
-    "SFX_M2_GET_BACK_QUICK",
-    "SFX_M2_WERE_GONNA_DIE",
-    "SFX_0422",
-    "SFX_0423",
-    "SFX_0424",
-    "SFX_0425",
-    "SFX_0426",
-    "SFX_0427",
-    "SFX_0428",
-    "SFX_0429",
-    "SFX_042A",
-    "SFX_DOOR_042B",
-    "SFX_DOOR_042C",
-    "SFX_042D",
-    "SFX_DISGUISE_ON",
-    "SFX_042F",
-    "SFX_0430",
-    "SFX_0431",
-    "SFX_0432",
-    "SFX_RELOAD_FARSIGHT",
-    "SFX_0434",
-    "SFX_0435",
-    "SFX_0436",
-    "SFX_0437",
-    "SFX_0438",
-    "SFX_0439",
-    "SFX_043A",
-    "SFX_043B",
-    "SFX_043C",
-    "SFX_043D",
-    "SFX_MENU_SUBFOCUS",
-    "SFX_043F",
-    "SFX_0440",
-    "SFX_MENU_FOCUS",
-    "SFX_0442",
-    "SFX_0443",
-    "SFX_CIV_THERES_A_MANIAC",
-    "SFX_0445",
-    "SFX_CIV_GREETINGS_CITIZEN",
-    "SFX_CIV_HOWS_IT_GOING",
-    "SFX_CIV_GUNS_DONT_SCARE_ME",
-    "SFX_CIV_KEEP_AWAY_FROM_THIS_CAR",
-    "SFX_044A",
-    "SFX_FBI_WE_HAVE_AN_INTRUDER",
-    "SFX_044C",
-    "SFX_044D",
-    "SFX_044E",
-    "SFX_044F",
-    "SFX_0450",
-    "SFX_0451",
-    "SFX_0452",
-    "SFX_0453",
-    "SFX_0454",
-    "SFX_0455",
-    "SFX_0456",
-    "SFX_0457",
-    "SFX_0458",
-    "SFX_FBI_CODE_2_SITUATION",
-    "SFX_FBI_REQUEST_BACKUP_IMMEDIATELY",
-    "SFX_045B",
-    "SFX_045C",
-    "SFX_CIV_TAKE_IT_EASY",
-    "SFX_CIV_I_DONT_WANT_ANY_TROUBLE",
-    "SFX_CIV_QUICK_DOWN_THERE",
-    "SFX_0460",
-    "SFX_CIV_HEY_SUGAR_WANNA_PARTY",
-    "SFX_0462",
-    "SFX_CIV_TAKE_THE_WALLET",
-    "SFX_0464",
-    "SFX_CIV_HEY_BABY",
-    "SFX_CIV_WHISTLE",
-    "SFX_0467",
-    "SFX_CIV_GET_ME_OUT_OF_HERE",
-    "SFX_0469",
-    "SFX_046A",
-    "SFX_046B",
-    "SFX_046C",
-    "SFX_046D",
-    "SFX_046E",
-    "SFX_JO_LANDING_046F",
-    "SFX_0470",
-    "SFX_0471",
-    "SFX_0472",
-    "SFX_0473",
-    "SFX_0474",
-    "SFX_0475",
-    "SFX_0476",
-    "SFX_0477",
-    "SFX_0478",
-    "SFX_0479",
-    "SFX_047A",
-    "SFX_047B",
-    "SFX_047C",
-    "SFX_047D",
-    "SFX_047E",
-    "SFX_047F",
-    "SFX_0480",
-    "SFX_0481",
-    "SFX_0482",
-    "SFX_0483",
-    "SFX_0484",
-    "SFX_0485",
-    "SFX_0486",
-    "SFX_0487",
-    "SFX_0488",
-    "SFX_0489",
-    "SFX_048A",
-    "SFX_048B",
-    "SFX_048C",
-    "SFX_048D",
-    "SFX_048E",
-    "SFX_048F",
-    "SFX_0490",
-    "SFX_0491",
-    "SFX_0492",
-    "SFX_0493",
-    "SFX_0494",
-    "SFX_0495",
-    "SFX_0496",
-    "SFX_0497",
-    "SFX_0498",
-    "SFX_0499",
-    "SFX_049A",
-    "SFX_049B",
-    "SFX_049C",
-    "SFX_049D",
-    "SFX_049E",
-    "SFX_049F",
-    "SFX_04A0",
-    "SFX_04A1",
-    "SFX_04A2",
-    "SFX_04A3",
-    "SFX_04A4",
-    "SFX_04A5",
-    "SFX_04A6",
-    "SFX_04A7",
-    "SFX_04A8",
-    "SFX_04A9",
-    "SFX_04AA",
-    "SFX_04AB",
-    "SFX_ALARM_INFILTRATION",
-    "SFX_04AD",
-    "SFX_04AE",
-    "SFX_04AF",
-    "SFX_04B0",
-    "SFX_04B1",
-    "SFX_04B2",
-    "SFX_04B3",
-    "SFX_04B4",
-    "SFX_04B5",
-    "SFX_04B6",
-    "SFX_04B7",
-    "SFX_04B8",
-    "SFX_04B9",
-    "SFX_04BA",
-    "SFX_04BB",
-    "SFX_04BC",
-    "SFX_04BD",
-    "SFX_04BE",
-    "SFX_04BF",
-    "SFX_04C0",
-    "SFX_04C1",
-    "SFX_04C2",
-    "SFX_04C3",
-    "SFX_04C4",
-    "SFX_04C5",
-    "SFX_M0_MY_GUN",
-    "SFX_M0_TRIGGER_THE_ALARM",
-    "SFX_04C8",
-    "SFX_M0_HELLO_THERE",
-    "SFX_M0_WHATS_THIS",
-    "SFX_M0_IM_SURE_I_HEARD_A_NOISE",
-    "SFX_M0_HEARING_THINGS",
-    "SFX_04CD",
-    "SFX_M1_WARN_THE_OTHERS",
-    "SFX_M1_WHAT_IS_IT",
-    "SFX_M1_HOW_DID_THAT_GET_HERE",
-    "SFX_M1_DONT_TOUCH_IT",
-    "SFX_M1_I_CANT_SEE_ANYBODY",
-    "SFX_M1_THERES_NO_ONE_HERE",
-    "SFX_M2_ACTIVATE_THE_ALARM",
-    "SFX_M2_IS_IT_DANGEROUS",
-    "SFX_M2_DONT_MOVE",
-    "SFX_M2_STAY_BACK",
-    "SFX_M2_I_BET_THIS_IS_ANOTHER_DRILL",
-    "SFX_M2_ANOTHER_FALSE_ALARM",
-    "SFX_04DA",
-    "SFX_04DB",
-    "SFX_04DC",
-    "SFX_04DD",
-    "SFX_04DE",
-    "SFX_04DF",
-    "SFX_04E0",
-    "SFX_04E1",
-    "SFX_04E2",
-    "SFX_04E3",
-    "SFX_04E4",
-    "SFX_04E5",
-    "SFX_04E6",
-    "SFX_04E7",
-    "SFX_04E8",
-    "SFX_04E9",
-    "SFX_04EA",
-    "SFX_04EB",
-    "SFX_04EC",
-    "SFX_04ED",
-    "SFX_04EE",
-    "SFX_04EF",
-    "SFX_04F0",
-    "SFX_04F1",
-    "SFX_04F2",
-    "SFX_04F3",
-    "SFX_04F4",
-    "SFX_04F5",
-    "SFX_04F6",
-    "SFX_04F7",
-    "SFX_04F8",
-    "SFX_04F9",
-    "SFX_04FA",
-    "SFX_RELOAD_04FB",
-    "SFX_04FC",
-    "SFX_04FD",
-    "SFX_04FE",
-    "SFX_CAMSPY_SHUTTER",
-    "SFX_0500",
-    "SFX_0501",
-    "SFX_0502",
-    "SFX_0503",
-    "SFX_0504",
-    "SFX_0505",
-    "SFX_0506",
-    "SFX_0507",
-    "SFX_0508",
-    "SFX_0509",
-    "SFX_050A",
-    "SFX_050B",
-    "SFX_050C",
-    "SFX_050D",
-    "SFX_050E",
-    "SFX_050F",
-    "SFX_0510",
-    "SFX_0511",
-    "SFX_0512",
-    "SFX_0513",
-    "SFX_0514",
-    "SFX_SECURE_THE_PERIMETER",
-    "SFX_0516",
-    "SFX_0517",
-    "SFX_0518",
-    "SFX_0519",
-    "SFX_051A",
-    "SFX_ELVIS_INTERGALACTIC_PEACE",
-    "SFX_ELVIS_EAT_HOT_LEAD_WEIRDOS",
-    "SFX_ELVIS_KISS_MY_ALIEN_BUTT",
-    "SFX_ELVIS_ILL_KICK_YOUR_ASS",
-    "SFX_ELVIS_FOR_YOUR_OWN_GOOD",
-    "SFX_ELVIS_YOU_DARE_SHOOT_AT_ME",
-    "SFX_ELVIS_DONT_MESS_WITH_THE_MAIAN",
-    "SFX_ELVIS_IM_BAD",
-    "SFX_ELVIS_ALL_GOING_WRONG",
-    "SFX_ELVIS_WATCH_THE_SUIT",
-    "SFX_ELVIS_HEHE",
-    "SFX_0526",
-    "SFX_0527",
-    "SFX_0528",
-    "SFX_SKEDAR_ROAR_0529",
-    "SFX_SKEDAR_ROAR_052A",
-    "SFX_SKEDAR_ROAR_052B",
-    "SFX_052C",
-    "SFX_SKEDAR_ROAR_052D",
-    "SFX_SKEDAR_ROAR_052E",
-    "SFX_SKEDAR_ROAR_052F",
-    "SFX_SKEDAR_ROAR_0530",
-    "SFX_SKEDAR_ROAR_0531",
-    "SFX_SKEDAR_ROAR_0532",
-    "SFX_SKEDAR_ROAR_0533",
-    "SFX_SKEDAR_ROAR_0534",
-    "SFX_0535",
-    "SFX_SKEDAR_ROAR_0536",
-    "SFX_SKEDAR_ROAR_0537",
-    "SFX_SKEDAR_ROAR_0538",
-    "SFX_SKEDAR_ROAR_0539",
-    "SFX_SKEDAR_ROAR_053A",
-    "SFX_053B",
-    "SFX_053C",
-    "SFX_053D",
-    "SFX_053E",
-    "SFX_053F",
-    "SFX_0540",
-    "SFX_0541",
-    "SFX_0542",
-    "SFX_0543",
-    "SFX_0544",
-    "SFX_0545",
-    "SFX_0546",
-    "SFX_0547",
-    "SFX_0548",
-    "SFX_0549",
-    "SFX_054A",
-    "SFX_054B",
-    "SFX_054C",
-    "SFX_054D",
-    "SFX_054E",
-    "SFX_054F",
-    "SFX_0550",
-    "SFX_0551",
-    "SFX_0552",
-    "SFX_0553",
-    "SFX_0554",
-    "SFX_0555",
-    "SFX_0556",
-    "SFX_0557",
-    "SFX_0558",
-    "SFX_0559",
-    "SFX_055A",
-    "SFX_055B",
-    "SFX_055C",
-    "SFX_055D",
-    "SFX_055E",
-    "SFX_055F",
-    "SFX_0560",
-    "SFX_0561",
-    "SFX_0562",
-    "SFX_0563",
-    "SFX_0564",
-    "SFX_0565",
-    "SFX_0566",
-    "SFX_0567",
-    "SFX_0568",
-    "SFX_0569",
-    "SFX_056A",
-    "SFX_056B",
-    "SFX_056C",
-    "SFX_056D",
-    "SFX_056E",
-    "SFX_056F",
-    "SFX_0570",
-    "SFX_0571",
-    "SFX_0572",
-    "SFX_0573",
-    "SFX_0574",
-    "SFX_0575",
-    "SFX_0576",
-    "SFX_0577",
-    "SFX_0578",
-    "SFX_0579",
-    "SFX_057A",
-    "SFX_057B",
-    "SFX_057C",
-    "SFX_057D",
-    "SFX_057E",
-    "SFX_057F",
-    "SFX_0580",
-    "SFX_0581",
-    "SFX_0582",
-    "SFX_0583",
-    "SFX_0584",
-    "SFX_0585",
-    "SFX_0586",
-    "SFX_0587",
-    "SFX_0588",
-    "SFX_0589",
-    "SFX_058A",
-    "SFX_058B",
-    "SFX_058C",
-    "SFX_058D",
-    "SFX_058E",
-    "SFX_058F",
-    "SFX_0590",
-    "SFX_0591",
-    "SFX_0592",
-    "SFX_0593",
-    "SFX_0594",
-    "SFX_0595",
-    "SFX_0596",
-    "SFX_0597",
-    "SFX_0598",
-    "SFX_0599",
-    "SFX_059A",
-    "SFX_059B",
-    "SFX_059C",
-    "SFX_INFIL_STATIC_SHORT",
-    "SFX_INFIL_STATIC_MEDIUM",
-    "SFX_INFIL_STATIC_LONG",
-    "SFX_05A0",
-    "SFX_05A1",
-    "SFX_05A2",
-    "SFX_05A3",
-    "SFX_05A4",
-    "SFX_05A5",
-    "SFX_05A6",
-    "SFX_05A7",
-    "SFX_05A8",
-    "SFX_05A9",
-    "SFX_05AA",
-    "SFX_COUGH_05AB",
-    "SFX_COUGH_05AC",
-    "SFX_COUGH_05AD",
-    "SFX_COUGH_05AE",
-    "SFX_COUGH_04AF",
-    "SFX_COUGH_04B0",
-    "SFX_GURGLE_05B1",
-    "SFX_GURGLE_05B2",
-    "SFX_05B3",
-    "SFX_05B4",
-    "SFX_05B5",
-    "SFX_JO_LANDING_05B6",
-    "SFX_JO_LANDING_05B7",
-    "SFX_MP_SCOREPOINT",
-    "SFX_MP_HILLENTERED",
-    "SFX_05BA",
-    "SFX_MENU_SWIPE",
-    "SFX_MENU_OPENDIALOG",
-    "SFX_05BD",
-    "SFX_SHOULD_HAVE_COME_HERE_GIRL",
-    "SFX_WERE_TAKING_OVER",
-    "SFX_05C0",
-    "SFX_05C1",
-    "SFX_ALARM_ATTACKSHIP",
-    "SFX_05C3",
-    "SFX_05C4",
-    "SFX_05C5",
-    "SFX_05C6",
-    "SFX_05C7",
-    "SFX_HEARTBEAT",
-    "SFX_JO_BOOST_ACTIVATE",
-    "SFX_05CA",
-    "SFX_05CB",
-    "SFX_05CC",
-    "SFX_05CD",
-    "SFX_05CE",
-    "SFX_05CF",
-    "SFX_05D0",
-    "SFX_05D1",
-    "SFX_05D2",
-    "SFX_05D3",
-    "SFX_FR_ALARM",
-    "SFX_FR_LIGHTSON",
-    "SFX_FR_LIGHTSOFF",
-    "SFX_05D7",
-    "SFX_WOOD_BREAK",
-    "SFX_FR_CONVEYER",
-    "SFX_FR_CONVEYER_STOP",
-    "SFX_TRAINING_FAIL",
-    "SFX_TRAINING_COMPLETE",
-    "SFX_MENU_SELECT",
-    "SFX_05DE",
-    "SFX_ARGH_MAIAN_05DF",
-    "SFX_ARGH_MAIAN_05E0",
-    "SFX_ARGH_MAIAN_05E1",
-    "SFX_MAIAN_05E2",
-    "SFX_MAIAN_05E3",
-    "SFX_MAIAN_05E4",
-    "SFX_MAIAN_05E5",
-    "SFX_MAIAN_05E6",
-    "SFX_MAIAN_05E7",
-    "SFX_05E8",
-    "SFX_05E9",
-    "SFX_05EA",
-    "SFX_05EB",
-    "SFX_05EC",
-    "SFX_05ED",
-    "SFX_05EE",
-    "SFX_05EF",
-    "SFX_05F0",
-    "SFX_05F1",
-    "SFX_05F2",
-    "SFX_05F3",
-    "SFX_05F4",
-    "SFX_05F5",
-    "SFX_05F6",
-    "SFX_05F7",
-    "SFX_05F8",
-    "SFX_05F9",
-    "SFX_05FA",
-    "SFX_05FB",
-    "SFX_05FC",
-    "SFX_05FD",
-    "SFX_05FE",
-    "SFX_05FF",
-    "SFX_0600",
-    "SFX_0601",
-    "SFX_0602",
-    "SFX_0603",
-    "SFX_0604",
-    "SFX_0605",
-    "SFX_0606",
-    "SFX_0607",
-    "SFX_NOSEDIVE",
-    "SFX_UFOHUM",
-    "SFX_ALARM_CHICAGO",
-    "SFX_8000",
-    "SFX_DOOR_8001",
-    "SFX_DOOR_8002",
-    "SFX_DOOR_8003",
-    "SFX_DOOR_8004",
-    "SFX_DOOR_8005",
-    "SFX_DOOR_8006",
-    "SFX_DOOR_8007",
-    "SFX_DOOR_8008",
-    "SFX_8009",
-    "SFX_DOOR_800A",
-    "SFX_DOOR_800B",
-    "SFX_DOOR_800C",
-    "SFX_DOOR_800D",
-    "SFX_DOOR_800E",
-    "SFX_DOOR_800F",
-    "SFX_DOOR_8010",
-    "SFX_DOOR_8011",
-    "SFX_DOOR_8012",
-    "SFX_DOOR_8013",
-    "SFX_DOOR_8014",
-    "SFX_DOOR_8015",
-    "SFX_DOOR_8016",
-    "SFX_DOOR_8017",
-    "SFX_DOOR_8018",
-    "SFX_DOOR_8019",
-    "SFX_DOOR_801A",
-    "SFX_DOOR_801B",
-    "SFX_DOOR_801C",
-    "SFX_DOOR_801D",
-    "SFX_DOOR_801E",
-    "SFX_DOOR_801F",
-    "SFX_DOOR_8020",
-    "SFX_DOOR_8021",
-    "SFX_DOOR_8022",
-    "SFX_8023",
-    "SFX_8024",
-    "SFX_8025",
-    "SFX_DOOR_8026",
-    "SFX_DOOR_8027",
-    "SFX_CARR_HELLO_JOANNA",
-    "SFX_8029",
-    "SFX_802A",
-    "SFX_CIFEM_HI_THERE",
-    "SFX_GRIMSHAW_WELCOME",
-    "SFX_GRIMSHAW_HI_THERE",
-    "SFX_GRIMSHAW_UMM_ERR_HI",
-    "SFX_HOLO_HI",
-    "SFX_HANGAR_WHAT_DO_YOU_WANT",
-    "SFX_FOSTER_STAR_AGENT",
-    "SFX_CIM_HEY_THERE",
-    "SFX_CIM_HI",
-    "SFX_CIM_HOWS_IT_GOING",
-    "SFX_CIFEM_HELLO",
-    "SFX_CIFEM_HI_JO",
-    "SFX_CIFEM_HOWS_IT_GOING",
-    "SFX_8038",
-    "SFX_8039",
-    "SFX_803A",
-    "SFX_803B",
-    "SFX_803C",
-    "SFX_803D",
-    "SFX_803E",
-    "SFX_803F",
-    "SFX_MENU_ERROR",
-    "SFX_8041",
-    "SFX_8042",
-    "SFX_8043",
-    "SFX_8044",
-    "SFX_8045",
-    "SFX_8046",
-    "SFX_8047",
-    "SFX_8048",
-    "SFX_8049",
-    "SFX_804A",
-    "SFX_804B",
-    "SFX_804C",
-    "SFX_804D",
-    "SFX_804E",
-    "SFX_RELOAD_DEFAULT",
-    "SFX_8050",
-    "SFX_8051",
-    "SFX_FIREEMPTY",
-    "SFX_LAUNCH_ROCKET_8053",
-    "SFX_8054",
-    "SFX_FIRE_SHOTGUN",
-    "SFX_8056",
-    "SFX_DRUGSPY_FIREDART",
-    "SFX_8058",
-    "SFX_8059",
-    "SFX_805A",
-    "SFX_805B",
-    "SFX_805C",
-    "SFX_805D",
-    "SFX_805E",
-    "SFX_805F",
-    "SFX_8060",
-    "SFX_8061",
-    "SFX_8062",
-    "SFX_8063",
-    "SFX_8064",
-    "SFX_MAULER_CHARGE",
-    "SFX_8066",
-    "SFX_8067",
-    "SFX_SLAYER_WHIR",
-    "SFX_8069",
-    "SFX_806A",
-    "SFX_806B",
-    "SFX_806C",
-    "SFX_806D",
-    "SFX_806E",
-    "SFX_806F",
-    "SFX_8070",
-    "SFX_8071",
-    "SFX_8072",
-    "SFX_8073",
-    "SFX_8074",
-    "SFX_8075",
-    "SFX_HIT_CHR",
-    "SFX_HIT_GLASS",
-    "SFX_GLASS_SHATTER",
-    "SFX_HIT_METAL_8079",
-    "SFX_807A",
-    "SFX_HIT_METAL_807B",
-    "SFX_HATHIT_807C",
-    "SFX_HIT_SNOW",
-    "SFX_HIT_WOOD_807E",
-    "SFX_HIT_WOOD_807F",
-    "SFX_HIT_WATER",
-    "SFX_HIT_MUD_8081",
-    "SFX_HIT_MUD_8082",
-    "SFX_HIT_MUD_8083",
-    "SFX_HIT_DIRT_8084",
-    "SFX_HIT_DIRT_8085",
-    "SFX_HIT_TILE",
-    "SFX_HIT_STONE_8087",
-    "SFX_HIT_STONE_8088",
-    "SFX_HIT_METALOBJ_8089",
-    "SFX_HIT_METALOBJ_808A",
-    "SFX_808B",
-    "SFX_EYESPYHIT",
-    "SFX_THUD_808D",
-    "SFX_THUD_808E",
-    "SFX_THUD_808F",
-    "SFX_THUD_8090",
-    "SFX_THUD_8091",
-    "SFX_THUD_8092",
-    "SFX_THUD_8093",
-    "SFX_THUD_8094",
-    "SFX_THUD_8095",
-    "SFX_THUD_8096",
-    "SFX_THUD_8097",
-    "SFX_EXPLOSION_8098",
-    "SFX_8099",
-    "SFX_EXPLOSION_809A",
-    "SFX_809B",
-    "SFX_809C",
-    "SFX_809D",
-    "SFX_809E",
-    "SFX_809F",
-    "SFX_80A0",
-    "SFX_80A1",
-    "SFX_80A2",
-    "SFX_80A3",
-    "SFX_80A4",
-    "SFX_80A5",
-    "SFX_80A6",
-    "SFX_80A7",
-    "SFX_80A8",
-    "SFX_THROW",
-    "SFX_80AA",
-    "SFX_DETONATE",
-    "SFX_DOOR_80AC",
-    "SFX_DOOR_80AD",
-    "SFX_DOOR_80AE",
-    "SFX_BIKE_PULSE",
-    "SFX_80B0",
-    "SFX_80B1",
-    "SFX_80B2",
-    "SFX_80B3",
-    "SFX_80B4",
-    "SFX_80B5",
-    "SFX_80B6",
-    "SFX_80B7",
-    "SFX_80B8",
-    "SFX_80B9_THUNDER",
-    "SFX_80BA_THUNDER",
-    "SFX_80BB_THUNDER",
-    "SFX_80BC_THUNDER",
-    "SFX_80BD_THUNDER",
-    "SFX_80BE_THUNDER",
-    "SFX_80BF_LIGHTNING",
-    "SFX_80C0_LIGHTNING",
-    "SFX_80C1_LIGHTNING",
-    "SFX_80C2_LIGHTNING",
-    "SFX_80C3_LIGHTNING",
-    "SFX_FOOTSTEP_80C4",
-    "SFX_FOOTSTEP_80C5",
-    "SFX_FOOTSTEP_80C6",
-    "SFX_FOOTSTEP_80C7",
-    "SFX_FOOTSTEP_80C8",
-    "SFX_FOOTSTEP_80C9",
-    "SFX_FOOTSTEP_80CA",
-    "SFX_FOOTSTEP_80CB",
-    "SFX_FOOTSTEP_80CC",
-    "SFX_FOOTSTEP_80CD",
-    "SFX_FOOTSTEP_80CE",
-    "SFX_FOOTSTEP_80CF",
-    "SFX_FOOTSTEP_80D0",
-    "SFX_FOOTSTEP_80D1",
-    "SFX_FOOTSTEP_80D2",
-    "SFX_FOOTSTEP_80D3",
-    "SFX_FOOTSTEP_80D4",
-    "SFX_FOOTSTEP_80D5",
-    "SFX_FOOTSTEP_80D6",
-    "SFX_FOOTSTEP_80D7",
-    "SFX_FOOTSTEP_80D8",
-    "SFX_FOOTSTEP_80D9",
-    "SFX_FOOTSTEP_80DA",
-    "SFX_FOOTSTEP_80DB",
-    "SFX_FOOTSTEP_80DC",
-    "SFX_FOOTSTEP_80DD",
-    "SFX_FOOTSTEP_80DE",
-    "SFX_FOOTSTEP_80DF",
-    "SFX_FOOTSTEP_80E0",
-    "SFX_FOOTSTEP_80E1",
-    "SFX_FOOTSTEP_80E2",
-    "SFX_FOOTSTEP_80E3",
-    "SFX_FOOTSTEP_80E4",
-    "SFX_FOOTSTEP_80E5",
-    "SFX_FOOTSTEP_80E6",
-    "SFX_FOOTSTEP_80E7",
-    "SFX_FOOTSTEP_80E8",
-    "SFX_FOOTSTEP_80E9",
-    "SFX_FOOTSTEP_80EA",
-    "SFX_FOOTSTEP_80EB",
-    "SFX_FOOTSTEP_80EC",
-    "SFX_FOOTSTEP_80ED",
-    "SFX_FOOTSTEP_80EE",
-    "SFX_FOOTSTEP_80EF",
-    "SFX_FOOTSTEP_80F0",
-    "SFX_FOOTSTEP_80F1",
-    "SFX_FOOTSTEP_80F2",
-    "SFX_FOOTSTEP_80F3",
-    "SFX_FOOTSTEP_80F4",
-    "SFX_FOOTSTEP_80F5",
-    "SFX_80F6",
-    "SFX_M0_HOLY_SHH",
-    "SFX_M0_WHAT_THE_HELL",
-    "SFX_M0_DAMN_IT_MISSED",
-    "SFX_M0_GODS_SAKE_SOMEONE_HIT_HER",
-    "SFX_M0_GET_THE_HELL_OUT_OF_HERE",
-    "SFX_M0_YOU_BITCH",
-    "SFX_M0_OH_MY_GOD",
-    "SFX_80FE",
-    "SFX_80FF",
-    "SFX_8100",
-    "SFX_8101",
-    "SFX_8102",
-    "SFX_SCI_WHO_THE_HELL_ARE_YOU",
-    "SFX_8104",
-    "SFX_8105",
-    "SFX_8106",
-    "SFX_8107",
-    "SFX_8108",
-    "SFX_8109",
-    "SFX_810A",
-    "SFX_810B",
-    "SFX_SHIP_HUM",
-    "SFX_810D",
-    "SFX_810E",
-    "SFX_810F",
-    "SFX_8110",
-    "SFX_8111",
-    "SFX_8112",
-    "SFX_8113",
-    "SFX_8114",
-    "SFX_8115",
-    "SFX_8116",
-    "SFX_8117",
-    "SFX_TYPING_8118",
-    "SFX_8119",
-    "SFX_811A",
-    "SFX_811B",
-    "SFX_811C",
-    "SFX_811D",
-    "SFX_811E",
-    "SFX_811F",
-    "SFX_8120",
-    "SFX_8121",
-    "SFX_8122",
-    "SFX_8123",
-    "SFX_M1_HOLY",
-    "SFX_M1_WHAT_THE_HELL",
-    "SFX_M1_OH_MY_GOD",
-    "SFX_M1_OH_GOD_IM_HIT",
-    "SFX_M1_MY_GOD",
-    "SFX_M1_NOOO",
-    "SFX_M1_OH_GOD_HES_DEAD",
-    "SFX_M1_BLOODY_STUPID_GUN",
-    "SFX_M1_DAMN_IT",
-    "SFX_M1_DAMN_SHES_GOOD",
-    "SFX_M1_COVER_MY_ASS",
-    "SFX_M1_SCREAM",
-    "SFX_M1_SCREAM",
-    "SFX_F_DAMN_SHES_GOOD",
-    "SFX_F_MY_GOD",
-    "SFX_M2_GEEZ_THAT_HURT",
-    "SFX_M2_DAMN_IT_IM_TAKING_FIRE",
-    "SFX_M2_GOD_DAMN_IT",
-    "SFX_M2_HOLY_MOLY",
-    "SFX_M2_DAMN_MISSED_AGAIN",
-    "SFX_M2_DAMN_YOU",
-    "SFX_M2_HELL_SHES_GOOD",
-    "SFX_M2_LETS_GET_THE_HELL_OUT_OF_HERE",
-    "SFX_M2_NOOO",
-    "SFX_813B",
-    "SFX_M2_OH_GOD_IM_DYING",
-    "SFX_M2_GOD_RUN",
-    "SFX_813E",
-    "SFX_813F",
-    "SFX_8140",
-    "SFX_8141",
-    "SFX_8142",
-    "SFX_8143",
-    "SFX_8144",
-    "SFX_8145",
-    "SFX_8146",
-    "SFX_8147",
-    "SFX_8148",
-    "SFX_8149",
-    "SFX_CIV_OH_MY_GOD",
-    "SFX_814B",
-    "SFX_814C",
-    "SFX_814D",
-    "SFX_814E",
-    "SFX_814F",
-    "SFX_8150",
-    "SFX_8151",
-    "SFX_8152",
-    "SFX_8153",
-    "SFX_8154",
-    "SFX_8155",
-    "SFX_8156",
-    "SFX_8157",
-    "SFX_8158",
-    "SFX_8159",
-    "SFX_815A",
-    "SFX_815B",
-    "SFX_815C",
-    "SFX_M0_HOWS_THINGS",
-    "SFX_M0_HEY_THERE",
-    "SFX_M0_HI_HOW_ARE_YOU",
-    "SFX_8160",
-    "SFX_8161",
-    "SFX_8162",
-    "SFX_M1_HI_THERE",
-    "SFX_M1_HOWS_THINGS",
-    "SFX_M2_HELLO",
-    "SFX_M2_HEY_WHATS_UP",
-    "SFX_M0_WHAT_THE_HELL_8167",
-    "SFX_M1_M2_GEEZ",
-    "SFX_8169",
-    "SFX_816A",
-    "SFX_DOOR_816B",
-    "SFX_DOOR_816C",
-    "SFX_DOOR_816D",
-    "SFX_816E",
-    "SFX_816F",
-    "SFX_8170",
-    "SFX_8171",
-    "SFX_8172",
-    "SFX_8173",
-    "SFX_8174",
-    "SFX_8175",
-    "SFX_8176",
-    "SFX_8177",
-    "SFX_8178",
-    "SFX_8179",
-    "SFX_817A",
-    "SFX_817B",
-    "SFX_817C",
-    "SFX_817D",
-    "SFX_817E",
-    "SFX_817F",
-    "SFX_8180",
-    "SFX_8181",
-    "SFX_8182",
-    "SFX_8183",
-    "SFX_8184",
-    "SFX_8185",
-    "SFX_8186",
-    "SFX_FOOTSTEP_8187",
-    "SFX_FOOTSTEP_8188",
-    "SFX_FOOTSTEP_8189",
-    "SFX_FOOTSTEP_818A",
-    "SFX_FOOTSTEP_818B",
-    "SFX_FOOTSTEP_818C",
-    "SFX_FOOTSTEP_818D",
-    "SFX_FOOTSTEP_818E",
-    "SFX_FOOTSTEP_818F",
-    "SFX_FOOTSTEP_8190",
-    "SFX_FOOTSTEP_8191",
-    "SFX_FOOTSTEP_8192",
-    "SFX_8193",
-    "SFX_8194",
-    "SFX_8195",
-    "SFX_8196",
-    "SFX_8197",
-    "SFX_8198",
-    "SFX_8199",
-    "SFX_819A",
-    "SFX_819B",
-    "SFX_819C",
-    "SFX_819D",
-    "SFX_819E",
-    "SFX_819F",
-    "SFX_81A0",
-    "SFX_81A1",
-    "SFX_81A2",
-    "SFX_81A3",
-    "SFX_81A4",
-    "SFX_81A5",
-    "SFX_81A6",
-    "SFX_81A7",
-    "SFX_DOOR_81A8",
-    "SFX_81A9",
-    "SFX_DOOR_81AA",
-    "SFX_DOOR_81AB",
-    "SFX_81AC",
-    "SFX_DOOR_81AD",
-    "SFX_DOOR_81AE",
-    "SFX_DOOR_81AF",
-    "SFX_DOOR_81B0",
-    "SFX_DOOR_81B1",
-    "SFX_DOOR_81B2",
-    "SFX_DOOR_81B3",
-    "SFX_DOOR_81B4",
-    "SFX_DOOR_81B5",
-    "SFX_DOOR_81B6",
-    "SFX_DOOR_81B7",
-    "SFX_DOOR_81B8",
-    "SFX_81B9",
-    "SFX_81BA",
-    "SFX_81BB",
+    "NULL",                                      // 0x0000 -> sfx_0000.wav (ID: 0)
+    "SFX_LAUNCH_ROCKET",                         // 0x0001 -> sfx_0001.wav (ID: 1)
+    "SFX_EQUIP_HORIZONSCANNER",                  // 0x0002 -> sfx_0002.wav (ID: 2)
+    "SFX_0003",                                  // 0x0003 -> sfx_0003.wav (ID: 3)
+    "SFX_0004",                                  // 0x0004 -> sfx_0004.wav (ID: 4)
+    "SFX_0005",                                  // 0x0005 -> sfx_0005.wav (ID: 5)
+    "SFX_0006",                                  // 0x0006 -> sfx_0006.wav (ID: 6)
+    "SFX_0007",                                  // 0x0007 -> sfx_0007.wav (ID: 7)
+    "SFX_0008",                                  // 0x0008 -> sfx_0008.wav (ID: 8)
+    "NULL",                                      // 0x0009 -> sfx_0009.wav (ID: 9)
+    "NULL",                                      // 0x000A -> sfx_0010.wav (ID: 10)
+    "NULL",                                      // 0x000B -> sfx_0011.wav (ID: 11)
+    "NULL",                                      // 0x000C -> sfx_0012.wav (ID: 12)
+    "SFX_ARGH_FEMALE_000D",                      // 0x000D -> sfx_0013.wav (ID: 13)
+    "SFX_ARGH_FEMALE_000E",                      // 0x000E -> sfx_0014.wav (ID: 14)
+    "SFX_ARGH_FEMALE_000F",                      // 0x000F -> sfx_0015.wav (ID: 15)
+    "SFX_BOTTLE_BREAK",                          // 0x0010 -> sfx_0016.wav (ID: 16)
+    "NULL",                                      // 0x0011 -> sfx_0017.wav (ID: 17)
+    "NULL",                                      // 0x0012 -> sfx_0018.wav (ID: 18)
+    "SFX_RICOCHET",                                  // 0x0013 -> sfx_0019.wav (ID: 19)
+    "SFX_RICOCHET",                                  // 0x0014 -> sfx_0020.wav (ID: 20)
+    "SFX_RICOCHET",                                  // 0x0015 -> sfx_0021.wav (ID: 21)
+    "SFX_RICOCHET",                                  // 0x0016 -> sfx_0022.wav (ID: 22)
+    "SFX_RICOCHET",                                  // 0x0017 -> sfx_0023.wav (ID: 23)
+    "SFX_RICOCHET",                                  // 0x0018 -> sfx_0024.wav (ID: 24)
+    "SFX_RICOCHET",                                  // 0x0019 -> sfx_0025.wav (ID: 25)
+    "SFX_RICOCHET",                                  // 0x001A -> sfx_0026.wav (ID: 26)
+    "SFX_RICOCHET",                                  // 0x001B -> sfx_0027.wav (ID: 27)
+    "SFX_RICOCHET",                                  // 0x001C -> sfx_0028.wav (ID: 28)
+    "SFX_RICOCHET",                                  // 0x001D -> sfx_0029.wav (ID: 29)
+    "SFX_RICOCHET",                                  // 0x001E -> sfx_0030.wav (ID: 30)
+    "SFX_RICOCHET",                                  // 0x001F -> sfx_0031.wav (ID: 31)
+    "SFX_RICOCHET",                                  // 0x0020 -> sfx_0032.wav (ID: 32)
+    "SFX_RICOCHET",                                  // 0x0021 -> sfx_0033.wav (ID: 33)
+    "NULL",                                      // 0x0022 -> sfx_0034.wav (ID: 34)
+    "SFX_RICOCHET",                                  // 0x0023 -> sfx_0035.wav (ID: 35)
+    "SFX_RICOCHET",                                  // 0x0024 -> sfx_0036.wav (ID: 36)
+    "SFX_RICOCHET",                                  // 0x0025 -> sfx_0037.wav (ID: 37)
+    "SFX_RICOCHET",                                  // 0x0026 -> sfx_0038.wav (ID: 38)
+    "SFX_RICOCHET",                                  // 0x0027 -> sfx_0039.wav (ID: 39)
+    "SFX_RICOCHET",                                  // 0x0028 -> sfx_0040.wav (ID: 40)
+    "SFX_RICOCHET",                                  // 0x0029 -> sfx_0041.wav (ID: 41)
+    "SFX_RICOCHET",                                  // 0x002A -> sfx_0042.wav (ID: 42)
+    "SFX_MENU_CANCEL",                           // 0x002B -> sfx_0043.wav (ID: 43)
+    "NULL",                                      // 0x002C -> sfx_0044.wav (ID: 44)
+    "SFX_METAL_HIT",                                  // 0x002D -> sfx_0045.wav (ID: 45)
+    "SFX_SILENCED_SHOOT",                                  // 0x002E -> sfx_0046.wav (ID: 46)
+    "SFX_PUNCH",                                  // 0x002F -> sfx_0047.wav (ID: 47)
+    "SFX_PUNCH",                                  // 0x0030 -> sfx_0048.wav (ID: 48)
+    "SFX_PUNCH",                                  // 0x0031 -> sfx_0049.wav (ID: 49)
+    "SFX_GUN_COCK",                                  // 0x0032 -> sfx_0050.wav (ID: 50)
+    "NULL",                                      // 0x0033 -> sfx_0051.wav (ID: 51)
+    "NULL",                                      // 0x0034 -> sfx_0052.wav (ID: 52)
+    "NULL",                                      // 0x0035 -> sfx_0053.wav (ID: 53)
+    "NULL",                                      // 0x0036 -> sfx_0054.wav (ID: 54)
+    "SFX_0037",                                  // 0x0037 -> sfx_0055.wav (ID: 55)
+    "SFX_0038",                                  // 0x0038 -> sfx_0056.wav (ID: 56)
+    "SFX_0039",                                  // 0x0039 -> sfx_0057.wav (ID: 57)
+    "SFX_003A",                                  // 0x003A -> sfx_0058.wav (ID: 58)
+    "NULL",                                      // 0x003B -> sfx_0059.wav (ID: 59)
+    "NULL",                                      // 0x003C -> sfx_0060.wav (ID: 60)
+    "SFX_003D",                                  // 0x003D -> sfx_0061.wav (ID: 61)
+    "SFX_HUDMSG",                                // 0x003E -> sfx_0062.wav (ID: 62)
+    "NULL",                                      // 0x003F -> sfx_0063.wav (ID: 63)
+    "NULL",                                      // 0x0040 -> sfx_0064.wav (ID: 64)
+    "NULL",                                      // 0x0041 -> sfx_0065.wav (ID: 65)
+    "NULL",                                      // 0x0042 -> sfx_0066.wav (ID: 66)
+    "NULL",                                      // 0x0043 -> sfx_0067.wav (ID: 67)
+    "NULL",                                      // 0x0044 -> sfx_0068.wav (ID: 68)
+    "SFX_BULLET_IMPACT",                                  // 0x0045 -> sfx_0069.wav (ID: 69)
+    "SFX_GLASS_HIT",                                  // 0x0046 -> sfx_0070.wav (ID: 70)
+    "SFX_GLASS_SHATTER",                                  // 0x0047 -> sfx_0071.wav (ID: 71)
+    "SFX_METAL_HIT",                                  // 0x0048 -> sfx_0072.wav (ID: 72)
+    "SFX_0049",                                  // 0x0049 -> sfx_0073.wav (ID: 73)
+    "SFX_004A",                                  // 0x004A -> sfx_0074.wav (ID: 74)
+    "SFX_004B",                                  // 0x004B -> sfx_0075.wav (ID: 75)
+    "SFX_WATER_SPLASH",                                  // 0x004C -> sfx_0076.wav (ID: 76)
+    "SFX_WATER_SPLASH",                                  // 0x004D -> sfx_0077.wav (ID: 77)
+    "SFX_WATER_SPLASH",                                  // 0x004E -> sfx_0078.wav (ID: 78)
+    "NULL",                                      // 0x004F -> sfx_0079.wav (ID: 79)
+    "NULL",                                      // 0x0050 -> sfx_0080.wav (ID: 80)
+    "NULL",                                      // 0x0051 -> sfx_0081.wav (ID: 81)
+    "SFX_REGEN",                                 // 0x0052 -> sfx_0082.wav (ID: 82)
+    "SFX_TRIGGER_PULL",                                  // 0x0053 -> sfx_0083.wav (ID: 83)
+    "NULL",                                      // 0x0054 -> sfx_0084.wav (ID: 84)
+    "SFX_0055",                                  // 0x0055 -> sfx_0085.wav (ID: 85)
+    "SFX_0056",                                  // 0x0056 -> sfx_0086.wav (ID: 86)
+    "SFX_0057",                                  // 0x0057 -> sfx_0087.wav (ID: 87)
+    "SFX_0058",                                  // 0x0058 -> sfx_0088.wav (ID: 88)
+    "SFX_0059",                                  // 0x0059 -> sfx_0089.wav (ID: 89)
+    "NULL",                                      // 0x005A -> sfx_0090.wav (ID: 90)
+    "SFX_CLOAK_ON",                              // 0x005B -> sfx_0091.wav (ID: 91)
+    "SFX_CLOAK_OFF",                             // 0x005C -> sfx_0092.wav (ID: 92)
+    "SFX_CLOAK_OFF",                                  // 0x005D -> sfx_0093.wav (ID: 93)
+    "SFX_005E",                                  // 0x005E -> sfx_0094.wav (ID: 94)
+    "SFX_005F",                                  // 0x005F -> sfx_0095.wav (ID: 95)
+    "SFX_0060",                                  // 0x0060 -> sfx_0096.wav (ID: 96)
+    "SFX_0061",                                  // 0x0061 -> sfx_0097.wav (ID: 97)
+    "NULL",                                      // 0x0062 -> sfx_0098.wav (ID: 98)
+    "SFX_SHIELD_DAMAGE",                                  // 0x0063 -> sfx_0099.wav (ID: 99)
+    "SFX_SHIELD_DAMAGE",                         // 0x0064 -> sfx_0100.wav (ID: 100)
+    "SFX_LASER_STREAM",                          // 0x0065 -> sfx_0101.wav (ID: 101)
+    "SFX_FALCON_FIRE",                                  // 0x0066 -> sfx_0102.wav (ID: 102)
+    "SFX_WHOOSH",                                  // 0x0067 -> sfx_0103.wav (ID: 103)
+    "NULL",                                      // 0x0068 -> sfx_0104.wav (ID: 104)
+    "SFX_WHOOSH",                                  // 0x0069 -> sfx_0105.wav (ID: 105)
+    "SFX_006A",                                  // 0x006A -> sfx_0106.wav (ID: 106)
+    "NULL",                                      // 0x006B -> sfx_0107.wav (ID: 107)
+    "NULL",                                      // 0x006C -> sfx_0108.wav (ID: 108)
+    "SFX_006D",                                  // 0x006D -> sfx_0109.wav (ID: 109)
+    "SFX_CMP_FIRE",                                  // 0x006E -> sfx_0110.wav (ID: 110)
+    "NULL",                                      // 0x006F -> sfx_0111.wav (ID: 111)
+    "SFX_ENERGY_FIRE",                                  // 0x0070 -> sfx_0112.wav (ID: 112)
+    "SFX_LAPTOP_FIRE",                                  // 0x0071 -> sfx_0113.wav (ID: 113)
+    "NULL",                                      // 0x0072 -> sfx_0114.wav (ID: 114)
+    "NULL",                                      // 0x0073 -> sfx_0115.wav (ID: 115)
+    "SFX_SHOTGUN_FIRE",                                  // 0x0074 -> sfx_0116.wav (ID: 116)
+    "SFX_0075",                                  // 0x0075 -> sfx_0117.wav (ID: 117)
+    "SFX_0076",                                  // 0x0076 -> sfx_0118.wav (ID: 118)
+    "NULL",                                      // 0x0077 -> sfx_0119.wav (ID: 119)
+    "SFX_0078",                                  // 0x0078 -> sfx_0120.wav (ID: 120)
+    "SFX_0079",                            // 0x0079 -> sfx_0121.wav (ID: 121)
+    "SFX_SHELL_DROP",                                  // 0x007A -> sfx_0122.wav (ID: 122)
+    "SFX_007B",                                  // 0x007B -> sfx_0123.wav (ID: 123)
+    "SFX_BODY_LAND",                                  // 0x007C -> sfx_0124.wav (ID: 124)
+    "SFX_007D",                                  // 0x007D -> sfx_0125.wav (ID: 125)
+    "SFX_IMPACT",                                  // 0x007E -> sfx_0126.wav (ID: 126)
+    "SFX_007F",                                  // 0x007F -> sfx_0127.wav (ID: 127)
+    "SFX_0080",                                  // 0x0080 -> sfx_0128.wav (ID: 128)
+    "SFX_0081",                                  // 0x0081 -> sfx_0129.wav (ID: 129)
+    "SFX_0082",                                  // 0x0082 -> sfx_0130.wav (ID: 130)
+    "SFX_0083",                                  // 0x0083 -> sfx_0131.wav (ID: 131)
+    "SFX_0084",                                  // 0x0084 -> sfx_0132.wav (ID: 132)
+    "SFX_BODY_FALL_CLASSIC",                                  // 0x0085 -> sfx_0133.wav (ID: 133)
+    "SFX_ARGH_MALE_0086",                        // 0x0086 -> sfx_0134.wav (ID: 134)
+    "SFX_ARGH_MALE_0087",                        // 0x0087 -> sfx_0135.wav (ID: 135)
+    "SFX_ARGH_MALE_0088",                        // 0x0088 -> sfx_0136.wav (ID: 136)
+    "SFX_ARGH_MALE_0089",                        // 0x0089 -> sfx_0137.wav (ID: 137)
+    "SFX_ARGH_MALE_008A",                        // 0x008A -> sfx_0138.wav (ID: 138)
+    "SFX_ARGH_MALE_008B",                        // 0x008B -> sfx_0139.wav (ID: 139)
+    "SFX_ARGH_MALE_008C",                        // 0x008C -> sfx_0140.wav (ID: 140)
+    "SFX_ARGH_MALE_008D",                        // 0x008D -> sfx_0141.wav (ID: 141)
+    "SFX_ARGH_MALE_008E",                        // 0x008E -> sfx_0142.wav (ID: 142)
+    "SFX_ARGH_MALE_008F",                        // 0x008F -> sfx_0143.wav (ID: 143)
+    "SFX_ARGH_MALE_0090",                        // 0x0090 -> sfx_0144.wav (ID: 144)
+    "SFX_ARGH_MALE_0091",                        // 0x0091 -> sfx_0145.wav (ID: 145)
+    "SFX_ARGH_MALE_0092",                        // 0x0092 -> sfx_0146.wav (ID: 146)
+    "SFX_ARGH_MALE_0093",                        // 0x0093 -> sfx_0147.wav (ID: 147)
+    "SFX_ARGH_MALE_0094",                        // 0x0094 -> sfx_0148.wav (ID: 148)
+    "SFX_ARGH_MALE_0095",                        // 0x0095 -> sfx_0149.wav (ID: 149)
+    "SFX_ARGH_MALE_0096",                        // 0x0096 -> sfx_0150.wav (ID: 150)
+    "SFX_ARGH_MALE_0097",                        // 0x0097 -> sfx_0151.wav (ID: 151)
+    "SFX_ARGH_MALE_0098",                        // 0x0098 -> sfx_0152.wav (ID: 152)
+    "SFX_ARGH_MALE_0099",                        // 0x0099 -> sfx_0153.wav (ID: 153)
+    "SFX_ARGH_MALE_009A",                        // 0x009A -> sfx_0154.wav (ID: 154)
+    "SFX_ARGH_MALE_009B",                        // 0x009B -> sfx_0155.wav (ID: 155)
+    "SFX_ARGH_MALE_009C",                        // 0x009C -> sfx_0156.wav (ID: 156)
+    "SFX_ARGH_MALE_009D",                        // 0x009D -> sfx_0157.wav (ID: 157)
+    "SFX_ARGH_MALE_009E",                        // 0x009E -> sfx_0158.wav (ID: 158)
+    "SFX_009F",                                  // 0x009F -> sfx_0159.wav (ID: 159)
+    "NULL",                                      // 0x00A0 -> sfx_0160.wav (ID: 160)
+    "SFX_ALARM_AIRBASE",                         // 0x00A1 -> sfx_0161.wav (ID: 161)
+    "SFX_ALARM_2",                               // 0x00A2 -> sfx_0162.wav (ID: 162)
+    "SFX_ALARM_DEFAULT",                         // 0x00A3 -> sfx_0163.wav (ID: 163)
+    "SFX_00A4",                                  // 0x00A4 -> sfx_0164.wav (ID: 164)
+    "SFX_00A5",                                  // 0x00A5 -> sfx_0165.wav (ID: 165)
+    "NULL",                                      // 0x00A6 -> sfx_0166.wav (ID: 166)
+    "NULL",                                      // 0x00A7 -> sfx_0167.wav (ID: 167)
+    "NULL",                                      // 0x00A8 -> sfx_0168.wav (ID: 168)
+    "SFX_00A9",                                  // 0x00A9 -> sfx_0169.wav (ID: 169)
+    "SFX_00AA",                                  // 0x00AA -> sfx_0170.wav (ID: 170)
+    "SFX_00AB",                                  // 0x00AB -> sfx_0171.wav (ID: 171)
+    "SFX_00AC",                                  // 0x00AC -> sfx_0172.wav (ID: 172)
+    "SFX_00AD",                                  // 0x00AD -> sfx_0173.wav (ID: 173)
+    "SFX_00AE",                                  // 0x00AE -> sfx_0174.wav (ID: 174)
+    "SFX_00AF",                                  // 0x00AF -> sfx_0175.wav (ID: 175)
+    "SFX_00B0",                                  // 0x00B0 -> sfx_0176.wav (ID: 176)
+    "SFX_00B1",                                  // 0x00B1 -> sfx_0177.wav (ID: 177)
+    "SFX_00B2",                                  // 0x00B2 -> sfx_0178.wav (ID: 178)
+    "SFX_00B3",                                  // 0x00B3 -> sfx_0179.wav (ID: 179)
+    "SFX_COMBAT_SIMULATOR",                                  // 0x00B4 -> sfx_0180.wav (ID: 180)
+    "SFX_00B5",                                  // 0x00B5 -> sfx_0181.wav (ID: 181)
+    "SFX_00B6",                                  // 0x00B6 -> sfx_0182.wav (ID: 182)
+    "NULL",                                      // 0x00B7 -> sfx_0183.wav (ID: 183)
+    "NULL",                                      // 0x00B8 -> sfx_0184.wav (ID: 184)
+    "SFX_00B9",                                  // 0x00B9 -> sfx_0185.wav (ID: 185)
+    "SFX_PRESS_SWITCH",                          // 0x00BA -> sfx_0186.wav (ID: 186)
+    "SFX_00BB",                                  // 0x00BB -> sfx_0187.wav (ID: 187)
+    "SFX_00BC",                                  // 0x00BC -> sfx_0188.wav (ID: 188)
+    "NULL",                                      // 0x00BD -> sfx_0189.wav (ID: 189)
+    "SFX_DOOR_OPEN",                                  // 0x00BE -> sfx_0190.wav (ID: 190)
+    "SFX_DOOR_OPEN",                                  // 0x00BF -> sfx_0191.wav (ID: 191)
+    "SFX_DOOR_SHUT",                                  // 0x00C0 -> sfx_0192.wav (ID: 192)
+    "SFX_00C1",                                  // 0x00C1 -> sfx_0193.wav (ID: 193)
+    "SFX_SHUTTER_DOOR_OPEN",                                  // 0x00C2 -> sfx_0194.wav (ID: 194)
+    "SFX_SHUTTER_DOOR_CLOSE",                                  // 0x00C3 -> sfx_0195.wav (ID: 195)
+    "SFX_00C4",                                  // 0x00C4 -> sfx_0196.wav (ID: 196)
+    "SFX_00C5",                                  // 0x00C5 -> sfx_0197.wav (ID: 197)
+    "SFX_00C6",                                  // 0x00C6 -> sfx_0198.wav (ID: 198)
+    "SFX_00C7",                                  // 0x00C7 -> sfx_0199.wav (ID: 199)
+    "SFX_00C8",                                  // 0x00C8 -> sfx_0200.wav (ID: 200)
+    "SFX_00C9",                                  // 0x00C9 -> sfx_0201.wav (ID: 201)
+    "SFX_00CA",                                  // 0x00CA -> sfx_0202.wav (ID: 202)
+    "SFX_00CB",                                  // 0x00CB -> sfx_0203.wav (ID: 203)
+    "SFX_00CC",                                  // 0x00CC -> sfx_0204.wav (ID: 204)
+    "SFX_00CD",                                  // 0x00CD -> sfx_0205.wav (ID: 205)
+    "SFX_00CE",                                  // 0x00CE -> sfx_0206.wav (ID: 206)
+    "SFX_00CF",                                  // 0x00CF -> sfx_0207.wav (ID: 207)
+    "SFX_BULLET_WALL_IMPACT",                                  // 0x00D0 -> sfx_0208.wav (ID: 208)
+    "SFX_BULLET_WALL_IMPACT",                                  // 0x00D1 -> sfx_0209.wav (ID: 209)
+    "SFX_DOOR_CLOSE",                                  // 0x00D2 -> sfx_0210.wav (ID: 210)
+    "SFX_DOOR_SLIDE",                                  // 0x00D3 -> sfx_0211.wav (ID: 211)
+    "SFX_00D4",                                  // 0x00D4 -> sfx_0212.wav (ID: 212)
+    "SFX_00D5",                                  // 0x00D5 -> sfx_0213.wav (ID: 213)
+    "SFX_00D6",                                  // 0x00D6 -> sfx_0214.wav (ID: 214)
+    "SFX_00D7",                                  // 0x00D7 -> sfx_0215.wav (ID: 215)
+    "SFX_00D8",                                  // 0x00D8 -> sfx_0216.wav (ID: 216)
+    "SFX_00D9",                                  // 0x00D9 -> sfx_0217.wav (ID: 217)
+    "SFX_00DA",                                  // 0x00DA -> sfx_0218.wav (ID: 218)
+    "SFX_00DB",                                  // 0x00DB -> sfx_0219.wav (ID: 219)
+    "SFX_00DC",                                  // 0x00DC -> sfx_0220.wav (ID: 220)
+    "SFX_00DD",                                  // 0x00DD -> sfx_0221.wav (ID: 221)
+    "SFX_00DE",                                  // 0x00DE -> sfx_0222.wav (ID: 222)
+    "SFX_00DF",                                  // 0x00DF -> sfx_0223.wav (ID: 223)
+    "SFX_00E0",                                  // 0x00E0 -> sfx_0224.wav (ID: 224)
+    "SFX_00E1",                                  // 0x00E1 -> sfx_0225.wav (ID: 225)
+    "SFX_00E2",                                  // 0x00E2 -> sfx_0226.wav (ID: 226)
+    "SFX_00E3",                                  // 0x00E3 -> sfx_0227.wav (ID: 227)
+    "SFX_00E4",                                  // 0x00E4 -> sfx_0228.wav (ID: 228)
+    "SFX_PICKUP_KEYCARD",                        // 0x00E5 -> sfx_0229.wav (ID: 229)
+    "SFX_00E6",                                  // 0x00E6 -> sfx_0230.wav (ID: 230)
+    "SFX_00E7",                                  // 0x00E7 -> sfx_0231.wav (ID: 231)
+    "SFX_PICKUP_GUN",                            // 0x00E8 -> sfx_0232.wav (ID: 232)
+    "SFX_PICKUP_KNIFE",                          // 0x00E9 -> sfx_0233.wav (ID: 233)
+    "SFX_PICKUP_AMMO",                           // 0x00EA -> sfx_0234.wav (ID: 234)
+    "SFX_PICKUP_MINE",                           // 0x00EB -> sfx_0235.wav (ID: 235)
+    "SFX_00EC",                                  // 0x00EC -> sfx_0236.wav (ID: 236)
+    "SFX_00ED",                                  // 0x00ED -> sfx_0237.wav (ID: 237)
+    "SFX_00EE",                                  // 0x00EE -> sfx_0238.wav (ID: 238)
+    "SFX_METAL_HIT",                                  // 0x00EF -> sfx_0239.wav (ID: 239)
+    "SFX_00F0",                                  // 0x00F0 -> sfx_0240.wav (ID: 240)
+    "SFX_00F1",                                  // 0x00F1 -> sfx_0241.wav (ID: 241)
+    "SFX_PICKUP_LASER",                          // 0x00F2 -> sfx_0242.wav (ID: 242)
+    "SFX_00F3",                                  // 0x00F3 -> sfx_0243.wav (ID: 243)
+    "NULL",                                      // 0x00F4 -> sfx_0244.wav (ID: 244)
+    "SFX_BIKE_TAKEOFF",                          // 0x00F5 -> sfx_0245.wav (ID: 245)
+    "SFX_00F6",                                  // 0x00F6 -> sfx_0246.wav (ID: 246)
+    "SFX_00F7",                                  // 0x00F7 -> sfx_0247.wav (ID: 247)
+    "SFX_00F8",                                  // 0x00F8 -> sfx_0248.wav (ID: 248)
+    "SFX_00F9",                                  // 0x00F9 -> sfx_0249.wav (ID: 249)
+    "SFX_00FA",                                  // 0x00FA -> sfx_0250.wav (ID: 250)
+    "SFX_00FB",                                  // 0x00FB -> sfx_0251.wav (ID: 251)
+    "SFX_00FC",                                  // 0x00FC -> sfx_0252.wav (ID: 252)
+    "SFX_00FD",                                  // 0x00FD -> sfx_0253.wav (ID: 253)
+    "SFX_00FE",                                  // 0x00FE -> sfx_0254.wav (ID: 254)
+    "NULL",                                      // 0x00FF -> sfx_0255.wav (ID: 255)
+    "NULL",                                      // 0x0100 -> sfx_0256.wav (ID: 256)
+    "NULL",                                      // 0x0101 -> sfx_0257.wav (ID: 257)
+    "NULL",                                      // 0x0102 -> sfx_0258.wav (ID: 258)
+    "NULL",                                      // 0x0103 -> sfx_0259.wav (ID: 259)
+    "NULL",                                      // 0x0104 -> sfx_0260.wav (ID: 260)
+    "NULL",                                      // 0x0105 -> sfx_0261.wav (ID: 261)
+    "NULL",                                      // 0x0106 -> sfx_0262.wav (ID: 262)
+    "NULL",                                      // 0x0107 -> sfx_0263.wav (ID: 263)
+    "NULL",                                      // 0x0108 -> sfx_0264.wav (ID: 264)
+    "NULL",                                      // 0x0109 -> sfx_0265.wav (ID: 265)
+    "NULL",                                      // 0x010A -> sfx_0266.wav (ID: 266)
+    "NULL",                                      // 0x010B -> sfx_0267.wav (ID: 267)
+    "NULL",                                      // 0x010C -> sfx_0268.wav (ID: 268)
+    "NULL",                                      // 0x010D -> sfx_0269.wav (ID: 269)
+    "SFX_010E",                                  // 0x010E -> sfx_0270.wav (ID: 270)
+    "SFX_010F",                                  // 0x010F -> sfx_0271.wav (ID: 271)
+    "SFX_0110",                                  // 0x0110 -> sfx_0272.wav (ID: 272)
+    "SFX_0111",                                  // 0x0111 -> sfx_0273.wav (ID: 273)
+    "SFX_0112",                                  // 0x0112 -> sfx_0274.wav (ID: 274)
+    "SFX_0113",                                  // 0x0113 -> sfx_0275.wav (ID: 275)
+    "SFX_0114",                                  // 0x0114 -> sfx_0276.wav (ID: 276)
+    "SFX_0115",                                  // 0x0115 -> sfx_0277.wav (ID: 277)
+    "SFX_0116",                                  // 0x0116 -> sfx_0278.wav (ID: 278)
+    "SFX_0117",                                  // 0x0117 -> sfx_0279.wav (ID: 279)
+    "SFX_0118",                                  // 0x0118 -> sfx_0280.wav (ID: 280)
+    "SFX_0119",                                  // 0x0119 -> sfx_0281.wav (ID: 281)
+    "SFX_011A",                                  // 0x011A -> sfx_0282.wav (ID: 282)
+    "SFX_011B",                                  // 0x011B -> sfx_0283.wav (ID: 283)
+    "SFX_011C",                                  // 0x011C -> sfx_0284.wav (ID: 284)
+    "SFX_011D",                                  // 0x011D -> sfx_0285.wav (ID: 285)
+    "SFX_011E",                                  // 0x011E -> sfx_0286.wav (ID: 286)
+    "SFX_011F",                                  // 0x011F -> sfx_0287.wav (ID: 287)
+    "SFX_0120",                                  // 0x0120 -> sfx_0288.wav (ID: 288)
+    "SFX_0121",                                  // 0x0121 -> sfx_0289.wav (ID: 289)
+    "SFX_0122",                                  // 0x0122 -> sfx_0290.wav (ID: 290)
+    "SFX_0123",                                  // 0x0123 -> sfx_0291.wav (ID: 291)
+    "SFX_0124",                                  // 0x0124 -> sfx_0292.wav (ID: 292)
+    "SFX_0125",                                  // 0x0125 -> sfx_0293.wav (ID: 293)
+    "SFX_0126",                                  // 0x0126 -> sfx_0294.wav (ID: 294)
+    "SFX_LIGHT_CRACKLE",                                  // 0x0127 -> sfx_0295.wav (ID: 295)
+    "SFX_LIGHT_CRACKLE",                                  // 0x0128 -> sfx_0296.wav (ID: 296)
+    "SFX_LIGHT_CRACKLE",                                  // 0x0129 -> sfx_0297.wav (ID: 297)
+    "SFX_LIGHT_CRACKLE",                                  // 0x012A -> sfx_0298.wav (ID: 298)
+    "SFX_LIGHT_CRACKLE",                                  // 0x012B -> sfx_0299.wav (ID: 299)
+    "SFX_LIGHT_CRACKLE",                                  // 0x012C -> sfx_0300.wav (ID: 300)
+    "SFX_RAIN",                                  // 0x012D -> sfx_0301.wav (ID: 301)
+    "SFX_RAIN",                                  // 0x012E -> sfx_0302.wav (ID: 302)
+    "SFX_THUNDER",                                  // 0x012F -> sfx_0303.wav (ID: 303)
+    "SFX_THUNDER",                                  // 0x0130 -> sfx_0304.wav (ID: 304)
+    "SFX_THUNDER",                                  // 0x0131 -> sfx_0305.wav (ID: 305)
+    "SFX_LIGHTNING",                                  // 0x0132 -> sfx_0306.wav (ID: 306)
+    "SFX_LIGHTNING",                                  // 0x0133 -> sfx_0307.wav (ID: 307)
+    "SFX_LIGHTNING",                                  // 0x0134 -> sfx_0308.wav (ID: 308)
+    "SFX_LIGHTNING",                                  // 0x0135 -> sfx_0309.wav (ID: 309)
+    "SFX_LIGHTNING",                                  // 0x0136 -> sfx_0310.wav (ID: 310)
+    "SFX_LIGHTNING",                                  // 0x0137 -> sfx_0311.wav (ID: 311)
+    "SFX_RAIN",                                  // 0x0138 -> sfx_0312.wav (ID: 312)
+    "SFX_LIGHTNING",                                  // 0x0139 -> sfx_0313.wav (ID: 313)
+    "SFX_LIGHTNING",                                  // 0x013A -> sfx_0314.wav (ID: 314)
+    "SFX_013B",                                  // 0x013B -> sfx_0315.wav (ID: 315)
+    "SFX_013C",                                  // 0x013C -> sfx_0316.wav (ID: 316)
+    "SFX_013D",                                  // 0x013D -> sfx_0317.wav (ID: 317)
+    "SFX_013E",                                  // 0x013E -> sfx_0318.wav (ID: 318)
+    "SFX_LIGHTNING",                             // 0x013F -> sfx_0319.wav (ID: 319)
+    "SFX_0140",                                  // 0x0140 -> sfx_0320.wav (ID: 320)
+    "SFX_0141",                                  // 0x0141 -> sfx_0321.wav (ID: 321)
+    "SFX_0142",                                  // 0x0142 -> sfx_0322.wav (ID: 322)
+    "SFX_0143",                                  // 0x0143 -> sfx_0323.wav (ID: 323)
+    "SFX_0144",                                  // 0x0144 -> sfx_0324.wav (ID: 324)
+    "SFX_LIGHTNING",                                  // 0x0145 -> sfx_0325.wav (ID: 325)
+    "SFX_LIGHTNING",                                  // 0x0146 -> sfx_0326.wav (ID: 326)
+    "SFX_LIGHTNING",                                  // 0x0147 -> sfx_0327.wav (ID: 327)
+    "SFX_LIGHTNING",                                  // 0x0148 -> sfx_0328.wav (ID: 328)
+    "SFX_LIGHTNING",                                  // 0x0149 -> sfx_0329.wav (ID: 329)
+    "SFX_LIGHTNING",                                  // 0x014A -> sfx_0330.wav (ID: 330)
+    "SFX_LIGHTNING",                                  // 0x014B -> sfx_0331.wav (ID: 331)
+    "SFX_LIGHTNING",                                  // 0x014C -> sfx_0332.wav (ID: 332)
+    "SFX_LIGHTNING",                                  // 0x014D -> sfx_0333.wav (ID: 333)
+    "SFX_LIGHTNING",                                  // 0x014E -> sfx_0334.wav (ID: 334)
+    "SFX_LIGHTNING",                                  // 0x014F -> sfx_0335.wav (ID: 335)
+    "SFX_LIGHTNING",                                  // 0x0150 -> sfx_0336.wav (ID: 336)
+    "SFX_THUNDER",                                  // 0x0151 -> sfx_0337.wav (ID: 337)
+    "SFX_THUNDER",                                  // 0x0152 -> sfx_0338.wav (ID: 338)
+    "SFX_THUNDER",                                  // 0x0153 -> sfx_0339.wav (ID: 339)
+    "SFX_THUNDER",                               // 0x0154 -> sfx_0340.wav (ID: 340)
+    "SFX_THUNDER",                                  // 0x0155 -> sfx_0341.wav (ID: 341)
+    "SFX_THUNDER",                                  // 0x0156 -> sfx_0342.wav (ID: 342)
+    "SFX_THUNDER",                                  // 0x0157 -> sfx_0343.wav (ID: 343)
+    "SFX_THUNDER",                                  // 0x0158 -> sfx_0344.wav (ID: 344)
+    "SFX_THUNDER",                                  // 0x0159 -> sfx_0345.wav (ID: 345)
+    "SFX_THUNDER",                                  // 0x015A -> sfx_0346.wav (ID: 346)
+    "SFX_THUNDER",                                  // 0x015B -> sfx_0347.wav (ID: 347)
+    "SFX_THUNDER",                                  // 0x015C -> sfx_0348.wav (ID: 348)
+    "SFX_WATER_DROP",                                  // 0x015D -> sfx_0349.wav (ID: 349)
+    "SFX_WATER_DROP_2",                                  // 0x015E -> sfx_0350.wav (ID: 350)
+    "SFX_WATER_DROP_3",                                  // 0x015F -> sfx_0351.wav (ID: 351)
+    "SFX_WATER_DROP_4",                                  // 0x0160 -> sfx_0352.wav (ID: 352)
+    "SFX_FOOTSEP_TILE_1",                        // 0x0161 -> sfx_0353.wav (ID: 353)
+    "SFX_FOOTSEP_TILE_2",                        // 0x0162 -> sfx_0354.wav (ID: 354)
+    "SFX_FOOTSEP_TILE_3",                        // 0x0163 -> sfx_0355.wav (ID: 355)
+    "SFX_FOOTSEP_TILE_4",                        // 0x0164 -> sfx_0356.wav (ID: 356)
+    "SFX_FOOTSEP_TILE_5",                        // 0x0165 -> sfx_0357.wav (ID: 357)
+    "SFX_FOOTSEP_TILE_6",                        // 0x0166 -> sfx_0358.wav (ID: 358)
+    "SFX_FOOTSEP_TILE_7",                        // 0x0167 -> sfx_0359.wav (ID: 359)
+    "SFX_FOOTSEP_TILE_8",                        // 0x0168 -> sfx_0360.wav (ID: 360)
+    "SFX_FOOTSEP_DIRT",                          // 0x0169 -> sfx_0361.wav (ID: 361)
+    "SFX_FOOTSEP_DIRT",                          // 0x016A -> sfx_0362.wav (ID: 362)
+    "SFX_FOOTSEP_DIRT",                          // 0x016B -> sfx_0363.wav (ID: 363)
+    "SFX_FOOTSEP_DIRT",                          // 0x016C -> sfx_0364.wav (ID: 364)
+    "SFX_FOOTSEP_DIRT",                          // 0x016D -> sfx_0365.wav (ID: 365)
+    "SFX_FOOTSEP_DIRT",                          // 0x016E -> sfx_0366.wav (ID: 366)
+    "SFX_FOOTSEP_DIRT",                          // 0x016F -> sfx_0367.wav (ID: 367)
+    "SFX_FOOTSEP_DIRT",                          // 0x0170 -> sfx_0368.wav (ID: 368)
+    "SFX_FOOTSEP_METAL",                         // 0x0171 -> sfx_0369.wav (ID: 369)
+    "SFX_FOOTSEP_METAL",                         // 0x0172 -> sfx_0370.wav (ID: 370)
+    "SFX_FOOTSEP_METAL",                         // 0x0173 -> sfx_0371.wav (ID: 371)
+    "SFX_FOOTSEP_METAL",                         // 0x0174 -> sfx_0372.wav (ID: 372)
+    "SFX_FOOTSEP_METAL",                         // 0x0175 -> sfx_0373.wav (ID: 373)
+    "SFX_FOOTSEP_METAL",                         // 0x0176 -> sfx_0374.wav (ID: 374)
+    "SFX_FOOTSEP_METAL",                         // 0x0177 -> sfx_0375.wav (ID: 375)
+    "SFX_FOOTSEP_METAL",                         // 0x0178 -> sfx_0376.wav (ID: 376)
+    "SFX_FOOTSEP_WOOD",                                  // 0x0179 -> sfx_0377.wav (ID: 377)
+    "SFX_FOOTSEP_WOOD",                                  // 0x017A -> sfx_0378.wav (ID: 378)
+    "SFX_FOOTSEP_WOOD",                                  // 0x017B -> sfx_0379.wav (ID: 379)
+    "SFX_FOOTSEP_WOOD",                                  // 0x017C -> sfx_0380.wav (ID: 380)
+    "SFX_FOOTSEP_WOOD",                                  // 0x017D -> sfx_0381.wav (ID: 381)
+    "SFX_FOOTSEP_WOOD",                                  // 0x017E -> sfx_0382.wav (ID: 382)
+    "SFX_FOOTSEP_WOOD",                                  // 0x017F -> sfx_0383.wav (ID: 383)
+    "SFX_FOOTSEP_WOOD",                                  // 0x0180 -> sfx_0384.wav (ID: 384)
+    "NULL",                                      // 0x0181 -> sfx_0385.wav (ID: 385)
+    "NULL",                                      // 0x0182 -> sfx_0386.wav (ID: 386)
+    "NULL",                                      // 0x0183 -> sfx_0387.wav (ID: 387)
+    "NULL",                                      // 0x0184 -> sfx_0388.wav (ID: 388)
+    "NULL",                                      // 0x0185 -> sfx_0389.wav (ID: 389)
+    "NULL",                                      // 0x0186 -> sfx_0390.wav (ID: 390)
+    "NULL",                                      // 0x0187 -> sfx_0391.wav (ID: 391)
+    "NULL",                                      // 0x0188 -> sfx_0392.wav (ID: 392)
+    "NULL",                                      // 0x0189 -> sfx_0393.wav (ID: 393)
+    "SFX_018A",                                  // 0x018A -> sfx_0394.wav (ID: 394)
+    "SFX_018B",                                  // 0x018B -> sfx_0395.wav (ID: 395)
+    "SFX_018C",                                  // 0x018C -> sfx_0396.wav (ID: 396)
+    "SFX_018D",                                  // 0x018D -> sfx_0397.wav (ID: 397)
+    "SFX_018E",                                  // 0x018E -> sfx_0398.wav (ID: 398)
+    "SFX_018F",                                  // 0x018F -> sfx_0399.wav (ID: 399)
+    "SFX_0190",                                  // 0x0190 -> sfx_0400.wav (ID: 400)
+    "SFX_0191",                                  // 0x0191 -> sfx_0401.wav (ID: 401)
+    "SFX_0192",                                  // 0x0192 -> sfx_0402.wav (ID: 402)
+    "SFX_0193",                                  // 0x0193 -> sfx_0403.wav (ID: 403)
+    "SFX_0194",                                  // 0x0194 -> sfx_0404.wav (ID: 404)
+    "SFX_0195",                                  // 0x0195 -> sfx_0405.wav (ID: 405)
+    "SFX_0196",                                  // 0x0196 -> sfx_0406.wav (ID: 406)
+    "SFX_0197",                                  // 0x0197 -> sfx_0407.wav (ID: 407)
+    "SFX_0198",                                  // 0x0198 -> sfx_0408.wav (ID: 408)
+    "SFX_0199",                                  // 0x0199 -> sfx_0409.wav (ID: 409)
+    "SFX_019A",                                  // 0x019A -> sfx_0410.wav (ID: 410)
+    "NULL",                                      // 0x019B -> sfx_0411.wav (ID: 411)
+    "NULL",                                      // 0x019C -> sfx_0412.wav (ID: 412)
+    "NULL",                                      // 0x019D -> sfx_0413.wav (ID: 413)
+    "NULL",                                      // 0x019E -> sfx_0414.wav (ID: 414)
+    "NULL",                                      // 0x019F -> sfx_0415.wav (ID: 415)
+    "NULL",                                      // 0x01A0 -> sfx_0416.wav (ID: 416)
+    "NULL",                                      // 0x01A1 -> sfx_0417.wav (ID: 417)
+    "NULL",                                      // 0x01A2 -> sfx_0418.wav (ID: 418)
+    "NULL",                                      // 0x01A3 -> sfx_0419.wav (ID: 419)
+    "NULL",                                      // 0x01A4 -> sfx_0420.wav (ID: 420)
+    "NULL",                                      // 0x01A5 -> sfx_0421.wav (ID: 421)
+    "NULL",                                      // 0x01A6 -> sfx_0422.wav (ID: 422)
+    "NULL",                                      // 0x01A7 -> sfx_0423.wav (ID: 423)
+    "NULL",                                      // 0x01A8 -> sfx_0424.wav (ID: 424)
+    "NULL",                                      // 0x01A9 -> sfx_0425.wav (ID: 425)
+    "NULL",                                      // 0x01AA -> sfx_0426.wav (ID: 426)
+    "NULL",                                      // 0x01AB -> sfx_0427.wav (ID: 427)
+    "NULL",                                      // 0x01AC -> sfx_0428.wav (ID: 428)
+    "NULL",                                      // 0x01AD -> sfx_0429.wav (ID: 429)
+    "NULL",                                      // 0x01AE -> sfx_0430.wav (ID: 430)
+    "NULL",                                      // 0x01AF -> sfx_0431.wav (ID: 431)
+    "NULL",                                      // 0x01B0 -> sfx_0432.wav (ID: 432)
+    "NULL",                                      // 0x01B1 -> sfx_0433.wav (ID: 433)
+    "NULL",                                      // 0x01B2 -> sfx_0434.wav (ID: 434)
+    "NULL",                                      // 0x01B3 -> sfx_0435.wav (ID: 435)
+    "SFX_BIKE_ENGINE",                           // 0x01B4 -> sfx_0436.wav (ID: 436)
+    "SFX_01B5",                                  // 0x01B5 -> sfx_0437.wav (ID: 437)
+    "SFX_01B6",                                  // 0x01B6 -> sfx_0438.wav (ID: 438)
+    "SFX_01B7",                                  // 0x01B7 -> sfx_0439.wav (ID: 439)
+    "SFX_01B8",                                  // 0x01B8 -> sfx_0440.wav (ID: 440)
+    "SFX_LAPTOP_TYPE",                                  // 0x01B9 -> sfx_0441.wav (ID: 441)
+    "SFX_LAPTOP_TYPE_2",                                  // 0x01BA -> sfx_0442.wav (ID: 442)
+    "SFX_LAPTOP_TYPE_3",                                  // 0x01BB -> sfx_0443.wav (ID: 443)
+    "NULL",                                      // 0x01BC -> sfx_0444.wav (ID: 444)
+    "SFX_EYESPY_RUNNING",                        // 0x01BD -> sfx_0445.wav (ID: 445)
+    "SFX_01BE",                                  // 0x01BE -> sfx_0446.wav (ID: 446)
+    "SFX_01BF",                                  // 0x01BF -> sfx_0447.wav (ID: 447)
+    "SFX_01C0",                                  // 0x01C0 -> sfx_0448.wav (ID: 448)
+    "SFX_01C1",                                  // 0x01C1 -> sfx_0449.wav (ID: 449)
+    "SFX_01C2",                                  // 0x01C2 -> sfx_0450.wav (ID: 450)
+    "SFX_01C3",                                  // 0x01C3 -> sfx_0451.wav (ID: 451)
+    "SFX_01C4",                                  // 0x01C4 -> sfx_0452.wav (ID: 452)
+    "SFX_CLEANING_ROBOT",                                  // 0x01C5 -> sfx_0453.wav (ID: 453)
+    "SFX_01C6",                                  // 0x01C6 -> sfx_0454.wav (ID: 454)
+    "SFX_01C7",                                  // 0x01C7 -> sfx_0455.wav (ID: 455)
+    "SFX_SLAYER_BEEP",                           // 0x01C8 -> sfx_0456.wav (ID: 456)
+    "SFX_01C9",                                  // 0x01C9 -> sfx_0457.wav (ID: 457)
+    "SFX_01CA",                                  // 0x01CA -> sfx_0458.wav (ID: 458)
+    "SFX_01CB",                                  // 0x01CB -> sfx_0459.wav (ID: 459)
+    "SFX_01CC",                                  // 0x01CC -> sfx_0460.wav (ID: 460)
+    "SFX_PICKUP_SHIELD",                         // 0x01CD -> sfx_0461.wav (ID: 461)
+    "SFX_01CE",                                  // 0x01CE -> sfx_0462.wav (ID: 462)
+    "SFX_01CF",                                  // 0x01CF -> sfx_0463.wav (ID: 463)
+    "NULL",                                      // 0x01D0 -> sfx_0464.wav (ID: 464)
+    "NULL",                                      // 0x01D1 -> sfx_0465.wav (ID: 465)
+    "SFX_01D2",                                  // 0x01D2 -> sfx_0466.wav (ID: 466)
+    "SFX_01D3",                                  // 0x01D3 -> sfx_0467.wav (ID: 467)
+    "NULL",                                      // 0x01D4 -> sfx_0468.wav (ID: 468)
+    "SFX_01D5",                                  // 0x01D5 -> sfx_0469.wav (ID: 469)
+    "NULL",                                      // 0x01D6 -> sfx_0470.wav (ID: 470)
+    "NULL",                                      // 0x01D7 -> sfx_0471.wav (ID: 471)
+    "SFX_CLIP_EJECT",                                  // 0x01D8 -> sfx_0472.wav (ID: 472)
+    "SFX_CLIP_INSERT",                                  // 0x01D9 -> sfx_0473.wav (ID: 473)
+    "SFX_HAMMER_COCK",                                  // 0x01DA -> sfx_0474.wav (ID: 474)
+    "SFX_01DB",                                  // 0x01DB -> sfx_0475.wav (ID: 475)
+    "SFX_01DC",                                  // 0x01DC -> sfx_0476.wav (ID: 476)
+    "NULL",                                      // 0x01DD -> sfx_0477.wav (ID: 477)
+    "NULL",                                      // 0x01DE -> sfx_0478.wav (ID: 478)
+    "NULL",                                      // 0x01DF -> sfx_0479.wav (ID: 479)
+    "NULL",                                      // 0x01E0 -> sfx_0480.wav (ID: 480)
+    "NULL",                                      // 0x01E1 -> sfx_0481.wav (ID: 481)
+    "NULL",                                      // 0x01E2 -> sfx_0482.wav (ID: 482)
+    "NULL",                                      // 0x01E3 -> sfx_0483.wav (ID: 483)
+    "NULL",                                      // 0x01E4 -> sfx_0484.wav (ID: 484)
+    "NULL",                                      // 0x01E5 -> sfx_0485.wav (ID: 485)
+    "NULL",                                      // 0x01E6 -> sfx_0486.wav (ID: 486)
+    "NULL",                                      // 0x01E7 -> sfx_0487.wav (ID: 487)
+    "NULL",                                      // 0x01E8 -> sfx_0488.wav (ID: 488)
+    "NULL",                                      // 0x01E9 -> sfx_0489.wav (ID: 489)
+    "NULL",                                      // 0x01EA -> sfx_0490.wav (ID: 490)
+    "NULL",                                      // 0x01EB -> sfx_0491.wav (ID: 491)
+    "NULL",                                      // 0x01EC -> sfx_0492.wav (ID: 492)
+    "NULL",                                      // 0x01ED -> sfx_0493.wav (ID: 493)
+    "NULL",                                      // 0x01EE -> sfx_0494.wav (ID: 494)
+    "NULL",                                      // 0x01EF -> sfx_0495.wav (ID: 495)
+    "NULL",                                      // 0x01F0 -> sfx_0496.wav (ID: 496)
+    "NULL",                                      // 0x01F1 -> sfx_0497.wav (ID: 497)
+    "NULL",                                      // 0x01F2 -> sfx_0498.wav (ID: 498)
+    "NULL",                                      // 0x01F3 -> sfx_0499.wav (ID: 499)
+    "NULL",                                      // 0x01F4 -> sfx_0500.wav (ID: 500)
+    "NULL",                                      // 0x01F5 -> sfx_0501.wav (ID: 501)
+    "NULL",                                      // 0x01F6 -> sfx_0502.wav (ID: 502)
+    "NULL",                                      // 0x01F7 -> sfx_0503.wav (ID: 503)
+    "NULL",                                      // 0x01F8 -> sfx_0504.wav (ID: 504)
+    "NULL",                                      // 0x01F9 -> sfx_0505.wav (ID: 505)
+    "NULL",                                      // 0x01FA -> sfx_0506.wav (ID: 506)
+    "NULL",                                      // 0x01FB -> sfx_0507.wav (ID: 507)
+    "NULL",                                      // 0x01FC -> sfx_0508.wav (ID: 508)
+    "NULL",                                      // 0x01FD -> sfx_0509.wav (ID: 509)
+    "NULL",                                      // 0x01FE -> sfx_0510.wav (ID: 510)
+    "NULL",                                      // 0x01FF -> sfx_0511.wav (ID: 511)
+    "NULL",                                      // 0x0200 -> sfx_0512.wav (ID: 512)
+    "NULL",                                      // 0x0201 -> sfx_0513.wav (ID: 513)
+    "NULL",                                      // 0x0202 -> sfx_0514.wav (ID: 514)
+    "NULL",                                      // 0x0203 -> sfx_0515.wav (ID: 515)
+    "NULL",                                      // 0x0204 -> sfx_0516.wav (ID: 516)
+    "NULL",                                      // 0x0205 -> sfx_0517.wav (ID: 517)
+    "NULL",                                      // 0x0206 -> sfx_0518.wav (ID: 518)
+    "NULL",                                      // 0x0207 -> sfx_0519.wav (ID: 519)
+    "NULL",                                      // 0x0208 -> sfx_0520.wav (ID: 520)
+    "NULL",                                      // 0x0209 -> sfx_0521.wav (ID: 521)
+    "NULL",                                      // 0x020A -> sfx_0522.wav (ID: 522)
+    "NULL",                                      // 0x020B -> sfx_0523.wav (ID: 523)
+    "NULL",                                      // 0x020C -> sfx_0524.wav (ID: 524)
+    "NULL",                                      // 0x020D -> sfx_0525.wav (ID: 525)
+    "NULL",                                      // 0x020E -> sfx_0526.wav (ID: 526)
+    "NULL",                                      // 0x020F -> sfx_0527.wav (ID: 527)
+    "NULL",                                      // 0x0210 -> sfx_0528.wav (ID: 528)
+    "NULL",                                      // 0x0211 -> sfx_0529.wav (ID: 529)
+    "NULL",                                      // 0x0212 -> sfx_0530.wav (ID: 530)
+    "NULL",                                      // 0x0213 -> sfx_0531.wav (ID: 531)
+    "NULL",                                      // 0x0214 -> sfx_0532.wav (ID: 532)
+    "NULL",                                      // 0x0215 -> sfx_0533.wav (ID: 533)
+    "NULL",                                      // 0x0216 -> sfx_0534.wav (ID: 534)
+    "NULL",                                      // 0x0217 -> sfx_0535.wav (ID: 535)
+    "NULL",                                      // 0x0218 -> sfx_0536.wav (ID: 536)
+    "NULL",                                      // 0x0219 -> sfx_0537.wav (ID: 537)
+    "NULL",                                      // 0x021A -> sfx_0538.wav (ID: 538)
+    "NULL",                                      // 0x021B -> sfx_0539.wav (ID: 539)
+    "NULL",                                      // 0x021C -> sfx_0540.wav (ID: 540)
+    "NULL",                                      // 0x021D -> sfx_0541.wav (ID: 541)
+    "NULL",                                      // 0x021E -> sfx_0542.wav (ID: 542)
+    "NULL",                                      // 0x021F -> sfx_0543.wav (ID: 543)
+    "NULL",                                      // 0x0220 -> sfx_0544.wav (ID: 544)
+    "NULL",                                      // 0x0221 -> sfx_0545.wav (ID: 545)
+    "NULL",                                      // 0x0222 -> sfx_0546.wav (ID: 546)
+    "NULL",                                      // 0x0223 -> sfx_0547.wav (ID: 547)
+    "NULL",                                      // 0x0224 -> sfx_0548.wav (ID: 548)
+    "NULL",                                      // 0x0225 -> sfx_0549.wav (ID: 549)
+    "NULL",                                      // 0x0226 -> sfx_0550.wav (ID: 550)
+    "NULL",                                      // 0x0227 -> sfx_0551.wav (ID: 551)
+    "NULL",                                      // 0x0228 -> sfx_0552.wav (ID: 552)
+    "NULL",                                      // 0x0229 -> sfx_0553.wav (ID: 553)
+    "NULL",                                      // 0x022A -> sfx_0554.wav (ID: 554)
+    "NULL",                                      // 0x022B -> sfx_0555.wav (ID: 555)
+    "NULL",                                      // 0x022C -> sfx_0556.wav (ID: 556)
+    "NULL",                                      // 0x022D -> sfx_0557.wav (ID: 557)
+    "NULL",                                      // 0x022E -> sfx_0558.wav (ID: 558)
+    "NULL",                                      // 0x022F -> sfx_0559.wav (ID: 559)
+    "NULL",                                      // 0x0230 -> sfx_0560.wav (ID: 560)
+    "NULL",                                      // 0x0231 -> sfx_0561.wav (ID: 561)
+    "NULL",                                      // 0x0232 -> sfx_0562.wav (ID: 562)
+    "NULL",                                      // 0x0233 -> sfx_0563.wav (ID: 563)
+    "NULL",                                      // 0x0234 -> sfx_0564.wav (ID: 564)
+    "NULL",                                      // 0x0235 -> sfx_0565.wav (ID: 565)
+    "NULL",                                      // 0x0236 -> sfx_0566.wav (ID: 566)
+    "NULL",                                      // 0x0237 -> sfx_0567.wav (ID: 567)
+    "NULL",                                      // 0x0238 -> sfx_0568.wav (ID: 568)
+    "NULL",                                      // 0x0239 -> sfx_0569.wav (ID: 569)
+    "NULL",                                      // 0x023A -> sfx_0570.wav (ID: 570)
+    "NULL",                                      // 0x023B -> sfx_0571.wav (ID: 571)
+    "NULL",                                      // 0x023C -> sfx_0572.wav (ID: 572)
+    "SFX_DRCAROLL_COME_ON",                      // 0x023D -> sfx_0573.wav (ID: 573)
+    "SFX_DRCAROLL_TAKING_YOUR_TIME",             // 0x023E -> sfx_0574.wav (ID: 574)
+    "SFX_DRCAROLL_WHAT",                         // 0x023F -> sfx_0575.wav (ID: 575)
+    "SFX_ARGH_DRCAROLL_0240",                    // 0x0240 -> sfx_0576.wav (ID: 576)
+    "NULL",                                      // 0x0241 -> sfx_0577.wav (ID: 577)
+    "NULL",                                      // 0x0242 -> sfx_0578.wav (ID: 578)
+    "SFX_DRCAROLL_OH_CRIKEY",                    // 0x0243 -> sfx_0579.wav (ID: 579)
+    "SFX_DRCAROLL_GOODNESS_GRACIOUS",            // 0x0244 -> sfx_0580.wav (ID: 580)
+    "SFX_DRCAROLL_DONT_THEY_KNOW",               // 0x0245 -> sfx_0581.wav (ID: 581)
+    "SFX_DRCAROLL_STOP_THAT",                    // 0x0246 -> sfx_0582.wav (ID: 582)
+    "SFX_DRCAROLL_GET_OUT_OF_HERE",              // 0x0247 -> sfx_0583.wav (ID: 583)
+    "SFX_DRCAROLL_KNOW_WHAT_YOURE_DOING",        // 0x0248 -> sfx_0584.wav (ID: 584)
+    "SFX_DRCAROLL_0249",                         // 0x0249 -> sfx_0585.wav (ID: 585)
+    "SFX_024A",                                  // 0x024A -> sfx_0586.wav (ID: 586)
+    "SFX_DRCAROLL_GOING_TO_THE_HELIPAD",         // 0x024B -> sfx_0587.wav (ID: 587)
+    "SFX_ARGH_DRCAROLL_024C",                    // 0x024C -> sfx_0588.wav (ID: 588)
+    "SFX_DRCAROLL_SYSTEMS_FAILURE",              // 0x024D -> sfx_0589.wav (ID: 589)
+    "SFX_DRCAROLL_YOU_GO_ON",                    // 0x024E -> sfx_0590.wav (ID: 590)
+    "SFX_DRCAROLL_I_CANT_MAKE_IT",               // 0x024F -> sfx_0591.wav (ID: 591)
+    "SFX_ARGH_DRCAROLL_0250",                    // 0x0250 -> sfx_0592.wav (ID: 592)
+    "SFX_ARGH_DRCAROLL_0251",                    // 0x0251 -> sfx_0593.wav (ID: 593)
+    "SFX_DRCAROLL_QUITE_ENOUGH",                 // 0x0252 -> sfx_0594.wav (ID: 594)
+    "NULL",                                      // 0x0253 -> sfx_0595.wav (ID: 595)
+    "NULL",                                      // 0x0254 -> sfx_0596.wav (ID: 596)
+    "NULL",                                      // 0x0255 -> sfx_0597.wav (ID: 597)
+    "SFX_DRCAROLL_IM_DYING",                     // 0x0256 -> sfx_0598.wav (ID: 598)
+    "SFX_DRCAROLL_GOODBYE",                      // 0x0257 -> sfx_0599.wav (ID: 599)
+    "SFX_DRCAROLL_YOU_WERE_SUPPOSED",            // 0x0258 -> sfx_0600.wav (ID: 600)
+    "SFX_ARGH_DRCAROLL_0259",                    // 0x0259 -> sfx_0601.wav (ID: 601)
+    "SFX_ARGH_DRCAROLL_025A",                    // 0x025A -> sfx_0602.wav (ID: 602)
+    "SFX_M0_WHAT_THE",                           // 0x025B -> sfx_0603.wav (ID: 603)
+    "SFX_M0_WHO_THE",                            // 0x025C -> sfx_0604.wav (ID: 604)
+    "NULL",                                      // 0x025D -> sfx_0605.wav (ID: 605)
+    "SFX_M0_MEDIC",                              // 0x025E -> sfx_0606.wav (ID: 606)
+    "SFX_M0_OW",                                 // 0x025F -> sfx_0607.wav (ID: 607)
+    "SFX_M0_YOU_SHOT_ME",                        // 0x0260 -> sfx_0608.wav (ID: 608)
+    "SFX_M0_IM_HIT",                             // 0x0261 -> sfx_0609.wav (ID: 609)
+    "SFX_M0_IM_TAKING_FIRE",                     // 0x0262 -> sfx_0610.wav (ID: 610)
+    "SFX_M0_TAKING_DAMAGE",                      // 0x0263 -> sfx_0611.wav (ID: 611)
+    "SFX_M0_HEY_YOU",                            // 0x0264 -> sfx_0612.wav (ID: 612)
+    "SFX_M0_INTRUDER_ALERT",                     // 0x0265 -> sfx_0613.wav (ID: 613)
+    "SFX_M0_GOT_A_CONTACT",                      // 0x0266 -> sfx_0614.wav (ID: 614)
+    "SFX_0267",                                  // 0x0267 -> sfx_0615.wav (ID: 615)
+    "SFX_0268",                                  // 0x0268 -> sfx_0616.wav (ID: 616)
+    "NULL",                                      // 0x0269 -> sfx_0617.wav (ID: 617)
+    "NULL",                                      // 0x026A -> sfx_0618.wav (ID: 618)
+    "SFX_M0_HEAR_THAT",                          // 0x026B -> sfx_0619.wav (ID: 619)
+    "SFX_M0_WHATS_THAT_NOISE",                   // 0x026C -> sfx_0620.wav (ID: 620)
+    "SFX_M0_HEARD_A_NOISE",                      // 0x026D -> sfx_0621.wav (ID: 621)
+    "SFX_M0_ARE_YOU_OKAY",                       // 0x026E -> sfx_0622.wav (ID: 622)
+    "SFX_M0_GOT_A_MAN_DOWN",                     // 0x026F -> sfx_0623.wav (ID: 623)
+    "SFX_M0_HES_BOUGHT_IT",                      // 0x0270 -> sfx_0624.wav (ID: 624)
+    "NULL",                                      // 0x0271 -> sfx_0625.wav (ID: 625)
+    "SFX_M0_INTRUDER_ALERT2",                    // 0x0272 -> sfx_0626.wav (ID: 626)
+    "SFX_M0_WEVE_GOT_TROUBLE",                   // 0x0273 -> sfx_0627.wav (ID: 627)
+    "SFX_M0_WEVE_GOT_PROBLEMS",                  // 0x0274 -> sfx_0628.wav (ID: 628)
+    "SFX_M0_I_SEE_HER",                          // 0x0275 -> sfx_0629.wav (ID: 629)
+    "SFX_0276",                                  // 0x0276 -> sfx_0630.wav (ID: 630)
+    "SFX_M0_THERE_SHE_IS",                       // 0x0277 -> sfx_0631.wav (ID: 631)
+    "SFX_M0_THERE_MOVEMENT",                     // 0x0278 -> sfx_0632.wav (ID: 632)
+    "NULL",                                      // 0x0279 -> sfx_0633.wav (ID: 633)
+    "NULL",                                      // 0x027A -> sfx_0634.wav (ID: 634)
+    "SFX_M0_CLEAR_SHOT",                         // 0x027B -> sfx_0635.wav (ID: 635)
+    "SFX_M0_SHES_MINE",                          // 0x027C -> sfx_0636.wav (ID: 636)
+    "SFX_M0_OPEN_FIRE",                          // 0x027D -> sfx_0637.wav (ID: 637)
+    "SFX_M0_WIPE_HER_OUT",                       // 0x027E -> sfx_0638.wav (ID: 638)
+    "SFX_M0_WASTE_HER",                          // 0x027F -> sfx_0639.wav (ID: 639)
+    "SFX_M0_GIVE_IT_UP",                         // 0x0280 -> sfx_0640.wav (ID: 640)
+    "SFX_M0_SURRENDER_NOW",                      // 0x0281 -> sfx_0641.wav (ID: 641)
+    "SFX_M0_TAKE_THAT",                          // 0x0282 -> sfx_0642.wav (ID: 642)
+    "NULL",                                      // 0x0283 -> sfx_0643.wav (ID: 643)
+    "NULL",                                      // 0x0284 -> sfx_0644.wav (ID: 644)
+    "NULL",                                      // 0x0285 -> sfx_0645.wav (ID: 645)
+    "SFX_0286",                                  // 0x0286 -> sfx_0646.wav (ID: 646)
+    "SFX_M0_HOW_DID_I_MISS",                     // 0x0287 -> sfx_0647.wav (ID: 647)
+    "SFX_0288",                                  // 0x0288 -> sfx_0648.wav (ID: 648)
+    "SFX_M0_SHES_A_TRICKY_ONE",                  // 0x0289 -> sfx_0649.wav (ID: 649)
+    "SFX_M0_COVER_ME",                           // 0x028A -> sfx_0650.wav (ID: 650)
+    "SFX_M0_WATCH_MY_BACK",                      // 0x028B -> sfx_0651.wav (ID: 651)
+    "SFX_M0_TAKE_COVER",                         // 0x028C -> sfx_0652.wav (ID: 652)
+    "SFX_M0_TAKE_COVER_028D",                    // 0x028D -> sfx_0653.wav (ID: 653)
+    "SFX_M0_ILL_COVER_YOU",                      // 0x028E -> sfx_0654.wav (ID: 654)
+    "SFX_M0_GET_DOWN",                           // 0x028F -> sfx_0655.wav (ID: 655)
+    "SFX_M0_GO_TO_PLAN_B",                       // 0x0290 -> sfx_0656.wav (ID: 656)
+    "SFX_0291",                                  // 0x0291 -> sfx_0657.wav (ID: 657)
+    "SFX_M0_RETREAT",                            // 0x0292 -> sfx_0658.wav (ID: 658)
+    "SFX_M0_CATCH",                              // 0x0293 -> sfx_0659.wav (ID: 659)
+    "SFX_M0_EVERYBODY_DOWN",                     // 0x0294 -> sfx_0660.wav (ID: 660)
+    "NULL",                                      // 0x0295 -> sfx_0661.wav (ID: 661)
+    "NULL",                                      // 0x0296 -> sfx_0662.wav (ID: 662)
+    "SFX_M0_FALL_BACK",                          // 0x0297 -> sfx_0663.wav (ID: 663)
+    "SFX_M0_EVERYONE_BACK_OFF",                  // 0x0298 -> sfx_0664.wav (ID: 664)
+    "SFX_M0_WITHDRAW",                           // 0x0299 -> sfx_0665.wav (ID: 665)
+    "SFX_M0_FLANK_THE_TARGET",                   // 0x029A -> sfx_0666.wav (ID: 666)
+    "SFX_M0_LETS_SPLIT_UP",                      // 0x029B -> sfx_0667.wav (ID: 667)
+    "SFX_M0_SURROUND_HER",                       // 0x029C -> sfx_0668.wav (ID: 668)
+    "SFX_M0_GRENADE",                            // 0x029D -> sfx_0669.wav (ID: 669)
+    "NULL",                                      // 0x029E -> sfx_0670.wav (ID: 670)
+    "SFX_M0_YOU_BITCH",                                  // 0x029F -> sfx_0671.wav (ID: 671)
+    "NULL",                                      // 0x02A0 -> sfx_0672.wav (ID: 672)
+    "SFX_M0_OH_MY_GOD",                                  // 0x02A1 -> sfx_0673.wav (ID: 673)
+    "SFX_M0_SHE_GOT_ME",                         // 0x02A2 -> sfx_0674.wav (ID: 674)
+    "SFX_M0_GRAB_A_BODY_BAG",                    // 0x02A3 -> sfx_0675.wav (ID: 675)
+    "SFX_M0_ONE_FOR_THE_MORGUE",                 // 0x02A4 -> sfx_0676.wav (ID: 676)
+    "SFX_M0_REST_IN_PEACE",                      // 0x02A5 -> sfx_0677.wav (ID: 677)
+    "SFX_M0_TARGET_ELIMINATED",                                  // 0x02A6 -> sfx_0678.wav (ID: 678)
+    "SFX_M0_DONT_SHOOT_ME",                      // 0x02A7 -> sfx_0679.wav (ID: 679)
+    "SFX_M0_I_GIVE_UP",                          // 0x02A8 -> sfx_0680.wav (ID: 680)
+    "SFX_M0_YOU_WIN_I_SURRENDER",                // 0x02A9 -> sfx_0681.wav (ID: 681)
+    "SFX_ARGH_JO_02AA",                          // 0x02AA -> sfx_0682.wav (ID: 682)
+    "SFX_ARGH_JO_02AB",                          // 0x02AB -> sfx_0683.wav (ID: 683)
+    "SFX_ARGH_JO_02AC",                          // 0x02AC -> sfx_0684.wav (ID: 684)
+    "SFX_ARGH_JO_02AD",                          // 0x02AD -> sfx_0685.wav (ID: 685)
+    "SFX_ARGH_JO_02AE",                          // 0x02AE -> sfx_0686.wav (ID: 686)
+    "SFX_ARGH_JO_02AF",                          // 0x02AF -> sfx_0687.wav (ID: 687)
+    "SFX_ARGH_JO_02B0",                          // 0x02B0 -> sfx_0688.wav (ID: 688)
+    "SFX_ARGH_JO_02B1",                          // 0x02B1 -> sfx_0689.wav (ID: 689)
+    "SFX_ARGH_JO_02B2",                          // 0x02B2 -> sfx_0690.wav (ID: 690)
+    "SFX_ARGH_JO_02B3",                          // 0x02B3 -> sfx_0691.wav (ID: 691)
+    "NULL",                                      // 0x02B4 -> sfx_0692.wav (ID: 692)
+    "NULL",                                      // 0x02B5 -> sfx_0693.wav (ID: 693)
+    "NULL",                                      // 0x02B6 -> sfx_0694.wav (ID: 694)
+    "NULL",                                      // 0x02B7 -> sfx_0695.wav (ID: 695)
+    "NULL",                                      // 0x02B8 -> sfx_0696.wav (ID: 696)
+    "NULL",                                      // 0x02B9 -> sfx_0697.wav (ID: 697)
+    "NULL",                                      // 0x02BA -> sfx_0698.wav (ID: 698)
+    "NULL",                                      // 0x02BB -> sfx_0699.wav (ID: 699)
+    "NULL",                                      // 0x02BC -> sfx_0700.wav (ID: 700)
+    "NULL",                                      // 0x02BD -> sfx_0701.wav (ID: 701)
+    "NULL",                                      // 0x02BE -> sfx_0702.wav (ID: 702)
+    "NULL",                                      // 0x02BF -> sfx_0703.wav (ID: 703)
+    "NULL",                                      // 0x02C0 -> sfx_0704.wav (ID: 704)
+    "NULL",                                      // 0x02C1 -> sfx_0705.wav (ID: 705)
+    "NULL",                                      // 0x02C2 -> sfx_0706.wav (ID: 706)
+    "NULL",                                      // 0x02C3 -> sfx_0707.wav (ID: 707)
+    "NULL",                                      // 0x02C4 -> sfx_0708.wav (ID: 708)
+    "NULL",                                      // 0x02C5 -> sfx_0709.wav (ID: 709)
+    "NULL",                                      // 0x02C6 -> sfx_0710.wav (ID: 710)
+    "NULL",                                      // 0x02C7 -> sfx_0711.wav (ID: 711)
+    "NULL",                                      // 0x02C8 -> sfx_0712.wav (ID: 712)
+    "NULL",                                      // 0x02C9 -> sfx_0713.wav (ID: 713)
+    "NULL",                                      // 0x02CA -> sfx_0714.wav (ID: 714)
+    "NULL",                                      // 0x02CB -> sfx_0715.wav (ID: 715)
+    "NULL",                                      // 0x02CC -> sfx_0716.wav (ID: 716)
+    "NULL",                                      // 0x02CD -> sfx_0717.wav (ID: 717)
+    "NULL",                                      // 0x02CE -> sfx_0718.wav (ID: 718)
+    "NULL",                                      // 0x02CF -> sfx_0719.wav (ID: 719)
+    "NULL",                                      // 0x02D0 -> sfx_0720.wav (ID: 720)
+    "NULL",                                      // 0x02D1 -> sfx_0721.wav (ID: 721)
+    "NULL",                                      // 0x02D2 -> sfx_0722.wav (ID: 722)
+    "NULL",                                      // 0x02D3 -> sfx_0723.wav (ID: 723)
+    "NULL",                                      // 0x02D4 -> sfx_0724.wav (ID: 724)
+    "NULL",                                      // 0x02D5 -> sfx_0725.wav (ID: 725)
+    "NULL",                                      // 0x02D6 -> sfx_0726.wav (ID: 726)
+    "NULL",                                      // 0x02D7 -> sfx_0727.wav (ID: 727)
+    "NULL",                                      // 0x02D8 -> sfx_0728.wav (ID: 728)
+    "NULL",                                      // 0x02D9 -> sfx_0729.wav (ID: 729)
+    "NULL",                                      // 0x02DA -> sfx_0730.wav (ID: 730)
+    "NULL",                                      // 0x02DB -> sfx_0731.wav (ID: 731)
+    "NULL",                                      // 0x02DC -> sfx_0732.wav (ID: 732)
+    "NULL",                                      // 0x02DD -> sfx_0733.wav (ID: 733)
+    "NULL",                                      // 0x02DE -> sfx_0734.wav (ID: 734)
+    "NULL",                                      // 0x02DF -> sfx_0735.wav (ID: 735)
+    "NULL",                                      // 0x02E0 -> sfx_0736.wav (ID: 736)
+    "NULL",                                      // 0x02E1 -> sfx_0737.wav (ID: 737)
+    "NULL",                                      // 0x02E2 -> sfx_0738.wav (ID: 738)
+    "NULL",                                      // 0x02E3 -> sfx_0739.wav (ID: 739)
+    "NULL",                                      // 0x02E4 -> sfx_0740.wav (ID: 740)
+    "NULL",                                      // 0x02E5 -> sfx_0741.wav (ID: 741)
+    "NULL",                                      // 0x02E6 -> sfx_0742.wav (ID: 742)
+    "NULL",                                      // 0x02E7 -> sfx_0743.wav (ID: 743)
+    "NULL",                                      // 0x02E8 -> sfx_0744.wav (ID: 744)
+    "NULL",                                      // 0x02E9 -> sfx_0745.wav (ID: 745)
+    "NULL",                                      // 0x02EA -> sfx_0746.wav (ID: 746)
+    "NULL",                                      // 0x02EB -> sfx_0747.wav (ID: 747)
+    "NULL",                                      // 0x02EC -> sfx_0748.wav (ID: 748)
+    "NULL",                                      // 0x02ED -> sfx_0749.wav (ID: 749)
+    "NULL",                                      // 0x02EE -> sfx_0750.wav (ID: 750)
+    "NULL",                                      // 0x02EF -> sfx_0751.wav (ID: 751)
+    "NULL",                                      // 0x02F0 -> sfx_0752.wav (ID: 752)
+    "NULL",                                      // 0x02F1 -> sfx_0753.wav (ID: 753)
+    "NULL",                                      // 0x02F2 -> sfx_0754.wav (ID: 754)
+    "NULL",                                      // 0x02F3 -> sfx_0755.wav (ID: 755)
+    "NULL",                                      // 0x02F4 -> sfx_0756.wav (ID: 756)
+    "NULL",                                      // 0x02F5 -> sfx_0757.wav (ID: 757)
+    "NULL",                                      // 0x02F6 -> sfx_0758.wav (ID: 758)
+    "NULL",                                      // 0x02F7 -> sfx_0759.wav (ID: 759)
+    "NULL",                                      // 0x02F8 -> sfx_0760.wav (ID: 760)
+    "NULL",                                      // 0x02F9 -> sfx_0761.wav (ID: 761)
+    "NULL",                                      // 0x02FA -> sfx_0762.wav (ID: 762)
+    "NULL",                                      // 0x02FB -> sfx_0763.wav (ID: 763)
+    "NULL",                                      // 0x02FC -> sfx_0764.wav (ID: 764)
+    "SFX_M1_HOLY-",                                  // 0x02FD -> sfx_0765.wav (ID: 765)
+    "SFX_M1_WHAT_THE_HELL",                                  // 0x02FE -> sfx_0766.wav (ID: 766)
+    "SFX_M1_WHA",                                // 0x02FF -> sfx_0767.wav (ID: 767)
+    "SFX_M1_OH_MY_GOD",                                  // 0x0300 -> sfx_0768.wav (ID: 768)
+    "SFX_M1_IM_HIT_IM_HIT",                      // 0x0301 -> sfx_0769.wav (ID: 769)
+    "SFX_M1_IM_BLEEDING",                        // 0x0302 -> sfx_0770.wav (ID: 770)
+    "SFX_M1_OH_GOD_IM_HIT",                                  // 0x0303 -> sfx_0771.wav (ID: 771)
+    "SFX_M1_HELP_ME_OUT",                        // 0x0304 -> sfx_0772.wav (ID: 772)
+    "SFX_M1_IM_IN_TROUBLE",                      // 0x0305 -> sfx_0773.wav (ID: 773)
+    "SFX_M1_COME_HERE",                          // 0x0306 -> sfx_0774.wav (ID: 774)
+    "SFX_M1_THERES_SOMEONE_HERE",                // 0x0307 -> sfx_0775.wav (ID: 775)
+    "SFX_M1_GET_HER",                            // 0x0308 -> sfx_0776.wav (ID: 776)
+    "SFX_M1_WHOA",                               // 0x0309 -> sfx_0777.wav (ID: 777)
+    "SFX_M1_MY_GOD",                                  // 0x030A -> sfx_0778.wav (ID: 778)
+    "SFX_M1_IS_THAT_A_BULLET",                   // 0x030B -> sfx_0779.wav (ID: 779)
+    "NULL",                                      // 0x030C -> sfx_0780.wav (ID: 780)
+    "NULL",                                      // 0x030D -> sfx_0781.wav (ID: 781)
+    "SFX_M1_THAT_SOUNDED_LIKE",                  // 0x030E -> sfx_0782.wav (ID: 782)
+    "SFX_M1_GUNFIRE",                            // 0x030F -> sfx_0783.wav (ID: 783)
+    "SFX_M1_SOMEONES_SHOOTING",                  // 0x0310 -> sfx_0784.wav (ID: 784)
+    "SFX_M1_ARE_YOU_OK",                                  // 0x0311 -> sfx_0785.wav (ID: 785)
+    "SFX_M1_YOURE_BLEEDING",                                  // 0x0312 -> sfx_0786.wav (ID: 786)
+    "SFX_M1_BIG_NO",                                  // 0x0313 -> sfx_0787.wav (ID: 787)
+    "SFX_M1_OH_GOD_HES_DEAD",                                  // 0x0314 -> sfx_0788.wav (ID: 788)
+    "NULL",                                      // 0x0315 -> sfx_0789.wav (ID: 789)
+    "SFX_M1_HES_GONE",                           // 0x0316 -> sfx_0790.wav (ID: 790)
+    "NULL",                                      // 0x0317 -> sfx_0791.wav (ID: 791)
+    "SFX_0318",                                  // 0x0318 -> sfx_0792.wav (ID: 792)
+    "NULL",                                      // 0x0319 -> sfx_0793.wav (ID: 793)
+    "NULL",                                      // 0x031A -> sfx_0794.wav (ID: 794)
+    "NULL",                                      // 0x031B -> sfx_0795.wav (ID: 795)
+    "SFX_M1_M2_LOOK_OUT_SHES_COMING",            // 0x031C -> sfx_0796.wav (ID: 796)
+    "SFX_M1_M2_TAKE_COVER",                      // 0x031D -> sfx_0797.wav (ID: 797)
+    "SFX_M1_M2_LOOK_OUT_LOOK_OUT",               // 0x031E -> sfx_0798.wav (ID: 798)
+    "SFX_M1_OVER_THERE",                         // 0x031F -> sfx_0799.wav (ID: 799)
+    "SFX_M1_HALT",                               // 0x0320 -> sfx_0800.wav (ID: 800)
+    "SFX_M1_FREEZE",                             // 0x0321 -> sfx_0801.wav (ID: 801)
+    "SFX_M1_LAST_MISTAKE",                       // 0x0322 -> sfx_0802.wav (ID: 802)
+    "SFX_M1_WHAT_ARE_YOU_WAITING_FOR",           // 0x0323 -> sfx_0803.wav (ID: 803)
+    "SFX_M1_BRING_IT_ON",                        // 0x0324 -> sfx_0804.wav (ID: 804)
+    "SFX_M1_TAKE_HER_DOWN",                      // 0x0325 -> sfx_0805.wav (ID: 805)
+    "SFX_M1_EVERYBODY_GET_HER",                  // 0x0326 -> sfx_0806.wav (ID: 806)
+    "SFX_M1_ATTACK",                             // 0x0327 -> sfx_0807.wav (ID: 807)
+    "NULL",                                      // 0x0328 -> sfx_0808.wav (ID: 808)
+    "SFX_M1_YEAH_BABY",                          // 0x0329 -> sfx_0809.wav (ID: 809)
+    "NULL",                                      // 0x032A -> sfx_0810.wav (ID: 810)
+    "NULL",                                      // 0x032B -> sfx_0811.wav (ID: 811)
+    "NULL",                                      // 0x032C -> sfx_0812.wav (ID: 812)
+    "NULL",                                      // 0x032D -> sfx_0813.wav (ID: 813)
+    "SFX_M1_BLOODY_STUPID_GUN",                                  // 0x032E -> sfx_0814.wav (ID: 814)
+    "SFX_M1_MY_GUN_ITS_USELESS",                 // 0x032F -> sfx_0815.wav (ID: 815)
+    "SFX_M1_DAMMIT",                                  // 0x0330 -> sfx_0816.wav (ID: 816)
+    "SFX_M1_STOP_DODGING",                       // 0x0331 -> sfx_0817.wav (ID: 817)
+    "SFX_M1_SOMEONE_HIT_HER",                    // 0x0332 -> sfx_0818.wav (ID: 818)
+    "SFX_M1_DAMN_SHES_GOOD",                                  // 0x0333 -> sfx_0819.wav (ID: 819)
+    "SFX_M1_COVER_MY_ASS",                                  // 0x0334 -> sfx_0820.wav (ID: 820)
+    "SFX_M1_COVER_ME_NOW",                       // 0x0335 -> sfx_0821.wav (ID: 821)
+    "SFX_M1_IM_GOING_FOR_COVER",                 // 0x0336 -> sfx_0822.wav (ID: 822)
+    "SFX_M1_GO_FOR_IT",                          // 0x0337 -> sfx_0823.wav (ID: 823)
+    "SFX_M1_GO_GO_GO",                           // 0x0338 -> sfx_0824.wav (ID: 824)
+    "SFX_M1_RUN",                                // 0x0339 -> sfx_0825.wav (ID: 825)
+    "SFX_M1_SHES_TOO_GOOD_RUN",                  // 0x033A -> sfx_0826.wav (ID: 826)
+    "SFX_M1_GET_SOME_BACKUP",                    // 0x033B -> sfx_0827.wav (ID: 827)
+    "SFX_M1_EVACUATE_THE_AREA",                  // 0x033C -> sfx_0828.wav (ID: 828)
+    "SFX_M1_CATCH_THIS",                         // 0x033D -> sfx_0829.wav (ID: 829)
+    "SFX_M1_TIME_TO_DIE",                                  // 0x033E -> sfx_0830.wav (ID: 830)
+    "SFX_M1_HERE_KEEP_IT",                       // 0x033F -> sfx_0831.wav (ID: 831)
+    "NULL",                                      // 0x0340 -> sfx_0832.wav (ID: 832)
+    "NULL",                                      // 0x0341 -> sfx_0833.wav (ID: 833)
+    "SFX_M1_GRENADE",                            // 0x0342 -> sfx_0834.wav (ID: 834)
+    "SFX_M1_WITHDRAW",                           // 0x0343 -> sfx_0835.wav (ID: 835)
+    "SFX_M1_FALL_BACK",                          // 0x0344 -> sfx_0836.wav (ID: 836)
+    "SFX_M1_EVERYONE_GET_BACK",                  // 0x0345 -> sfx_0837.wav (ID: 837)
+    "SFX_M1_SURROUND_HER",                       // 0x0346 -> sfx_0838.wav (ID: 838)
+    "SFX_M1_SPREAD_OUT",                         // 0x0347 -> sfx_0839.wav (ID: 839)
+    "SFX_M1_SPLIT_UP",                           // 0x0348 -> sfx_0840.wav (ID: 840)
+    "SFX_M1_PLEASE_DONT",                        // 0x0349 -> sfx_0841.wav (ID: 841)
+    "SFX_M1_DONT_SHOOT",                         // 0x034A -> sfx_0842.wav (ID: 842)
+    "SFX_M1_IM_ONLY_DOING_MY_JOB",               // 0x034B -> sfx_0843.wav (ID: 843)
+    "SFX_M1_AUUUUGH",                                  // 0x034C -> sfx_0844.wav (ID: 844)
+    "SFX_M1_WHY_ME",                             // 0x034D -> sfx_0845.wav (ID: 845)
+    "SFX_M1_CHOKING",                            // 0x034E -> sfx_0846.wav (ID: 846)
+    "NULL",                                      // 0x034F -> sfx_0847.wav (ID: 847)
+    "NULL",                                      // 0x0350 -> sfx_0848.wav (ID: 848)
+    "SFX_M1_NOOOOO",                                  // 0x0351 -> sfx_0849.wav (ID: 849)
+    "NULL",                                      // 0x0352 -> sfx_0850.wav (ID: 850)
+    "NULL",                                      // 0x0353 -> sfx_0851.wav (ID: 851)
+    "NULL",                                      // 0x0354 -> sfx_0852.wav (ID: 852)
+    "SFX_M1_OUTSTANDING",                        // 0x0355 -> sfx_0853.wav (ID: 853)
+    "SFX_M1_IM_JUST_TOO_GOOD",                   // 0x0356 -> sfx_0854.wav (ID: 854)
+    "SFX_M1_YEEHAH_GOT_ONE",                     // 0x0357 -> sfx_0855.wav (ID: 855)
+    "NULL",                                      // 0x0358 -> sfx_0856.wav (ID: 856)
+    "NULL",                                      // 0x0359 -> sfx_0857.wav (ID: 857)
+    "SFX_M1_ANOTHER_ONE_BITES_THE_DUST",         // 0x035A -> sfx_0858.wav (ID: 858)
+    "SFX_M0_M1_LOOK_OUT_LOOK_OUT",               // 0x035B -> sfx_0859.wav (ID: 859)
+    "SFX_M0_M1_ITS_A_GRENADE",                   // 0x035C -> sfx_0860.wav (ID: 860)
+    "SFX_M0_M1_CLEAR_THE_AREA",                  // 0x035D -> sfx_0861.wav (ID: 861)
+    "NULL",                                      // 0x035E -> sfx_0862.wav (ID: 862)
+    "NULL",                                      // 0x035F -> sfx_0863.wav (ID: 863)
+    "NULL",                                      // 0x0360 -> sfx_0864.wav (ID: 864)
+    "NULL",                                      // 0x0361 -> sfx_0865.wav (ID: 865)
+    "NULL",                                      // 0x0362 -> sfx_0866.wav (ID: 866)
+    "NULL",                                      // 0x0363 -> sfx_0867.wav (ID: 867)
+    "NULL",                                      // 0x0364 -> sfx_0868.wav (ID: 868)
+    "NULL",                                      // 0x0365 -> sfx_0869.wav (ID: 869)
+    "NULL",                                      // 0x0366 -> sfx_0870.wav (ID: 870)
+    "NULL",                                      // 0x0367 -> sfx_0871.wav (ID: 871)
+    "NULL",                                      // 0x0368 -> sfx_0872.wav (ID: 872)
+    "NULL",                                      // 0x0369 -> sfx_0873.wav (ID: 873)
+    "NULL",                                      // 0x036A -> sfx_0874.wav (ID: 874)
+    "NULL",                                      // 0x036B -> sfx_0875.wav (ID: 875)
+    "NULL",                                      // 0x036C -> sfx_0876.wav (ID: 876)
+    "NULL",                                      // 0x036D -> sfx_0877.wav (ID: 877)
+    "NULL",                                      // 0x036E -> sfx_0878.wav (ID: 878)
+    "NULL",                                      // 0x036F -> sfx_0879.wav (ID: 879)
+    "NULL",                                      // 0x0370 -> sfx_0880.wav (ID: 880)
+    "NULL",                                      // 0x0371 -> sfx_0881.wav (ID: 881)
+    "NULL",                                      // 0x0372 -> sfx_0882.wav (ID: 882)
+    "NULL",                                      // 0x0373 -> sfx_0883.wav (ID: 883)
+    "NULL",                                      // 0x0374 -> sfx_0884.wav (ID: 884)
+    "NULL",                                      // 0x0375 -> sfx_0885.wav (ID: 885)
+    "NULL",                                      // 0x0376 -> sfx_0886.wav (ID: 886)
+    "NULL",                                      // 0x0377 -> sfx_0887.wav (ID: 887)
+    "NULL",                                      // 0x0378 -> sfx_0888.wav (ID: 888)
+    "NULL",                                      // 0x0379 -> sfx_0889.wav (ID: 889)
+    "NULL",                                      // 0x037A -> sfx_0890.wav (ID: 890)
+    "SFX_F_HEY",                                 // 0x037B -> sfx_0891.wav (ID: 891)
+    "SFX_F_HUH",                                 // 0x037C -> sfx_0892.wav (ID: 892)
+    "NULL",                                      // 0x037D -> sfx_0893.wav (ID: 893)
+    "SFX_F_IM_WOUNDED",                          // 0x037E -> sfx_0894.wav (ID: 894)
+    "SFX_F_HELP_ME_OUT",                         // 0x037F -> sfx_0895.wav (ID: 895)
+    "SFX_F_IM_IN_TROUBLE",                       // 0x0380 -> sfx_0896.wav (ID: 896)
+    "SFX_F_GET_HER",                             // 0x0381 -> sfx_0897.wav (ID: 897)
+    "SFX_F_HEY_YOU_COME_HERE",                   // 0x0382 -> sfx_0898.wav (ID: 898)
+    "NULL",                                      // 0x0383 -> sfx_0899.wav (ID: 899)
+    "SFX_F_TARGET_ATTACKING",                    // 0x0384 -> sfx_0900.wav (ID: 900)
+    "SFX_F_UNDER_FIRE",                          // 0x0385 -> sfx_0901.wav (ID: 901)
+    "NULL",                                      // 0x0386 -> sfx_0902.wav (ID: 902)
+    "SFX_F_WERE_UNDER_FIRE",                     // 0x0387 -> sfx_0903.wav (ID: 903)
+    "NULL",                                      // 0x0388 -> sfx_0904.wav (ID: 904)
+    "SFX_F_GUNFIRE?",                                // 0x0389 -> sfx_0905.wav (ID: 905)
+    "SFX_F_SOMEONES_SHOOTING",                   // 0x038A -> sfx_0906.wav (ID: 906)
+    "NULL",                                      // 0x038B -> sfx_0907.wav (ID: 907)
+    "NULL",                                      // 0x038C -> sfx_0908.wav (ID: 908)
+    "SFX_F_UNIT_DOWN",                           // 0x038D -> sfx_0909.wav (ID: 909)
+    "NULL",                                      // 0x038E -> sfx_0910.wav (ID: 910)
+    "NULL",                                      // 0x038F -> sfx_0911.wav (ID: 911)
+    "NULL",                                      // 0x0390 -> sfx_0912.wav (ID: 912)
+    "NULL",                                      // 0x0391 -> sfx_0913.wav (ID: 913)
+    "NULL",                                      // 0x0392 -> sfx_0914.wav (ID: 914)
+    "NULL",                                      // 0x0393 -> sfx_0915.wav (ID: 915)
+    "NULL",                                      // 0x0394 -> sfx_0916.wav (ID: 916)
+    "NULL",                                      // 0x0395 -> sfx_0917.wav (ID: 917)
+    "SFX_F_COME_ON",                             // 0x0396 -> sfx_0918.wav (ID: 918)
+    "NULL",                                      // 0x0397 -> sfx_0919.wav (ID: 919)
+    "SFX_F_EVERYONE_GET_HER",                    // 0x0398 -> sfx_0920.wav (ID: 920)
+    "SFX_F_ATTACK",                              // 0x0399 -> sfx_0921.wav (ID: 921)
+    "SFX_F_DID_THAT_HURT",                       // 0x039A -> sfx_0922.wav (ID: 922)
+    "SFX_F_YOU_WANT_SOME_MORE",                  // 0x039B -> sfx_0923.wav (ID: 923)
+    "NULL",                                      // 0x039C -> sfx_0924.wav (ID: 924)
+    "NULL",                                      // 0x039D -> sfx_0925.wav (ID: 925)
+    "NULL",                                      // 0x039E -> sfx_0926.wav (ID: 926)
+    "SFX_F_THIS_GUNS_USELESS",                   // 0x039F -> sfx_0927.wav (ID: 927)
+    "NULL",                                      // 0x03A0 -> sfx_0928.wav (ID: 928)
+    "SFX_F_STAND_STILL",                         // 0x03A1 -> sfx_0929.wav (ID: 929)
+    "SFX_F_SOMEONE_HIT_HER",                     // 0x03A2 -> sfx_0930.wav (ID: 930)
+    "SFX_F_DAMN_SHES_GOOD",                                  // 0x03A3 -> sfx_0931.wav (ID: 931)
+    "SFX_F_COVER_ME",                            // 0x03A4 -> sfx_0932.wav (ID: 932)
+    "NULL",                                      // 0x03A5 -> sfx_0933.wav (ID: 933)
+    "SFX_F_TAKE_COVER",                          // 0x03A6 -> sfx_0934.wav (ID: 934)
+    "SFX_F_GO_FOR_IT",                           // 0x03A7 -> sfx_0935.wav (ID: 935)
+    "NULL",                                      // 0x03A8 -> sfx_0936.wav (ID: 936)
+    "SFX_F_RUN",                                 // 0x03A9 -> sfx_0937.wav (ID: 937)
+    "SFX_F_GET_REINFORCEMENTS",                  // 0x03AA -> sfx_0938.wav (ID: 938)
+    "SFX_F_EVACUATE_THE_AREA",                   // 0x03AB -> sfx_0939.wav (ID: 939)
+    "SFX_F_RETREAT",                             // 0x03AC -> sfx_0940.wav (ID: 940)
+    "SFX_F_CATCH_THIS",                          // 0x03AD -> sfx_0941.wav (ID: 941)
+    "SFX_F_TIME_TO_DIE",                         // 0x03AE -> sfx_0942.wav (ID: 942)
+    "NULL",                                      // 0x03AF -> sfx_0943.wav (ID: 943)
+    "SFX_F_WITHDRAW",                            // 0x03B0 -> sfx_0944.wav (ID: 944)
+    "SFX_F_FALL_BACK",                           // 0x03B1 -> sfx_0945.wav (ID: 945)
+    "NULL",                                      // 0x03B2 -> sfx_0946.wav (ID: 946)
+    "SFX_F_SPREAD_OUT",                          // 0x03B3 -> sfx_0947.wav (ID: 947)
+    "SFX_F_SPLIT_UP",                            // 0x03B4 -> sfx_0948.wav (ID: 948)
+    "SFX_F_PLEASE_DONT",                         // 0x03B5 -> sfx_0949.wav (ID: 949)
+    "SFX_F_DONT_SHOOT",                          // 0x03B6 -> sfx_0950.wav (ID: 950)
+    "SFX_F_WHY_ME",                              // 0x03B7 -> sfx_0951.wav (ID: 951)
+    "SFX_F_NOO",                                 // 0x03B8 -> sfx_0952.wav (ID: 952)
+    "SFX_F_OH_MY_GOD",                                  // 0x03B9 -> sfx_0953.wav (ID: 953)
+    "NULL",                                      // 0x03BA -> sfx_0954.wav (ID: 954)
+    "NULL",                                      // 0x03BB -> sfx_0955.wav (ID: 955)
+    "SFX_F_GET_A_CLEANER",                       // 0x03BC -> sfx_0956.wav (ID: 956)
+    "NULL",                                      // 0x03BD -> sfx_0957.wav (ID: 957)
+    "SFX_F_IM_JUST_TOO_GOOD",                    // 0x03BE -> sfx_0958.wav (ID: 958)
+    "NULL",                                      // 0x03BF -> sfx_0959.wav (ID: 959)
+    "SFX_F_SUCH_A_WASTE",                        // 0x03C0 -> sfx_0960.wav (ID: 960)
+    "SFX_F_LOOK_OUT",                            // 0x03C1 -> sfx_0961.wav (ID: 961)
+    "SFX_F_ITS_A_GRENADE",                       // 0x03C2 -> sfx_0962.wav (ID: 962)
+    "NULL",                                      // 0x03C3 -> sfx_0963.wav (ID: 963)
+    "SFX_M2_HOW_THE",                            // 0x03C4 -> sfx_0964.wav (ID: 964)
+    "SFX_M2_HEY",                                // 0x03C5 -> sfx_0965.wav (ID: 965)
+    "SFX_M2_STOP",                               // 0x03C6 -> sfx_0966.wav (ID: 966)
+    "SFX_M2_GEE_THAT_HURT",                                  // 0x03C7 -> sfx_0967.wav (ID: 967)
+    "SFX_M2_WHY_YOU",                            // 0x03C8 -> sfx_0968.wav (ID: 968)
+    "NULL",                                      // 0x03C9 -> sfx_0969.wav (ID: 969)
+    "NULL",                                      // 0x03CA -> sfx_0970.wav (ID: 970)
+    "NULL",                                      // 0x03CB -> sfx_0971.wav (ID: 971)
+    "NULL",                                      // 0x03CC -> sfx_0972.wav (ID: 972)
+    "SFX_M2_IM_INJURED",                         // 0x03CD -> sfx_0973.wav (ID: 973)
+    "SFX_M2_IM_HIT_IM_HIT",                      // 0x03CE -> sfx_0974.wav (ID: 974)
+    "SFX_M2_DAMMIT_TAKING_FIRE",                                  // 0x03CF -> sfx_0975.wav (ID: 975)
+    "SFX_M2_TARGET_SIGHTED",                     // 0x03D0 -> sfx_0976.wav (ID: 976)
+    "SFX_M2_COME_ON_MAN",                        // 0x03D1 -> sfx_0977.wav (ID: 977)
+    "SFX_M2_GOD_DAMMIT",                                  // 0x03D2 -> sfx_0978.wav (ID: 978)
+    "SFX_M2_THAT_WAS_CLOSE",                     // 0x03D3 -> sfx_0979.wav (ID: 979)
+    "SFX_M2_HOLY_MOLY",                                  // 0x03D4 -> sfx_0980.wav (ID: 980)
+    "SFX_M2_AY_CARAMBA",                         // 0x03D5 -> sfx_0981.wav (ID: 981)
+    "SFX_M2_LISTEN_GUNSHOTS",                    // 0x03D6 -> sfx_0982.wav (ID: 982)
+    "SFX_M2_SOMEONES_NEARBY",                    // 0x03D7 -> sfx_0983.wav (ID: 983)
+    "NULL",                                      // 0x03D8 -> sfx_0984.wav (ID: 984)
+    "SFX_M2_BODY_COUNTS_TOO_HIGH",               // 0x03D9 -> sfx_0985.wav (ID: 985)
+    "SFX_M2_I_NEVER_LIKED_HIM_ANYWAY",           // 0x03DA -> sfx_0986.wav (ID: 986)
+    "SFX_M2_THAT_WAS_MY_BEST_FRIEND",            // 0x03DB -> sfx_0987.wav (ID: 987)
+    "SFX_M2_YOU_KILLED_MY_BUDDY",                                  // 0x03DC -> sfx_0988.wav (ID: 988)
+    "NULL",                                      // 0x03DD -> sfx_0989.wav (ID: 989)
+    "NULL",                                      // 0x03DE -> sfx_0990.wav (ID: 990)
+    "NULL",                                      // 0x03DF -> sfx_0991.wav (ID: 991)
+    "NULL",                                      // 0x03E0 -> sfx_0992.wav (ID: 992)
+    "SFX_M2_WATCH_OUT",                          // 0x03E1 -> sfx_0993.wav (ID: 993)
+    "SFX_M2_HELP_ME_OUT",                        // 0x03E2 -> sfx_0994.wav (ID: 994)
+    "SFX_M2_WEVE_GOT_AN_INTRUDER",               // 0x03E3 -> sfx_0995.wav (ID: 995)
+    "SFX_M2_GET_HER",                            // 0x03E4 -> sfx_0996.wav (ID: 996)
+    "SFX_M2_THERE_ATTACK",                       // 0x03E5 -> sfx_0997.wav (ID: 997)
+    "SFX_M2_HEY_YOU_STOP",                       // 0x03E6 -> sfx_0998.wav (ID: 998)
+    "SFX_M2_COME_ON_MAN2",                       // 0x03E7 -> sfx_0999.wav (ID: 999)
+    "SFX_M2_DIE",                                // 0x03E8 -> sfx_1000.wav (ID: 1000)
+    "SFX_M2_TAKE_THIS",                          // 0x03E9 -> sfx_1001.wav (ID: 1001)
+    "SFX_M2_MOVE_IN",                            // 0x03EA -> sfx_1002.wav (ID: 1002)
+    "SFX_M2_YOURE_OUT_OF_YOUR_LEAGUE",           // 0x03EB -> sfx_1003.wav (ID: 1003)
+    "SFX_M2_LET_HER_HAVE_IT",                    // 0x03EC -> sfx_1004.wav (ID: 1004)
+    "SFX_M2_SURRENDER_OR_DIE",                   // 0x03ED -> sfx_1005.wav (ID: 1005)
+    "SFX_M2_I_HAVE_YOU_NOW",                     // 0x03EE -> sfx_1006.wav (ID: 1006)
+    "SFX_M2_YOU_WANT_BEAT_ME",                   // 0x03EF -> sfx_1007.wav (ID: 1007)
+    "NULL",                                      // 0x03F0 -> sfx_1008.wav (ID: 1008)
+    "NULL",                                      // 0x03F1 -> sfx_1009.wav (ID: 1009)
+    "NULL",                                      // 0x03F2 -> sfx_1010.wav (ID: 1010)
+    "SFX_M2_DAMN_MISSED_AGAIN",                                  // 0x03F3 -> sfx_1011.wav (ID: 1011)
+    "SFX_M2_I_DONT_BELIEVE_IT",                  // 0x03F4 -> sfx_1012.wav (ID: 1012)
+    "SFX_M2_DAMN",                                  // 0x03F5 -> sfx_1013.wav (ID: 1013)
+    "SFX_M2_HELP_SHES_GOOD",                                  // 0x03F6 -> sfx_1014.wav (ID: 1014)
+    "SFX_M2_STOP_MOVING",                        // 0x03F7 -> sfx_1015.wav (ID: 1015)
+    "SFX_M2_NO_ESCAPE_FOR_YOU",                  // 0x03F8 -> sfx_1016.wav (ID: 1016)
+    "SFX_M2_HELP_ME_OUT_HERE",                   // 0x03F9 -> sfx_1017.wav (ID: 1017)
+    "SFX_M2_HEY_DISTRACT_HER",                   // 0x03FA -> sfx_1018.wav (ID: 1018)
+    "SFX_M2_KEEP_HER_OCCUPIED",                  // 0x03FB -> sfx_1019.wav (ID: 1019)
+    "SFX_M2_MOVE_IT_MOVE_IT",                    // 0x03FC -> sfx_1020.wav (ID: 1020)
+    "SFX_M2_GET_TO_COVER_NOW",                   // 0x03FD -> sfx_1021.wav (ID: 1021)
+    "SFX_M2_RUN_FOR_IT",                         // 0x03FE -> sfx_1022.wav (ID: 1022)
+    "SFX_M2_RETREAT",                            // 0x03FF -> sfx_1023.wav (ID: 1023)
+    "SFX_M2_GET_THE_HELL_OUTTA_HERE",                                  // 0x0400 -> sfx_1024.wav (ID: 1024)
+    "SFX_M2_GET_BACK_GET_BACK",                  // 0x0401 -> sfx_1025.wav (ID: 1025)
+    "NULL",                                      // 0x0402 -> sfx_1026.wav (ID: 1026)
+    "SFX_M2_FIRE_IN_THE_HOLE",                   // 0x0403 -> sfx_1027.wav (ID: 1027)
+    "NULL",                                      // 0x0404 -> sfx_1028.wav (ID: 1028)
+    "SFX_M2_HERES_A_LITTLE_PRESENT_FOR_YA",      // 0x0405 -> sfx_1029.wav (ID: 1029)
+    "NULL",                                      // 0x0406 -> sfx_1030.wav (ID: 1030)
+    "SFX_M2_TRY_THIS_FOR_SIZE",                  // 0x0407 -> sfx_1031.wav (ID: 1031)
+    "SFX_M2_GET_OUT_OF_THE_WAY",                 // 0x0408 -> sfx_1032.wav (ID: 1032)
+    "SFX_M2_FALL_BACK",                          // 0x0409 -> sfx_1033.wav (ID: 1033)
+    "SFX_M2_MOVE_OUT",                           // 0x040A -> sfx_1034.wav (ID: 1034)
+    "SFX_M2_TEAM_UP_GUYS",                       // 0x040B -> sfx_1035.wav (ID: 1035)
+    "SFX_M2_COME_ON_AROUND_THE_SIDE",            // 0x040C -> sfx_1036.wav (ID: 1036)
+    "SFX_M2_SCATTER",                            // 0x040D -> sfx_1037.wav (ID: 1037)
+    "SFX_M2_I_DONT_LIKE_THIS_ANY_MORE",          // 0x040E -> sfx_1038.wav (ID: 1038)
+    "SFX_M2_DONT_HURT_ME",                       // 0x040F -> sfx_1039.wav (ID: 1039)
+    "SFX_M2_YOU_WIN_I_GIVE_UP",                  // 0x0410 -> sfx_1040.wav (ID: 1040)
+    "SFX_M2_NOOOOOO",                                  // 0x0411 -> sfx_1041.wav (ID: 1041)
+    "SFX_M2_SHE_GOT_ME",                                  // 0x0412 -> sfx_1042.wav (ID: 1042)
+    "SFX_M2_GOD_DAMMIT",                                  // 0x0413 -> sfx_1043.wav (ID: 1043)
+    "SFX_M2_OH_GOD_IM_DYING",                                  // 0x0414 -> sfx_1044.wav (ID: 1044)
+    "SFX_M2_I_DONT_WANT_TO_DIE",                 // 0x0415 -> sfx_1045.wav (ID: 1045)
+    "NULL",                                      // 0x0416 -> sfx_1046.wav (ID: 1046)
+    "SFX_M2_ITS_ALL_OVER_FOR_THIS_ONE",          // 0x0417 -> sfx_1047.wav (ID: 1047)
+    "NULL",                                      // 0x0418 -> sfx_1048.wav (ID: 1048)
+    "SFX_M2_THATS_A_CONFIRMED_KILL",                                  // 0x0419 -> sfx_1049.wav (ID: 1049)
+    "NULL",                                      // 0x041A -> sfx_1050.wav (ID: 1050)
+    "SFX_M2_IM_THE_MAN",                         // 0x041B -> sfx_1051.wav (ID: 1051)
+    "SFX_M2_BOY_THAT_WAS_CLOSE",                 // 0x041C -> sfx_1052.wav (ID: 1052)
+    "SFX_M2_DID_YOU_SEE_THAT",                   // 0x041D -> sfx_1053.wav (ID: 1053)
+    "NULL",                                      // 0x041E -> sfx_1054.wav (ID: 1054)
+    "NULL",                                      // 0x041F -> sfx_1055.wav (ID: 1055)
+    "SFX_M2_GET_BACK_QUICK",                     // 0x0420 -> sfx_1056.wav (ID: 1056)
+    "SFX_M2_WERE_GONNA_DIE",                     // 0x0421 -> sfx_1057.wav (ID: 1057)
+    "SFX_M2_GOD_RUN",                                  // 0x0422 -> sfx_1058.wav (ID: 1058)
+    "SFX_0423",                                  // 0x0423 -> sfx_1059.wav (ID: 1059)
+    "SFX_0424",                                  // 0x0424 -> sfx_1060.wav (ID: 1060)
+    "SFX_0425",                                  // 0x0425 -> sfx_1061.wav (ID: 1061)
+    "SFX_0426",                                  // 0x0426 -> sfx_1062.wav (ID: 1062)
+    "SFX_0427",                                  // 0x0427 -> sfx_1063.wav (ID: 1063)
+    "SFX_0428",                                  // 0x0428 -> sfx_1064.wav (ID: 1064)
+    "SFX_0429",                                  // 0x0429 -> sfx_1065.wav (ID: 1065)
+    "SFX_042A",                                  // 0x042A -> sfx_1066.wav (ID: 1066)
+    "SFX_DOOR_042B",                             // 0x042B -> sfx_1067.wav (ID: 1067)
+    "SFX_DOOR_042C",                             // 0x042C -> sfx_1068.wav (ID: 1068)
+    "SFX_042D",                                  // 0x042D -> sfx_1069.wav (ID: 1069)
+    "SFX_DISGUISE_ON",                           // 0x042E -> sfx_1070.wav (ID: 1070)
+    "SFX_042F",                                  // 0x042F -> sfx_1071.wav (ID: 1071)
+    "SFX_0430",                                  // 0x0430 -> sfx_1072.wav (ID: 1072)
+    "SFX_CMP_COCK",                                  // 0x0431 -> sfx_1073.wav (ID: 1073)
+    "SFX_0432",                                  // 0x0432 -> sfx_1074.wav (ID: 1074)
+    "SFX_RELOAD_FARSIGHT",                       // 0x0433 -> sfx_1075.wav (ID: 1075)
+    "SFX_0434",                                  // 0x0434 -> sfx_1076.wav (ID: 1076)
+    "SFX_PHONE_RING",                                  // 0x0435 -> sfx_1077.wav (ID: 1077)
+    "SFX_0436",                                  // 0x0436 -> sfx_1078.wav (ID: 1078)
+    "SFX_0437",                                  // 0x0437 -> sfx_1079.wav (ID: 1079)
+    "SFX_0438",                                  // 0x0438 -> sfx_1080.wav (ID: 1080)
+    "SFX_0439",                                  // 0x0439 -> sfx_1081.wav (ID: 1081)
+    "SFX_043A",                                  // 0x043A -> sfx_1082.wav (ID: 1082)
+    "SFX_043B",                                  // 0x043B -> sfx_1083.wav (ID: 1083)
+    "SFX_043C",                                  // 0x043C -> sfx_1084.wav (ID: 1084)
+    "SFX_043D",                                  // 0x043D -> sfx_1085.wav (ID: 1085)
+    "SFX_MENU_SUBFOCUS",                         // 0x043E -> sfx_1086.wav (ID: 1086)
+    "SFX_043F",                                  // 0x043F -> sfx_1087.wav (ID: 1087)
+    "SFX_0440",                                  // 0x0440 -> sfx_1088.wav (ID: 1088)
+    "SFX_MENU_FOCUS",                            // 0x0441 -> sfx_1089.wav (ID: 1089)
+    "NULL",                                      // 0x0442 -> sfx_1090.wav (ID: 1090)
+    "SFX_CIV_OH_MY_GOD",                                  // 0x0443 -> sfx_1091.wav (ID: 1091)
+    "SFX_CIV_THERES_A_MANIAC",                   // 0x0444 -> sfx_1092.wav (ID: 1092)
+    "SFX_CIV_GET_AWAY_FROM_PSYCHO",                                  // 0x0445 -> sfx_1093.wav (ID: 1093)
+    "SFX_CIV_GREETINGS_CITIZEN",                 // 0x0446 -> sfx_1094.wav (ID: 1094)
+    "SFX_CIV_HOWS_IT_GOING",                     // 0x0447 -> sfx_1095.wav (ID: 1095)
+    "SFX_CIV_GUNS_DONT_SCARE_ME",                // 0x0448 -> sfx_1096.wav (ID: 1096)
+    "SFX_CIV_KEEP_AWAY_FROM_THIS_CAR",           // 0x0449 -> sfx_1097.wav (ID: 1097)
+    "SFX_CIV_I_SAW_THAT",                                  // 0x044A -> sfx_1098.wav (ID: 1098)
+    "SFX_FBI_WE_HAVE_AN_INTRUDER",               // 0x044B -> sfx_1099.wav (ID: 1099)
+    "SFX_044C",                                  // 0x044C -> sfx_1100.wav (ID: 1100)
+    "NULL",                                      // 0x044D -> sfx_1101.wav (ID: 1101)
+    "SFX_GUARD_ROBOT_CRASH_1",                                  // 0x044E -> sfx_1102.wav (ID: 1102)
+    "SFX_GUARD_ROBOT_CRASH_2",                                  // 0x044F -> sfx_1103.wav (ID: 1103)
+    "SFX_GUARD_ROBOT_CRASH_3",                                  // 0x0450 -> sfx_1104.wav (ID: 1104)
+    "SFX_GUARD_ROBOT_CRASH_4",                                  // 0x0451 -> sfx_1105.wav (ID: 1105)
+    "SFX_GUARD_ROBOT_CRASH_5",                                  // 0x0452 -> sfx_1106.wav (ID: 1106)
+    "NULL",                                      // 0x0453 -> sfx_1107.wav (ID: 1107)
+    "NULL",                                      // 0x0454 -> sfx_1108.wav (ID: 1108)
+    "SFX_ALARM_GOING_OFF",                                  // 0x0455 -> sfx_1109.wav (ID: 1109)
+    "SFX_PHONE_RING",                                  // 0x0456 -> sfx_1110.wav (ID: 1110)
+    "SFX_PHONE_DIAL",                                  // 0x0457 -> sfx_1111.wav (ID: 1111)
+    "NULL",                                      // 0x0458 -> sfx_1112.wav (ID: 1112)
+    "SFX_FBI_CODE_2_SITUATION",                  // 0x0459 -> sfx_1113.wav (ID: 1113)
+    "SFX_FBI_REQUEST_BACKUP_IMMEDIATELY",        // 0x045A -> sfx_1114.wav (ID: 1114)
+    "NULL",                                      // 0x045B -> sfx_1115.wav (ID: 1115)
+    "NULL",                                      // 0x045C -> sfx_1116.wav (ID: 1116)
+    "SFX_CIV_TAKE_IT_EASY",                      // 0x045D -> sfx_1117.wav (ID: 1117)
+    "SFX_CIV_I_DONT_WANT_ANY_TROUBLE",           // 0x045E -> sfx_1118.wav (ID: 1118)
+    "SFX_CIV_QUICK_DOWN_THERE",                  // 0x045F -> sfx_1119.wav (ID: 1119)
+    "NULL",                                      // 0x0460 -> sfx_1120.wav (ID: 1120)
+    "SFX_CIV_HEY_SUGAR_WANNA_PARTY",             // 0x0461 -> sfx_1121.wav (ID: 1121)
+    "NULL",                                      // 0x0462 -> sfx_1122.wav (ID: 1122)
+    "SFX_CIV_TAKE_THE_WALLET",                   // 0x0463 -> sfx_1123.wav (ID: 1123)
+    "SFX_CIV_TRY_IT_MISSY",                                  // 0x0464 -> sfx_1124.wav (ID: 1124)
+    "SFX_CIV_HEY_BABY",                          // 0x0465 -> sfx_1125.wav (ID: 1125)
+    "SFX_CIV_WHISTLE",                           // 0x0466 -> sfx_1126.wav (ID: 1126)
+    "SFX_CIV_SECURITY_OVER_THERE",                                  // 0x0467 -> sfx_1127.wav (ID: 1127)
+    "SFX_CIV_GET_ME_OUT_OF_HERE",                // 0x0468 -> sfx_1128.wav (ID: 1128)
+    "SFX_CIV_DOORS_ARE_CLOSED",                                  // 0x0469 -> sfx_1129.wav (ID: 1129)
+    "SFX_CHICAGO_ROBOT",                                  // 0x046A -> sfx_1130.wav (ID: 1130)
+    "SFX_CHICAGO_ROBOT_2",                                  // 0x046B -> sfx_1131.wav (ID: 1131)
+    "SFX_CHICAGO_ROBOT_3",                                  // 0x046C -> sfx_1132.wav (ID: 1132)
+    "NULL",                                      // 0x046D -> sfx_1133.wav (ID: 1133)
+    "SFX_JO_LANDING_1",                                  // 0x046E -> sfx_1134.wav (ID: 1134)
+    "SFX_JO_LANDING_2",                       // 0x046F -> sfx_1135.wav (ID: 1135)
+    "NULL",                                      // 0x0470 -> sfx_1136.wav (ID: 1136)
+    "NULL",                                      // 0x0471 -> sfx_1137.wav (ID: 1137)
+    "SFX_0472",                                  // 0x0472 -> sfx_1138.wav (ID: 1138)
+    "SFX_0473",                                  // 0x0473 -> sfx_1139.wav (ID: 1139)
+    "SFX_0474",                                  // 0x0474 -> sfx_1140.wav (ID: 1140)
+    "SFX_0475",                                  // 0x0475 -> sfx_1141.wav (ID: 1141)
+    "SFX_JO_BOOST",                                  // 0x0476 -> sfx_1142.wav (ID: 1142)
+    "SFX_0477",                                  // 0x0477 -> sfx_1143.wav (ID: 1143)
+    "SFX_0478",                                  // 0x0478 -> sfx_1144.wav (ID: 1144)
+    "SFX_0479",                                  // 0x0479 -> sfx_1145.wav (ID: 1145)
+    "SFX_047A",                                  // 0x047A -> sfx_1146.wav (ID: 1146)
+    "NULL",                                      // 0x047B -> sfx_1147.wav (ID: 1147)
+    "SFX_047C",                                  // 0x047C -> sfx_1148.wav (ID: 1148)
+    "SFX_SHOTGUN",                       // 0x047D -> sfx_1149.wav (ID: 1149)
+    "SFX_SILENCED_PISTOL",                                  // 0x047E -> sfx_1150.wav (ID: 1150)
+    "NULL",                                      // 0x047F -> sfx_1151.wav (ID: 1151)
+    "NULL",                                      // 0x0480 -> sfx_1152.wav (ID: 1152)
+    "NULL",                                      // 0x0481 -> sfx_1153.wav (ID: 1153)
+    "NULL",                                      // 0x0482 -> sfx_1154.wav (ID: 1154)
+    "NULL",                                      // 0x0483 -> sfx_1155.wav (ID: 1155)
+    "NULL",                                      // 0x0484 -> sfx_1156.wav (ID: 1156)
+    "NULL",                                      // 0x0485 -> sfx_1157.wav (ID: 1157)
+    "NULL",                                      // 0x0486 -> sfx_1158.wav (ID: 1158)
+    "NULL",                                      // 0x0487 -> sfx_1159.wav (ID: 1159)
+    "NULL",                                      // 0x0488 -> sfx_1160.wav (ID: 1160)
+    "NULL",                                      // 0x0489 -> sfx_1161.wav (ID: 1161)
+    "NULL",                                      // 0x048A -> sfx_1162.wav (ID: 1162)
+    "NULL",                                      // 0x048B -> sfx_1163.wav (ID: 1163)
+    "NULL",                                      // 0x048C -> sfx_1164.wav (ID: 1164)
+    "NULL",                                      // 0x048D -> sfx_1165.wav (ID: 1165)
+    "NULL",                                      // 0x048E -> sfx_1166.wav (ID: 1166)
+    "NULL",                                      // 0x048F -> sfx_1167.wav (ID: 1167)
+    "NULL",                                      // 0x0490 -> sfx_1168.wav (ID: 1168)
+    "NULL",                                      // 0x0491 -> sfx_1169.wav (ID: 1169)
+    "NULL",                                      // 0x0492 -> sfx_1170.wav (ID: 1170)
+    "NULL",                                      // 0x0493 -> sfx_1171.wav (ID: 1171)
+    "NULL",                                      // 0x0494 -> sfx_1172.wav (ID: 1172)
+    "NULL",                                      // 0x0495 -> sfx_1173.wav (ID: 1173)
+    "NULL",                                      // 0x0496 -> sfx_1174.wav (ID: 1174)
+    "NULL",                                      // 0x0497 -> sfx_1175.wav (ID: 1175)
+    "NULL",                                      // 0x0498 -> sfx_1176.wav (ID: 1176)
+    "NULL",                                      // 0x0499 -> sfx_1177.wav (ID: 1177)
+    "NULL",                                      // 0x049A -> sfx_1178.wav (ID: 1178)
+    "NULL",                                      // 0x049B -> sfx_1179.wav (ID: 1179)
+    "NULL",                                      // 0x049C -> sfx_1180.wav (ID: 1180)
+    "NULL",                                      // 0x049D -> sfx_1181.wav (ID: 1181)
+    "NULL",                                      // 0x049E -> sfx_1182.wav (ID: 1182)
+    "NULL",                                      // 0x049F -> sfx_1183.wav (ID: 1183)
+    "NULL",                                      // 0x04A0 -> sfx_1184.wav (ID: 1184)
+    "NULL",                                      // 0x04A1 -> sfx_1185.wav (ID: 1185)
+    "NULL",                                      // 0x04A2 -> sfx_1186.wav (ID: 1186)
+    "NULL",                                      // 0x04A3 -> sfx_1187.wav (ID: 1187)
+    "NULL",                                      // 0x04A4 -> sfx_1188.wav (ID: 1188)
+    "NULL",                                      // 0x04A5 -> sfx_1189.wav (ID: 1189)
+    "NULL",                                      // 0x04A6 -> sfx_1190.wav (ID: 1190)
+    "NULL",                                      // 0x04A7 -> sfx_1191.wav (ID: 1191)
+    "NULL",                                      // 0x04A8 -> sfx_1192.wav (ID: 1192)
+    "NULL",                                      // 0x04A9 -> sfx_1193.wav (ID: 1193)
+    "SFX_04AA",                                  // 0x04AA -> sfx_1194.wav (ID: 1194)
+    "SFX_04AB",                                  // 0x04AB -> sfx_1195.wav (ID: 1195)
+    "SFX_ALARM_INFILTRATION",                    // 0x04AC -> sfx_1196.wav (ID: 1196)
+    "SFX_04AD",                                  // 0x04AD -> sfx_1197.wav (ID: 1197)
+    "SFX_04AE",                                  // 0x04AE -> sfx_1198.wav (ID: 1198)
+    "SFX_04AF",                                  // 0x04AF -> sfx_1199.wav (ID: 1199)
+    "SFX_04B0",                                  // 0x04B0 -> sfx_1200.wav (ID: 1200)
+    "NULL",                                      // 0x04B1 -> sfx_1201.wav (ID: 1201)
+    "NULL",                                      // 0x04B2 -> sfx_1202.wav (ID: 1202)
+    "NULL",                                      // 0x04B3 -> sfx_1203.wav (ID: 1203)
+    "NULL",                                      // 0x04B4 -> sfx_1204.wav (ID: 1204)
+    "NULL",                                      // 0x04B5 -> sfx_1205.wav (ID: 1205)
+    "NULL",                                      // 0x04B6 -> sfx_1206.wav (ID: 1206)
+    "NULL",                                      // 0x04B7 -> sfx_1207.wav (ID: 1207)
+    "NULL",                                      // 0x04B8 -> sfx_1208.wav (ID: 1208)
+    "NULL",                                      // 0x04B9 -> sfx_1209.wav (ID: 1209)
+    "NULL",                                      // 0x04BA -> sfx_1210.wav (ID: 1210)
+    "NULL",                                      // 0x04BB -> sfx_1211.wav (ID: 1211)
+    "NULL",                                      // 0x04BC -> sfx_1212.wav (ID: 1212)
+    "NULL",                                      // 0x04BD -> sfx_1213.wav (ID: 1213)
+    "NULL",                                      // 0x04BE -> sfx_1214.wav (ID: 1214)
+    "NULL",                                      // 0x04BF -> sfx_1215.wav (ID: 1215)
+    "NULL",                                      // 0x04C0 -> sfx_1216.wav (ID: 1216)
+    "NULL",                                      // 0x04C1 -> sfx_1217.wav (ID: 1217)
+    "NULL",                                      // 0x04C2 -> sfx_1218.wav (ID: 1218)
+    "SFX_FEMALE_MY_EYES",                                  // 0x04C3 -> sfx_1219.wav (ID: 1219)
+    "NULL",                                      // 0x04C4 -> sfx_1220.wav (ID: 1220)
+    "NULL",                                      // 0x04C5 -> sfx_1221.wav (ID: 1221)
+    "SFX_M0_MY_GUN",                             // 0x04C6 -> sfx_1222.wav (ID: 1222)
+    "SFX_M0_TRIGGER_THE_ALARM",                  // 0x04C7 -> sfx_1223.wav (ID: 1223)
+    "SFX_M0_WHAT_THE_HELL",                                  // 0x04C8 -> sfx_1224.wav (ID: 1224)
+    "SFX_M0_HELLO_THERE",                        // 0x04C9 -> sfx_1225.wav (ID: 1225)
+    "SFX_M0_WHATS_THIS",                         // 0x04CA -> sfx_1226.wav (ID: 1226)
+    "SFX_M0_IM_SURE_I_HEARD_A_NOISE",            // 0x04CB -> sfx_1227.wav (ID: 1227)
+    "SFX_M0_HEARING_THINGS",                     // 0x04CC -> sfx_1228.wav (ID: 1228)
+    "SFX_M0_JEEZ",                                  // 0x04CD -> sfx_1229.wav (ID: 1229)
+    "SFX_M1_WARN_THE_OTHERS",                    // 0x04CE -> sfx_1230.wav (ID: 1230)
+    "SFX_M1_WHAT_IS_IT",                         // 0x04CF -> sfx_1231.wav (ID: 1231)
+    "SFX_M1_HOW_DID_THAT_GET_HERE",              // 0x04D0 -> sfx_1232.wav (ID: 1232)
+    "SFX_M1_DONT_TOUCH_IT",                      // 0x04D1 -> sfx_1233.wav (ID: 1233)
+    "SFX_M1_I_CANT_SEE_ANYBODY",                 // 0x04D2 -> sfx_1234.wav (ID: 1234)
+    "SFX_M1_THERES_NO_ONE_HERE",                 // 0x04D3 -> sfx_1235.wav (ID: 1235)
+    "SFX_M2_ACTIVATE_THE_ALARM",                 // 0x04D4 -> sfx_1236.wav (ID: 1236)
+    "SFX_M2_IS_IT_DANGEROUS",                    // 0x04D5 -> sfx_1237.wav (ID: 1237)
+    "SFX_M2_DONT_MOVE",                          // 0x04D6 -> sfx_1238.wav (ID: 1238)
+    "SFX_M2_STAY_BACK",                          // 0x04D7 -> sfx_1239.wav (ID: 1239)
+    "SFX_M2_I_BET_THIS_IS_ANOTHER_DRILL",        // 0x04D8 -> sfx_1240.wav (ID: 1240)
+    "SFX_M2_ANOTHER_FALSE_ALARM",                // 0x04D9 -> sfx_1241.wav (ID: 1241)
+    "NULL",                                      // 0x04DA -> sfx_1242.wav (ID: 1242)
+    "NULL",                                      // 0x04DB -> sfx_1243.wav (ID: 1243)
+    "NULL",                                      // 0x04DC -> sfx_1244.wav (ID: 1244)
+    "NULL",                                      // 0x04DD -> sfx_1245.wav (ID: 1245)
+    "NULL",                                      // 0x04DE -> sfx_1246.wav (ID: 1246)
+    "NULL",                                      // 0x04DF -> sfx_1247.wav (ID: 1247)
+    "NULL",                                      // 0x04E0 -> sfx_1248.wav (ID: 1248)
+    "NULL",                                      // 0x04E1 -> sfx_1249.wav (ID: 1249)
+    "NULL",                                      // 0x04E2 -> sfx_1250.wav (ID: 1250)
+    "NULL",                                      // 0x04E3 -> sfx_1251.wav (ID: 1251)
+    "NULL",                                      // 0x04E4 -> sfx_1252.wav (ID: 1252)
+    "NULL",                                      // 0x04E5 -> sfx_1253.wav (ID: 1253)
+    "NULL",                                      // 0x04E6 -> sfx_1254.wav (ID: 1254)
+    "NULL",                                      // 0x04E7 -> sfx_1255.wav (ID: 1255)
+    "SFX_04E8",                                  // 0x04E8 -> sfx_1256.wav (ID: 1256)
+    "SFX_04E9",                                  // 0x04E9 -> sfx_1257.wav (ID: 1257)
+    "SFX_04EA",                                  // 0x04EA -> sfx_1258.wav (ID: 1258)
+    "SFX_04EB",                                  // 0x04EB -> sfx_1259.wav (ID: 1259)
+    "SFX_04EC",                                  // 0x04EC -> sfx_1260.wav (ID: 1260)
+    "SFX_04ED",                                  // 0x04ED -> sfx_1261.wav (ID: 1261)
+    "SFX_04EE",                                  // 0x04EE -> sfx_1262.wav (ID: 1262)
+    "SFX_04EF",                                  // 0x04EF -> sfx_1263.wav (ID: 1263)
+    "SFX_04F0",                                  // 0x04F0 -> sfx_1264.wav (ID: 1264)
+    "SFX_CROSSBOW_FIRE",                                  // 0x04F1 -> sfx_1265.wav (ID: 1265)
+    "SFX_TRANQ_SHOOT",                                  // 0x04F2 -> sfx_1266.wav (ID: 1266)
+    "SFX_SNIPER_SHOOT",                                  // 0x04F3 -> sfx_1267.wav (ID: 1267)
+    "SFX_AR34_FIRE",                                  // 0x04F4 -> sfx_1268.wav (ID: 1268)
+    "SFX_04F5",                                  // 0x04F5 -> sfx_1269.wav (ID: 1269)
+    "SFX_04F6",                                  // 0x04F6 -> sfx_1270.wav (ID: 1270)
+    "SFX_04F7",                                  // 0x04F7 -> sfx_1271.wav (ID: 1271)
+    "SFX_04F8",                                  // 0x04F8 -> sfx_1272.wav (ID: 1272)
+    "SFX_04F9",                                  // 0x04F9 -> sfx_1273.wav (ID: 1273)
+    "SFX_04FA",                                  // 0x04FA -> sfx_1274.wav (ID: 1274)
+    "SFX_RELOAD_04FB",                           // 0x04FB -> sfx_1275.wav (ID: 1275)
+    "SFX_04FC",                                  // 0x04FC -> sfx_1276.wav (ID: 1276)
+    "SFX_04FD",                                  // 0x04FD -> sfx_1277.wav (ID: 1277)
+    "SFX_04FE",                                  // 0x04FE -> sfx_1278.wav (ID: 1278)
+    "SFX_CAMSPY_SHUTTER",                        // 0x04FF -> sfx_1279.wav (ID: 1279)
+    "SFX_0500",                                  // 0x0500 -> sfx_1280.wav (ID: 1280)
+    "SFX_0501",                                  // 0x0501 -> sfx_1281.wav (ID: 1281)
+    "SFX_0502",                                  // 0x0502 -> sfx_1282.wav (ID: 1282)
+    "SFX_0503",                                  // 0x0503 -> sfx_1283.wav (ID: 1283)
+    "SFX_0504",                                  // 0x0504 -> sfx_1284.wav (ID: 1284)
+    "SFX_0505",                                  // 0x0505 -> sfx_1285.wav (ID: 1285)
+    "SFX_0506",                                  // 0x0506 -> sfx_1286.wav (ID: 1286)
+    "SFX_0507",                                  // 0x0507 -> sfx_1287.wav (ID: 1287)
+    "SFX_0508",                                  // 0x0508 -> sfx_1288.wav (ID: 1288)
+    "SFX_0509",                                  // 0x0509 -> sfx_1289.wav (ID: 1289)
+    "SFX_050A",                                  // 0x050A -> sfx_1290.wav (ID: 1290)
+    "NULL",                                      // 0x050B -> sfx_1291.wav (ID: 1291)
+    "NULL",                                      // 0x050C -> sfx_1292.wav (ID: 1292)
+    "NULL",                                      // 0x050D -> sfx_1293.wav (ID: 1293)
+    "NULL",                                      // 0x050E -> sfx_1294.wav (ID: 1294)
+    "NULL",                                      // 0x050F -> sfx_1295.wav (ID: 1295)
+    "NULL",                                      // 0x0510 -> sfx_1296.wav (ID: 1296)
+    "NULL",                                      // 0x0511 -> sfx_1297.wav (ID: 1297)
+    "NULL",                                      // 0x0512 -> sfx_1298.wav (ID: 1298)
+    "NULL",                                      // 0x0513 -> sfx_1299.wav (ID: 1299)
+    "NULL",                                      // 0x0514 -> sfx_1300.wav (ID: 1300)
+    "SFX_SECURE_THE_PERIMETER",                  // 0x0515 -> sfx_1301.wav (ID: 1301)
+    "SFX_0516",                                  // 0x0516 -> sfx_1302.wav (ID: 1302)
+    "NULL",                                      // 0x0517 -> sfx_1303.wav (ID: 1303)
+    "NULL",                                      // 0x0518 -> sfx_1304.wav (ID: 1304)
+    "NULL",                                      // 0x0519 -> sfx_1305.wav (ID: 1305)
+    "NULL",                                      // 0x051A -> sfx_1306.wav (ID: 1306)
+    "SFX_ELVIS_INTERGALACTIC_PEACE",             // 0x051B -> sfx_1307.wav (ID: 1307)
+    "SFX_ELVIS_EAT_HOT_LEAD_WEIRDOS",            // 0x051C -> sfx_1308.wav (ID: 1308)
+    "SFX_ELVIS_KISS_MY_ALIEN_BUTT",              // 0x051D -> sfx_1309.wav (ID: 1309)
+    "SFX_ELVIS_ILL_KICK_YOUR_ASS",               // 0x051E -> sfx_1310.wav (ID: 1310)
+    "SFX_ELVIS_FOR_YOUR_OWN_GOOD",               // 0x051F -> sfx_1311.wav (ID: 1311)
+    "SFX_ELVIS_YOU_DARE_SHOOT_AT_ME",            // 0x0520 -> sfx_1312.wav (ID: 1312)
+    "SFX_ELVIS_DONT_MESS_WITH_THE_MAIAN",        // 0x0521 -> sfx_1313.wav (ID: 1313)
+    "SFX_ELVIS_IM_BAD",                          // 0x0522 -> sfx_1314.wav (ID: 1314)
+    "SFX_ELVIS_ALL_GOING_WRONG",                 // 0x0523 -> sfx_1315.wav (ID: 1315)
+    "SFX_ELVIS_WATCH_THE_SUIT",                  // 0x0524 -> sfx_1316.wav (ID: 1316)
+    "SFX_ELVIS_HEHE",                            // 0x0525 -> sfx_1317.wav (ID: 1317)
+    "NULL",                                      // 0x0526 -> sfx_1318.wav (ID: 1318)
+    "NULL",                                      // 0x0527 -> sfx_1319.wav (ID: 1319)
+    "NULL",                                      // 0x0528 -> sfx_1320.wav (ID: 1320)
+    "SFX_SKEDAR_ROAR_0529",                      // 0x0529 -> sfx_1321.wav (ID: 1321)
+    "SFX_SKEDAR_ROAR_052A",                      // 0x052A -> sfx_1322.wav (ID: 1322)
+    "SFX_SKEDAR_ROAR_052B",                      // 0x052B -> sfx_1323.wav (ID: 1323)
+    "SFX_052C",                                  // 0x052C -> sfx_1324.wav (ID: 1324)
+    "SFX_SKEDAR_ROAR_052D",                      // 0x052D -> sfx_1325.wav (ID: 1325)
+    "SFX_SKEDAR_ROAR_052E",                      // 0x052E -> sfx_1326.wav (ID: 1326)
+    "SFX_SKEDAR_ROAR_052F",                      // 0x052F -> sfx_1327.wav (ID: 1327)
+    "SFX_SKEDAR_ROAR_0530",                      // 0x0530 -> sfx_1328.wav (ID: 1328)
+    "SFX_SKEDAR_ROAR_0531",                      // 0x0531 -> sfx_1329.wav (ID: 1329)
+    "SFX_SKEDAR_ROAR_0532",                      // 0x0532 -> sfx_1330.wav (ID: 1330)
+    "SFX_SKEDAR_ROAR_0533",                      // 0x0533 -> sfx_1331.wav (ID: 1331)
+    "SFX_SKEDAR_ROAR_0534",                      // 0x0534 -> sfx_1332.wav (ID: 1332)
+    "SFX_0535",                                  // 0x0535 -> sfx_1333.wav (ID: 1333)
+    "SFX_SKEDAR_ROAR_0536",                      // 0x0536 -> sfx_1334.wav (ID: 1334)
+    "SFX_SKEDAR_ROAR_0537",                      // 0x0537 -> sfx_1335.wav (ID: 1335)
+    "SFX_SKEDAR_ROAR_0538",                      // 0x0538 -> sfx_1336.wav (ID: 1336)
+    "SFX_SKEDAR_ROAR_0539",                      // 0x0539 -> sfx_1337.wav (ID: 1337)
+    "SFX_SKEDAR_ROAR_053A",                      // 0x053A -> sfx_1338.wav (ID: 1338)
+    "NULL",                                      // 0x053B -> sfx_1339.wav (ID: 1339)
+    "NULL",                                      // 0x053C -> sfx_1340.wav (ID: 1340)
+    "NULL",                                      // 0x053D -> sfx_1341.wav (ID: 1341)
+    "NULL",                                      // 0x053E -> sfx_1342.wav (ID: 1342)
+    "NULL",                                      // 0x053F -> sfx_1343.wav (ID: 1343)
+    "NULL",                                      // 0x0540 -> sfx_1344.wav (ID: 1344)
+    "NULL",                                      // 0x0541 -> sfx_1345.wav (ID: 1345)
+    "NULL",                                      // 0x0542 -> sfx_1346.wav (ID: 1346)
+    "NULL",                                      // 0x0543 -> sfx_1347.wav (ID: 1347)
+    "NULL",                                      // 0x0544 -> sfx_1348.wav (ID: 1348)
+    "NULL",                                      // 0x0545 -> sfx_1349.wav (ID: 1349)
+    "NULL",                                      // 0x0546 -> sfx_1350.wav (ID: 1350)
+    "NULL",                                      // 0x0547 -> sfx_1351.wav (ID: 1351)
+    "NULL",                                      // 0x0548 -> sfx_1352.wav (ID: 1352)
+    "NULL",                                      // 0x0549 -> sfx_1353.wav (ID: 1353)
+    "SFX_BODY_FALL_1",                                  // 0x054A -> sfx_1354.wav (ID: 1354)
+    "SFX_BODY_FALL_2",                                  // 0x054B -> sfx_1355.wav (ID: 1355)
+    "SFX_BODY_FALL_3",                                  // 0x054C -> sfx_1356.wav (ID: 1356)
+    "SFX_BODY_FALL_4",                                  // 0x054D -> sfx_1357.wav (ID: 1357)
+    "SFX_BODY_FALL_5",                                  // 0x054E -> sfx_1358.wav (ID: 1358)
+    "SFX_BODY_FALL_6",                                  // 0x054F -> sfx_1359.wav (ID: 1359)
+    "SFX_BODY_FALL_7",                                  // 0x0550 -> sfx_1360.wav (ID: 1360)
+    "NULL",                                      // 0x0551 -> sfx_1361.wav (ID: 1361)
+    "NULL",                                      // 0x0552 -> sfx_1362.wav (ID: 1362)
+    "NULL",                                      // 0x0553 -> sfx_1363.wav (ID: 1363)
+    "NULL",                                      // 0x0554 -> sfx_1364.wav (ID: 1364)
+    "NULL",                                      // 0x0555 -> sfx_1365.wav (ID: 1365)
+    "NULL",                                      // 0x0556 -> sfx_1366.wav (ID: 1366)
+    "NULL",                                      // 0x0557 -> sfx_1367.wav (ID: 1367)
+    "NULL",                                      // 0x0558 -> sfx_1368.wav (ID: 1368)
+    "NULL",                                      // 0x0559 -> sfx_1369.wav (ID: 1369)
+    "NULL",                                      // 0x055A -> sfx_1370.wav (ID: 1370)
+    "NULL",                                      // 0x055B -> sfx_1371.wav (ID: 1371)
+    "NULL",                                      // 0x055C -> sfx_1372.wav (ID: 1372)
+    "NULL",                                      // 0x055D -> sfx_1373.wav (ID: 1373)
+    "NULL",                                      // 0x055E -> sfx_1374.wav (ID: 1374)
+    "NULL",                                      // 0x055F -> sfx_1375.wav (ID: 1375)
+    "NULL",                                      // 0x0560 -> sfx_1376.wav (ID: 1376)
+    "NULL",                                      // 0x0561 -> sfx_1377.wav (ID: 1377)
+    "NULL",                                      // 0x0562 -> sfx_1378.wav (ID: 1378)
+    "NULL",                                      // 0x0563 -> sfx_1379.wav (ID: 1379)
+    "NULL",                                      // 0x0564 -> sfx_1380.wav (ID: 1380)
+    "NULL",                                      // 0x0565 -> sfx_1381.wav (ID: 1381)
+    "NULL",                                      // 0x0566 -> sfx_1382.wav (ID: 1382)
+    "NULL",                                      // 0x0567 -> sfx_1383.wav (ID: 1383)
+    "NULL",                                      // 0x0568 -> sfx_1384.wav (ID: 1384)
+    "NULL",                                      // 0x0569 -> sfx_1385.wav (ID: 1385)
+    "NULL",                                      // 0x056A -> sfx_1386.wav (ID: 1386)
+    "NULL",                                      // 0x056B -> sfx_1387.wav (ID: 1387)
+    "NULL",                                      // 0x056C -> sfx_1388.wav (ID: 1388)
+    "NULL",                                      // 0x056D -> sfx_1389.wav (ID: 1389)
+    "NULL",                                      // 0x056E -> sfx_1390.wav (ID: 1390)
+    "NULL",                                      // 0x056F -> sfx_1391.wav (ID: 1391)
+    "NULL",                                      // 0x0570 -> sfx_1392.wav (ID: 1392)
+    "NULL",                                      // 0x0571 -> sfx_1393.wav (ID: 1393)
+    "NULL",                                      // 0x0572 -> sfx_1394.wav (ID: 1394)
+    "NULL",                                      // 0x0573 -> sfx_1395.wav (ID: 1395)
+    "NULL",                                      // 0x0574 -> sfx_1396.wav (ID: 1396)
+    "NULL",                                      // 0x0575 -> sfx_1397.wav (ID: 1397)
+    "NULL",                                      // 0x0576 -> sfx_1398.wav (ID: 1398)
+    "NULL",                                      // 0x0577 -> sfx_1399.wav (ID: 1399)
+    "NULL",                                      // 0x0578 -> sfx_1400.wav (ID: 1400)
+    "NULL",                                      // 0x0579 -> sfx_1401.wav (ID: 1401)
+    "NULL",                                      // 0x057A -> sfx_1402.wav (ID: 1402)
+    "NULL",                                      // 0x057B -> sfx_1403.wav (ID: 1403)
+    "NULL",                                      // 0x057C -> sfx_1404.wav (ID: 1404)
+    "NULL",                                      // 0x057D -> sfx_1405.wav (ID: 1405)
+    "NULL",                                      // 0x057E -> sfx_1406.wav (ID: 1406)
+    "NULL",                                      // 0x057F -> sfx_1407.wav (ID: 1407)
+    "NULL",                                      // 0x0580 -> sfx_1408.wav (ID: 1408)
+    "NULL",                                      // 0x0581 -> sfx_1409.wav (ID: 1409)
+    "NULL",                                      // 0x0582 -> sfx_1410.wav (ID: 1410)
+    "NULL",                                      // 0x0583 -> sfx_1411.wav (ID: 1411)
+    "NULL",                                      // 0x0584 -> sfx_1412.wav (ID: 1412)
+    "NULL",                                      // 0x0585 -> sfx_1413.wav (ID: 1413)
+    "NULL",                                      // 0x0586 -> sfx_1414.wav (ID: 1414)
+    "NULL",                                      // 0x0587 -> sfx_1415.wav (ID: 1415)
+    "NULL",                                      // 0x0588 -> sfx_1416.wav (ID: 1416)
+    "NULL",                                      // 0x0589 -> sfx_1417.wav (ID: 1417)
+    "NULL",                                      // 0x058A -> sfx_1418.wav (ID: 1418)
+    "NULL",                                      // 0x058B -> sfx_1419.wav (ID: 1419)
+    "NULL",                                      // 0x058C -> sfx_1420.wav (ID: 1420)
+    "NULL",                                      // 0x058D -> sfx_1421.wav (ID: 1421)
+    "SFX_058E",                                  // 0x058E -> sfx_1422.wav (ID: 1422)
+    "SFX_058F",                                  // 0x058F -> sfx_1423.wav (ID: 1423)
+    "SFX_0590",                                  // 0x0590 -> sfx_1424.wav (ID: 1424)
+    "SFX_0591",                                  // 0x0591 -> sfx_1425.wav (ID: 1425)
+    "SFX_0592",                                  // 0x0592 -> sfx_1426.wav (ID: 1426)
+    "SFX_0593",                                  // 0x0593 -> sfx_1427.wav (ID: 1427)
+    "SFX_FOOTSTEP_SNOW",                                  // 0x0594 -> sfx_1428.wav (ID: 1428)
+    "SFX_FOOTSTEP_SNOW_2",                                  // 0x0595 -> sfx_1429.wav (ID: 1429)
+    "SFX_FOOTSTEP_SNOW_3",                                  // 0x0596 -> sfx_1430.wav (ID: 1430)
+    "SFX_FOOTSTEP_SNOW_4",                                  // 0x0597 -> sfx_1431.wav (ID: 1431)
+    "SFX_FOOTSTEP_SNOW?",                                  // 0x0598 -> sfx_1432.wav (ID: 1432)
+    "SFX_FOOTSTEP_SNOW?",                                  // 0x0599 -> sfx_1433.wav (ID: 1433)
+    "SFX_FOOTSTEP_SNOW?",                                  // 0x059A -> sfx_1434.wav (ID: 1434)
+    "SFX_FOOTSTEP_SNOW?",                                  // 0x059B -> sfx_1435.wav (ID: 1435)
+    "SFX_059C",                                  // 0x059C -> sfx_1436.wav (ID: 1436)
+    "SFX_INFIL_STATIC_SHORT",                    // 0x059D -> sfx_1437.wav (ID: 1437)
+    "SFX_INFIL_STATIC_MEDIUM",                   // 0x059E -> sfx_1438.wav (ID: 1438)
+    "SFX_INFIL_STATIC_LONG",                     // 0x059F -> sfx_1439.wav (ID: 1439)
+    "SFX_05A0",                                  // 0x05A0 -> sfx_1440.wav (ID: 1440)
+    "SFX_05A1",                                  // 0x05A1 -> sfx_1441.wav (ID: 1441)
+    "SFX_05A2",                                  // 0x05A2 -> sfx_1442.wav (ID: 1442)
+    "SFX_05A3",                                  // 0x05A3 -> sfx_1443.wav (ID: 1443)
+    "SFX_05A4",                                  // 0x05A4 -> sfx_1444.wav (ID: 1444)
+    "SFX_BIG_DOOR_OPEN",                                  // 0x05A5 -> sfx_1445.wav (ID: 1445)
+    "SFX_BIG_DOOR_CLOSE",                                  // 0x05A6 -> sfx_1446.wav (ID: 1446)
+    "SFX_05A7",                                  // 0x05A7 -> sfx_1447.wav (ID: 1447)
+    "SFX_ELVIS_HURT_1",                                  // 0x05A8 -> sfx_1448.wav (ID: 1448)
+    "SFX_ELVIS_HURT_2",                                  // 0x05A9 -> sfx_1449.wav (ID: 1449)
+    "SFX_ELVIS_HURT_3",                                  // 0x05AA -> sfx_1450.wav (ID: 1450)
+    "SFX_COUGH_05AB",                            // 0x05AB -> sfx_1451.wav (ID: 1451)
+    "SFX_COUGH_05AC",                            // 0x05AC -> sfx_1452.wav (ID: 1452)
+    "SFX_COUGH_05AD",                            // 0x05AD -> sfx_1453.wav (ID: 1453)
+    "SFX_COUGH_05AE",                            // 0x05AE -> sfx_1454.wav (ID: 1454)
+    "SFX_COUGH_04AF",                            // 0x05AF -> sfx_1455.wav (ID: 1455)
+    "SFX_COUGH_04B0",                            // 0x05B0 -> sfx_1456.wav (ID: 1456)
+    "SFX_GURGLE_05B1",                           // 0x05B1 -> sfx_1457.wav (ID: 1457)
+    "SFX_GURGLE_05B2",                           // 0x05B2 -> sfx_1458.wav (ID: 1458)
+    "NULL",                                      // 0x05B3 -> sfx_1459.wav (ID: 1459)
+    "SFX_05B4",                                  // 0x05B4 -> sfx_1460.wav (ID: 1460)
+    "SFX_05B5",                                  // 0x05B5 -> sfx_1461.wav (ID: 1461)
+    "SFX_JO_LANDING_05B6",                       // 0x05B6 -> sfx_1462.wav (ID: 1462)
+    "SFX_JO_LANDING_05B7",                       // 0x05B7 -> sfx_1463.wav (ID: 1463)
+    "SFX_MP_SCOREPOINT",                         // 0x05B8 -> sfx_1464.wav (ID: 1464)
+    "SFX_MP_HILLENTERED",                        // 0x05B9 -> sfx_1465.wav (ID: 1465)
+    "SFX_05BA",                                  // 0x05BA -> sfx_1466.wav (ID: 1466)
+    "SFX_MENU_SWIPE",                            // 0x05BB -> sfx_1467.wav (ID: 1467)
+    "SFX_MENU_OPENDIALOG",                       // 0x05BC -> sfx_1468.wav (ID: 1468)
+    "NULL",                                      // 0x05BD -> sfx_1469.wav (ID: 1469)
+    "SFX_SHOULD_HAVE_COME_HERE_GIRL",            // 0x05BE -> sfx_1470.wav (ID: 1470)
+    "SFX_WERE_TAKING_OVER",                      // 0x05BF -> sfx_1471.wav (ID: 1471)
+    "SFX_05C0",                                  // 0x05C0 -> sfx_1472.wav (ID: 1472)
+    "SFX_05C1",                                  // 0x05C1 -> sfx_1473.wav (ID: 1473)
+    "SFX_ALARM_ATTACKSHIP",                      // 0x05C2 -> sfx_1474.wav (ID: 1474)
+    "NULL",                                      // 0x05C3 -> sfx_1475.wav (ID: 1475)
+    "NULL",                                      // 0x05C4 -> sfx_1476.wav (ID: 1476)
+    "SFX_GUN_LOAD",                                  // 0x05C5 -> sfx_1477.wav (ID: 1477)
+    "SFX_05C6",                                  // 0x05C6 -> sfx_1478.wav (ID: 1478)
+    "SFX_05C7",                                  // 0x05C7 -> sfx_1479.wav (ID: 1479)
+    "SFX_HEARTBEAT",                             // 0x05C8 -> sfx_1480.wav (ID: 1480)
+    "SFX_JO_BOOST_ACTIVATE",                     // 0x05C9 -> sfx_1481.wav (ID: 1481)
+    "SFX_05CA",                                  // 0x05CA -> sfx_1482.wav (ID: 1482)
+    "SFX_05CB",                                  // 0x05CB -> sfx_1483.wav (ID: 1483)
+    "SFX_05CC",                                  // 0x05CC -> sfx_1484.wav (ID: 1484)
+    "SFX_05CD",                                  // 0x05CD -> sfx_1485.wav (ID: 1485)
+    "SFX_05CE",                                  // 0x05CE -> sfx_1486.wav (ID: 1486)
+    "SFX_05CF",                                  // 0x05CF -> sfx_1487.wav (ID: 1487)
+    "SFX_SHELL_DROP",                                  // 0x05D0 -> sfx_1488.wav (ID: 1488)
+    "SFX_05D1",                                  // 0x05D1 -> sfx_1489.wav (ID: 1489)
+    "SFX_05D2",                                  // 0x05D2 -> sfx_1490.wav (ID: 1490)
+    "SFX_05D3",                                  // 0x05D3 -> sfx_1491.wav (ID: 1491)
+    "SFX_FR_ALARM",                              // 0x05D4 -> sfx_1492.wav (ID: 1492)
+    "SFX_FR_LIGHTSON",                           // 0x05D5 -> sfx_1493.wav (ID: 1493)
+    "SFX_FR_LIGHTSOFF",                          // 0x05D6 -> sfx_1494.wav (ID: 1494)
+    "SFX_PUNCH_WHOOSH",                                  // 0x05D7 -> sfx_1495.wav (ID: 1495)
+    "SFX_WOOD_BREAK",                            // 0x05D8 -> sfx_1496.wav (ID: 1496)
+    "SFX_FR_CONVEYER",                           // 0x05D9 -> sfx_1497.wav (ID: 1497)
+    "SFX_FR_CONVEYER_STOP",                      // 0x05DA -> sfx_1498.wav (ID: 1498)
+    "SFX_TRAINING_FAIL",                         // 0x05DB -> sfx_1499.wav (ID: 1499)
+    "SFX_TRAINING_COMPLETE",                     // 0x05DC -> sfx_1500.wav (ID: 1500)
+    "SFX_MENU_SELECT",                           // 0x05DD -> sfx_1501.wav (ID: 1501)
+    "SFX_05DE",                                  // 0x05DE -> sfx_1502.wav (ID: 1502)
+    "SFX_ARGH_MAIAN_05DF",                       // 0x05DF -> sfx_1503.wav (ID: 1503)
+    "SFX_ARGH_MAIAN_05E0",                       // 0x05E0 -> sfx_1504.wav (ID: 1504)
+    "SFX_ARGH_MAIAN_05E1",                       // 0x05E1 -> sfx_1505.wav (ID: 1505)
+    "SFX_MAIAN_05E2",                            // 0x05E2 -> sfx_1506.wav (ID: 1506)
+    "SFX_MAIAN_05E3",                            // 0x05E3 -> sfx_1507.wav (ID: 1507)
+    "SFX_MAIAN_05E4",                            // 0x05E4 -> sfx_1508.wav (ID: 1508)
+    "SFX_MAIAN_05E5",                            // 0x05E5 -> sfx_1509.wav (ID: 1509)
+    "SFX_MAIAN_05E6",                            // 0x05E6 -> sfx_1510.wav (ID: 1510)
+    "SFX_MAIAN_05E7",                            // 0x05E7 -> sfx_1511.wav (ID: 1511)
+    "NULL",                                      // 0x05E8 -> sfx_1512.wav (ID: 1512)
+    "NULL",                                      // 0x05E9 -> sfx_1513.wav (ID: 1513)
+    "NULL",                                      // 0x05EA -> sfx_1514.wav (ID: 1514)
+    "SFX_05EB",                                  // 0x05EB -> sfx_1515.wav (ID: 1515)
+    "SFX_05EC",                                  // 0x05EC -> sfx_1516.wav (ID: 1516)
+    "SFX_05ED",                                  // 0x05ED -> sfx_1517.wav (ID: 1517)
+    "SFX_05EE",                                  // 0x05EE -> sfx_1518.wav (ID: 1518)
+    "SFX_KLOBB_FIRE",                                  // 0x05EF -> sfx_1519.wav (ID: 1519)
+    "SFX_05F0",                                  // 0x05F0 -> sfx_1520.wav (ID: 1520)
+    "SFX_RCP_FIRE",                                  // 0x05F1 -> sfx_1521.wav (ID: 1521)
+    "SFX_DMC_FIRE",                                  // 0x05F2 -> sfx_1522.wav (ID: 1522)
+    "SFX_05F3",                                  // 0x05F3 -> sfx_1523.wav (ID: 1523)
+    "SFX_RCP45_FIRE",                                  // 0x05F4 -> sfx_1524.wav (ID: 1524)
+    "SFX_05F5",                                  // 0x05F5 -> sfx_1525.wav (ID: 1525)
+    "SFX_05F6",                                  // 0x05F6 -> sfx_1526.wav (ID: 1526)
+    "SFX_05F7",                                  // 0x05F7 -> sfx_1527.wav (ID: 1527)
+    "SFX_FOOTSTEP_CARPET",                                  // 0x05F8 -> sfx_1528.wav (ID: 1528)
+    "SFX_FOOTSTEP_CARPET",                                  // 0x05F9 -> sfx_1529.wav (ID: 1529)
+    "SFX_FOOTSTEP_CARPET",                                  // 0x05FA -> sfx_1530.wav (ID: 1530)
+    "SFX_FOOTSTEP_CARPET",                                  // 0x05FB -> sfx_1531.wav (ID: 1531)
+    "SFX_FOOTSTEP_CARPET",                                  // 0x05FC -> sfx_1532.wav (ID: 1532)
+    "SFX_FOOTSTEP_CARPET",                                  // 0x05FD -> sfx_1533.wav (ID: 1533)
+    "SFX_FOOTSTEP_CARPET",                                  // 0x05FE -> sfx_1534.wav (ID: 1534)
+    "SFX_FOOTSTEP_CARPET",                                  // 0x05FF -> sfx_1535.wav (ID: 1535)
+    "SFX_FOOTSTEP_LIQUID",                                  // 0x0600 -> sfx_1536.wav (ID: 1536)
+    "SFX_FOOTSTEP_LIQUID",                                  // 0x0601 -> sfx_1537.wav (ID: 1537)
+    "SFX_FOOTSTEP_LIQUID",                                  // 0x0602 -> sfx_1538.wav (ID: 1538)
+    "SFX_FOOTSTEP_LIQUID",                                  // 0x0603 -> sfx_1539.wav (ID: 1539)
+    "SFX_FOOTSTEP_LIQUID",                                  // 0x0604 -> sfx_1540.wav (ID: 1540)
+    "SFX_FOOTSTEP_LIQUID",                                  // 0x0605 -> sfx_1541.wav (ID: 1541)
+    "SFX_FOOTSTEP_LIQUID",                                  // 0x0606 -> sfx_1542.wav (ID: 1542)
+    "SFX_FOOTSTEP_LIQUID",                                  // 0x0607 -> sfx_1543.wav (ID: 1543)
+    "SFX_NOSEDIVE",                              // 0x0608 -> sfx_1544.wav (ID: 1544)
+    "SFX_UFOHUM",                                // 0x0609 -> sfx_1545.wav (ID: 1545)
+    "SFX_ALARM_CHICAGO",                         // 0x060A -> sfx_1546.wav (ID: 1546)
+    "SFX_8000",                                  // 0x060B -> sfx_1547.wav (ID: 1547)
+    "SFX_DOOR_8001",                             // 0x060C -> sfx_1548.wav (ID: 1548)
+    "SFX_DOOR_8002",                             // 0x060D -> sfx_1549.wav (ID: 1549)
+    "SFX_DOOR_8003",                             // 0x060E -> sfx_1550.wav (ID: 1550)
+    "SFX_DOOR_8004",                             // 0x060F -> sfx_1551.wav (ID: 1551)
+    "SFX_DOOR_8005",                             // 0x0610 -> sfx_1552.wav (ID: 1552)
+    "SFX_DOOR_8006",                             // 0x0611 -> sfx_1553.wav (ID: 1553)
+    "SFX_DOOR_8007",                             // 0x0612 -> sfx_1554.wav (ID: 1554)
+    "SFX_DOOR_8008",                             // 0x0613 -> sfx_1555.wav (ID: 1555)
+    "SFX_8009",                                  // 0x0614 -> sfx_1556.wav (ID: 1556)
+    "SFX_DOOR_800A",                             // 0x0615 -> sfx_1557.wav (ID: 1557)
+    "SFX_DOOR_800B",                             // 0x0616 -> sfx_1558.wav (ID: 1558)
+    "SFX_DOOR_800C",                             // 0x0617 -> sfx_1559.wav (ID: 1559)
+    "SFX_DOOR_800D",                             // 0x0618 -> sfx_1560.wav (ID: 1560)
+    "SFX_DOOR_800E",                             // 0x0619 -> sfx_1561.wav (ID: 1561)
+    "SFX_DOOR_800F",                             // 0x061A -> sfx_1562.wav (ID: 1562)
+    "SFX_DOOR_8010",                             // 0x061B -> sfx_1563.wav (ID: 1563)
+    "SFX_DOOR_8011",                             // 0x061C -> sfx_1564.wav (ID: 1564)
+    "SFX_DOOR_8012",                             // 0x061D -> sfx_1565.wav (ID: 1565)
+    "SFX_DOOR_8013",                             // 0x061E -> sfx_1566.wav (ID: 1566)
+    "SFX_DOOR_8014",                             // 0x061F -> sfx_1567.wav (ID: 1567)
+    "SFX_DOOR_8015",                             // 0x0620 -> sfx_1568.wav (ID: 1568)
+    "SFX_DOOR_8016",                             // 0x0621 -> sfx_1569.wav (ID: 1569)
+    "SFX_DOOR_8017",                             // 0x0622 -> sfx_1570.wav (ID: 1570)
+    "SFX_DOOR_8018",                             // 0x0623 -> sfx_1571.wav (ID: 1571)
+    "SFX_DOOR_8019",                             // 0x0624 -> sfx_1572.wav (ID: 1572)
+    "SFX_DOOR_801A",                             // 0x0625 -> sfx_1573.wav (ID: 1573)
+    "SFX_DOOR_801B",                             // 0x0626 -> sfx_1574.wav (ID: 1574)
+    "SFX_DOOR_801C",                             // 0x0627 -> sfx_1575.wav (ID: 1575)
+    "SFX_DOOR_801D",                             // 0x0628 -> sfx_1576.wav (ID: 1576)
+    "SFX_DOOR_801E",                             // 0x0629 -> sfx_1577.wav (ID: 1577)
+    "SFX_DOOR_801F",                             // 0x062A -> sfx_1578.wav (ID: 1578)
+    "SFX_DOOR_8020",                             // 0x062B -> sfx_1579.wav (ID: 1579)
+    "SFX_DOOR_8021",                             // 0x062C -> sfx_1580.wav (ID: 1580)
+    "SFX_DOOR_8022",                             // 0x062D -> sfx_1581.wav (ID: 1581)
+    "SFX_8023",                                  // 0x062E -> sfx_1582.wav (ID: 1582)
+    "SFX_8024",                                  // 0x062F -> sfx_1583.wav (ID: 1583)
+    "SFX_8025",                                  // 0x0630 -> sfx_1584.wav (ID: 1584)
+    "SFX_DOOR_8026",                             // 0x0631 -> sfx_1585.wav (ID: 1585)
+    "SFX_DOOR_8027",                             // 0x0632 -> sfx_1586.wav (ID: 1586)
+    "SFX_CARR_HELLO_JOANNA",                     // 0x0633 -> sfx_1587.wav (ID: 1587)
+    "SFX_8029",                                  // 0x0634 -> sfx_1588.wav (ID: 1588)
+    "SFX_802A",                                  // 0x0635 -> sfx_1589.wav (ID: 1589)
+    "SFX_CIFEM_HI_THERE",                        // 0x0636 -> sfx_1590.wav (ID: 1590)
+    "SFX_GRIMSHAW_WELCOME",                      // 0x0637 -> sfx_1591.wav (ID: 1591)
+    "SFX_GRIMSHAW_HI_THERE",                     // 0x0638 -> sfx_1592.wav (ID: 1592)
+    "SFX_GRIMSHAW_UMM_ERR_HI",                   // 0x0639 -> sfx_1593.wav (ID: 1593)
+    "SFX_HOLO_HI",                               // 0x063A -> sfx_1594.wav (ID: 1594)
+    "SFX_HANGAR_WHAT_DO_YOU_WANT",               // 0x063B -> sfx_1595.wav (ID: 1595)
+    "SFX_FOSTER_STAR_AGENT",                     // 0x063C -> sfx_1596.wav (ID: 1596)
+    "SFX_CIM_HEY_THERE",                         // 0x063D -> sfx_1597.wav (ID: 1597)
+    "SFX_CIM_HI",                                // 0x063E -> sfx_1598.wav (ID: 1598)
+    "SFX_CIM_HOWS_IT_GOING",                     // 0x063F -> sfx_1599.wav (ID: 1599)
+    "SFX_CIFEM_HELLO",                           // 0x0640 -> sfx_1600.wav (ID: 1600)
+    "SFX_CIFEM_HI_JO",                           // 0x0641 -> sfx_1601.wav (ID: 1601)
+    "SFX_CIFEM_HOWS_IT_GOING",                   // 0x0642 -> sfx_1602.wav (ID: 1602)
+    "SFX_8038",                                  // 0x0643 -> sfx_1603.wav (ID: 1603)
+    "SFX_8039",                                  // 0x0644 -> sfx_1604.wav (ID: 1604)
+    "SFX_803A",                                  // 0x0645 -> sfx_1605.wav (ID: 1605)
+    "SFX_803B",                                  // 0x0646 -> sfx_1606.wav (ID: 1606)
+    "SFX_803C",                                  // 0x0647 -> sfx_1607.wav (ID: 1607)
+    "SFX_803D",                                  // 0x0648 -> sfx_1608.wav (ID: 1608)
+    "SFX_803E",                                  // 0x0649 -> sfx_1609.wav (ID: 1609)
+    "SFX_803F",                                  // 0x064A -> sfx_1610.wav (ID: 1610)
+    "SFX_MENU_ERROR",                            // 0x064B -> sfx_1611.wav (ID: 1611)
+    "SFX_8041",                                  // 0x064C -> sfx_1612.wav (ID: 1612)
+    "SFX_8042",                                  // 0x064D -> sfx_1613.wav (ID: 1613)
+    "SFX_8043",                                  // 0x064E -> sfx_1614.wav (ID: 1614)
+    "SFX_8044",                                  // 0x064F -> sfx_1615.wav (ID: 1615)
+    "SFX_8045",                                  // 0x0650 -> sfx_1616.wav (ID: 1616)
+    "SFX_8046",                                  // 0x0651 -> sfx_1617.wav (ID: 1617)
+    "SFX_8047",                                  // 0x0652 -> sfx_1618.wav (ID: 1618)
+    "SFX_8048",                                  // 0x0653 -> sfx_1619.wav (ID: 1619)
+    "SFX_8049",                                  // 0x0654 -> sfx_1620.wav (ID: 1620)
+    "SFX_804A",                                  // 0x0655 -> sfx_1621.wav (ID: 1621)
+    "SFX_804B",                                  // 0x0656 -> sfx_1622.wav (ID: 1622)
+    "SFX_804C",                                  // 0x0657 -> sfx_1623.wav (ID: 1623)
+    "SFX_804D",                                  // 0x0658 -> sfx_1624.wav (ID: 1624)
+    "SFX_804E",                                  // 0x0659 -> sfx_1625.wav (ID: 1625)
+    "SFX_RELOAD_DEFAULT",                        // 0x065A -> sfx_1626.wav (ID: 1626)
+    "SFX_8050",                                  // 0x065B -> sfx_1627.wav (ID: 1627)
+    "SFX_8051",                                  // 0x065C -> sfx_1628.wav (ID: 1628)
+    "SFX_FIREEMPTY",                             // 0x065D -> sfx_1629.wav (ID: 1629)
+    "SFX_LAUNCH_ROCKET_8053",                    // 0x065E -> sfx_1630.wav (ID: 1630)
+    "SFX_8054",                                  // 0x065F -> sfx_1631.wav (ID: 1631)
+    "SFX_FIRE_SHOTGUN",                          // 0x0660 -> sfx_1632.wav (ID: 1632)
+    "SFX_8056",                                  // 0x0661 -> sfx_1633.wav (ID: 1633)
+    "SFX_DRUGSPY_FIREDART",                      // 0x0662 -> sfx_1634.wav (ID: 1634)
+    "SFX_8058",                                  // 0x0663 -> sfx_1635.wav (ID: 1635)
+    "SFX_8059",                                  // 0x0664 -> sfx_1636.wav (ID: 1636)
+    "SFX_805A",                                  // 0x0665 -> sfx_1637.wav (ID: 1637)
+    "SFX_805B",                                  // 0x0666 -> sfx_1638.wav (ID: 1638)
+    "SFX_805C",                                  // 0x0667 -> sfx_1639.wav (ID: 1639)
+    "SFX_805D",                                  // 0x0668 -> sfx_1640.wav (ID: 1640)
+    "SFX_805E",                                  // 0x0669 -> sfx_1641.wav (ID: 1641)
+    "SFX_805F",                                  // 0x066A -> sfx_1642.wav (ID: 1642)
+    "SFX_8060",                                  // 0x066B -> sfx_1643.wav (ID: 1643)
+    "SFX_8061",                                  // 0x066C -> sfx_1644.wav (ID: 1644)
+    "SFX_8062",                                  // 0x066D -> sfx_1645.wav (ID: 1645)
+    "SFX_8063",                                  // 0x066E -> sfx_1646.wav (ID: 1646)
+    "SFX_8064",                                  // 0x066F -> sfx_1647.wav (ID: 1647)
+    "SFX_MAULER_CHARGE",                         // 0x0670 -> sfx_1648.wav (ID: 1648)
+    "SFX_8066",                                  // 0x0671 -> sfx_1649.wav (ID: 1649)
+    "SFX_8067",                                  // 0x0672 -> sfx_1650.wav (ID: 1650)
+    "SFX_SLAYER_WHIR",                           // 0x0673 -> sfx_1651.wav (ID: 1651)
+    "SFX_8069",                                  // 0x0674 -> sfx_1652.wav (ID: 1652)
+    "SFX_806A",                                  // 0x0675 -> sfx_1653.wav (ID: 1653)
+    "SFX_806B",                                  // 0x0676 -> sfx_1654.wav (ID: 1654)
+    "SFX_806C",                                  // 0x0677 -> sfx_1655.wav (ID: 1655)
+    "SFX_806D",                                  // 0x0678 -> sfx_1656.wav (ID: 1656)
+    "SFX_806E",                                  // 0x0679 -> sfx_1657.wav (ID: 1657)
+    "SFX_806F",                                  // 0x067A -> sfx_1658.wav (ID: 1658)
+    "SFX_8070",                                  // 0x067B -> sfx_1659.wav (ID: 1659)
+    "SFX_8071",                                  // 0x067C -> sfx_1660.wav (ID: 1660)
+    "SFX_8072",                                  // 0x067D -> sfx_1661.wav (ID: 1661)
+    "SFX_8073",                                  // 0x067E -> sfx_1662.wav (ID: 1662)
+    "SFX_8074",                                  // 0x067F -> sfx_1663.wav (ID: 1663)
+    "SFX_8075",                                  // 0x0680 -> sfx_1664.wav (ID: 1664)
+    "SFX_HIT_CHR",                               // 0x0681 -> sfx_1665.wav (ID: 1665)
+    "SFX_HIT_GLASS",                             // 0x0682 -> sfx_1666.wav (ID: 1666)
+    "SFX_GLASS_SHATTER",                         // 0x0683 -> sfx_1667.wav (ID: 1667)
+    "SFX_HIT_METAL_8079",                        // 0x0684 -> sfx_1668.wav (ID: 1668)
+    "SFX_807A",                                  // 0x0685 -> sfx_1669.wav (ID: 1669)
+    "SFX_HIT_METAL_807B",                        // 0x0686 -> sfx_1670.wav (ID: 1670)
+    "SFX_HATHIT_807C",                           // 0x0687 -> sfx_1671.wav (ID: 1671)
+    "SFX_HIT_SNOW",                              // 0x0688 -> sfx_1672.wav (ID: 1672)
+    "SFX_HIT_WOOD_807E",                         // 0x0689 -> sfx_1673.wav (ID: 1673)
+    "SFX_HIT_WOOD_807F",                         // 0x068A -> sfx_1674.wav (ID: 1674)
+    "SFX_HIT_WATER",                             // 0x068B -> sfx_1675.wav (ID: 1675)
+    "SFX_HIT_MUD_8081",                          // 0x068C -> sfx_1676.wav (ID: 1676)
+    "SFX_HIT_MUD_8082",                          // 0x068D -> sfx_1677.wav (ID: 1677)
+    "SFX_HIT_MUD_8083",                          // 0x068E -> sfx_1678.wav (ID: 1678)
+    "SFX_HIT_DIRT_8084",                         // 0x068F -> sfx_1679.wav (ID: 1679)
+    "SFX_HIT_DIRT_8085",                         // 0x0690 -> sfx_1680.wav (ID: 1680)
+    "SFX_HIT_TILE",                              // 0x0691 -> sfx_1681.wav (ID: 1681)
+    "SFX_HIT_STONE_8087",                        // 0x0692 -> sfx_1682.wav (ID: 1682)
+    "SFX_HIT_STONE_8088",                        // 0x0693 -> sfx_1683.wav (ID: 1683)
+    "SFX_HIT_METALOBJ_8089",                     // 0x0694 -> sfx_1684.wav (ID: 1684)
+    "SFX_HIT_METALOBJ_808A",                     // 0x0695 -> sfx_1685.wav (ID: 1685)
+    "SFX_808B",                                  // 0x0696 -> sfx_1686.wav (ID: 1686)
+    "SFX_EYESPYHIT",                             // 0x0697 -> sfx_1687.wav (ID: 1687)
+    "SFX_THUD_808D",                             // 0x0698 -> sfx_1688.wav (ID: 1688)
+    "SFX_THUD_808E",                             // 0x0699 -> sfx_1689.wav (ID: 1689)
+    "SFX_THUD_808F",                             // 0x069A -> sfx_1690.wav (ID: 1690)
+    "SFX_THUD_8090",                             // 0x069B -> sfx_1691.wav (ID: 1691)
+    "SFX_THUD_8091",                             // 0x069C -> sfx_1692.wav (ID: 1692)
+    "SFX_THUD_8092",                             // 0x069D -> sfx_1693.wav (ID: 1693)
+    "SFX_THUD_8093",                             // 0x069E -> sfx_1694.wav (ID: 1694)
+    "SFX_THUD_8094",                             // 0x069F -> sfx_1695.wav (ID: 1695)
+    "SFX_THUD_8095",                             // 0x06A0 -> sfx_1696.wav (ID: 1696)
+    "SFX_THUD_8096",                             // 0x06A1 -> sfx_1697.wav (ID: 1697)
+    "SFX_THUD_8097",                             // 0x06A2 -> sfx_1698.wav (ID: 1698)
+    "SFX_EXPLOSION_8098",                        // 0x06A3 -> sfx_1699.wav (ID: 1699)
+    "SFX_8099",                                  // 0x06A4 -> sfx_1700.wav (ID: 1700)
+    "SFX_EXPLOSION_809A",                        // 0x06A5 -> sfx_1701.wav (ID: 1701)
+    "SFX_809B",                                  // 0x06A6 -> sfx_1702.wav (ID: 1702)
+    "SFX_809C",                                  // 0x06A7 -> sfx_1703.wav (ID: 1703)
+    "SFX_809D",                                  // 0x06A8 -> sfx_1704.wav (ID: 1704)
+    "SFX_809E",                                  // 0x06A9 -> sfx_1705.wav (ID: 1705)
+    "SFX_809F",                                  // 0x06AA -> sfx_1706.wav (ID: 1706)
+    "SFX_80A0",                                  // 0x06AB -> sfx_1707.wav (ID: 1707)
+    "SFX_80A1",                                  // 0x06AC -> sfx_1708.wav (ID: 1708)
+    "SFX_80A2",                                  // 0x06AD -> sfx_1709.wav (ID: 1709)
+    "SFX_80A3",                                  // 0x06AE -> sfx_1710.wav (ID: 1710)
+    "SFX_80A4",                                  // 0x06AF -> sfx_1711.wav (ID: 1711)
+    "SFX_80A5",                                  // 0x06B0 -> sfx_1712.wav (ID: 1712)
+    "SFX_80A6",                                  // 0x06B1 -> sfx_1713.wav (ID: 1713)
+    "SFX_80A7",                                  // 0x06B2 -> sfx_1714.wav (ID: 1714)
+    "SFX_80A8",                                  // 0x06B3 -> sfx_1715.wav (ID: 1715)
+    "SFX_THROW",                                 // 0x06B4 -> sfx_1716.wav (ID: 1716)
+    "SFX_80AA",                                  // 0x06B5 -> sfx_1717.wav (ID: 1717)
+    "SFX_DETONATE",                              // 0x06B6 -> sfx_1718.wav (ID: 1718)
+    "SFX_DOOR_80AC",                             // 0x06B7 -> sfx_1719.wav (ID: 1719)
+    "SFX_DOOR_80AD",                             // 0x06B8 -> sfx_1720.wav (ID: 1720)
+    "SFX_DOOR_80AE",                             // 0x06B9 -> sfx_1721.wav (ID: 1721)
+    "SFX_BIKE_PULSE",                            // 0x06BA -> sfx_1722.wav (ID: 1722)
+    "SFX_80B0",                                  // 0x06BB -> sfx_1723.wav (ID: 1723)
+    "SFX_80B1",                                  // 0x06BC -> sfx_1724.wav (ID: 1724)
+    "SFX_80B2",                                  // 0x06BD -> sfx_1725.wav (ID: 1725)
+    "SFX_80B3",                                  // 0x06BE -> sfx_1726.wav (ID: 1726)
+    "SFX_80B4",                                  // 0x06BF -> sfx_1727.wav (ID: 1727)
+    "SFX_80B5",                                  // 0x06C0 -> sfx_1728.wav (ID: 1728)
+    "SFX_80B6",                                  // 0x06C1 -> sfx_1729.wav (ID: 1729)
+    "SFX_80B7",                                  // 0x06C2 -> sfx_1730.wav (ID: 1730)
+    "SFX_80B8",                                  // 0x06C3 -> sfx_1731.wav (ID: 1731)
+    "SFX_80B9_THUNDER",                          // 0x06C4 -> sfx_1732.wav (ID: 1732)
+    "SFX_80BA_THUNDER",                          // 0x06C5 -> sfx_1733.wav (ID: 1733)
+    "SFX_80BB_THUNDER",                          // 0x06C6 -> sfx_1734.wav (ID: 1734)
+    "SFX_80BC_THUNDER",                          // 0x06C7 -> sfx_1735.wav (ID: 1735)
+    "SFX_80BD_THUNDER",                          // 0x06C8 -> sfx_1736.wav (ID: 1736)
+    "SFX_80BE_THUNDER",                          // 0x06C9 -> sfx_1737.wav (ID: 1737)
+    "SFX_80BF_LIGHTNING",                        // 0x06CA -> sfx_1738.wav (ID: 1738)
+    "SFX_80C0_LIGHTNING",                        // 0x06CB -> sfx_1739.wav (ID: 1739)
+    "SFX_80C1_LIGHTNING",                        // 0x06CC -> sfx_1740.wav (ID: 1740)
+    "SFX_80C2_LIGHTNING",                        // 0x06CD -> sfx_1741.wav (ID: 1741)
+    "SFX_80C3_LIGHTNING",                        // 0x06CE -> sfx_1742.wav (ID: 1742)
+    "SFX_FOOTSTEP_80C4",                         // 0x06CF -> sfx_1743.wav (ID: 1743)
+    "SFX_FOOTSTEP_80C5",                         // 0x06D0 -> sfx_1744.wav (ID: 1744)
+    "SFX_FOOTSTEP_80C6",                         // 0x06D1 -> sfx_1745.wav (ID: 1745)
+    "SFX_FOOTSTEP_80C7",                         // 0x06D2 -> sfx_1746.wav (ID: 1746)
+    "SFX_FOOTSTEP_80C8",                         // 0x06D3 -> sfx_1747.wav (ID: 1747)
+    "SFX_FOOTSTEP_80C9",                         // 0x06D4 -> sfx_1748.wav (ID: 1748)
+    "SFX_FOOTSTEP_80CA",                         // 0x06D5 -> sfx_1749.wav (ID: 1749)
+    "SFX_FOOTSTEP_80CB",                         // 0x06D6 -> sfx_1750.wav (ID: 1750)
+    "SFX_FOOTSTEP_80CC",                         // 0x06D7 -> sfx_1751.wav (ID: 1751)
+    "SFX_FOOTSTEP_80CD",                         // 0x06D8 -> sfx_1752.wav (ID: 1752)
+    "SFX_FOOTSTEP_80CE",                         // 0x06D9 -> sfx_1753.wav (ID: 1753)
+    "SFX_FOOTSTEP_80CF",                         // 0x06DA -> sfx_1754.wav (ID: 1754)
+    "SFX_FOOTSTEP_80D0",                         // 0x06DB -> sfx_1755.wav (ID: 1755)
+    "SFX_FOOTSTEP_80D1",                         // 0x06DC -> sfx_1756.wav (ID: 1756)
+    "SFX_FOOTSTEP_80D2",                         // 0x06DD -> sfx_1757.wav (ID: 1757)
+    "SFX_FOOTSTEP_80D3",                         // 0x06DE -> sfx_1758.wav (ID: 1758)
+    "SFX_FOOTSTEP_80D4",                         // 0x06DF -> sfx_1759.wav (ID: 1759)
+    "SFX_FOOTSTEP_80D5",                         // 0x06E0 -> sfx_1760.wav (ID: 1760)
+    "SFX_FOOTSTEP_80D6",                         // 0x06E1 -> sfx_1761.wav (ID: 1761)
+    "SFX_FOOTSTEP_80D7",                         // 0x06E2 -> sfx_1762.wav (ID: 1762)
+    "SFX_FOOTSTEP_80D8",                         // 0x06E3 -> sfx_1763.wav (ID: 1763)
+    "SFX_FOOTSTEP_80D9",                         // 0x06E4 -> sfx_1764.wav (ID: 1764)
+    "SFX_FOOTSTEP_80DA",                         // 0x06E5 -> sfx_1765.wav (ID: 1765)
+    "SFX_FOOTSTEP_80DB",                         // 0x06E6 -> sfx_1766.wav (ID: 1766)
+    "SFX_FOOTSTEP_80DC",                         // 0x06E7 -> sfx_1767.wav (ID: 1767)
+    "SFX_FOOTSTEP_80DD",                         // 0x06E8 -> sfx_1768.wav (ID: 1768)
+    "SFX_FOOTSTEP_80DE",                         // 0x06E9 -> sfx_1769.wav (ID: 1769)
+    "SFX_FOOTSTEP_80DF",                         // 0x06EA -> sfx_1770.wav (ID: 1770)
+    "SFX_FOOTSTEP_80E0",                         // 0x06EB -> sfx_1771.wav (ID: 1771)
+    "SFX_FOOTSTEP_80E1",                         // 0x06EC -> sfx_1772.wav (ID: 1772)
+    "SFX_FOOTSTEP_80E2",                         // 0x06ED -> sfx_1773.wav (ID: 1773)
+    "SFX_FOOTSTEP_80E3",                         // 0x06EE -> sfx_1774.wav (ID: 1774)
+    "SFX_FOOTSTEP_80E4",                         // 0x06EF -> sfx_1775.wav (ID: 1775)
+    "SFX_FOOTSTEP_80E5",                         // 0x06F0 -> sfx_1776.wav (ID: 1776)
+    "SFX_FOOTSTEP_80E6",                         // 0x06F1 -> sfx_1777.wav (ID: 1777)
+    "SFX_FOOTSTEP_80E7",                         // 0x06F2 -> sfx_1778.wav (ID: 1778)
+    "SFX_FOOTSTEP_80E8",                         // 0x06F3 -> sfx_1779.wav (ID: 1779)
+    "SFX_FOOTSTEP_80E9",                         // 0x06F4 -> sfx_1780.wav (ID: 1780)
+    "SFX_FOOTSTEP_80EA",                         // 0x06F5 -> sfx_1781.wav (ID: 1781)
+    "SFX_FOOTSTEP_80EB",                         // 0x06F6 -> sfx_1782.wav (ID: 1782)
+    "SFX_FOOTSTEP_80EC",                         // 0x06F7 -> sfx_1783.wav (ID: 1783)
+    "SFX_FOOTSTEP_80ED",                         // 0x06F8 -> sfx_1784.wav (ID: 1784)
+    "SFX_FOOTSTEP_80EE",                         // 0x06F9 -> sfx_1785.wav (ID: 1785)
+    "SFX_FOOTSTEP_80EF",                         // 0x06FA -> sfx_1786.wav (ID: 1786)
+    "SFX_FOOTSTEP_80F0",                         // 0x06FB -> sfx_1787.wav (ID: 1787)
+    "SFX_FOOTSTEP_80F1",                         // 0x06FC -> sfx_1788.wav (ID: 1788)
+    "SFX_FOOTSTEP_80F2",                         // 0x06FD -> sfx_1789.wav (ID: 1789)
+    "SFX_FOOTSTEP_80F3",                         // 0x06FE -> sfx_1790.wav (ID: 1790)
+    "SFX_FOOTSTEP_80F4",                         // 0x06FF -> sfx_1791.wav (ID: 1791)
+    "SFX_FOOTSTEP_80F5",                         // 0x0700 -> sfx_1792.wav (ID: 1792)
+    "SFX_80F6",                                  // 0x0701 -> sfx_1793.wav (ID: 1793)
+    "SFX_M0_HOLY_SHH",                           // 0x0702 -> sfx_1794.wav (ID: 1794)
+    "SFX_M0_WHAT_THE_HELL",                      // 0x0703 -> sfx_1795.wav (ID: 1795)
+    "SFX_M0_DAMN_IT_MISSED",                     // 0x0704 -> sfx_1796.wav (ID: 1796)
+    "SFX_M0_GODS_SAKE_SOMEONE_HIT_HER",          // 0x0705 -> sfx_1797.wav (ID: 1797)
+    "SFX_M0_GET_THE_HELL_OUT_OF_HERE",           // 0x0706 -> sfx_1798.wav (ID: 1798)
+    "SFX_M0_YOU_BITCH",                          // 0x0707 -> sfx_1799.wav (ID: 1799)
+    "SFX_M0_OH_MY_GOD",                          // 0x0708 -> sfx_1800.wav (ID: 1800)
+    "SFX_80FE",                                  // 0x0709 -> sfx_1801.wav (ID: 1801)
+    "SFX_80FF",                                  // 0x070A -> sfx_1802.wav (ID: 1802)
+    "SFX_8100",                                  // 0x070B -> sfx_1803.wav (ID: 1803)
+    "SFX_8101",                                  // 0x070C -> sfx_1804.wav (ID: 1804)
+    "SFX_8102",                                  // 0x070D -> sfx_1805.wav (ID: 1805)
+    "SFX_SCI_WHO_THE_HELL_ARE_YOU",              // 0x070E -> sfx_1806.wav (ID: 1806)
+    "SFX_8104",                                  // 0x070F -> sfx_1807.wav (ID: 1807)
+    "SFX_8105",                                  // 0x0710 -> sfx_1808.wav (ID: 1808)
+    "SFX_8106",                                  // 0x0711 -> sfx_1809.wav (ID: 1809)
+    "SFX_8107",                                  // 0x0712 -> sfx_1810.wav (ID: 1810)
+    "SFX_8108",                                  // 0x0713 -> sfx_1811.wav (ID: 1811)
+    "SFX_8109",                                  // 0x0714 -> sfx_1812.wav (ID: 1812)
+    "SFX_810A",                                  // 0x0715 -> sfx_1813.wav (ID: 1813)
+    "SFX_810B",                                  // 0x0716 -> sfx_1814.wav (ID: 1814)
+    "SFX_SHIP_HUM",                              // 0x0717 -> sfx_1815.wav (ID: 1815)
+    "SFX_810D",                                  // 0x0718 -> sfx_1816.wav (ID: 1816)
+    "SFX_810E",                                  // 0x0719 -> sfx_1817.wav (ID: 1817)
+    "SFX_810F",                                  // 0x071A -> sfx_1818.wav (ID: 1818)
+    "SFX_8110",                                  // 0x071B -> sfx_1819.wav (ID: 1819)
+    "SFX_8111",                                  // 0x071C -> sfx_1820.wav (ID: 1820)
+    "SFX_8112",                                  // 0x071D -> sfx_1821.wav (ID: 1821)
+    "SFX_8113",                                  // 0x071E -> sfx_1822.wav (ID: 1822)
+    "SFX_8114",                                  // 0x071F -> sfx_1823.wav (ID: 1823)
+    "SFX_8115",                                  // 0x0720 -> sfx_1824.wav (ID: 1824)
+    "SFX_8116",                                  // 0x0721 -> sfx_1825.wav (ID: 1825)
+    "SFX_8117",                                  // 0x0722 -> sfx_1826.wav (ID: 1826)
+    "SFX_TYPING_8118",                           // 0x0723 -> sfx_1827.wav (ID: 1827)
+    "SFX_8119",                                  // 0x0724 -> sfx_1828.wav (ID: 1828)
+    "SFX_811A",                                  // 0x0725 -> sfx_1829.wav (ID: 1829)
+    "SFX_811B",                                  // 0x0726 -> sfx_1830.wav (ID: 1830)
+    "SFX_811C",                                  // 0x0727 -> sfx_1831.wav (ID: 1831)
+    "SFX_811D",                                  // 0x0728 -> sfx_1832.wav (ID: 1832)
+    "SFX_811E",                                  // 0x0729 -> sfx_1833.wav (ID: 1833)
+    "SFX_811F",                                  // 0x072A -> sfx_1834.wav (ID: 1834)
+    "SFX_8120",                                  // 0x072B -> sfx_1835.wav (ID: 1835)
+    "SFX_8121",                                  // 0x072C -> sfx_1836.wav (ID: 1836)
+    "SFX_8122",                                  // 0x072D -> sfx_1837.wav (ID: 1837)
+    "SFX_8123",                                  // 0x072E -> sfx_1838.wav (ID: 1838)
+    "SFX_M1_HOLY",                               // 0x072F -> sfx_1839.wav (ID: 1839)
+    "SFX_M1_WHAT_THE_HELL",                      // 0x0730 -> sfx_1840.wav (ID: 1840)
+    "SFX_M1_OH_MY_GOD",                          // 0x0731 -> sfx_1841.wav (ID: 1841)
+    "SFX_M1_OH_GOD_IM_HIT",                      // 0x0732 -> sfx_1842.wav (ID: 1842)
+    "SFX_M1_MY_GOD",                             // 0x0733 -> sfx_1843.wav (ID: 1843)
+    "SFX_M1_NOOO",                               // 0x0734 -> sfx_1844.wav (ID: 1844)
+    "SFX_M1_OH_GOD_HES_DEAD",                    // 0x0735 -> sfx_1845.wav (ID: 1845)
+    "SFX_M1_BLOODY_STUPID_GUN",                  // 0x0736 -> sfx_1846.wav (ID: 1846)
+    "SFX_M1_DAMN_IT",                            // 0x0737 -> sfx_1847.wav (ID: 1847)
+    "SFX_M1_DAMN_SHES_GOOD",                     // 0x0738 -> sfx_1848.wav (ID: 1848)
+    "SFX_M1_COVER_MY_ASS",                       // 0x0739 -> sfx_1849.wav (ID: 1849)
+    "SFX_M1_SCREAM",                             // 0x073A -> sfx_1850.wav (ID: 1850)
+    "SFX_M1_SCREAM",                             // 0x073B -> sfx_1851.wav (ID: 1851)
+    "SFX_F_DAMN_SHES_GOOD",                      // 0x073C -> sfx_1852.wav (ID: 1852)
+    "SFX_F_MY_GOD",                              // 0x073D -> sfx_1853.wav (ID: 1853)
+    "SFX_M2_GEEZ_THAT_HURT",                     // 0x073E -> sfx_1854.wav (ID: 1854)
+    "SFX_M2_DAMN_IT_IM_TAKING_FIRE",             // 0x073F -> sfx_1855.wav (ID: 1855)
+    "SFX_M2_GOD_DAMN_IT",                        // 0x0740 -> sfx_1856.wav (ID: 1856)
+    "SFX_M2_HOLY_MOLY",                          // 0x0741 -> sfx_1857.wav (ID: 1857)
+    "SFX_M2_DAMN_MISSED_AGAIN",                  // 0x0742 -> sfx_1858.wav (ID: 1858)
+    "SFX_M2_DAMN_YOU",                           // 0x0743 -> sfx_1859.wav (ID: 1859)
+    "SFX_M2_HELL_SHES_GOOD",                     // 0x0744 -> sfx_1860.wav (ID: 1860)
+    "SFX_M2_LETS_GET_THE_HELL_OUT_OF_HERE",      // 0x0745 -> sfx_1861.wav (ID: 1861)
+    "SFX_M2_NOOO",                               // 0x0746 -> sfx_1862.wav (ID: 1862)
+    "SFX_813B",                                  // 0x0747 -> sfx_1863.wav (ID: 1863)
+    "SFX_M2_OH_GOD_IM_DYING",                    // 0x0748 -> sfx_1864.wav (ID: 1864)
+    "SFX_M2_GOD_RUN",                            // 0x0749 -> sfx_1865.wav (ID: 1865)
+    "SFX_813E",                                  // 0x074A -> sfx_1866.wav (ID: 1866)
+    "SFX_813F",                                  // 0x074B -> sfx_1867.wav (ID: 1867)
+    "SFX_8140",                                  // 0x074C -> sfx_1868.wav (ID: 1868)
+    "SFX_8141",                                  // 0x074D -> sfx_1869.wav (ID: 1869)
+    "SFX_8142",                                  // 0x074E -> sfx_1870.wav (ID: 1870)
+    "SFX_8143",                                  // 0x074F -> sfx_1871.wav (ID: 1871)
+    "SFX_8144",                                  // 0x0750 -> sfx_1872.wav (ID: 1872)
+    "SFX_8145",                                  // 0x0751 -> sfx_1873.wav (ID: 1873)
+    "SFX_8146",                                  // 0x0752 -> sfx_1874.wav (ID: 1874)
+    "SFX_8147",                                  // 0x0753 -> sfx_1875.wav (ID: 1875)
+    "SFX_8148",                                  // 0x0754 -> sfx_1876.wav (ID: 1876)
+    "SFX_8149",                                  // 0x0755 -> sfx_1877.wav (ID: 1877)
+    "SFX_CIV_OH_MY_GOD",                         // 0x0756 -> sfx_1878.wav (ID: 1878)
+    "SFX_814B",                                  // 0x0757 -> sfx_1879.wav (ID: 1879)
+    "SFX_814C",                                  // 0x0758 -> sfx_1880.wav (ID: 1880)
+    "SFX_814D",                                  // 0x0759 -> sfx_1881.wav (ID: 1881)
+    "SFX_814E",                                  // 0x075A -> sfx_1882.wav (ID: 1882)
+    "SFX_814F",                                  // 0x075B -> sfx_1883.wav (ID: 1883)
+    "SFX_8150",                                  // 0x075C -> sfx_1884.wav (ID: 1884)
+    "SFX_8151",                                  // 0x075D -> sfx_1885.wav (ID: 1885)
+    "SFX_8152",                                  // 0x075E -> sfx_1886.wav (ID: 1886)
+    "SFX_8153",                                  // 0x075F -> sfx_1887.wav (ID: 1887)
+    "SFX_8154",                                  // 0x0760 -> sfx_1888.wav (ID: 1888)
+    "SFX_8155",                                  // 0x0761 -> sfx_1889.wav (ID: 1889)
+    "SFX_8156",                                  // 0x0762 -> sfx_1890.wav (ID: 1890)
+    "SFX_8157",                                  // 0x0763 -> sfx_1891.wav (ID: 1891)
+    "SFX_8158",                                  // 0x0764 -> sfx_1892.wav (ID: 1892)
+    "SFX_8159",                                  // 0x0765 -> sfx_1893.wav (ID: 1893)
+    "SFX_815A",                                  // 0x0766 -> sfx_1894.wav (ID: 1894)
+    "SFX_815B",                                  // 0x0767 -> sfx_1895.wav (ID: 1895)
+    "SFX_815C",                                  // 0x0768 -> sfx_1896.wav (ID: 1896)
+    "SFX_M0_HOWS_THINGS",                        // 0x0769 -> sfx_1897.wav (ID: 1897)
+    "SFX_M0_HEY_THERE",                          // 0x076A -> sfx_1898.wav (ID: 1898)
+    "SFX_M0_HI_HOW_ARE_YOU",                     // 0x076B -> sfx_1899.wav (ID: 1899)
+    "SFX_8160",                                  // 0x076C -> sfx_1900.wav (ID: 1900)
+    "SFX_8161",                                  // 0x076D -> sfx_1901.wav (ID: 1901)
+    "SFX_8162",                                  // 0x076E -> sfx_1902.wav (ID: 1902)
+    "SFX_M1_HI_THERE",                           // 0x076F -> sfx_1903.wav (ID: 1903)
+    "SFX_M1_HOWS_THINGS",                        // 0x0770 -> sfx_1904.wav (ID: 1904)
+    "SFX_M2_HELLO",                              // 0x0771 -> sfx_1905.wav (ID: 1905)
+    "SFX_M2_HEY_WHATS_UP",                       // 0x0772 -> sfx_1906.wav (ID: 1906)
+    "SFX_M0_WHAT_THE_HELL_8167",                 // 0x0773 -> sfx_1907.wav (ID: 1907)
+    "SFX_M1_M2_GEEZ",                            // 0x0774 -> sfx_1908.wav (ID: 1908)
+    "SFX_8169",                                  // 0x0775 -> sfx_1909.wav (ID: 1909)
+    "SFX_816A",                                  // 0x0776 -> sfx_1910.wav (ID: 1910)
+    "SFX_DOOR_816B",                             // 0x0777 -> sfx_1911.wav (ID: 1911)
+    "SFX_DOOR_816C",                             // 0x0778 -> sfx_1912.wav (ID: 1912)
+    "SFX_DOOR_816D",                             // 0x0779 -> sfx_1913.wav (ID: 1913)
+    "SFX_816E",                                  // 0x077A -> sfx_1914.wav (ID: 1914)
+    "SFX_816F",                                  // 0x077B -> sfx_1915.wav (ID: 1915)
+    "SFX_8170",                                  // 0x077C -> sfx_1916.wav (ID: 1916)
+    "SFX_8171",                                  // 0x077D -> sfx_1917.wav (ID: 1917)
+    "SFX_8172",                                  // 0x077E -> sfx_1918.wav (ID: 1918)
+    "SFX_8173",                                  // 0x077F -> sfx_1919.wav (ID: 1919)
+    "SFX_8174",                                  // 0x0780 -> sfx_1920.wav (ID: 1920)
+    "SFX_8175",                                  // 0x0781 -> sfx_1921.wav (ID: 1921)
+    "SFX_8176",                                  // 0x0782 -> sfx_1922.wav (ID: 1922)
+    "SFX_8177",                                  // 0x0783 -> sfx_1923.wav (ID: 1923)
+    "SFX_8178",                                  // 0x0784 -> sfx_1924.wav (ID: 1924)
+    "SFX_8179",                                  // 0x0785 -> sfx_1925.wav (ID: 1925)
+    "SFX_817A",                                  // 0x0786 -> sfx_1926.wav (ID: 1926)
+    "SFX_817B",                                  // 0x0787 -> sfx_1927.wav (ID: 1927)
+    "SFX_817C",                                  // 0x0788 -> sfx_1928.wav (ID: 1928)
+    "SFX_817D",                                  // 0x0789 -> sfx_1929.wav (ID: 1929)
+    "SFX_817E",                                  // 0x078A -> sfx_1930.wav (ID: 1930)
+    "SFX_817F",                                  // 0x078B -> sfx_1931.wav (ID: 1931)
+    "SFX_8180",                                  // 0x078C -> sfx_1932.wav (ID: 1932)
+    "SFX_8181",                                  // 0x078D -> sfx_1933.wav (ID: 1933)
+    "SFX_8182",                                  // 0x078E -> sfx_1934.wav (ID: 1934)
+    "SFX_8183",                                  // 0x078F -> sfx_1935.wav (ID: 1935)
+    "SFX_8184",                                  // 0x0790 -> sfx_1936.wav (ID: 1936)
+    "SFX_8185",                                  // 0x0791 -> sfx_1937.wav (ID: 1937)
+    "SFX_8186",                                  // 0x0792 -> sfx_1938.wav (ID: 1938)
+    "SFX_FOOTSTEP_8187",                         // 0x0793 -> sfx_1939.wav (ID: 1939)
+    "SFX_FOOTSTEP_8188",                         // 0x0794 -> sfx_1940.wav (ID: 1940)
+    "SFX_FOOTSTEP_8189",                         // 0x0795 -> sfx_1941.wav (ID: 1941)
+    "SFX_FOOTSTEP_818A",                         // 0x0796 -> sfx_1942.wav (ID: 1942)
+    "SFX_FOOTSTEP_818B",                         // 0x0797 -> sfx_1943.wav (ID: 1943)
+    "SFX_FOOTSTEP_818C",                         // 0x0798 -> sfx_1944.wav (ID: 1944)
+    "SFX_FOOTSTEP_818D",                         // 0x0799 -> sfx_1945.wav (ID: 1945)
+    "SFX_FOOTSTEP_818E",                         // 0x079A -> sfx_1946.wav (ID: 1946)
+    "SFX_FOOTSTEP_818F",                         // 0x079B -> sfx_1947.wav (ID: 1947)
+    "SFX_FOOTSTEP_8190",                         // 0x079C -> sfx_1948.wav (ID: 1948)
+    "SFX_FOOTSTEP_8191",                         // 0x079D -> sfx_1949.wav (ID: 1949)
+    "SFX_FOOTSTEP_8192",                         // 0x079E -> sfx_1950.wav (ID: 1950)
+    "SFX_8193",                                  // 0x079F -> sfx_1951.wav (ID: 1951)
+    "SFX_8194",                                  // 0x07A0 -> sfx_1952.wav (ID: 1952)
+    "SFX_8195",                                  // 0x07A1 -> sfx_1953.wav (ID: 1953)
+    "SFX_8196",                                  // 0x07A2 -> sfx_1954.wav (ID: 1954)
+    "SFX_8197",                                  // 0x07A3 -> sfx_1955.wav (ID: 1955)
+    "SFX_8198",                                  // 0x07A4 -> sfx_1956.wav (ID: 1956)
+    "SFX_8199",                                  // 0x07A5 -> sfx_1957.wav (ID: 1957)
+    "SFX_819A",                                  // 0x07A6 -> sfx_1958.wav (ID: 1958)
+    "SFX_819B",                                  // 0x07A7 -> sfx_1959.wav (ID: 1959)
+    "SFX_819C",                                  // 0x07A8 -> sfx_1960.wav (ID: 1960)
+    "SFX_819D",                                  // 0x07A9 -> sfx_1961.wav (ID: 1961)
+    "SFX_819E",                                  // 0x07AA -> sfx_1962.wav (ID: 1962)
+    "SFX_819F",                                  // 0x07AB -> sfx_1963.wav (ID: 1963)
+    "SFX_81A0",                                  // 0x07AC -> sfx_1964.wav (ID: 1964)
+    "SFX_81A1",                                  // 0x07AD -> sfx_1965.wav (ID: 1965)
+    "SFX_81A2",                                  // 0x07AE -> sfx_1966.wav (ID: 1966)
+    "SFX_81A3",                                  // 0x07AF -> sfx_1967.wav (ID: 1967)
+    "SFX_81A4",                                  // 0x07B0 -> sfx_1968.wav (ID: 1968)
+    "SFX_81A5",                                  // 0x07B1 -> sfx_1969.wav (ID: 1969)
+    "SFX_81A6",                                  // 0x07B2 -> sfx_1970.wav (ID: 1970)
+    "SFX_81A7",                                  // 0x07B3 -> sfx_1971.wav (ID: 1971)
+    "SFX_DOOR_81A8",                             // 0x07B4 -> sfx_1972.wav (ID: 1972)
+    "SFX_81A9",                                  // 0x07B5 -> sfx_1973.wav (ID: 1973)
+    "SFX_DOOR_81AA",                             // 0x07B6 -> sfx_1974.wav (ID: 1974)
+    "SFX_DOOR_81AB",                             // 0x07B7 -> sfx_1975.wav (ID: 1975)
+    "SFX_81AC",                                  // 0x07B8 -> sfx_1976.wav (ID: 1976)
+    "SFX_DOOR_81AD",                             // 0x07B9 -> sfx_1977.wav (ID: 1977)
+    "SFX_DOOR_81AE",                             // 0x07BA -> sfx_1978.wav (ID: 1978)
+    "SFX_DOOR_81AF",                             // 0x07BB -> sfx_1979.wav (ID: 1979)
+    "SFX_DOOR_81B0",                             // 0x07BC -> sfx_1980.wav (ID: 1980)
+    "SFX_DOOR_81B1",                             // 0x07BD -> sfx_1981.wav (ID: 1981)
+    "SFX_DOOR_81B2",                             // 0x07BE -> sfx_1982.wav (ID: 1982)
+    "SFX_DOOR_81B3",                             // 0x07BF -> sfx_1983.wav (ID: 1983)
+    "SFX_DOOR_81B4",                             // 0x07C0 -> sfx_1984.wav (ID: 1984)
+    "SFX_DOOR_81B5",                             // 0x07C1 -> sfx_1985.wav (ID: 1985)
+    "SFX_DOOR_81B6",                             // 0x07C2 -> sfx_1986.wav (ID: 1986)
+    "SFX_DOOR_81B7",                             // 0x07C3 -> sfx_1987.wav (ID: 1987)
+    "SFX_DOOR_81B8",                             // 0x07C4 -> sfx_1988.wav (ID: 1988)
+    "SFX_81B9",                                  // 0x07C5 -> sfx_1989.wav (ID: 1989)
+    "SFX_81BA",                                  // 0x07C6 -> sfx_1990.wav (ID: 1990)
+    "SFX_81BB",                                  // 0x07C7 -> sfx_1991.wav (ID: 1991)
 };
 
 #endif

@@ -14,13 +14,13 @@ struct HudMixerData {
 // Toggle System Functions
 int extAudioGetEnabled(void);
 void extAudioSetEnabled(int state);
-
 void extAudioInit(void);
 void extAudioResetCache(void);
 
 // Diagnostic Control Flags
 extern int g_ExtLogSfxEnabled;
 extern int g_ExtLogMusicEnabled;
+extern int g_ExtLogVoxEnabled;
 
 #ifndef PLATFORM_N64
 void extAudioGetActiveInstrumentsStr(char *buffer, size_t max_len);
@@ -44,11 +44,11 @@ int extAudioVoxStop(void *n64_handle);
 // Modern SDL2 SFX Hooks
 int extAudioModernStart(void *n64_handle, int sfx_id, int vol, int pan, float pitch);
 int extAudioModernAdjust(void *n64_handle, int vol, int pan, float pitch);
-s16* extAudioProcessSDL(const s16 *n64_buf, u32 num_bytes);
+s16* extAudioProcessSDL(const s16 *n64_buf, u32 num_bytes, u32 *out_bytes);
 
 #ifndef PLATFORM_N64
 // HLE Music Voice Hooks
-int extAudioSeqVoiceStart(void *n64_voice, ALWaveTable *w, float pitch, int vol, int pan, int fxmix, s32 t);
+int extAudioSeqVoiceStart(void *n64_voice, ALWaveTable *w, float pitch, float unity, int vol, int pan, int fxmix, u8 arg6, float arg7, u8 arg8, s32 t);
 int extAudioSeqVoiceSetVol(void *n64_voice, int vol, s32 t);
 int extAudioSeqVoiceSetPan(void *n64_voice, int pan);
 int extAudioSeqVoiceSetPitch(void *n64_voice, float pitch);
@@ -61,7 +61,19 @@ void extAudioMixMusic(s16 *mix_buffer, u32 num_frames, float crossfade_vol);
 
 // Robust WAV parsing and rate rounding helpers
 int extAudioParseWavHeader(const u8* fileData, u32 fileSize, u32* out_sample_rate, u32* out_channels, u32* out_data_offset, u32* out_data_size);
+s16* extAudioLoadWavPcm16(const u8* fileData, u32 fileSize, u32* out_sample_rate, u32* out_channels, u32* out_data_size);
 u32 extAudioRoundToNearestStandardRate(u32 rate);
+
+// Load-time Sample Normalization Controls
+extern int g_ExtNormalizeMusic;
+extern int g_ExtNormalizeSfx;
+extern int g_ExtNormalizeAttenuateOnly;
+extern float g_ExtNormalizeMusicTarget;
+extern float g_ExtNormalizeSfxTarget;
+extern float g_ExtMicroSampleTarget;
+extern int g_ExtRemasterMicroSamples;
+
+void extAudioNormalizePcm16(s16 *pcm16, u32 data_size_bytes, float target_level, int attenuate_only);
 
 // --- Self-Contained Options Menu ---
 struct menudialogdef;
